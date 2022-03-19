@@ -1,24 +1,28 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import logo from './logo.svg';
+import Home from './pages/Home';
+import { useEffect } from 'react';
 import './App.css';
+function useImperativeDisableScroll({ element, disabled }) {
+  useEffect(() => {
+      if (!element) {
+          return
+      }
 
+      element.style.overflowY = disabled ? 'hidden' : 'scroll'
+
+      return () => {
+          element.style.overflowY = 'scroll'
+      }
+  }, [disabled])
+}
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Home />{
+    useImperativeDisableScroll({ element: document.body, disabled: true })
+    }
+    </>
   );
 }
 
