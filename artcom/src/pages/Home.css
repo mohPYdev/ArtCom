@@ -18,8 +18,9 @@ top: 10rem;
 }
 #EllipseUp1 {
     position: relative;
-    top: -46.5rem;
-    left: 15.5rem;
+    top: -33rem;
+    left: 15rem;
+    height: 12rem;
 
 }
 #EllipseUp2{
@@ -44,8 +45,8 @@ top: 10rem;
 }
 #Ellipse4 {
     position: relative;
-    top: 18rem;
-    left: 20.5rem;
+    top: 19rem;
+    left: 26.5rem;
     height: 22rem;
 }
 #pictureRight {
