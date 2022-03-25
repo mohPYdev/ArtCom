@@ -1,8 +1,6 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import logo from './logo.svg';
-import Home from './pages/Home';
 import { useEffect } from 'react';
 import './App.css';
+import Login from './pages/Login';
 function useImperativeDisableScroll({ element, disabled }) {
   useEffect(() => {
       if (!element) {
@@ -10,16 +8,18 @@ function useImperativeDisableScroll({ element, disabled }) {
       }
 
       element.style.overflowY = disabled ? 'hidden' : 'scroll'
-
+      element.style.overflowX = disabled ? 'hidden' : 'scroll'
       return () => {
           element.style.overflowY = 'scroll'
+          element.style.overflowX = 'scroll'
       }
   }, [disabled])
 }
 function App() {
   return (
     <>
-    <Home />{
+    <Login />
+    {
     useImperativeDisableScroll({ element: document.body, disabled: true })
     }
     </>

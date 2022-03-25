@@ -31,29 +31,23 @@ top: 10rem;
 }
 #pizzaDown{
     position: absolute;
-    left: -10rem;
-    top: -1rem;
-    
-   
+    left: 6rem;
+    top: -11rem;
 
 }
 #EllipseDown {
     position: relative;
-    top: 55vh;
-    left: 47rem;
+    top: 52vh;
+    left: 29rem;
     height: 40rem;
 }
 #Ellipse4 {
     position: relative;
-    top: 19rem;
-    left: 26.5rem;
+    top: 17rem;
+    left: 8.7rem;
     height: 22rem;
 }
-#pictureRight {
-    position: absolute;
-    height: 100vh;
 
-}
 #hero{
     position: relative;
     top: 0rem;
@@ -69,4 +63,25 @@ top: 10rem;
     width: 100vw;
     height: 30rem;
 
+}
+#btn-login{
+    position: relative;
+    left: -27rem;
+    top: 45rem;
+    width: 42rem;
+    height: 51rem;
+    color: blue;
+    opacity: 0;
+    
+    border-radius: 100%;
+}
+#overflowLogin {
+    position: relative;
+    top: -40rem;
+    left: -6rem;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    background-color: #C2CCC1;
+    opacity: 0;
 }
