@@ -1,73 +1,49 @@
 from email.policy import default
 from django.db import models
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, \
-                                        PermissionsMixin
+from django.contrib.auth.models import AbstractUser
 
 
 from datetime import date
+import os
 import uuid
 
-class UserManager(BaseUserManager):
-    """manager for custom user model"""
+def upload_user_image_path(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = f'{uuid.uuid4()}_{instance.username}.{ext}'
+    return os.path.join('uploads/user', filename)
 
-    def create_user(self, email, username, password=None, **kwargs):
-        """creates a regular user with username password and email """
-        if not email or not username:
-            raise ValueError('user must have email and username')
-        user = self.model(
-            email=self.normalize_email(email),
-            username=username,
-            **kwargs
-        )
-        user.set_password(password)
-        user.save(using=self._db)
+def upload_post_image_path(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = f'{uuid.uuid4()}.{ext}'
+    return os.path.join('uploads/post', filename)
 
-        return user
 
-    def create_superuser(self, username, password):
-        """creates a super user """
-        if not username:
-            raise ValueError('superuser must have username!')
-        user = self.model(username=username)
-        user.set_password(password)
-        user.is_staff = True
-        user.is_superuser = True
-        user.save(using=self._db)
-
-        return user
-
-class User(AbstractBaseUser, PermissionsMixin):
-    username = models.CharField(max_length=255, unique=True)
-    email = models.EmailField(max_length=255, unique=True)
-    name = models.CharField(max_length=255, blank=True)
-    date_joined = models.DateField(auto_now_add=True)
+class User(AbstractUser):
     city = models.CharField(max_length=40, blank=True)
     address = models.CharField(max_length=255, blank=True)
     postal_code = models.CharField(max_length=80, blank=True)
-    # image = models.ImageField(upload_to=)
+    image = models.ImageField(upload_to=upload_user_image_path, null=True)
 
     is_artist = models.BooleanField(default=False)
-    is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
-
-    objects = UserManager()
     USERNAME_FIELD = 'username'
-    EMAIL_FIELD = 'email'
 
 
-class Artist(User):
+class Artist(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     description = models.CharField(max_length=255, blank= True)
     profession = models.CharField(max_length=255, blank=True)
 
+    def __str__(self) -> str:
+        return self.user.username
 
 class Post(models.Model):
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
-    # image = models.ImageField(upload_to=)
+    image = models.ImageField(upload_to=upload_post_image_path, null=True)
     name = models.CharField(max_length=255, blank=True)
     description = models.CharField(max_length=255, blank=True)
     date_added = models.DateField(auto_now_add=True)
-    price = models.DecimalField(decimal_places=2, blank=True)
+    price = models.DecimalField(max_digits=7,decimal_places=2, blank=True)
     for_sale = models.BooleanField(default=False)
     sold = models.BooleanField(default=False)
 
@@ -78,13 +54,13 @@ class Like(models.Model):
 
 
 class Follow(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name='following', on_delete=models.CASCADE)
+    artist = models.ForeignKey(Artist, related_name='followers', on_delete=models.CASCADE)
 
 
 class Rate(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
+    artist = models.ForeignKey(Artist, related_name='rate_receivers', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name='rates_givers', on_delete=models.CASCADE)
     star = models.PositiveSmallIntegerField(default=1)
 
 
@@ -113,6 +89,6 @@ class Shipping(models.Model):
 
 
 class InviteToken(models.Model):
-    artist  = models.ForeignKey(Artist , on_delete=models.CASCADE)  
-    user = models.ForeignKey(Artist , on_delete=models.CASCADE)
-    token = models.UUIDField(default=uuid.uuid4, editable=False)
+    artist  = models.ForeignKey(Artist, related_name='inviters', on_delete=models.CASCADE)  
+    user = models.ForeignKey(Artist, related_name='invitees', on_delete=models.CASCADE, null=True, blank=True)
+    token = models.UUIDField(default=uuid.uuid4)
