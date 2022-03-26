@@ -8,6 +8,7 @@ import Ellipse4 from '../img/Ellipse4.svg';
 import EllipseDown from '../img/EllipseDown.svg';
 import hero from '../img/hero1.svg';
 import pinkLine from '../img/pinkLine.svg';
+import brush from '../img/brush.svg';
 class Login extends React.Component{
     constructor(props){
         super(props);
@@ -17,12 +18,13 @@ class Login extends React.Component{
     loadOverflowLogin(){
         const overflow = document.getElementById("overflowLogin") ;
         overflow.style.opacity="1";
-        overflow.style.zIndex = "100"
+        overflow.style.zIndex = "100";
         
     }
     render(){
     return (
         <>
+        <img src={brush} className="brush"/>
         <div className="header">
             <h1>ArtCom</h1>
         </div>

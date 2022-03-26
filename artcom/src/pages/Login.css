@@ -1,4 +1,16 @@
+.brush{
+    visibility: hidden;
+    height: 0vh;
+    width: 100vw;
+    margin: 0rem 0rem 0rem 0rem;
+    position: relative;
+    top: 100vh;
+    left: auto;
+    z-index: -3;
+    transform: scale(0.85) ;
 
+
+}
 .header{
     margin-top: 2rem;
 font-family: 'ZCOOL KuaiLe';
@@ -52,7 +64,7 @@ top: 10rem;
     position: relative;
     top: 0rem;
     left: 79rem;
-    height: 85vh;
+    height: 80vh;
     width: 70rem;
 }
 #line{
@@ -81,6 +93,7 @@ top: 10rem;
     left: -6rem;
     width: 100vw;
     height: 100vh;
+    transform: scale(1000);
     z-index: -2;
     background-color: #C2CCC1;
     opacity: 0;
