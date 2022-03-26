@@ -1,6 +1,6 @@
 import './Login.css';
 import React from 'react';
-
+import { Outlet, Link } from "react-router-dom";
 import EllipseUp from '../img/Ellipse--up.svg';
 import EllipseUp1 from '../img/EllipseUp1.svg';
 import EllipseUp2 from '../img/EllipseUp2.svg';
@@ -12,19 +12,17 @@ import brush from '../img/brush.svg';
 class Login extends React.Component{
     constructor(props){
         super(props);
-        this.loadOverflowLogin=this.loadOverflowLogin.bind(this);
         
     }
-    loadOverflowLogin(){
-        const overflow = document.getElementById("overflowLogin") ;
-        overflow.style.opacity="1";
-        overflow.style.zIndex = "100";
-        
-    }
+    
     render(){
     return (
         <>
-        <img src={brush} className="brush"/>
+        <main>
+        <section id="section-login">
+            
+       
+        {/* <img src={brush} className="brush"/> */}
         <div className="header">
             <h1>ArtCom</h1>
         </div>
@@ -33,9 +31,17 @@ class Login extends React.Component{
            
       
         <img src={EllipseUp} id="EllipseUp"/>
-        <div div="sliceUp">
-            <img src={EllipseUp1} id="EllipseUp1"/>
-        <img src={EllipseUp2} id="EllipseUp2"/>
+        <div id="sliceUp"> 
+       
+        <img src={EllipseUp1} id="EllipseUp1"/> 
+        <Link  to="/signUpa" id="btn-signup-a" >
+            SignUp Artist
+        </Link>
+     
+        <img src={EllipseUp2} id="EllipseUp2"/>  
+        <Link  to="/signUpn" id="btn-signup-n" >
+            SignUp Normal
+        </Link>
         </div>
        </div>
        
@@ -44,18 +50,14 @@ class Login extends React.Component{
            <img src={EllipseDown} id="EllipseDown"/> 
            
            <img src={Ellipse4} id="Ellipse4" />
-           <button id="btn-login" onClick={this.loadOverflowLogin}> 
-           </button>
-           <div id="overflowLogin">
-               
-           </div>
+           <Link  to="/overflow" id="btn-login" >Login</Link>
         </div>
             <img src={hero} id="hero"/>
             <img src={pinkLine} id="line" />
-      
         
-
-
+ </section>
+ 
+</main>
         </>
 
     );

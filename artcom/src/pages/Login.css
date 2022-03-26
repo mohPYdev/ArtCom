@@ -1,3 +1,18 @@
+
+#section-login{
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color:#1E2736 ;
+    z-index: -2;
+}
+#section-overflowLogin{
+    height: 100%;
+    width: 100%;
+    background-color:#C2CCC1 ;
+}
 .brush{
     visibility: hidden;
     height: 0vh;
@@ -12,7 +27,7 @@
 
 }
 .header{
-    margin-top: 2rem;
+    padding-top: 2rem;
 font-family: 'ZCOOL KuaiLe';
 font-size: 6rem;
 
@@ -23,40 +38,52 @@ color: #E9DAD3;
 z-index: 0;
 }
 #pizzaUp {
-position: absolute;
-top: 10rem;
+    position: absolute;
+    top: 12rem;
+    width: 37rem;
+    height: 46rem;
+    left: 0rem;
 
-
+}
+#sliceUp{
+    position: relative;
+    top: -44rem;
+    left: 1rem;
+    width: 34rem;
+    height: 38rem;
+    
 }
 #EllipseUp1 {
     position: relative;
-    top: -33rem;
-    left: 15rem;
+    top: 21rem;
+    left: 13.2rem;
     height: 12rem;
-
 }
 #EllipseUp2{
     position: relative;
-    top: -48rem;
-    left: -10rem;
+    top: -18rem;
+    left: 11rem;
+
     
 }
 #pizzaDown{
     position: absolute;
-    left: 6rem;
-    top: -11rem;
+    left: 38rem;
+    top: 38rem;
+    height: 33rem;
+    width: 46rem;
 
 }
 #EllipseDown {
     position: relative;
-    top: 52vh;
-    left: 29rem;
+    top: -2vh;
+    left: 4rem;
     height: 40rem;
 }
 #Ellipse4 {
     position: relative;
-    top: 17rem;
-    left: 8.7rem;
+    top: -44rem;
+    left: 24.7rem;
     height: 22rem;
 }
 
@@ -77,24 +104,31 @@ top: 10rem;
 
 }
 #btn-login{
-    position: relative;
-    left: -27rem;
-    top: 45rem;
-    width: 42rem;
-    height: 51rem;
-    color: blue;
-    opacity: 0;
     
-    border-radius: 100%;
-}
-#overflowLogin {
+    padding: 12rem;
     position: relative;
-    top: -40rem;
-    left: -6rem;
-    width: 100vw;
-    height: 100vh;
-    transform: scale(1000);
-    z-index: -2;
-    background-color: #C2CCC1;
-    opacity: 0;
+    top: -54rem;
+    left: 1rem;
+    border-radius: 100%;
+    /* background-color: brown; */
+ 
+}
+#btn-signup-a{
+    position: relative;
+    top: 14rem;
+    left: 12rem;
+    /* background-color: yellowgreen; */
+    padding: 10rem;
+    border-radius: 100%;
+ 
+}
+#btn-signup-n{
+    position: relative;
+    top: -31rem;
+    left: 8rem;
+    /* background-color: yellow; */
+    padding: 10rem;
+    border-radius: 100%;
+ 
+
 }
