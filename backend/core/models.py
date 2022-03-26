@@ -1,4 +1,6 @@
-from email.policy import default
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AbstractUser
@@ -92,3 +94,16 @@ class InviteToken(models.Model):
     artist  = models.ForeignKey(Artist, related_name='inviters', on_delete=models.CASCADE)  
     user = models.ForeignKey(Artist, related_name='invitees', on_delete=models.CASCADE, null=True, blank=True)
     token = models.UUIDField(default=uuid.uuid4)
+
+
+
+# signal for creating 5 tokens for each artist
+@receiver(post_save, sender=Artist)
+def saveToken(sender , instance , created ,  **kwargs):
+    if created:
+        InviteToken.objects.create(artist=instance)
+        InviteToken.objects.create(artist=instance)
+        InviteToken.objects.create(artist=instance)
+        InviteToken.objects.create(artist=instance)
+        InviteToken.objects.create(artist=instance)
+post_save.connect(saveToken , sender = Artist)
