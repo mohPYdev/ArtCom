@@ -24,12 +24,11 @@ function App() {
     <>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />}>
-          <Route path="overflow" element={<OverflowLogin />} />
-          <Route path="signUpn" element={<SignUpn/> }/>
-          <Route path="signUpa" element={ <SignUpa/>}/>
+        <Route index element={<Login />}/>
+          <Route path="/overflow" element={<OverflowLogin />} />
+          <Route path="/signUpn" element={<SignUpn/> }/>
+          <Route path="/signUpa" element={ <SignUpa/>}/>
           
-        </Route>
       </Routes>
     </BrowserRouter>
     {

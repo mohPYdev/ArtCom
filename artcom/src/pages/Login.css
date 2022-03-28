@@ -1,4 +1,6 @@
-
+body{
+    background-color: #1e2736;
+}
 #section-login{
     position: relative;
     top: 0;
@@ -111,6 +113,7 @@ z-index: 0;
     left: 1rem;
     border-radius: 100%;
     /* background-color: brown; */
+    /* z-index: 100; */
  
 }
 #btn-signup-a{

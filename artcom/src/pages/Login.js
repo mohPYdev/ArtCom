@@ -18,9 +18,8 @@ class Login extends React.Component{
     render(){
     return (
         <>
-        <main>
-        <section id="section-login">
-            
+        <Link to="/signUpa">ss</Link>
+        
        
         {/* <img src={brush} className="brush"/> */}
         <div className="header">
@@ -39,7 +38,7 @@ class Login extends React.Component{
         </Link>
      
         <img src={EllipseUp2} id="EllipseUp2"/>  
-        <Link  to="/signUpn" id="btn-signup-n" >
+        <Link  to="/signUpn"  id="btn-signup-n">
             SignUp Normal
         </Link>
         </div>
@@ -54,10 +53,7 @@ class Login extends React.Component{
         </div>
             <img src={hero} id="hero"/>
             <img src={pinkLine} id="line" />
-        
- </section>
- 
-</main>
+            <Outlet/>
         </>
 
     );
