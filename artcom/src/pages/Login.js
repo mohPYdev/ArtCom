@@ -18,7 +18,6 @@ class Login extends React.Component{
     render(){
     return (
         <>
-        <Link to="/signUpa">ss</Link>
         
        
         {/* <img src={brush} className="brush"/> */}

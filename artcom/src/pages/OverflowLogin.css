@@ -5,5 +5,67 @@
     position: relative;
     top: 0;
     left: 0;
-    
+    z-index: -2;
+}
+.brush{
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    top: 0.5vh;
+    left: auto;
+    transform: scale(0.95) ;
+z-index: -1;
+
+}
+form{
+    position: absolute;
+    top: 3%;
+    left: 21%;
+    height: 72%;
+    width: 58%;
+    border-radius: 14%;
+}
+.center{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+
+}
+#username{
+position: relative;
+top: 17rem;
+left: 34rem;
+background-color: #C2CCC1;
+border-radius: 20rem;
+padding: 1.8rem 5rem;
+
+}
+#username-label{
+position: relative;
+top: 14rem;
+    left: 27rem;
+background-color: #C2CCC1;
+padding: 2rem 5rem;
+border-radius: 20rem;
+
+}
+#password{
+    position: relative;
+    top: 21rem;
+    left: 40rem;
+    background-color: #C2CCC1;
+    border-radius: 20rem;
+    padding: 1.8rem 5rem;
+
+}
+#password-label{
+    position: relative;
+    top: 18rem;
+    left: -16rem;
+    background-color: #C2CCC1;
+    padding: 2rem 5rem;
+    border-radius: 20rem;
+}
+#btn-login-form{
+    position: relative;
 }
