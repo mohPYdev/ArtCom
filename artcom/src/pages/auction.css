@@ -1,0 +1,32 @@
+#easel{
+    padding-top: 12rem;
+    width: 100vw;
+    height: 100vh;
+}
+#timer-box{
+    position: absolute;
+    top: 2rem;
+    left: 46rem;
+    /* background-color: yellowgreen; */
+    width: 52rem;
+    height: 9rem;
+}
+#timerhalf{
+    position: relative;
+    top: 1rem;
+    left: 1rem;
+}
+#dot{
+    position: relative;
+    top: -7rem;
+    left: 1rem;
+    font-size: 6rem;
+    color: #E9DAD3;
+    letter-spacing: 2rem;
+    text-align: center;
+}
+#timerfull{
+    position: relative;
+    top: -12rem;
+    left: 43rem;
+}
