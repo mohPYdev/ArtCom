@@ -10,11 +10,11 @@ function OverflowLogin(){
     <img src={brush} className="brush"/>
     </div>
     <form action="#">
-    <input type="text" id="username" name="username" value={username} className="center"/>
-    <label for="username" id="username-label" className="center">نام کاربری</label><br/>
-    <input type="text" id="password" name="password" value={password} className="center"/>
-    <label for="password" id="password-label" className="center" >رمز عبور</label><br/>
-    <input type="submit" value="login" id="btn-login-form" className="center" />
+    <input type="text" id="username" name="username" value={username} className="item" />
+    <label for="username" id="username-label" className="item">نام کاربری</label>
+    <input type="text" id="password" name="password" value={password}  className="item"/>
+    <label for="password" id="password-label" className="item" >رمز عبور</label>
+    <input type="submit" value="login" id="btn-login-form" className="item" />
 </form>
     </>
   )
