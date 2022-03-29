@@ -20,12 +20,12 @@ z-index: 101;
 form{
     display: grid;
     grid-template-columns : 1fr 1fr 1fr 1fr 1fr 1fr ;
-    gap: 0rem 5rem;
+    gap: 0rem 7rem;
     position: absolute;
-    top: 3%;
-    left: 21%;
-    height: 72%;
-    width: 58%;
+    top: 9.5%;
+    left: 28.5%;
+    height: 62%;
+    width: 43%;
     border-radius: 14%;
     font-size: 1.5rem;
     font-weight: 400;
@@ -33,6 +33,7 @@ form{
 }
 .item{
     padding: 2rem 5rem;
+    overflow: hidden;
    
 }
 .center{
@@ -50,7 +51,6 @@ form{
     border-color: #C2CCC1;
     border-width: 0;
     align-self: end;
-
 }
 #username-label{
     grid-column: 5 / 7;
@@ -71,7 +71,7 @@ form{
     border-style: none;
 border-color: #C2CCC1;
 border-width: 0;
-align-self: center;
+align-self: end;
 
 }
 #password-label{
@@ -79,18 +79,32 @@ align-self: center;
     grid-row: 2;
     background-color: #C2CCC1;
     border-radius: 0 20rem 20rem 0;
-    align-self: center;
+    align-self: end;
     justify-self: end;
+    padding-left: 6rem;
     
 }
 #btn-login-form{
-    background-color: #C2CCC1;
-    grid-column: 1 / 7;
+    background-color: #E9DAD3;
+    grid-column: 1/ 7;
     grid-row: 3;
-    align-self: start;
+   align-self: end;
   
     border-style: none;
-border-color: #C2CCC1;
+border-color:  #E9DAD3;
 border-width: 0;
 cursor: pointer;
+padding: 2.5rem 0 ;
+}
+#forget-pass-btn{
+    background-color: #E9DAD3;
+    grid-column: 2/ 6;
+    grid-row: 4;
+    align-self: end;
+    border-style: none;
+border-color:  #E9DAD3;
+border-width: 0;
+cursor: pointer;
+border-radius: 20rem;
+padding: 1rem 0;
 }
