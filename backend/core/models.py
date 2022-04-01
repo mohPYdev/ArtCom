@@ -25,10 +25,13 @@ class User(AbstractUser):
     city = models.CharField(max_length=40, blank=True)
     address = models.CharField(max_length=255, blank=True)
     postal_code = models.CharField(max_length=80, blank=True)
-    image = models.ImageField(upload_to=upload_user_image_path, null=True)
-
+    image = models.ImageField(upload_to=upload_user_image_path, null=True, blank=True)
     is_artist = models.BooleanField(default=False)
+    
     USERNAME_FIELD = 'username'
+
+    def __str__(self) -> str:
+        return self.username + ' ' + str(self.id)
 
 
 class Artist(models.Model):

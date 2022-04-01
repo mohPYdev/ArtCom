@@ -10,10 +10,10 @@ services:
     command: >
       sh -c "python manage.py migrate &&
              python manage.py runserver 0.0.0.0:8000"
-    depends_on:
-      - redis
-  redis:
-    image: redis:5
-    restart: always
-    ports:
-     - "6379:6379"
+    # depends_on:
+    #   - redis
+  # redis:
+  #   image: redis:5
+  #   restart: always
+  #   ports:
+  #    - "6379:6379"
