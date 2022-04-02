@@ -26,5 +26,5 @@ class UserViewSet(UserViewSet):
         """
         serializer = ArtistCreatePasswordRetypeSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        serializer.save()
+        super().perform_create(serializer)
         return Response(serializer.data, status=201)

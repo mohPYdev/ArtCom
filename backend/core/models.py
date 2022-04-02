@@ -31,6 +31,8 @@ class User(AbstractUser):
     
     USERNAME_FIELD = 'username'
 
+    REQUIRED_FIELDS = ['email',]
+
     def __str__(self) -> str:
         return self.username + ' ' + str(self.id)
 
@@ -39,6 +41,8 @@ class Artist(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     description = models.CharField(max_length=255, blank= True)
     profession = models.CharField(max_length=255, blank=True)
+
+
 
     def __str__(self) -> str:
         return self.user.username

@@ -20,12 +20,18 @@ class CustomUserCreatePasswordRetypeSerializer(UserCreatePasswordRetypeSerialize
         model = User
         fields = UserCreatePasswordRetypeSerializer.Meta.fields + ('city', 'address', 'postal_code', 'image', 'first_name', 'last_name')
 
+    def validate(self, attrs):
+        attrs = super().validate(attrs)
+        if attrs['email'] == '':
+            raise serializers.ValidationError("Email is required")
+        return attrs
+
+
 
 class TokenSerializer(serializers.ModelSerializer):
     class Meta:
         model = InviteToken
         fields = ('token',)
-        # extra_kwargs = {'token': {'required': True}}
 
 class ArtistSerializer(serializers.ModelSerializer):
     inviters = TokenSerializer(required=True)
@@ -41,12 +47,14 @@ class ArtistCreatePasswordRetypeSerializer(CustomUserCreatePasswordRetypeSeriali
         model = User
         fields = CustomUserCreatePasswordRetypeSerializer.Meta.fields + ('artist',)
 
+
     def create(self, validated_data):
         artist_data = validated_data.pop('artist')
         token_data = artist_data.pop('inviters')
         try:
             token = InviteToken.objects.get(token=token_data['token'])
-
+            if token.user:
+                raise serializers.ValidationError("Token already used")
             # create user
             user = super().create(validated_data)
             user.is_artist = True
@@ -63,13 +71,17 @@ class ArtistCreatePasswordRetypeSerializer(CustomUserCreatePasswordRetypeSeriali
             token.user = artist
             token.save()
 
-        except InviteToken.DoesNotExist:
+        except InviteToken.DoesNotExist and KeyError:
             raise serializers.ValidationError("Invalid token")     
         
         return user
     
     def validate(self, data):
         artist = data.pop('artist')
+        if artist['profession'] == '':
+            raise serializers.ValidationError("Profession is required")
+        if data['email'] == '':
+            raise serializers.ValidationError("Email is required")
         data =  super().validate(data)
         data['artist'] = artist
         return data
