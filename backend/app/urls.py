@@ -20,7 +20,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path(r"^auth/", include("djoser.urls.base")),
+    re_path(r"^auth/", include("users.urls")),
     re_path(r"^auth/", include("djoser.urls.authtoken")),
     re_path(r"^auth/", include("djoser.urls.jwt")),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

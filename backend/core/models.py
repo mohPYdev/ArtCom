@@ -1,3 +1,4 @@
+from typing_extensions import Required
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
@@ -96,7 +97,7 @@ class Shipping(models.Model):
 class InviteToken(models.Model):
     artist  = models.ForeignKey(Artist, related_name='inviters', on_delete=models.CASCADE)  
     user = models.ForeignKey(Artist, related_name='invitees', on_delete=models.CASCADE, null=True, blank=True)
-    token = models.UUIDField(default=uuid.uuid4)
+    token = models.CharField(default=uuid.uuid4, max_length=100)
 
 
 
