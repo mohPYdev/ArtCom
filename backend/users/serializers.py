@@ -44,18 +44,25 @@ class CustomUserSerializer(UserSerializer):
     class Meta(UserSerializer.Meta):
         model = User
         fields = UserSerializer.Meta.fields + ('city', 'address', 'postal_code', 'image', 'first_name', 'last_name', 'is_artist')
-
-class ArtistSerializer(UserSerializer):
-    class Meta(UserSerializer.Meta):
+        read_only_fields = ['is_artist', 'email']
+class ArtistSerializer(serializers.ModelSerializer):
+    class Meta():
         model = Artist
-        fields = UserSerializer.Meta.fields + ('description', 'profession')
+        fields = ('description', 'profession')
 
 class ArtistUpdateSerializer(CustomUserSerializer):
 
     artist = ArtistSerializer(required=True)
     class Meta(CustomUserSerializer.Meta):
         model = User
-        fields = CustomUserSerializer.Meta.fields + ('artist')
+        fields = CustomUserSerializer.Meta.fields + ('artist',)
+
+    def update(self, instance, validated_data):
+        artist_data = validated_data.pop('artist')
+        instance.artist.description = artist_data['description']
+        instance.artist.profession = artist_data['profession']
+        instance.artist.save()
+        return super().update(instance, validated_data)
     
 
 class ArtistCreatePasswordRetypeSerializer(CustomUserCreatePasswordRetypeSerializer):
