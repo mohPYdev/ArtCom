@@ -33,16 +33,34 @@ class TokenSerializer(serializers.ModelSerializer):
         model = InviteToken
         fields = ('token',)
 
-class ArtistSerializer(serializers.ModelSerializer):
+class ArtistTokenSerializer(serializers.ModelSerializer):
     inviters = TokenSerializer(required=True)
     class Meta:
         model = Artist
         fields = ('description', 'profession', 'inviters')
 
 
-class ArtistCreatePasswordRetypeSerializer(CustomUserCreatePasswordRetypeSerializer):
+class CustomUserSerializer(UserSerializer):
+    class Meta(UserSerializer.Meta):
+        model = User
+        fields = UserSerializer.Meta.fields + ('city', 'address', 'postal_code', 'image', 'first_name', 'last_name', 'is_artist')
+
+class ArtistSerializer(UserSerializer):
+    class Meta(UserSerializer.Meta):
+        model = Artist
+        fields = UserSerializer.Meta.fields + ('description', 'profession')
+
+class ArtistUpdateSerializer(CustomUserSerializer):
 
     artist = ArtistSerializer(required=True)
+    class Meta(CustomUserSerializer.Meta):
+        model = User
+        fields = CustomUserSerializer.Meta.fields + ('artist')
+    
+
+class ArtistCreatePasswordRetypeSerializer(CustomUserCreatePasswordRetypeSerializer):
+
+    artist = ArtistTokenSerializer(required=True)
     class Meta(CustomUserCreatePasswordRetypeSerializer.Meta):
         model = User
         fields = CustomUserCreatePasswordRetypeSerializer.Meta.fields + ('artist',)

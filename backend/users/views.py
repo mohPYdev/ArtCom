@@ -1,8 +1,10 @@
+from backend.users.serializers import CustomUserSerializer
 from djoser.views import UserViewSet
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
-from users.serializers import ArtistCreatePasswordRetypeSerializer
+from users.serializers import ArtistCreatePasswordRetypeSerializer, ArtistUpdateSerializer, \
+                              CustomUserSerializer
 
 class UserViewSet(UserViewSet):
     """
@@ -15,7 +17,14 @@ class UserViewSet(UserViewSet):
         """
         if self.action == 'artist_register':
             return ArtistCreatePasswordRetypeSerializer
-        return super().get_serializer_class()
+        serializer = super().get_serializer_class()
+
+        if self.action == 'me':
+            if self.request.user.is_artist:
+                return ArtistUpdateSerializer
+            return CustomUserSerializer
+        
+        return serializer
 
 
 
