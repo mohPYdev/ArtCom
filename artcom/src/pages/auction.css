@@ -3,7 +3,32 @@
     width: 100vw;
     height: 100vh;
 }
+#top-grid{
+    display: grid;
+    grid-template-columns :  1fr 1fr 1fr ;
+    position: absolute;
+    top: 1rem;
+    width: 100vw;
+    justify-items: center;
+
+}
+#info-icon{
+    width:8.4rem;
+    height:6.7rem;
+
+}
+#number-icon{
+    color: #E9DAD3;
+    width:8.4rem;
+    height:6.7rem;
+}
+#profile-icon{
+    width:8.4rem;
+    height:6.7rem;
+}
 #timer-box{
+    display: grid;
+    grid-template-columns :  1fr 4fr 1fr ;
     position: absolute;
     top: 2rem;
     left: 46rem;
@@ -12,21 +37,28 @@
     height: 9rem;
 }
 #timerhalf{
-    position: relative;
-    top: 1rem;
-    left: 1rem;
+    align-self: end;
 }
 #dot{
-    position: relative;
-    top: -7rem;
-    left: 1rem;
+    
     font-size: 6rem;
     color: #E9DAD3;
     letter-spacing: 2rem;
     text-align: center;
+    align-self: center;
 }
 #timerfull{
-    position: relative;
-    top: -12rem;
-    left: 43rem;
+    align-self: end;
+}
+#bottom-grid{
+    display: grid;
+    grid-template-columns :  1fr  1fr 1fr ;
+    position: absolute;
+    top: 85%;
+    width: 100vw;
+    justify-items: center;
+}
+#view-icon{
+    width:8.4rem;
+    height:6.7rem;
 }
