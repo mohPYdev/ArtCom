@@ -1,18 +1,14 @@
+from typing_extensions import Required
 from djoser.serializers import UserCreateSerializer, UserSerializer, UserCreatePasswordRetypeSerializer
 from rest_framework import serializers
 
 
 from django.contrib.auth import get_user_model
 
-from core.models import Artist, InviteToken
+from core.models import Artist, InviteToken, Post, Follow, Like
 
 User = get_user_model()
 
-
-class UserCreateSerializer(UserCreateSerializer):
-    class Meta(UserCreateSerializer.Meta):
-        model = User
-        fields = UserCreateSerializer.Meta.fields + ('city', 'address', 'postal_code', 'image', )
 
 
 class CustomUserCreatePasswordRetypeSerializer(UserCreatePasswordRetypeSerializer):
@@ -27,11 +23,11 @@ class CustomUserCreatePasswordRetypeSerializer(UserCreatePasswordRetypeSerialize
         return attrs
 
 
-
 class TokenSerializer(serializers.ModelSerializer):
     class Meta:
         model = InviteToken
         fields = ('token',)
+
 
 class ArtistTokenSerializer(serializers.ModelSerializer):
     inviters = TokenSerializer(required=True)
@@ -43,12 +39,19 @@ class ArtistTokenSerializer(serializers.ModelSerializer):
 class CustomUserSerializer(UserSerializer):
     class Meta(UserSerializer.Meta):
         model = User
-        fields = UserSerializer.Meta.fields + ('city', 'address', 'postal_code', 'image', 'first_name', 'last_name', 'is_artist')
-        read_only_fields = ['is_artist', 'email']
+        fields = UserSerializer.Meta.fields + ('city', 'address', 'postal_code', 'image', 'first_name', 'last_name', 'is_artist', 'following_count')
+        read_only_fields = ['is_artist', 'email', 'following_count']
+
+
 class ArtistSerializer(serializers.ModelSerializer):
     class Meta():
         model = Artist
-        fields = ('description', 'profession')
+        fields = ('description', 'profession', 'follower_count', 'average_rating')
+        read_only_fields = ['follower_count', 'average_rating']
+        
+    average_rating = serializers.SerializerMethodField()
+    def get_average_rating(self, ob):
+        return round(ob.average_rating())
 
 class ArtistUpdateSerializer(CustomUserSerializer):
 
@@ -56,6 +59,7 @@ class ArtistUpdateSerializer(CustomUserSerializer):
     class Meta(CustomUserSerializer.Meta):
         model = User
         fields = CustomUserSerializer.Meta.fields + ('artist',)
+        
 
     def update(self, instance, validated_data):
         artist_data = validated_data.pop('artist')
@@ -111,4 +115,30 @@ class ArtistCreatePasswordRetypeSerializer(CustomUserCreatePasswordRetypeSeriali
         data['artist'] = artist
         return data
         
-        
+
+class UserFollowSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('username', 'image', 'id')
+
+class FollowerSerializer(serializers.ModelSerializer):
+
+    user = UserFollowSerializer(required=True)
+    class Meta:
+        model = Follow
+        fields = ('user',)
+
+
+class ArtistFollowSerializer(serializers.ModelSerializer):
+
+    user = UserFollowSerializer(required=True)
+    class Meta:
+        model = Artist
+        fields = ('user', 'profession')
+
+class FollowingSerializer(serializers.ModelSerializer):
+
+    artist = ArtistFollowSerializer(required=True)
+    class Meta:
+        model = Follow
+        fields = ('artist',)
