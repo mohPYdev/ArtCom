@@ -1,0 +1,91 @@
+<html lang="fa-IR">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>ArtCom-artist profile</title>
+        <link type="text/css" rel="stylesheet" href="profile_theme.css" />
+        <!-- script part
+            <script type="text/javascript" src="normal_profile_test.js"></script>
+        -->
+        <style>
+            #submit_input
+            {
+                margin-left: 380px;;
+                margin-top:-110px;
+                width: 80px;
+                height: 30px;
+                
+                border-radius: 0px;
+                border: 5px outset #29354A;
+
+                font-size: 12px;
+                font-weight: bold;
+                letter-spacing: 1;
+                padding:0px;
+                text-align: center;
+
+                background-color: #29354A ;
+                color: white;
+            }
+            #invitation_codes_textarea
+            {
+                width:400px;
+                height:70px;
+                font-size: 18;
+                background-color: #E9DAD3;
+                resize: none;
+                margin-top: -110px;
+                margin-left: 500px;
+                position:relative;
+                border-radius: 5px;
+                z-index: 2;
+                direction: rtl;
+                text-align: right;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <!--a div covering whole page-->
+        <div class="main">
+
+            <!--adding page background image-->
+            <div id="img_back">
+                <img src="../img/Picture.png"/>
+            </div>
+            
+            <form action="" method="" autocomplete="" style="z-index: 10;">
+                <!--adding profile image-->
+                <div id="img_prof">
+                    <img src="../img/profile--picture.png"/>
+                    <button id="img_prof_btn" onclick="document.getElementById('getFile').click()"> + </button>
+                    <input type='file' id="getFile" style="display:none">
+                </div>
+
+                <!--adding Bio textarea-->
+                <textarea id="Bio_textarea" name="Bio_textarea" cols="20" rows="20" placeholder="بیوگرافی" ></textarea>
+
+                <!--adding first name text-->
+                <input type="text" class="common_form" id="firstname_text" name="firstname_text" placeholder="نام" />
+                <!--adding last name text-->
+                <input type="text" class="common_form" id="lastname_text" name="lastname_text" placeholder="نام خانوادگی" />
+                <!--adding last name text-->
+                <input type="text" class="common_form" id="username_text" name="username_text" placeholder="نام کاربری" />
+                <!--adding email input-->
+                <input type="email" class="common_form" id="email_input" name="email_input" placeholder="رایانامه" />
+                <!--adding phone number input-->
+                <input type="tel" class="common_form" id="phone_input" name="phone_input" placeholder="تلفن همراه" />
+                <!--adding address textarea-->
+                <textarea id="Address_textarea" name="Address_textarea" placeholder="آدرس" ></textarea>
+                <!--adding postal code input-->
+                <input type="tel" class="common_form" id="postalcode_input" name="postalcode_input" placeholder="کد پستی" />
+                <!--adding submit button-->
+                <input type="submit" class="common_form" id="submit_input" name="submit_input" value="اعمال" />
+                <!--adding invitation codes textarea-->
+                <textarea id="invitation_codes_textarea" name="invitation_codes_textarea" placeholder="کدهای دعوت" ></textarea>
+
+            </form>
+
+            <p>4</p>
+        </div>
+    </body>
+</html>
