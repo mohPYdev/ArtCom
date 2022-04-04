@@ -28,6 +28,7 @@ class User(AbstractUser):
     postal_code = models.CharField(max_length=80, blank=True)
     image = models.ImageField(upload_to=upload_user_image_path, null=True, blank=True)
     is_artist = models.BooleanField(default=False)
+    following_count = models.IntegerField(default=0)
     
     USERNAME_FIELD = 'username'
 
@@ -41,7 +42,13 @@ class Artist(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     description = models.CharField(max_length=255, blank= True)
     profession = models.CharField(max_length=255, blank=True)
+    follower_count = models.IntegerField(default=0)
 
+    def average_rating(self):
+        ratings = Rate.objects.filter(artist=self)
+        if len(ratings) == 0:
+            return 1
+        return sum(r.star for r in ratings) / len(ratings)
 
 
     def __str__(self) -> str:
@@ -56,6 +63,9 @@ class Post(models.Model):
     price = models.DecimalField(max_digits=7,decimal_places=2, blank=True)
     for_sale = models.BooleanField(default=False)
     sold = models.BooleanField(default=False)
+
+    def __str__(self) -> str:
+        return self.name + ' ' + str(self.id)
 
 
 class Like(models.Model):
@@ -72,6 +82,7 @@ class Rate(models.Model):
     artist = models.ForeignKey(Artist, related_name='rate_receivers', on_delete=models.CASCADE)
     user = models.ForeignKey(User, related_name='rates_givers', on_delete=models.CASCADE)
     star = models.PositiveSmallIntegerField(default=1)
+
 
 
 class Auction(models.Model):

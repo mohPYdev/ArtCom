@@ -99,7 +99,7 @@ DJOSER = {
     'SERIALIZERS': {
         'user_create': 'users.serializers.UserCreateSerializer',
         'user_create_password_retype': 'users.serializers.CustomUserCreatePasswordRetypeSerializer',
-        'user': 'users.serializers.UserCreateSerializer',
+        'user': 'users.serializers.CustomUserSerializer',
         'user_update': 'djoser.serializers.UserUpdateSerializer',
         'user_delete': 'djoser.serializers.UserDeleteSerializer',
     }
