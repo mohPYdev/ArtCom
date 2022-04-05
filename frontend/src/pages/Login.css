@@ -1,5 +1,11 @@
 body{
-    background-color: #1e2736;
+    background-color:#1E2736 ;
+}
+a{
+    text-decoration: none;
+    color: #1E2736;
+    font-size: 1.5rem;
+    transform: rotateX(20);
 }
 #section-login{
     position: relative;
@@ -18,7 +24,7 @@ body{
 .header{
     padding-top: 2rem;
 font-family: 'ZCOOL KuaiLe';
-font-size: 6rem;
+font-size: 7rem;
 
 text-align: center;
 letter-spacing: 0.365em;
@@ -38,7 +44,7 @@ z-index: 0;
     position: relative;
     top: -44rem;
     left: 1rem;
-    width: 34rem;
+    width: 60rem;
     height: 38rem;
     
 }
@@ -51,7 +57,7 @@ z-index: 0;
 #EllipseUp2{
     position: relative;
     top: -18rem;
-    left: 11rem;
+    left: -15rem;
 
     
 }
@@ -61,19 +67,21 @@ z-index: 0;
     top: 38rem;
     height: 33rem;
     width: 46rem;
-
+    
 }
 #EllipseDown {
     position: relative;
     top: -2vh;
     left: 4rem;
     height: 40rem;
+    
 }
 #Ellipse4 {
     position: relative;
     top: -44rem;
     left: 24.7rem;
     height: 22rem;
+    
 }
 
 #hero{
@@ -94,31 +102,34 @@ z-index: 0;
 }
 #btn-login{
     
-    padding: 12rem;
+    padding: 9rem;
     position: relative;
-    top: -54rem;
-    left: 1rem;
+    top: -55rem;
+    left: 5rem;
     border-radius: 100%;
     /* background-color: brown; */
     /* z-index: 100; */
+    
  
 }
 #btn-signup-a{
     position: relative;
     top: 14rem;
-    left: 12rem;
+    left: -6rem;
     /* background-color: yellowgreen; */
-    padding: 10rem;
+    padding: 7rem;
     border-radius: 100%;
+    
  
 }
 #btn-signup-n{
     position: relative;
-    top: -31rem;
+    top: -29rem;
     left: 8rem;
     /* background-color: yellow; */
-    padding: 10rem;
+    padding: 7rem;
     border-radius: 100%;
+    
  
 
 }

@@ -28,9 +28,12 @@ class OverflowLogin extends React.Component{
     <form onSubmit={(e)=>this.submited(e)}>
     <input type="text" id="username" name="username" value={this.state.username} className="item" onChange={(e)=>this.setState({username :e.target.value  })} />
     <label  id="username-label" className="item">نام کاربری</label>
-    <input type="password" id="password" name="password" value={this.state.password}  className="item" onChange={(e)=>this.setState({password : e.target.value} )}/>
+     <input type="password" id="password" name="password" value={this.state.password}  className="item" onChange={(e)=>this.setState({password : e.target.value} )}/>
     <label  id="password-label" className="item" >رمز عبور</label>
+   
+  
     <input type="submit" value="login" id="btn-login-form" className="item" />
+
     <button type="button" id="forget-pass-btn" > فراموشی رمز عبور </button>
 </form>
     </>
