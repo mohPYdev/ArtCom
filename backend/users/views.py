@@ -1,6 +1,8 @@
 from djoser.views import UserViewSet
 from djoser.permissions import CurrentUserOrAdmin
 
+import json
+
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView
@@ -58,9 +60,10 @@ class UserViewSet(UserViewSet):
         
         user = User.objects.get(id=id)
         if user.is_artist:
-            serializer = ArtistUpdateSerializer(user)
+            serializer = ArtistUpdateSerializer(user, context={'request': request})
         else:
             serializer = CustomUserSerializer(user)
+        
         return Response(serializer.data, status=200)
 
     @action(detail=True, methods=["POST"], url_path="follow", permission_classes=[IsAuthenticated])
