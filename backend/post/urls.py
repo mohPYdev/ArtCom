@@ -10,6 +10,6 @@ router.register("posts", views.PostViewSet)
 
 urlpatterns = router.urls
 
-urlpatterns = [
+urlpatterns += [
     path('<int:pk>/posts/', views.PostListView.as_view(), name='post-list'),
 ]

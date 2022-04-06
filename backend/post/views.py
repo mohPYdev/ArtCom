@@ -37,4 +37,3 @@ class PostListView(generics.ListAPIView):
     def get_queryset(self, pk=None):
         user = User.objects.get(id=pk)
         return Post.objects.filter(artist=user.artist)
-    
