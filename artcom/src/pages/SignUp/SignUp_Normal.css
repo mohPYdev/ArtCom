@@ -1,0 +1,130 @@
+﻿* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #C2CCC1;
+    overflow: auto;
+}
+#wrapper {
+    background-repeat: no-repeat;
+    direction: rtl;
+    background-image: url(image/addon.png),url(image/Presentation1-removebg-preview.png),url(image/Prقثesentation1-removebg-preview.png),url('image/puzzle-piece (1).png'),url('image/puzzle-piece (1).png'),url('image/puzzle-piece (1).png');
+    width: 1500px;
+    height: 772px;
+    background-size: 332px,706px,758px,275px,275px,275px;
+    background-position: 461px 235px,314px 2px,17px -63px,472px 451px,260px 451px ,684px 451px;
+    left: 132px;
+    position: absolute;
+}
+#image {
+    position: absolute;
+    top: 188px;
+    left: 26px;
+    width: 299px;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+#puzzle {
+    position: absolute;
+    width: 292px;
+    transform: matrix(-1, -0.01, 0.01, -1, 0, 0);
+    top: 53px;
+    left: 747px;
+}
+.box {
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 15px;
+    float: left;
+    position: absolute;
+    font-family: 'B Koodak';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 50px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    color: #1E2736;
+    border:1px solid black;
+}
+#firstname {
+    width: 205px;
+    height: 45px;
+    left: 294px;
+    top: 70px;
+}
+#lastname {
+    width: 211px;
+    height: 45px;
+    left: 239px;
+    top: 147px;
+}
+#email {
+    width: 311px;
+    height: 45px;
+    left: 474px;
+    top: 376px;
+    text-align: left;
+}
+#username {
+    width: 347px;
+    height: 45px;
+    left: 456px;
+    top: 141px;
+    text-align: left;
+}
+#password {
+    width: 230px;
+    height: 45px;
+    left: 809px;
+    top: 143px;
+}
+#confirmpassword {
+    width: 229px;
+    height: 45px;
+    left: 745px;
+    top: 210px;
+}
+textarea{
+    resize: none;
+}
+#address {
+    width: 573px;
+    left: 323px;
+    top: 518px;
+    height: 104px;
+}
+#postalcode {
+    width: 387px;
+    height: 45px;
+    left: 327px;
+    top: 628px;
+    text-align: left;
+}
+#singup {
+    width: 106px;
+    height: 45px;
+    background: #1E2736;
+    border-radius: 15px;
+    float: left;
+    position: absolute;
+    font-family: Mj_Ramollah;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 26px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFEFB;
+    left: 921px;
+    top: 376px;
+    background-image: url('image/icons8-art-64.png');
+    background-repeat: no-repeat;
+    background-size: 40px;
+}
+::placeholder {
+    color: #1E2736;
+    text-align: center;
+}
