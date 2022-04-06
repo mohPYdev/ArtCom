@@ -23,4 +23,5 @@ urlpatterns = [
     re_path(r"^auth/", include("users.urls")),
     re_path(r"^auth/", include("djoser.urls.authtoken")),
     re_path(r"^auth/", include("djoser.urls.jwt")),
+    path('post/', include('post.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,4 +1,3 @@
-from django.contrib.auth import get_user_model
 from django.urls import path
 from rest_framework.routers import DefaultRouter
 
@@ -10,3 +9,7 @@ router = DefaultRouter()
 router.register("posts", views.PostViewSet)
 
 urlpatterns = router.urls
+
+urlpatterns = [
+    path('<int:pk>/posts/', views.PostListView.as_view(), name='post-list'),
+]
