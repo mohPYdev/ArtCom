@@ -8,8 +8,10 @@ app_name = 'post'
 router = DefaultRouter()
 router.register("posts", views.PostViewSet)
 
-urlpatterns = router.urls
+# urlpatterns = router.urls
 
-urlpatterns += [
-    path('<int:pk>/posts/', views.PostListView.as_view(), name='post-list'),
+urlpatterns = [
+    path('<int:user_pk>/posts/', views.PostListView.as_view(), name='post-list'),
+    path('<int:user_pk>/posts/<int:post_pk>/', views.PostDetailView.as_view(), name='post-detail'),
+    path('<int:user_pk>/posts/<int:post_pk>/like/', views.PostLikeView.as_view(), name='post-like'),
 ]
