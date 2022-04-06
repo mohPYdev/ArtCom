@@ -1,0 +1,124 @@
+body{
+    background-color: #1e2736;
+}
+#section-login{
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color:#1E2736 ;
+    z-index: -2;
+}
+#section-overflowLogin{
+    height: 100%;
+    width: 100%;
+    background-color:#C2CCC1 ;
+}
+.header{
+    padding-top: 2rem;
+font-family: 'ZCOOL KuaiLe';
+font-size: 6rem;
+
+text-align: center;
+letter-spacing: 0.365em;
+
+color: #E9DAD3;
+z-index: 0;
+}
+#pizzaUp {
+    position: absolute;
+    top: 12rem;
+    width: 37rem;
+    height: 46rem;
+    left: 0rem;
+
+}
+#sliceUp{
+    position: relative;
+    top: -44rem;
+    left: 1rem;
+    width: 34rem;
+    height: 38rem;
+    
+}
+#EllipseUp1 {
+    position: relative;
+    top: 21rem;
+    left: 13.2rem;
+    height: 12rem;
+}
+#EllipseUp2{
+    position: relative;
+    top: -18rem;
+    left: 11rem;
+
+    
+}
+#pizzaDown{
+    position: absolute;
+    left: 38rem;
+    top: 38rem;
+    height: 33rem;
+    width: 46rem;
+
+}
+#EllipseDown {
+    position: relative;
+    top: -2vh;
+    left: 4rem;
+    height: 40rem;
+}
+#Ellipse4 {
+    position: relative;
+    top: -44rem;
+    left: 24.7rem;
+    height: 22rem;
+}
+
+#hero{
+    position: relative;
+    top: 0rem;
+    left: 79rem;
+    height: 80vh;
+    width: 70rem;
+}
+#line{
+    position: relative;
+    top: -60rem;
+    left: 15rem;
+    z-index: -1;
+    width: 100vw;
+    height: 30rem;
+
+}
+#btn-login{
+    
+    padding: 12rem;
+    position: relative;
+    top: -54rem;
+    left: 1rem;
+    border-radius: 100%;
+    /* background-color: brown; */
+    /* z-index: 100; */
+ 
+}
+#btn-signup-a{
+    position: relative;
+    top: 14rem;
+    left: 12rem;
+    /* background-color: yellowgreen; */
+    padding: 10rem;
+    border-radius: 100%;
+ 
+}
+#btn-signup-n{
+    position: relative;
+    top: -31rem;
+    left: 8rem;
+    /* background-color: yellow; */
+    padding: 10rem;
+    border-radius: 100%;
+ 
+
+}
