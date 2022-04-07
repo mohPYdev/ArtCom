@@ -1,11 +1,12 @@
-from typing_extensions import Required
 from djoser.serializers import UserCreateSerializer, UserSerializer, UserCreatePasswordRetypeSerializer
 from rest_framework import serializers
+
+from rest_framework.fields import CurrentUserDefault
 
 
 from django.contrib.auth import get_user_model
 
-from core.models import Artist, InviteToken, Post, Follow, Like
+from core.models import Artist, InviteToken, Follow, Rate
 
 User = get_user_model()
 
@@ -46,12 +47,27 @@ class CustomUserSerializer(UserSerializer):
 class ArtistSerializer(serializers.ModelSerializer):
     class Meta():
         model = Artist
-        fields = ('description', 'profession', 'follower_count', 'average_rating')
-        read_only_fields = ['follower_count', 'average_rating']
+        fields = ('description', 'profession', 'follower_count', 'average_rating','followed', 'rated')
+        read_only_fields = ['follower_count', 'average_rating', 'followed', 'rated']
         
     average_rating = serializers.SerializerMethodField()
+    followed = serializers.SerializerMethodField()
+    rated = serializers.SerializerMethodField()
     def get_average_rating(self, ob):
         return round(ob.average_rating())
+    
+    def get_followed(self, ob):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            return Follow.objects.filter(artist=ob, user=user).exists()
+        return False
+    
+    def get_rated(self, ob):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            if Rate.objects.filter(artist=ob, user=user).exists():
+                return Rate.objects.get(artist=ob, user=user).star
+        return None
 
 class ArtistUpdateSerializer(CustomUserSerializer):
 
