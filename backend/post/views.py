@@ -7,9 +7,10 @@ from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
 
+
 from .permissions import IsArtist
 from core.models import Post, Like
-from post.serializers import PostSerializer
+from post.serializers import PostSerializer, LikeSerializer
 
 User = get_user_model()
 
@@ -62,10 +63,11 @@ class PostLikeView(generics.CreateAPIView):
     API endpoint that allows users to like a post.
     """
     queryset = Like.objects.all()
-    serializer_class = PostSerializer
+    serializer_class = LikeSerializer
     permission_classes = (IsAuthenticated,)
 
-    def perform_create(self, serializer):
+        
+    def create(self, request, *args, **kwargs):
         user = self.request.user
         post = self.get_object()
 
@@ -80,7 +82,30 @@ class PostLikeView(generics.CreateAPIView):
         user_pk = self.kwargs['user_pk']
         post_pk = self.kwargs['post_pk']
         user = User.objects.get(id=user_pk)
-        obj = get_object_or_404(Post, pk=post_pk, artist=user.artist)
+        obj = get_object_or_404(Post, id=post_pk, artist=user.artist)
+        return obj
+
+class PostDislikeView(generics.CreateAPIView):
+
+    queryset = Like.objects.all()
+    serializer_class = LikeSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def create(self, request, *args, **kwargs):
+        user = self.request.user
+        post = self.get_object()
+
+        if Like.objects.filter(user=user, post=post).exists():
+            Like.objects.filter(user=user, post=post).delete()
+            return Response(status=status.HTTP_200_OK)
+        else:
+            return Response({'error':'you cannot dislike a post twice'}, status=status.HTTP_400_BAD_REQUEST)
+
+    def get_object(self):
+        user_pk = self.kwargs['user_pk']
+        post_pk = self.kwargs['post_pk']
+        user = User.objects.get(id=user_pk)
+        obj = get_object_or_404(Post, id=post_pk, artist=user.artist)
         return obj
 
         
