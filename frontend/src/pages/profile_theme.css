@@ -1,0 +1,140 @@
+* 
+{
+    box-sizing: border-box;
+    /* bad az inke be container padding dadim ino mizarim 
+      ta fasele nagire safhe */
+    color: #29354A;
+    margin: 0;
+    padding: 0;
+}
+body
+{
+    background-color: #29354A !important;
+    font-family: tahoma,arial;
+}
+.main
+{
+    overflow-x: hidden;
+}
+#img_back
+{
+    transform: rotate(0.4deg);
+    -webkit-transform: rotate(0.4deg);
+    -moz-transform: rotate(0.4);
+    -o-transform: rotate(0.4);
+    -ms-transform: rotate(0.4);
+}
+#img_prof
+{
+    position:fixed;
+    margin-top: -1000px;
+    margin-left: 50px;
+    z-index: 5;
+}
+#img_prof_btn
+{
+    border-radius: 50%;
+    width:30px;
+    height:30px;
+    margin-left: -45px;
+    margin-top: 110px;
+    z-index: 3;
+    position: fixed;
+}
+#Bio_textarea
+{
+    background-color: #E9DAD3;
+    resize: none;
+    margin-top: -865px;
+    margin-left: 50px;
+    border-style: dashed;
+    position:fixed;
+    border-radius: 5px;
+    text-align: right;
+    direction: rtl;
+    padding-right: 5px;
+    padding-top: 5px;
+}
+.common_form
+{
+    float:left;
+    margin-left: 350px;
+    width:250px;
+    height:70px;
+    font-size: 20;
+    background-color: #E9DAD3;
+    position: relative;
+    z-index: 2;
+    border-radius: 15px;
+    text-align: right;
+    direction: rtl;
+    padding: 10px;
+}
+#firstname_text
+{
+    margin-top:-850px;
+    margin-left:670px;
+}
+#lastname_text
+{
+    margin-top:-850px;
+    width: 300px;
+}
+#username_text
+{
+    margin-top:-750px;
+    width: 570px;
+    text-align: center;
+}
+#email_input
+{
+    margin-top:-650px;
+    width: 570px;
+    text-align: center;
+}
+#phone_input
+{
+    margin-top:-550px;
+    width: 570px;
+    text-align: center;
+}
+#Address_textarea
+{
+    width:450px;
+    height:220px;
+    font-size: 18;
+    background-color: #E9DAD3;
+    resize: none;
+    margin-top: -450px;
+    margin-left: 350px;
+    position:relative;
+    border-radius: 5px;
+    z-index: 2;
+    text-align: right;
+    direction: rtl;
+}
+#postalcode_input
+{
+    margin-top:-200px;
+    width: 570px;
+    text-align: center;
+}
+#submit_input
+{
+    margin-left: 600px;;
+    margin-top:-100px;
+    width: 80px;
+    height: 30px;
+
+    border-radius: 0px;
+    border: 5px outset #29354A;
+
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1;
+    padding:0px;
+    text-align: center;
+
+    background-color: #29354A ;
+    color: white;
+}
