@@ -1,3 +1,4 @@
+from email.policy import default
 from typing_extensions import Required
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -5,7 +6,7 @@ from django.dispatch import receiver
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AbstractUser
-
+from django.utils import timezone
 
 from datetime import date
 import os
@@ -93,8 +94,21 @@ class Auction(models.Model):
 
 
 class Exhibition(models.Model):
+
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
     posts = models.ManyToManyField(Post)
+    date_begin = models.DateTimeField(default=timezone.now)
+    date_end = models.DateTimeField(default=timezone.now)
+    
+    
+
+    def get_status(self):
+        if self.date_begin > timezone.now():
+            return 'ns'
+        elif self.date_end < timezone.now():
+            return 'finished'
+        else:
+            return 'open'
 
 
 class Order(models.Model):
