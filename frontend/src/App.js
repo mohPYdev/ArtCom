@@ -6,6 +6,7 @@ import OverflowLogin from "./pages/OverflowLogin";
 import SignUpn from "./pages/SignUpn";
 import  SignUpa  from './pages/SignUpa';
 import Auction from './pages/Auction' ;
+import Post from './pages/Post'
 function useImperativeDisableScroll({ element, disabled }) {
   useEffect(() => {
       if (!element) {
@@ -27,10 +28,10 @@ function App() {
       <Routes>
         <Route index element={<Login />}/>
           <Route path="/overflow" element={<OverflowLogin />} />
-          <Route path="/signUpn" element={<SignUpn/> }/>
-          <Route path="/signUpa" element={ <SignUpa/>}/>
+          <Route path="/signupn" element={<SignUpn/> }/>
+          <Route path="/signupa" element={ <SignUpa/>}/>
           <Route path="/auction" element={<Auction />} />
-          
+          <Route path="/post" element={<Post />} />
       </Routes>
     </BrowserRouter>
     {

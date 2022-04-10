@@ -9,6 +9,7 @@ import EllipseDown from '../img/EllipseDown.svg';
 import hero from '../img/hero1.svg';
 import pinkLine from '../img/pinkLine.svg';
 import brush from '../img/brush.svg';
+import {Button , Row  , Col} from 'react-bootstrap';
 class Login extends React.Component{
     constructor(props){
         super(props);
@@ -21,6 +22,9 @@ class Login extends React.Component{
         {/* <div id="section-login"> */}
         
         {/* <img src={brush} className="brush"/> */}
+
+
+
         <div className="header">
             <h1>ArtCom</h1>
         </div>

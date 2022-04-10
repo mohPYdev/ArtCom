@@ -1,6 +1,7 @@
 import './OverflowLogin.css'
 import brush from '../img/brush.svg';
 import React from 'react';
+import axios from 'axios';
 
 class OverflowLogin extends React.Component{
   constructor(props){
@@ -12,10 +13,24 @@ class OverflowLogin extends React.Component{
   }
   ;
   }
+  componentDidUpdate() {
+    
+  }
   submited(e){
      e.preventDefault(); 
     console.log(this.state.username);
     console.log(this.state.password);
+const data1 ={
+username :this.state.username ,
+password :this.state.password
+}
+    async function fetchData(){
+      const {data2} = await axios.post('http://localhost:8000/auth/token/login', data1);
+      console.log("fetching");
+      console.log(data2);
+
+    }
+    fetchData();
    
    
   }
