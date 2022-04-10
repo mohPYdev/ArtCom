@@ -25,12 +25,13 @@ class Login extends React.Component{
 
 
 
-        <div className="header">
+        <div className="login--header">
             <h1>ArtCom</h1>
         </div>
             
        <div id="pizzaUp">
-           
+           <p id="pizzaUp--context"> اگه توی آرتکام حساب نداری همین الان وقتشه ثبت نام کنی
+           </p>
       
         <img src={EllipseUp} id="EllipseUp"/>
         <div id="sliceUp"> 
@@ -46,7 +47,12 @@ class Login extends React.Component{
        </div>
        
         <div id="pizzaDown">
-            
+        <p id="pizzaDown--context">
+              حساب آرتکام داری ؟
+                پس منتظر چی هستی ؟ 
+           
+           </p>
+
            <img src={EllipseDown} id="EllipseDown"/> 
            
            <img src={Ellipse4} id="Ellipse4" />
