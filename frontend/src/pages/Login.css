@@ -1,5 +1,7 @@
-body{
+#login--page{
     background-color:#1E2736 ;
+    width: 100vw;
+    height: 100vh;
 }
 a{
     text-decoration: none;

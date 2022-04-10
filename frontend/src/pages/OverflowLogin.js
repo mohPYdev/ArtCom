@@ -40,7 +40,7 @@ password :this.state.password
     <div className="container">
     <img src={brush} className="brush"/>
     </div>
-    <form onSubmit={(e)=>this.submited(e)}>
+    <form id="login--form" onSubmit={(e)=>this.submited(e)}>
     <input type="text" id="username" name="username" value={this.state.username} className="item" onChange={(e)=>this.setState({username :e.target.value  })} />
     <label  id="username-label" className="item">نام کاربری</label>
      <input type="password" id="password" name="password" value={this.state.password}  className="item" onChange={(e)=>this.setState({password : e.target.value} )}/>

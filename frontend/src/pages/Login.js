@@ -18,7 +18,7 @@ class Login extends React.Component{
     
     render(){
     return (
-        <>
+        <div id="login--page">
         {/* <div id="section-login"> */}
         
         {/* <img src={brush} className="brush"/> */}
@@ -56,7 +56,7 @@ class Login extends React.Component{
             <img src={pinkLine} id="line" />
             <Outlet/>
         {/* </div> */}
-        </>
+        </div>
 
     );
         }
