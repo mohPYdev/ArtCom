@@ -1,4 +1,4 @@
-﻿* {
+* {
     padding: 0;
     margin: 0;
 }
@@ -10,7 +10,7 @@ body {
 #wrapper {
     background-repeat: no-repeat;
     direction: rtl;
-    background-image: url(image/addon.png),url(image/Presentation1-removebg-preview.png),url(image/Prقثesentation1-removebg-preview.png),url('image/puzzle-piece.png'),url('image/puzzle-piece.png'),url('image/puzzle-piece.png');
+    background-image: url(./SignUp/image/addon.png),url(./SignUp/image/Presentation1-removebg-preview.png),url(./SignUp/image/Prقثesentation1-removebg-preview.png),url('./SignUp/image/puzzle-piece.png'),url('./SignUp/image/puzzle-piece.png'),url('./SignUp/image/puzzle-piece.png');
     width: 1500px;
     height: 772px;
     background-size: 332px,706px,758px,275px,275px,275px;
@@ -120,7 +120,7 @@ textarea{
     color: #FFFEFB;
     left: 921px;
     top: 376px;
-    background-image: url('image/icons8-art-64.png');
+    background-image: url('./SignUp/image/icons8-art-64.png');
     background-repeat: no-repeat;
     background-size: 40px;
 }
