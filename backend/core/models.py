@@ -87,10 +87,19 @@ class Rate(models.Model):
 
 
 class Auction(models.Model):
-    artist = models.ManyToManyField(Artist)
-    post = models.ManyToManyField(Post)
+    artist = models.ManyToManyField(Artist, null=True, blank=True)
+    post = models.ManyToManyField(Post, null=True, blank=True)
     date_created = models.DateField(auto_now_add=True)
-    date = models.DateField(default=date.today)
+    date_begin = models.DateTimeField(default=timezone.now)
+    date_end = models.DateTimeField(default=timezone.now)
+
+    def get_status(self):
+        if self.date_begin > timezone.now():
+            return 'ns'
+        elif self.date_end < timezone.now():
+            return 'finished'
+        else:
+            return 'open'
 
 
 class Exhibition(models.Model):
@@ -99,7 +108,6 @@ class Exhibition(models.Model):
     posts = models.ManyToManyField(Post)
     date_begin = models.DateTimeField(default=timezone.now)
     date_end = models.DateTimeField(default=timezone.now)
-    
     
 
     def get_status(self):

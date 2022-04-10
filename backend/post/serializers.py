@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from users.serializers import ArtistFollowSerializer
-from core.models import Post, Like, Exhibition, Artist
+from core.models import Post, Like, Exhibition, Artist, Auction
 
 from django.utils.timezone import now
 
@@ -80,3 +80,58 @@ class LikeSerializer(serializers.ModelSerializer):
         read_only_fields = ('id',  'user')
 
 
+class AuctionCreateSerializer(serializers.ModelSerializer):
+
+    post = serializers.PrimaryKeyRelatedField(queryset=Post.objects.all(), many=True)
+    post = serializers.PrimaryKeyRelatedField(queryset=Post.objects.all(), many=True)
+
+    date_begin = serializers.DateTimeField(format='%Y-%m-%d %H:%M:%S')
+    date_end = serializers.DateTimeField(format='%Y-%m-%d %H:%M:%S')
+
+    class Meta:
+        model = Auction
+        fields = ('post', 'artist', 'date_begin', 'date_end')
+
+
+
+class AuctionListSerializer(serializers.ModelSerializer):
+    """serializes the auctions model"""
+    artist = serializers.ReadOnlyField(source='artist.username')
+    post = PostExhSerializer(many=True, read_only=True)
+    status = serializers.SerializerMethodField()
+
+    def get_status(self, obj):
+        return obj.get_status()
+    class Meta:
+        model = Auction
+        fields = ('id', 'artist', 'post', 'date_begin', 'date_end', 'status')
+        read_only_fields = ('id', 'artist')
+
+
+class AuctionRetrieveSerializer(serializers.ModelSerializer):
+
+    artist = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    post = PostSerializer(many=True, read_only=True)
+    status = serializers.SerializerMethodField()
+
+    def get_status(self, obj):
+        return obj.get_status()
+
+    class Meta:
+        model = Auction
+        fields = ('id', 'artist', 'post', 'date_begin', 'date_end', 'status')
+        read_only_fields = ('id', 'artist', 'date_begin', 'date_end', 'status')
+
+class AuctionArtistSerializer(serializers.ModelSerializer):
+
+    post = serializers.PrimaryKeyRelatedField(queryset=Post.objects.all(), many=True)
+    class Meta:
+        model = Auction
+        fields = ('post')
+    
+    def validate(self, attrs):
+        attr =  super().validate(attrs)
+        for post in attr['post']:
+            if post.artist != self.context['request'].user.artist:
+                raise serializers.ValidationError('post must belong to the artist')
+        return attr
