@@ -1,23 +1,23 @@
-import styles_signupn from './signupnormal.module.css';
+import './SignUp/SignUp_Normal.css'
 import painter from './SignUp/image/painter-holding-paint-roller-4891279-4077630.png';
 import puzzle from './SignUp/image/puzzle.png';
 function SignUpn(){
     return(
         <>
-        < div id={styles_signupn.wrapper}>
-        <img id={styles_signupn.image} src={painter} />
-        <img id={styles_signupn.puzzle} src={puzzle} />
+        < div id="wrapper">
+        <img id="image" src={painter} />
+        <img id="puzzle" src={puzzle} />
         <form method="get">
-            <input type="text" id={styles_signupn.firstname} classname={styles_signupn.box} name="firstname" placeholder="نام" /><br />
-            <input type="text" id={styles_signupn.lastname} classname={styles_signupn.box} name="lastname" placeholder="نام خانوادگی" /><br />
-            <input type="email" id={styles_signupn.email} classname={styles_signupn.box} name="email" placeholder="ایمیل" /><br />
-            <input type="text" id={styles_signupn.username} classname={styles_signupn.box} name="username" placeholder="نام کاربری" />
-            <input type="password" id={styles_signupn.password} classname={styles_signupn.box} name="password" placeholder="رمزعبور" /><br />
-            <input type="password" id={styles_signupn.confirmpassword} classname={styles_signupn.box} name="confirmpassword" placeholder="تکرار رمزعبور" /><br />
-            <textarea id={styles_signupn.address} classname={styles_signupn.box} name="address" placeholder="آدرس"></textarea>
+            <input type="text" id="firstname" class="box" name="firstname" placeholder="نام" /><br />
+            <input type="text" id="lastname" class="box" name="lastname" placeholder="نام خانوادگی" /><br />
+            <input type="email" id="email" class="box" name="email" placeholder="ایمیل" /><br />
+            <input type="text" id="username" class="box" name="username" placeholder="نام کاربری" />
+            <input type="password" id="password" class="box" name="password" placeholder="رمزعبور" /><br />
+            <input type="password" id="confirmpassword" class="box" name="confirmpassword" placeholder="تکرار رمزعبور" /><br />
+            <textarea id="address" class="box" name="address" placeholder="آدرس"></textarea>
             <br />
-            <input type="number" id={styles_signupn.postalcode} classname={styles_signupn.box} name="postalcode" placeholder="کد پستی" />
-            <input type="submit" id={styles_signupn.singup} value="ثبت نام" />
+            <input type="number" id="postalcode" class="box" name="postalcode" placeholder="کد پستی" />
+            <input type="submit" id="singup" value="ثبت نام" />
         </form>
         </div>
         </>
