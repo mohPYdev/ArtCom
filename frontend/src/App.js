@@ -2,11 +2,12 @@ import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
 import Login from './pages/Login';
-import OverflowLogin from "./pages/OverflowLogin";
+import OverflowLogin from "./component/OverflowLogin";
 import SignUpn from "./pages/SignUpn";
 import  SignUpa  from './pages/SignUpa';
 import Auction from './pages/Auction' ;
-import Post from './pages/Post'
+import Post from './component/Post'
+import ForgotPass from './component/ForgotPass'
 function useImperativeDisableScroll({ element, disabled }) {
   useEffect(() => {
       if (!element) {
@@ -32,6 +33,7 @@ function App() {
           <Route path="/signupa" element={ <SignUpa/>}/>
           <Route path="/auction" element={<Auction />} />
           <Route path="/post" element={<Post />} />
+          <Route path="/forgotpassword" element={<ForgotPass />} />
       </Routes>
     </BrowserRouter>
     {

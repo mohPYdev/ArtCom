@@ -1,3 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind Post ;
+
 *,
     *:before,
     *:after {
@@ -16,3 +21,10 @@
       box-sizing: border-box;
       font-family: vazir;
     }
+a{
+  text-decoration: none;
+    color: #1E2736;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+}

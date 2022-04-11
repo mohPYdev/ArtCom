@@ -2,6 +2,7 @@ import './OverflowLogin.css'
 import brush from '../img/brush.svg';
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class OverflowLogin extends React.Component{
   constructor(props){
@@ -10,9 +11,10 @@ class OverflowLogin extends React.Component{
   this.state= {
         username :"" ,
         password : "" 
+  };
+
   }
-  ;
-  }
+
   componentDidUpdate() {
     
   }
@@ -37,19 +39,19 @@ password :this.state.password
   render(){
   return(
     <>
-    <div className="container">
+    <div className="login--container">
     <img src={brush} className="brush"/>
     </div>
     <form id="login--form" onSubmit={(e)=>this.submited(e)}>
-    <input type="text" id="username" name="username" value={this.state.username} className="item" onChange={(e)=>this.setState({username :e.target.value  })} />
-    <label  id="username-label" className="item">نام کاربری</label>
-     <input type="password" id="password" name="password" value={this.state.password}  className="item" onChange={(e)=>this.setState({password : e.target.value} )}/>
-    <label  id="password-label" className="item" >رمز عبور</label>
+    <input type="text" id="login--username" name="username" value={this.state.username} className="item" onChange={(e)=>this.setState({username :e.target.value  })} />
+    <label  id="login--username-label" className="item">نام کاربری</label>
+     <input type="password" id="login--password" name="password" value={this.state.password}  className="item" onChange={(e)=>this.setState({password : e.target.value} )}/>
+    <label  id="login--password-label" className="item" >رمز عبور</label>
    
   
-    <input type="submit" value="login" id="btn-login-form" className="item" />
+    <Link to="#"  id="btn-login-form" className="item" >ورود</Link>
 
-    <button type="button" id="forget-pass-btn" > فراموشی رمز عبور </button>
+    <Link to="/forgotpassword" id="forget-pass-btn" > فراموشی رمز عبور </Link>
 </form>
     </>
   )

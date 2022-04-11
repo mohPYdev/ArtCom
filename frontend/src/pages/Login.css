@@ -7,13 +7,7 @@
     left: 0;
     z-index: 100;
 }
-a{
-    text-decoration: none;
-    color: #1E2736;
-    font-size: 1.5rem;
-    font-weight: 700;
-   
-}
+
 #section-login{
     position: relative;
     top: 0;
@@ -40,6 +34,11 @@ letter-spacing: 0.365em;
 
 color: #E9DAD3;
 z-index: 0;
+position: absolute;
+top: 0;
+left: 50%;
+transform: translate(-50%,0);
+
 }
 .login--header h1{
     text-align: center;
@@ -57,7 +56,7 @@ z-index: 0;
     font-size: 1.5rem;
     font-weight: 700;
     position: relative;
-    top: 25rem;
+    top: 28rem;
     left: 3rem;
     width: 11rem;
     height: 10rem;
@@ -73,6 +72,11 @@ z-index: 0;
     height: 38rem;
     
 }
+#EllipseUp{
+    
+
+}
+
 #EllipseUp1 {
     position: relative;
     top: 21.5rem;
@@ -120,19 +124,19 @@ z-index: 0;
 }
 
 #hero{
+    height: 80%;
+    width: 40%;
     position: relative;
-    top: 0rem;
-    left: 79rem;
-    height: 80vh;
-    width: 70rem;
-}
+    top: 20%;
+    left: 60%;
+    }
 #line{
-    position: relative;
-    top: -60rem;
-    left: 15rem;
+    position: absolute;
+    top: 15%;
+    left: 20%;
     z-index: -1;
     width: 100vw;
-    height: 30rem;
+    height: 65%;
 
 }
 #btn-login{
@@ -144,7 +148,6 @@ z-index: 0;
     border-radius: 100%;
     /* background-color: brown; */
     /* z-index: 100; */
-    
  
 }
 #btn-signup-a{
