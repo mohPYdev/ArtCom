@@ -3,36 +3,33 @@
     margin: 0;
 }
 
-body {
-    background-color: #C2CCC1;
-    overflow: auto;
-}
-#wrapper {
+#sn_wrapper {
     background-repeat: no-repeat;
     direction: rtl;
     background-image: url(image/addon.png),url(image/Presentation1-removebg-preview.png),url(image/Prقثesentation1-removebg-preview.png),url('image/puzzle-piece.png'),url('image/puzzle-piece.png'),url('image/puzzle-piece.png');
-    width: 1500px;
+    width: 2000px;
     height: 772px;
     background-size: 332px,706px,758px,275px,275px,275px;
-    background-position: 461px 235px,314px 2px,17px -63px,472px 451px,260px 451px ,684px 451px;
-    left: 132px;
+    background-position: 561px 235px,414px 2px,117px -63px,572px 451px,360px 451px ,784px 451px;
     position: absolute;
+    background-color: #C2CCC1;
+    overflow: auto;
 }
-#image {
+#sn_image {
     position: absolute;
     top: 188px;
-    left: 26px;
+    left: 126px;
     width: 299px;
     transform: matrix(-1, 0, 0, 1, 0, 0);
 }
-#puzzle {
+#sn_puzzle {
     position: absolute;
     width: 292px;
     transform: matrix(-1, -0.01, 0.01, -1, 0, 0);
     top: 53px;
-    left: 747px;
+    left: 847px;
 }
-.box {
+.sn_box {
     background: rgba(0, 0, 0, 0.08);
     border-radius: 15px;
     float: left;
@@ -48,61 +45,61 @@ body {
     color: #1E2736;
     border:1px solid black;
 }
-#firstname {
+#sn_firstname {
     width: 205px;
     height: 45px;
-    left: 294px;
+    left: 394px;
     top: 70px;
 }
-#lastname {
+#sn_lastname {
     width: 211px;
     height: 45px;
-    left: 239px;
+    left: 339px;
     top: 147px;
 }
-#email {
+#sn_email {
     width: 311px;
     height: 45px;
-    left: 474px;
+    left: 574px;
     top: 376px;
     text-align: left;
 }
-#username {
+#sn_username {
     width: 347px;
     height: 45px;
-    left: 456px;
+    left: 556px;
     top: 141px;
     text-align: left;
 }
-#password {
+#sn_password {
     width: 230px;
     height: 45px;
-    left: 809px;
+    left: 909px;
     top: 143px;
 }
-#confirmpassword {
+#sn_confirmpassword {
     width: 229px;
     height: 45px;
-    left: 745px;
+    left: 845px;
     top: 210px;
 }
 textarea{
     resize: none;
 }
-#address {
+#sn_address {
     width: 573px;
-    left: 323px;
+    left: 423px;
     top: 518px;
     height: 104px;
 }
-#postalcode {
+#sn_postalcode {
     width: 387px;
     height: 45px;
-    left: 327px;
+    left: 427px;
     top: 628px;
     text-align: left;
 }
-#singup {
+#sn_singup {
     width: 106px;
     height: 45px;
     background: #1E2736;
@@ -118,13 +115,13 @@ textarea{
     align-items: center;
     text-align: center;
     color: #FFFEFB;
-    left: 921px;
+    left: 1021px;
     top: 376px;
     background-image: url('image/icons8-art-64.png');
     background-repeat: no-repeat;
     background-size: 40px;
 }
-::placeholder {
+.sn_box::placeholder {
     color: #1E2736;
     text-align: center;
 }
