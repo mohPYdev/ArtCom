@@ -178,7 +178,7 @@ class AuctionViewSet(viewsets.ModelViewSet):
             return AuctionCreateSerializer
         elif self.action == 'retrieve':
             return AuctionRetrieveSerializer
-        elif self.action in ['add-post', 'remove-post']:
+        elif self.action in ['add_post', 'remove_post']:
             return AuctionArtistSerializer
         return self.serializer_class
 
@@ -189,17 +189,14 @@ class AuctionViewSet(viewsets.ModelViewSet):
 
     def get_object(self):
         obj = super().get_object()
-        if self.action in ['remove-artist','remove-post']:
+        if self.action in ['remove-artist','remove_post']:
             obj = get_object_or_404(Auction, pk=self.kwargs['pk'])
-            if self.request.user.artist in obj.artist:
-                if obj.get_status() == 'ns':
-                    return obj
-                else:
-                    raise ValidationError({'detail':'you cannot update an open or closed auction'})
+            if obj.get_status() == 'ns':
+                return obj
             else:
-                raise ValidationError({'detail':'you are not part of this auction'})
+                raise ValidationError({'detail':'you cannot update an open or closed auction'})
         
-        elif self.action in ['add-artist', 'add-post']:
+        elif self.action in ['add-artist', 'add_post']:
             obj=  get_object_or_404(Auction, pk=self.kwargs['pk'])
             if obj.get_status() == 'ns':
                 return obj
@@ -216,46 +213,34 @@ class AuctionViewSet(viewsets.ModelViewSet):
         return obj
     
     def get_permissions(self):
-        if self.action in ['create', 'delete', 'update', 'partial_update']:
+        permission_classes = self.permission_classes
+        if self.action in ['create', 'destroy', 'update', 'partial_update']:
             permission_classes = [IsAdminUser,]
-        elif self.action in ['add-artist', 'add-post', 'remove-post', 'remove-artist']:
-            permission_classes = [IsCurrentUserArtist,]
-        return self.permission_classes
+        elif self.action in ['add-artist', 'add_post', 'remove_post', 'remove-artist']:
+            permission_classes = [IsArtist,]
+        return [permission() for permission in permission_classes]
 
-    @action(detail=True, methods=['post'], url_path='add-artist', permission_classes=[IsArtist])
-    def add_artist(self, request, pk=None):
-        auction = self.get_object()
-        if auction.artist.filter(id=request.user.artist.id).exists():
-            raise ValidationError({'detail':'you are already part of this auction'})
-        auction.artist.add(request.user.artist)
-        auction.save()
-        return Response(status=status.HTTP_200_OK)
-
-    @action(detail=True, methods=['post'], url_path='remove-artist', permission_classes=[IsArtist])
-    def remove_artist(self, request, pk=None):
-        auction = self.get_object()
-        if auction.artist.filter(id=request.user.artist.id).exists():
-            auction.artist.remove(request.user.artist)
-            auction.save()
-            return Response(status=status.HTTP_200_OK)
-        else:
-            raise ValidationError({'detail':'you are not part of this auction'})
-
-    @action(detail=True, methods=['post'], url_path='add-post', permission_classes=[IsArtist])
+    @action(detail=True, methods=['POST'], url_path='add-post', permission_classes=[IsArtist])
     def add_post(self, request, pk=None):
         auction = self.get_object()
-        if auction.post.filter(id=request.data['post']).exists():
-            raise ValidationError({'detail':'you have already added this post'})
-        auction.post.add(request.data['post'])
-        auction.save()
-        return Response(status=status.HTTP_200_OK)
+        serializer = self.get_serializer(auction, data=request.data)
+        if serializer.is_valid():
+            if auction.post.filter(id__in=request.data['post']).exists():
+                raise ValidationError({'detail':'you have already added this post'})
+            serializer.save()
+            return Response(status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     @action(detail=True, methods=['post'], url_path='remove-post', permission_classes=[IsArtist])
     def remove_post(self, request, pk=None):
         auction = self.get_object()
-        if auction.post.filter(id=request.data['post']).exists():
-            auction.post.remove(request.data['post'])
-            auction.save()
-            return Response(status=status.HTTP_200_OK)
-        else:
-            raise ValidationError({'detail':'you have not added this post'})
+        serializer = self.get_serializer(auction, data=request.data)
+        if serializer.is_valid():
+            if auction.post.filter(id__in=request.data['post']).exists():
+                for post in request.data['post']:
+                    auction.post.remove(post)
+                auction.save()
+                return Response(status=status.HTTP_200_OK)
+            else:
+                raise ValidationError({'detail':'you have not added this post'})
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

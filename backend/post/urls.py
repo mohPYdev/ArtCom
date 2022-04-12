@@ -8,6 +8,7 @@ app_name = 'post'
 router = DefaultRouter()
 router.register("posts", views.PostViewSet)
 router.register("exhibitions", views.ExhibitionViewSet)
+router.register('auctions', views.AuctionViewSet)
 
 urlpatterns = router.urls
 

@@ -96,21 +96,19 @@ class AuctionCreateSerializer(serializers.ModelSerializer):
 
 class AuctionListSerializer(serializers.ModelSerializer):
     """serializes the auctions model"""
-    artist = serializers.ReadOnlyField(source='artist.username')
-    post = PostExhSerializer(many=True, read_only=True)
+    post = PostSerializer(many=True, read_only=True)
     status = serializers.SerializerMethodField()
 
     def get_status(self, obj):
         return obj.get_status()
     class Meta:
         model = Auction
-        fields = ('id', 'artist', 'post', 'date_begin', 'date_end', 'status')
-        read_only_fields = ('id', 'artist')
+        fields = ('id',  'post', 'date_begin', 'date_end', 'status')
+        read_only_fields = ('id',)
 
 
 class AuctionRetrieveSerializer(serializers.ModelSerializer):
 
-    artist = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     post = PostSerializer(many=True, read_only=True)
     status = serializers.SerializerMethodField()
 
@@ -119,15 +117,15 @@ class AuctionRetrieveSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Auction
-        fields = ('id', 'artist', 'post', 'date_begin', 'date_end', 'status')
-        read_only_fields = ('id', 'artist', 'date_begin', 'date_end', 'status')
+        fields = ('id','post', 'date_begin', 'date_end', 'status')
+        read_only_fields = ('id', 'date_begin', 'date_end', 'status')
 
 class AuctionArtistSerializer(serializers.ModelSerializer):
 
-    post = serializers.PrimaryKeyRelatedField(queryset=Post.objects.all(), many=True)
+    post = serializers.PrimaryKeyRelatedField(many=True, queryset=Post.objects.all())
     class Meta:
         model = Auction
-        fields = ('post')
+        fields = ('post',)
     
     def validate(self, attrs):
         attr =  super().validate(attrs)
@@ -135,3 +133,9 @@ class AuctionArtistSerializer(serializers.ModelSerializer):
             if post.artist != self.context['request'].user.artist:
                 raise serializers.ValidationError('post must belong to the artist')
         return attr
+    
+    def update(self, instance, validated_data):
+        for post in validated_data['post']:
+            instance.post.add(post.id)
+        instance.save()
+        return instance
