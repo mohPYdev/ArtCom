@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 class OverflowLogin extends React.Component{
   constructor(props){
   super(props);
-  this.submited=this.submited.bind(this);
+  this.Login=this.Login.bind(this);
   this.state= {
         username :"" ,
         password : "" 
@@ -18,8 +18,8 @@ class OverflowLogin extends React.Component{
   componentDidUpdate() {
     
   }
-  submited(e){
-     e.preventDefault(); 
+  Login(){
+     
     console.log(this.state.username);
     console.log(this.state.password);
 const data1 ={
@@ -27,7 +27,7 @@ username :this.state.username ,
 password :this.state.password
 }
     async function fetchData(){
-      const {data2} = await axios.post('http://localhost:8000/auth/token/login', data1);
+      const {data2} = await axios.post('http://0.0.0.0:8000/auth/token/login', data1);
       console.log("fetching");
       console.log(data2);
 
@@ -42,14 +42,14 @@ password :this.state.password
     <div className="login--container">
     <img src={brush} className="brush"/>
     </div>
-    <form id="login--form" onSubmit={(e)=>this.submited(e)}>
+    <form id="login--form" >
     <input type="text" id="login--username" name="username" value={this.state.username} className="item" onChange={(e)=>this.setState({username :e.target.value  })} />
     <label  id="login--username-label" className="item">نام کاربری</label>
      <input type="password" id="login--password" name="password" value={this.state.password}  className="item" onChange={(e)=>this.setState({password : e.target.value} )}/>
     <label  id="login--password-label" className="item" >رمز عبور</label>
    
   
-    <Link to="#"  id="btn-login-form" className="item" >ورود</Link>
+    <Link to="#"  id="btn-login-form" className="item"  onClick={this.Login}>ورود</Link>
 
     <Link to="/forgotpassword" id="forget-pass-btn" > فراموشی رمز عبور </Link>
 </form>
