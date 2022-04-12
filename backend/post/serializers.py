@@ -13,7 +13,7 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = ('id', 'image', 'name', 'description', 'price', 'for_sale', 'sold', 'artist', 'like_count', 'liked')
-        read_only_fields = ('id', 'artist', 'like_count')
+        read_only_fields = ('id', 'artist', 'like_count', 'sold')
 
     liked = serializers.SerializerMethodField()
     like_count = serializers.SerializerMethodField()
@@ -26,6 +26,14 @@ class PostSerializer(serializers.ModelSerializer):
     
     def get_like_count(self, obj):
         return obj.like_set.count()
+
+
+class PostPaymentSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Post
+        fields = ('id', 'sold',)
+    
 
 
 class PostExhSerializer(serializers.ModelSerializer):

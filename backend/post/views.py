@@ -14,7 +14,7 @@ from core.models import Post, Like, Exhibition, Auction
 from post.serializers import PostSerializer, LikeSerializer, ExhibitionSerializer,\
                              ExhibitionCreateSerializer, AuctionCreateSerializer,\
                              AuctionListSerializer, AuctionRetrieveSerializer,\
-                             AuctionArtistSerializer
+                             AuctionArtistSerializer, PostPaymentSerializer
 
 User = get_user_model()
 
@@ -32,6 +32,8 @@ class PostViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return Post.objects.filter(artist=self.request.user.artist)
+    
+    
 
 
 class PostListView(generics.ListAPIView):
@@ -111,6 +113,30 @@ class PostDislikeView(generics.CreateAPIView):
         user = User.objects.get(id=user_pk)
         obj = get_object_or_404(Post, id=post_pk, artist=user.artist)
         return obj
+
+
+class PostPayView(generics.CreateAPIView):
+    """view for doing the payment """
+
+    queryset = Post.objects.all()
+    serializer_class = PostPaymentSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def create(self, request, *args, **kwargs):
+        user = self.request.user
+        post = self.get_object()
+        post.sold = True
+        post.for_sale = False
+        post.save()
+        return Response(status=status.HTTP_200_OK)
+    
+    def get_object(self):
+        user_pk = self.kwargs['user_pk']
+        post_pk = self.kwargs['post_pk']
+        user = User.objects.get(id=user_pk)
+        obj = get_object_or_404(Post, id=post_pk, artist=user.artist)
+        return obj
+
 
 
 class ExhibitionViewSet(viewsets.ModelViewSet):
