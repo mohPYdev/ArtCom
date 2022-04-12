@@ -28,3 +28,9 @@ a{
     font-weight: 700;
     text-align: center;
 }
+AlertProvider {
+  margin: 0;
+  padding: 0;
+  height: 0;
+  width: 0;
+}
