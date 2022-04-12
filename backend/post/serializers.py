@@ -46,6 +46,8 @@ class ExhibitionCreateSerializer(serializers.ModelSerializer):
 
     def validate(self, attrs):
         attr =  super().validate(attrs)
+        if not self.context['request'].user.is_artist:
+            raise serializers.ValidationError('You are not an artist')
         if attr['date_begin'] > attr['date_end']:
             raise serializers.ValidationError('date_begin must be before date_end')
         if attr['date_begin'] < now():
