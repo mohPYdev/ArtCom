@@ -6,8 +6,9 @@
     color: #29354A;
     margin: 0;
     padding: 0;
+    font-family: 'B Yekan';
 }
-body
+.bodyClass
 {
     background-color: #29354A !important;
     margin: 0px;
@@ -63,6 +64,8 @@ body
     direction: rtl;
     padding-right: 5px;
     padding-top: 5px;
+    width: 165px;
+    height: 310px;
 }
 .common_form
 {
@@ -70,7 +73,7 @@ body
     margin-left: 420px;
     width:150px;
     height:40px;
-    font-size: 15;
+    font-size: 15px;
     background-color: #E9DAD3;
     position: relative;
     z-index: 2;
@@ -111,27 +114,29 @@ body
 {
     width:300px;
     height:180px;
-    font-size: 18;
+    font-size: 18px;
     background-color: #E9DAD3;
     resize: none;
     margin-top: -340px;
+    top: -175px;
     margin-left: 420px;
     position:relative;
     border-radius: 5px;
     z-index: 2;
     text-align: right;
     direction: rtl;
+    padding: 5px;
 }
 #postalcode_input
 {
-    margin-top:-140px;
+    margin-top:-160px;
     width: 400px;
     text-align: center;
 }
 #submit_input
 {
     margin-left: 600px;;
-    margin-top:-80px;
+    margin-top:-100px;
     width: 80px;
     height: 30px;
 
@@ -146,4 +151,19 @@ body
 
     background-color: #29354A ;
     color: white;
+}
+#invitation_codes_textarea
+{
+    width:180px;
+    height:330px;
+    font-size: 18px;
+    background-color: #E9DAD3;
+    resize: none;
+    margin-top: -515px;
+    margin-left: 1150px;
+    position:fixed;
+    border-radius: 5px;
+    z-index: 5;
+    direction: rtl;
+    text-align: right;
 }
