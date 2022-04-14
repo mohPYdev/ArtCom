@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',  # required for serving swagger ui's css/js files
     "corsheaders",
     'rest_framework',
-    'rest_framework_simplejwt',
     "rest_framework.authtoken",
     'djoser',
     'core',
@@ -82,7 +81,6 @@ WSGI_APPLICATION = 'app.wsgi.application'
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
     "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
         "rest_framework.authentication.TokenAuthentication",
     ),
 }

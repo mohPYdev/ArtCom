@@ -29,6 +29,7 @@ class PostSerializer(serializers.ModelSerializer):
 
 
 class PostPaymentSerializer(serializers.ModelSerializer):
+    """serializes the posts model for the payment updating"""
 
     class Meta:
         model = Post
@@ -37,6 +38,7 @@ class PostPaymentSerializer(serializers.ModelSerializer):
 
 
 class PostExhSerializer(serializers.ModelSerializer):
+    """serializes the posts model for the exhibition"""
 
     class Meta:
         model = Post
@@ -44,7 +46,7 @@ class PostExhSerializer(serializers.ModelSerializer):
 
 
 class ExhibitionCreateSerializer(serializers.ModelSerializer):
-    """serializes the exhibitions model"""
+    """serializer for creating exhibition by an artist"""
     posts = serializers.PrimaryKeyRelatedField(many=True, queryset=Post.objects.all())
     date_begin = serializers.DateTimeField(format='%Y-%m-%d %H:%M:%S')
     date_end = serializers.DateTimeField(format='%Y-%m-%d %H:%M:%S')
@@ -91,6 +93,7 @@ class LikeSerializer(serializers.ModelSerializer):
 
 
 class AuctionCreateSerializer(serializers.ModelSerializer):
+    """serializer for creating an auction by the admin"""
 
     post = serializers.PrimaryKeyRelatedField(queryset=Post.objects.all(), many=True)
     post = serializers.PrimaryKeyRelatedField(queryset=Post.objects.all(), many=True)
@@ -104,20 +107,20 @@ class AuctionCreateSerializer(serializers.ModelSerializer):
 
 
 
-class AuctionListSerializer(serializers.ModelSerializer):
-    """serializes the auctions model"""
-    post = PostSerializer(many=True, read_only=True)
-    status = serializers.SerializerMethodField()
+# class AuctionListSerializer(serializers.ModelSerializer):
+#     """serializes the auctions model"""
+#     post = PostSerializer(many=True, read_only=True)
+#     status = serializers.SerializerMethodField()
 
-    def get_status(self, obj):
-        return obj.get_status()
-    class Meta:
-        model = Auction
-        fields = ('id',  'post', 'date_begin', 'date_end', 'status')
-        read_only_fields = ('id',)
+#     def get_status(self, obj):
+#         return obj.get_status()
+#     class Meta:
+#         model = Auction
+#         fields = ('id',  'post', 'date_begin', 'date_end', 'status')
+#         read_only_fields = ('id',)
 
 
-class AuctionRetrieveSerializer(serializers.ModelSerializer):
+class AuctionSerializer(serializers.ModelSerializer):
 
     post = PostSerializer(many=True, read_only=True)
     status = serializers.SerializerMethodField()
@@ -131,6 +134,7 @@ class AuctionRetrieveSerializer(serializers.ModelSerializer):
         read_only_fields = ('id', 'date_begin', 'date_end', 'status')
 
 class AuctionArtistSerializer(serializers.ModelSerializer):
+    """serializer for adding or deleting posts to an auction by an artist"""
 
     post = serializers.PrimaryKeyRelatedField(many=True, queryset=Post.objects.all())
     class Meta:

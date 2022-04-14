@@ -13,7 +13,7 @@ from .permissions import IsArtist, IsCurrentUserArtist
 from core.models import Post, Like, Exhibition, Auction
 from post.serializers import PostSerializer, LikeSerializer, ExhibitionSerializer,\
                              ExhibitionCreateSerializer, AuctionCreateSerializer,\
-                             AuctionListSerializer, AuctionRetrieveSerializer,\
+                             AuctionSerializer,\
                              AuctionArtistSerializer, PostPaymentSerializer
 
 User = get_user_model()
@@ -195,15 +195,13 @@ class AuctionViewSet(viewsets.ModelViewSet):
     API endpoint that allows auction to be viewed or edited.
     """
     queryset = Auction.objects.all()
-    serializer_class = AuctionListSerializer
+    serializer_class = AuctionSerializer
     permission_classes = (IsAuthenticated,)
 
     
     def get_serializer_class(self):
         if self.action in ['create' , 'update', 'partial_update']:
             return AuctionCreateSerializer
-        elif self.action == 'retrieve':
-            return AuctionRetrieveSerializer
         elif self.action in ['add_post', 'remove_post']:
             return AuctionArtistSerializer
         return self.serializer_class
