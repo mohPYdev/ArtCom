@@ -11,7 +11,7 @@ function SignUpn(){
     const [sn_confirmpassword,setSnConfirmpassword]=useState('');
     const [sn_address,setSnAddress]=useState('');
     const [sn_postalcode,setSnPostalcode]=useState('');
-    const handleSubmit=(event)=>{
+    const handleSnSubmit=(event)=>{
         event.preventDefault();
     }
     const handlechangeSnFirstname=(event)=>{
@@ -43,7 +43,7 @@ function SignUpn(){
         <div id="sn_wrapper">
             <img id="sn_image" src={painter}/>
             <img id="sn_puzzle" src={puzzle}/>
-            <form method="get" onSubmit={handleSubmit}>
+            <form method="get" onSubmit={handleSnSubmit}>
                 <input value={sn_firstname} onChange={handlechangeSnFirstname} type="text" id="sn_firstname" class="sn_box" name="firstname" placeholder="نام" /><br />
                 <input value={sn_lastname} onChange={handlechangeSnLastname} type="text" id="sn_lastname" class="sn_box" name="lastname" placeholder="نام خانوادگی" /><br />
                 <input value={sn_email} onChange={handlechangeSnEmail} type="email" id="sn_email" class="sn_box" name="email" placeholder="ایمیل" /><br />
