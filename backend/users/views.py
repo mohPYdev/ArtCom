@@ -44,7 +44,6 @@ class UserViewSet(UserViewSet):
         return serializer
 
 
-
     @action(detail=False, methods=["POST"], url_path="artist")
     def artist_register(self, request):
         """

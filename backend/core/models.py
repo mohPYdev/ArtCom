@@ -87,8 +87,8 @@ class Rate(models.Model):
 
 
 class Auction(models.Model):
-    artist = models.ManyToManyField(Artist, null=True, blank=True)
-    post = models.ManyToManyField(Post, null=True, blank=True)
+    artist = models.ManyToManyField(Artist, blank=True)
+    post = models.ManyToManyField(Post, blank=True)
     date_created = models.DateField(auto_now_add=True)
     date_begin = models.DateTimeField(default=timezone.now)
     date_end = models.DateTimeField(default=timezone.now)
@@ -124,11 +124,7 @@ class Order(models.Model):
     post = models.ManyToManyField(Post)
     transaction_id = models.CharField(max_length=300 , null=True)
     date_ordered = models.DateField(auto_now_add=True , null=True)
-
-
-class Shipping(models.Model):
-    user = models.ForeignKey(User , on_delete=models.SET_NULL , null=True)
-    order = models.ForeignKey(Order , on_delete=models.SET_NULL , null=True)
+    shipped = models.BooleanField(default=False)
 
 
 class InviteToken(models.Model):
