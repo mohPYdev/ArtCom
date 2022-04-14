@@ -11,3 +11,10 @@ class IsArtist(permissions.IsAuthenticated):
         return request.user and request.user.is_authenticated and request.user.is_artist
 
 
+class IsCurrentUserArtist(permissions.IsAuthenticated):
+    def has_object_permission(self, request, view, obj):
+        user = request.user
+        return user.is_authenticated and user.is_artist and obj.artist == user.artist
+
+    def has_permission(self, request, view): 
+        return request.user and request.user.is_authenticated and request.user.is_artist
