@@ -6,7 +6,7 @@ export const useLogout = () => {
   const [isCancelled, setIsCancelled] = useState(false)
   const [error, setError] = useState(null)
   const [isPending, setIsPending] = useState(false)
-  const { dispatch, user } = useAuthContext()
+  const { dispatch} = useAuthContext()
 
   const LOGOUT_URL = "http://localhost:8000/auth/token/logout/"
   
@@ -17,6 +17,11 @@ export const useLogout = () => {
     try {
       
       await axios.post(LOGOUT_URL)
+
+      // Clear the user from local storage
+      localStorage.removeItem('user')
+      localStorage.removeItem('token')
+
 
       // dispatch logout action
       dispatch({ type: 'LOGOUT' })
