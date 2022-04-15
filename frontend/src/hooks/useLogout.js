@@ -18,9 +18,10 @@ export const useLogout = () => {
       
       await axios.post(LOGOUT_URL)
 
-      // Clear the user from local storage
+      // Clear the user from local storage and headers
       localStorage.removeItem('user')
       localStorage.removeItem('token')
+      delete axios.defaults.headers.common['Authorization']
 
 
       // dispatch logout action
