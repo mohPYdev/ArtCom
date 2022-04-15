@@ -6,6 +6,9 @@ import OverflowLogin from "./pages/OverflowLogin";
 import SignUpn from "./pages/SignUpn";
 import  SignUpa  from './pages/SignUpa';
 import Auction from './pages/Auction' ;
+
+
+
 function useImperativeDisableScroll({ element, disabled }) {
   useEffect(() => {
       if (!element) {
@@ -18,9 +21,13 @@ function useImperativeDisableScroll({ element, disabled }) {
           element.style.overflowY = 'scroll'
           element.style.overflowX = 'scroll'
       }
-  }, [disabled])
+  }, [disabled, element])
 }
+
+
+
 function App() {
+  
   return (
     <>
     <BrowserRouter>
