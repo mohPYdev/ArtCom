@@ -1,9 +1,4 @@
-﻿* {
-    padding: 0;
-    margin: 0;
-}
-
-#sn_wrapper {
+﻿#sn_wrapper {
     background-repeat: no-repeat;
     direction: rtl;
     background-image: url(image/addon.png),url(image/Presentation1-removebg-preview.png),url(image/Prقثesentation1-removebg-preview.png),url('image/puzzle-piece.png'),url('image/puzzle-piece.png'),url('image/puzzle-piece.png');

@@ -1,8 +1,4 @@
-﻿*{
-    padding:0;
-    margin:0;
-}
-#sa_wrapper {
+﻿#sa_wrapper {
     background-repeat: no-repeat;
     direction: rtl;
     background-image: url(image/Image2.png), url(image/Two_Styles_of_Girls_illustrations-removebg-preview.png),url('image/Abbey_Lossing_on_what_it_s_like_to_be_a_staff_illustrator_at_Buzzfeed_and_Vice_News-removebg-preview.png'),url(image/Image1.png),url(image/Image1.png),url(image/Image2.png),url(image/Image2.png);
