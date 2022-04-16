@@ -21,13 +21,13 @@ function useImperativeDisableScroll({ element, disabled }) {
           element.style.overflowY = 'scroll'
           element.style.overflowX = 'scroll'
       }
-  }, [disabled, element])
+  }, [disabled])
 }
 
 
 
 function App() {
-  
+
   return (
     <>
     <BrowserRouter>
