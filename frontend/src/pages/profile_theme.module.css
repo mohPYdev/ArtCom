@@ -6,15 +6,25 @@
     color: #29354A;
     margin: 0;
     padding: 0;
+    font-family: 'B Yekan';
 }
-body
+.bodyClass
 {
     background-color: #29354A !important;
-    font-family: tahoma,arial;
+    margin: 0px;
 }
 .main
 {
     overflow-x: hidden;
+}
+#img_back
+{
+    display: flex;
+    justify-content: center;
+}
+#img_back img
+{
+    width: 995px;
 }
 #img_back
 {
@@ -27,8 +37,8 @@ body
 #img_prof
 {
     position:fixed;
-    margin-top: -1000px;
-    margin-left: 50px;
+    margin-top: -650px;
+    margin-left: 20px;
     z-index: 5;
 }
 #img_prof_btn
@@ -45,8 +55,8 @@ body
 {
     background-color: #E9DAD3;
     resize: none;
-    margin-top: -865px;
-    margin-left: 50px;
+    margin-top: -515px;
+    margin-left: 15px;
     border-style: dashed;
     position:fixed;
     border-radius: 5px;
@@ -54,14 +64,16 @@ body
     direction: rtl;
     padding-right: 5px;
     padding-top: 5px;
+    width: 165px;
+    height: 310px;
 }
 .common_form
 {
     float:left;
-    margin-left: 350px;
-    width:250px;
-    height:70px;
-    font-size: 20;
+    margin-left: 420px;
+    width:150px;
+    height:40px;
+    font-size: 15px;
     background-color: #E9DAD3;
     position: relative;
     z-index: 2;
@@ -72,51 +84,53 @@ body
 }
 #firstname_text
 {
-    margin-top:-850px;
+    margin-top:-580px;
     margin-left:670px;
 }
 #lastname_text
 {
-    margin-top:-850px;
-    width: 300px;
+    margin-top:-580px;
+    width: 240px;
 }
 #username_text
 {
-    margin-top:-750px;
-    width: 570px;
+    margin-top:-520px;
+    width: 400px;
     text-align: center;
 }
 #email_input
 {
-    margin-top:-650px;
-    width: 570px;
+    margin-top:-460px;
+    width: 400px;
     text-align: center;
 }
 #phone_input
 {
-    margin-top:-550px;
-    width: 570px;
+    margin-top:-400px;
+    width: 400px;
     text-align: center;
 }
 #Address_textarea
 {
-    width:450px;
-    height:220px;
-    font-size: 18;
+    width:300px;
+    height:180px;
+    font-size: 18px;
     background-color: #E9DAD3;
     resize: none;
-    margin-top: -450px;
-    margin-left: 350px;
+    margin-top: -340px;
+    top: -175px;
+    margin-left: 420px;
     position:relative;
     border-radius: 5px;
     z-index: 2;
     text-align: right;
     direction: rtl;
+    padding: 5px;
 }
 #postalcode_input
 {
-    margin-top:-200px;
-    width: 570px;
+    margin-top:-160px;
+    width: 400px;
     text-align: center;
 }
 #submit_input
@@ -137,4 +151,19 @@ body
 
     background-color: #29354A ;
     color: white;
+}
+#invitation_codes_textarea
+{
+    width:180px;
+    height:330px;
+    font-size: 18px;
+    background-color: #E9DAD3;
+    resize: none;
+    margin-top: -515px;
+    margin-left: 1150px;
+    position:fixed;
+    border-radius: 5px;
+    z-index: 5;
+    direction: rtl;
+    text-align: right;
 }

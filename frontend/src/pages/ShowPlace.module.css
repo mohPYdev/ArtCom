@@ -1,0 +1,148 @@
+.bodyclass {
+    background-color: #1E2736;
+    overflow: auto;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+#like{
+    border-radius: 20px;
+    padding: 10px;
+    position: relative;
+    top: -850px;
+    left: 40%;
+}
+#like:hover{
+    background-color: hsl(0, 64%, 48%);
+    outline: 3px dashed white;
+}
+
+.btn{
+    background-color: #E9DAD3;
+    padding: 0.5%;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 15px;
+    font-family: 'B Yekan';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    margin-right: 320px;
+    margin-top: 40px;
+    width: 180px;
+
+    position: relative;
+    top: -1050px;
+    /* margin: 60px; */
+    left: 11%;
+}
+
+#frame{
+    left: 32%;
+    top: 36px;
+    position: relative;
+    width: 600px;
+}
+
+#profile{
+    position: relative;
+    top: -400px;
+    left: 177px;
+}
+
+#about{
+    color: white;
+    font-family: 'B Yekan';
+    font-style: normal;
+    font-size: 18px;
+    font-weight: 100;
+    width: 270px;
+    height: 200px;
+    line-height: 200%;
+    overflow: auto;
+    text-align: center;
+    direction: rtl;
+
+    position: relative;
+    top: -400px;
+    left: 114px;
+}
+
+#title{
+    color: white;
+    font-family: 'B Yekan';
+    font-style: normal;
+    font-size:  32px;
+    font-weight: 100;
+    text-align: center;
+    direction: rtl;
+    position: relative;
+    top: -800px;
+    right: -560px;
+}
+
+#count{
+    color: white;
+    font-family: 'B Yekan';
+    font-style: normal;
+    font-size:  32px;
+    font-weight: 100;
+    position: relative;
+    top: -944px;
+    left: 54%;
+}
+
+#back{
+    position: relative;
+    top: -854px;
+    left:450px;
+    width: 118px;
+}
+
+#next{
+    position: relative;
+    top: -1056px;
+    left:1000px;
+    width: 118px;
+}
+
+#seencount{
+    color: white;
+    font-family: 'B Yekan';
+    font-style: normal;
+    font-size:  28px;
+    font-weight: 100;
+    position: relative;
+    top: -1222px;
+    left: 94%;
+}
+
+#seenimg{
+    position: relative;
+    top: -1154px;
+    left: 97%;
+    width: 28px;
+}
+
+#livecount{
+    color: white;
+    font-family: 'B Yekan';
+    font-style: normal;
+    font-size:  28px;
+    font-weight: 100;
+    position: relative;
+    top: -1088px;
+    left: 4%;
+}
+
+#liveimg{
+    position: relative;
+    top: -1017px;
+    left: 1%;
+}
