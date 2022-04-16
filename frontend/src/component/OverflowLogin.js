@@ -1,7 +1,6 @@
 import './OverflowLogin.css'
 import brush from '../img/brush.svg';
 import React from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useAlert } from 'react-alert'
 import {useState} from 'react';
@@ -34,7 +33,9 @@ function OverflowLogin(){
         <label  id="login--password-label" className="item" >رمز عبور</label>
       
       
-        <button id="btn-login-form" className="item" type>ورود </button>
+        { !isPending && <button id="btn-login-form" className="item" type>ورود </button>}
+        {isPending && <button disabled className='btn'>Loading ...</button>}
+        {error && <div className='error'>{error}</div>}
         <Link to="/forgotpassword" id="forget-pass-btn" > فراموشی رمز عبور </Link>
       </form>
     </>
