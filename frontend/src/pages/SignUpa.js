@@ -16,6 +16,7 @@ function SignUpa(){
     const [sa_invitationcode,setSaInvitationcode]=useState('');
     const [sa_selectValue,setSaselectValue]=useState('');
     const [sa_address,setSaAddress]=useState('');
+    const [sa_city,setSaCity]=useState('');
     const [sa_postalcode,setSaPostalcode]=useState('');
 
 
@@ -59,6 +60,9 @@ function SignUpa(){
     const handlechangeSaAddress=(event)=>{
         setSaAddress(event.target.value)
     }
+    const handlechangeSaCity=(event)=>{
+        setSaCity(event.target.value)
+    }
     const handlechangeSaPostalcode=(event)=>{
         setSaPostalcode(event.target.value)
     }
@@ -82,6 +86,7 @@ return(
                 <option value="Other">سایر</option>
             </select> 
                 <textarea value={sa_address} onChange={handlechangeSaAddress} id="sa_address" class="sa_box" name="address" placeholder="آدرس"></textarea>
+                <input value={sa_city} onChange={handlechangeSaCity} type="text" id="sa_city" class="sa_box" name="city" placeholder="شهر" /><br />
                 <br />
                 <input value={sa_postalcode} onChange={handlechangeSaPostalcode} type="number" id="sa_postalcode" class="sa_box" name="postalcode" placeholder="کد پستی" />
                 <input type="submit" id="sa_singup" value="ثبت نام" />
