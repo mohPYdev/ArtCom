@@ -1,21 +1,15 @@
-﻿*{
-    padding:0;
-    margin:0;
-}
-body {
-    background-color: #E9DAD3;
-    overflow: auto;
-}
-#wrapper {
+﻿#sa_wrapper {
     background-repeat: no-repeat;
     direction: rtl;
     background-image: url(image/Image2.png), url(image/Two_Styles_of_Girls_illustrations-removebg-preview.png),url('image/Abbey_Lossing_on_what_it_s_like_to_be_a_staff_illustrator_at_Buzzfeed_and_Vice_News-removebg-preview.png'),url(image/Image1.png),url(image/Image1.png),url(image/Image2.png),url(image/Image2.png);
-    width: 1500px;
+    width: 1600px;
     height: 772px;
     background-size: 427px, 393px,691px, 503px, 498px,427px,427px;
     background-position: 137px -7px, 1206px 70px, -48px -48px, 991px 601px, 613px 602px,565px -7px, 994px -7px;
+    background-color: #E9DAD3;
+    overflow: auto;
 }
-.box {
+.sa_box {
     width: 387px;
     height: 45px;
     background: #1E2736;
@@ -32,37 +26,37 @@ body {
     text-align: right;
     color: #FFFEFB;
 }
-#firstname {
+#sa_firstname {
     left: 155px;
     top: 23px;
 }
-#lastname {
+#sa_lastname {
     left: 154px;
     top: 82px;
 }
-#email {
+#sa_email {
     left: 154px;
     top: 141px;
     text-align: left;
 }
-#username {
+#sa_username {
     left: 154px;
     top: 201px;
 }
-#password {
+#sa_password {
     left: 583px;
     top: 23px;
 }
-#confirmpassword {
+#sa_confirmpassword {
     left: 583px;
     top: 82px;
 }
-#invitationcode {
+#sa_invitationcode {
     left: 583px;
     top: 141px;
     text-align: left;
 }
-#label {
+#sa_label {
     font-family: Mj_Ramollah;
     left: 846px;
     top: 201px;
@@ -70,22 +64,22 @@ body {
     width: 124px;
     text-align: center;
 }
-#selection {
+#sa_selection {
     left: 583px;
     top: 201px;
     width: 248px;
 }
-#address {
+#sa_address {
     left: 1014px;
     top: 23px;
     height: 162px;
 }
-#postalcode {
+#sa_postalcode {
     left: 1013px;
     top: 200px;
     text-align: left;
 }
-#singup {
+#sa_singup {
     width: 106px;
     height: 45px;
     background: #1E2736;
@@ -107,7 +101,7 @@ body {
     background-repeat: no-repeat;
     background-size: 40px;
 }
-::placeholder {
+.sa_box::placeholder {
     color: rgba(215, 211, 211, 0.82);
     text-align:center;
 }

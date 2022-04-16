@@ -2,46 +2,10 @@
     <head>
         <meta charset="UTF-8"/>
         <title>ArtCom-artist profile</title>
-        <link type="text/css" rel="stylesheet" href="profile_theme.css" />
+        <link type="text/css" rel="stylesheet" href="profile_theme.module.css" />
         <!-- script part
             <script type="text/javascript" src="normal_profile_test.js"></script>
         -->
-        <style>
-            #submit_input
-            {
-                margin-left: 380px;;
-                margin-top:-110px;
-                width: 80px;
-                height: 30px;
-                
-                border-radius: 0px;
-                border: 5px outset #29354A;
-
-                font-size: 12px;
-                font-weight: bold;
-                letter-spacing: 1;
-                padding:0px;
-                text-align: center;
-
-                background-color: #29354A ;
-                color: white;
-            }
-            #invitation_codes_textarea
-            {
-                width:400px;
-                height:70px;
-                font-size: 18;
-                background-color: #E9DAD3;
-                resize: none;
-                margin-top: -110px;
-                margin-left: 500px;
-                position:relative;
-                border-radius: 5px;
-                z-index: 2;
-                direction: rtl;
-                text-align: right;
-            }
-        </style>
     </head>
     
     <body>
@@ -62,7 +26,7 @@
                 </div>
 
                 <!--adding Bio textarea-->
-                <textarea id="Bio_textarea" name="Bio_textarea" cols="20" rows="20" placeholder="بیوگرافی" ></textarea>
+                <textarea id="Bio_textarea" name="Bio_textarea" cols="18" rows="20" placeholder="بیوگرافی" ></textarea>
 
                 <!--adding first name text-->
                 <input type="text" class="common_form" id="firstname_text" name="firstname_text" placeholder="نام" />
@@ -80,10 +44,11 @@
                 <input type="tel" class="common_form" id="postalcode_input" name="postalcode_input" placeholder="کد پستی" />
                 <!--adding submit button-->
                 <input type="submit" class="common_form" id="submit_input" name="submit_input" value="اعمال" />
-                <!--adding invitation codes textarea-->
-                <textarea id="invitation_codes_textarea" name="invitation_codes_textarea" placeholder="کدهای دعوت" ></textarea>
 
             </form>
+
+            <!--adding invitation codes textarea-->
+            <textarea id="invitation_codes_textarea" name="invitation_codes_textarea" placeholder="کدهای دعوت" readonly ></textarea>
 
             <p>4</p>
         </div>
