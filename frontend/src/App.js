@@ -4,8 +4,8 @@ import './App.css';
 import Login from './pages/Login';
 import OverflowLogin from "./component/OverflowLogin";
 import SignUpn from "./pages/SignUpn";
-import SignUpa from './pages/SignUpa';
-import Auction from './pages/Auction';
+import SignUpa  from './pages/SignUpa';
+import Auction from './pages/Auction' ;
 import Post from './component/Post';
 import ForgotPass from './component/ForgotPass';
 import EmailActivation from './component/EmailActivation';
@@ -20,6 +20,7 @@ const options = {
   // you can also just use 'scale'
   transition: transitions.FADE
 }
+
 function useImperativeDisableScroll({ element, disabled }) {
   useEffect(() => {
       if (!element) {
@@ -34,7 +35,11 @@ function useImperativeDisableScroll({ element, disabled }) {
       }
   }, [disabled])
 }
+
+
+
 function App() {
+
   return (
     <>
     <AlertProvider template={AlertTemplate} {...options}>
