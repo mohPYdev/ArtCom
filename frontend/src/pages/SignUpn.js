@@ -15,6 +15,7 @@ function SignUpn(){
     const [sn_password,setSnPassword]=useState('');
     const [sn_confirmpassword,setSnConfirmpassword]=useState('');
     const [sn_address,setSnAddress]=useState('');
+    const [sn_city,setSnCity]=useState('');
     const [sn_postalcode,setSnPostalcode]=useState('');
 
 
@@ -58,6 +59,9 @@ function SignUpn(){
     const handlechangeSnAddress=(event)=>{
         setSnAddress(event.target.value)
     }
+    const handlechangeSnCity=(event)=>{
+        setSnCity(event.target.value)
+    }
     const handlechangeSnPostalcode=(event)=>{
         setSnPostalcode(event.target.value)
     }
@@ -74,6 +78,7 @@ function SignUpn(){
                 <input value={sn_password} onChange={handlechangeSnPassword} type="password" id="sn_password" class="sn_box" name="password" placeholder="رمزعبور" /><br />
                 <input value={sn_confirmpassword} onChange={handlechangeSnConfirmpassword} type="password" id="sn_confirmpassword" class="sn_box" name="confirmpassword" placeholder="تکرار رمزعبور" /><br />
                 <textarea value={sn_address} onChange={handlechangeSnAddress} id="sn_address" class="sn_box" name="address" placeholder="آدرس"></textarea>
+                <input value={sn_city} onChange={handlechangeSnCity} type="text" id="sn_city" class="sn_box" name="city" placeholder="شهر" /><br />
                 <br />
                 <input value={sn_postalcode} onChange={handlechangeSnPostalcode} type="number" id="sn_postalcode" class="sn_box" name="postalcode" placeholder="کد پستی" />
                 <input type="submit" id="sn_singup" value="ثبت نام" />

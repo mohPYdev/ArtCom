@@ -39,6 +39,7 @@
     text-align: right;
     color: #1E2736;
     border:1px solid black;
+    padding-right: 15px;
 }
 #sn_firstname {
     width: 205px;
@@ -58,6 +59,7 @@
     left: 574px;
     top: 376px;
     text-align: left;
+    padding-left: 15px;
 }
 #sn_username {
     width: 347px;
@@ -65,18 +67,23 @@
     left: 556px;
     top: 141px;
     text-align: left;
+    padding-left: 15px;
 }
 #sn_password {
     width: 230px;
     height: 45px;
     left: 909px;
     top: 143px;
+    text-align: left;
+    padding-left: 15px;
 }
 #sn_confirmpassword {
     width: 229px;
     height: 45px;
     left: 845px;
     top: 210px;
+    text-align: left;
+    padding-left: 15px;
 }
 textarea{
     resize: none;
@@ -84,15 +91,21 @@ textarea{
 #sn_address {
     width: 573px;
     left: 423px;
-    top: 518px;
+    top: 589px;
     height: 104px;
 }
 #sn_postalcode {
-    width: 387px;
+    width: 360px;
     height: 45px;
     left: 427px;
-    top: 628px;
+    top: 528px;
     text-align: left;
+}
+#sn_city{
+    left: 799px;
+    top: 528px; 
+    height: 45px;
+    width: 240px;
 }
 #sn_singup {
     width: 106px;
@@ -115,6 +128,7 @@ textarea{
     background-image: url('image/icons8-art-64.png');
     background-repeat: no-repeat;
     background-size: 40px;
+    padding-right: 10px;
 }
 .sn_box::placeholder {
     color: #1E2736;
