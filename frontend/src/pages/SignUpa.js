@@ -1,6 +1,12 @@
 import react,{useState} from 'react';
 import stylesheet from './SignUp/SignUp_Artist.css';
+import {useSignupArtist} from '../hooks/useSignupArtist'
+
+
 function SignUpa(){
+
+    const { signup , error, isPending} = useSignupArtist()
+
     const [sa_firstname,setSaFirstname]=useState('');
     const [sa_lastname,setSaLastname]=useState('');
     const [sa_email,setSaEmail]=useState('');
@@ -11,9 +17,21 @@ function SignUpa(){
     const [sa_selectValue,setSaselectValue]=useState('');
     const [sa_address,setSaAddress]=useState('');
     const [sa_postalcode,setSaPostalcode]=useState('');
-    const handleSaSubmit=(event)=>{
-        event.preventDefault();
+
+
+    // handle submit
+    const handleSaSubmit=(e)=>{
+        e.preventDefault();
+        signup(
+            sa_email,
+            sa_password,
+            sa_username,
+            sa_confirmpassword,
+        )
     }
+
+
+    // setting the states
     const handlechangeSaFirstname=(event)=>{
         setSaFirstname(event.target.value)
     }
