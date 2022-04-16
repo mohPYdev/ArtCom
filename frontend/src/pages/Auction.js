@@ -15,7 +15,8 @@ super(props);
 render(){
     return (
         <>
-        <img src={easel} id="easel"/>
+        <div id="Auction_Page">
+            <img src={easel} id="easel"/>
         <div id="top-grid">
             
         <img src={infoicon} id="info-icon" />
@@ -94,6 +95,8 @@ render(){
        ۱ اثر هنری شماره </div> 
         </div>
        </div>
+        </div>
+        
         </>
     )
 }
