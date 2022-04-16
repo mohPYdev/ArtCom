@@ -12,7 +12,7 @@ export const useSignupArtist = () => {
 
   const signup = async (email, password, username , re_password,
                         city, address, postal_code, first_name, last_name,
-                        description, profession, token ) => {
+                        profession, token ) => {
     setError(null)
     setIsPending(true)
   
@@ -20,7 +20,7 @@ export const useSignupArtist = () => {
       // signup
       const res = await axios.post(SIGNUP_ARTIST_URL, {email, username, password, re_password, 
                                                 first_name, last_name, city, address, postal_code,
-                                                description, profession, token})
+                                                profession, token})
 
       if (!res) {
         throw new Error('Could not complete signup')

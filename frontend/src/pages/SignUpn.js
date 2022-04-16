@@ -2,7 +2,12 @@ import react,{useState} from 'react';
 import stylesheet from './SignUp/SignUp_Normal.css';
 import painter from './SignUp/image/painter-holding-paint-roller-4891279-4077630.png';
 import puzzle from './SignUp/image/puzzle.png';
+import {useSignNormal} from '../hooks/useSignNormal';
+
 function SignUpn(){
+
+    const { signup, isPending, error } = useSignNormal()
+
     const [sn_firstname,setSnFirstname]=useState('');
     const [sn_lastname,setSnLastname]=useState('');
     const [sn_email,setSnEmail]=useState('');
@@ -11,9 +16,27 @@ function SignUpn(){
     const [sn_confirmpassword,setSnConfirmpassword]=useState('');
     const [sn_address,setSnAddress]=useState('');
     const [sn_postalcode,setSnPostalcode]=useState('');
+
+
+    // handle submit
     const handleSnSubmit=(event)=>{
         event.preventDefault();
+        signup(
+            sn_email,
+            sn_password,
+            sn_username,
+            sn_confirmpassword,
+            sn_city,
+            sn_address,
+            sn_postalcode,
+            sn_firstname,
+            sn_lastname
+        );
     }
+
+
+
+    // setting the states
     const handlechangeSnFirstname=(event)=>{
         setSnFirstname(event.target.value)
     }

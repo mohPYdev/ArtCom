@@ -28,7 +28,16 @@ function SignUpa(){
             sa_password,
             sa_username,
             sa_confirmpassword,
+            sa_city,
+            sa_address,
+            sa_postalcode,
+            sa_firstname,
+            sa_lastname,
+            sa_selectValue,
+            sa_invitationcode,
         )
+
+        // redirect to login page
     }
 
 
