@@ -2,11 +2,38 @@ import React from 'react';
 import './profile_theme.css';
 import backPic from '../img/Picture.png';
 import profilePic from '../img/profile--picture.png';
+import { useState } from 'react';
 export default function Profile_Artist() {
   document.body.classList.add('bodyClass_profiless');
   window.onbeforeunload = function (e) {
     document.body.classList.remove('bodyClass_profiless');
   }
+
+  const [ProfilePicture, setProfilePicture] = useState(document.getElementById("profile_picture_profiless").src);
+  const [Bio, setBio] = useState(document.getElementById("Bio_textarea_profiless").value);
+  const [Firstname, setFirstname] = useState(document.getElementById("firstname_text_profiless").value);
+  const [Lastname, setLastname] = useState(document.getElementById("lastname_text_profiless").value);
+  const [Username, setUsername] = useState(document.getElementById("username_text_profiless").value);
+  const [Email, setEmail] = useState(document.getElementById("email_input_profiless").value);
+  const [Phone, setPhone] = useState(document.getElementById("phone_input_profiless").value);
+  const [Address, setAddress] = useState(document.getElementById("Address_textarea_profiless").value);
+  const [PostalCode, setPostalCode] = useState(document.getElementById("postalcode_input_profiless").value);
+  //to do
+  const [InvitationCodes, setInvitationCodes] = useState(document.getElementById("invitation_codes_textarea_profiless").value);
+  //to do: recieve info from back
+  const submit_form = () => {
+    setProfilePicture(document.getElementById("profile_picture_profiless").src);
+    setBio(document.getElementById("Bio_textarea_profiless").value);
+    setFirstname(document.getElementById("firstname_text_profiless").value);
+    setLastname(document.getElementById("lastname_text_profiless").value)
+    setUsername(document.getElementById("username_text_profiless").value)
+    setEmail(document.getElementById("email_input_profiless").value)
+    setPhone(document.getElementById("phone_input_profiless").value)
+    setAddress(document.getElementById("Address_textarea_profiless").value)
+    setPostalCode(document.getElementById("postalcode_input_profiless").value)
+    //to do: send info to back
+  }
+
   return (
     // <!--a div covering whole page-->
     <div className='main_profiless'>
@@ -16,10 +43,10 @@ export default function Profile_Artist() {
             <img src={backPic}/>
         </div>
         
-        <form id="profile-form" action="" method="" autocomplete="" style={{zIndex: 10}}>
+        <form style={{zIndex: 10}}>
             {/* <!--adding profile image--> */}
             <div id='img_prof_profiless'>
-                <img src={profilePic}/>
+                <img id='profile_picture_profiless' src={profilePic}/>
                 <button id='img_prof_btn_profiless' onclick="document.getElementById('getFile').click()"> + </button>
                 <input type='file' id='getFile_profiless' style={{display:'none'}}/>
             </div>
@@ -31,7 +58,7 @@ export default function Profile_Artist() {
             <input type="text" className='common_form_profiless' id='firstname_text_profiless' name="firstname_text" placeholder="نام" />
             {/* <!--adding last name text--> */}
             <input type="text" className='common_form_profiless' id='lastname_text_profiless' name="lastname_text" placeholder="نام خانوادگی" />
-            {/* <!--adding last name text--> */}
+            {/* <!--adding username text--> */}
             <input type="text" className='common_form_profiless' id='username_text_profiless' name="username_text" placeholder="نام کاربری" />
             {/* <!--adding email input--> */}
             <input type="email" className='common_form_profiless' id='email_input_profiless' name="email_input" placeholder="رایانامه" />
@@ -42,7 +69,7 @@ export default function Profile_Artist() {
             {/* <!--adding postal code input--> */}
             <input type="tel" className='common_form_profiless' id='postalcode_input_profiless' name="postalcode_input" placeholder="کد پستی" />
             {/* <!--adding submit button--> */}
-            <input type="submit" className='common_form_profiless' id='submit_input_profiless' name="submit_input" value="اعمال" />
+            <input type="submit" onClick={submit_form} className='common_form_profiless' id='submit_input_profiless' name="submit_input" value="اعمال" />
 
         </form>
 
