@@ -3,7 +3,7 @@ import './profile_theme.css';
 import backPic from '../img/Picture.png';
 import profilePic from '../img/profile--picture.png';
 import {Prompt} from 'react-router';
-
+//test comment
 export default function Profile_Normal() {
   document.body.classList.add('bodyClass_profiless');
   window.onbeforeunload = function (e) {
