@@ -2,11 +2,11 @@ import react,{useState} from 'react';
 import stylesheet from './SignUp/SignUp_Normal.css';
 import painter from './SignUp/image/painter-holding-paint-roller-4891279-4077630.png';
 import puzzle from './SignUp/image/puzzle.png';
-import {useSignNormal} from '../hooks/useSignNormal';
+import {useSignupNormal} from '../hooks/useSignupNormal';
 
 function SignUpn(){
 
-    const { signup, isPending, error } = useSignNormal()
+    const { signup, isPending, error } = useSignupNormal()
 
     const [sn_firstname,setSnFirstname]=useState('');
     const [sn_lastname,setSnLastname]=useState('');
