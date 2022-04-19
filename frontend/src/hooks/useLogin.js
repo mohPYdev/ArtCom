@@ -33,7 +33,7 @@ export const useLogin = () => {
 
 
       // dispatch login action
-      dispatch({ type: 'LOGIN', payload: JSON.parse(res2.data) })
+      dispatch({ type: 'LOGIN', payload: res2.data })
 
       if (!isCancelled) {
         setIsPending(false)
@@ -42,7 +42,7 @@ export const useLogin = () => {
     } 
     catch(err) {
       if (!isCancelled) {
-        setError(err.message)
+        setError(err.response.data['non_field_errors'])
         setIsPending(false)
       }
     }

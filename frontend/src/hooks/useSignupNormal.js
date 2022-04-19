@@ -30,7 +30,7 @@ export const useSignupNormal = () => {
     } 
     catch(err) {
       if (!isCancelled) {
-        setError(err.message)
+        setError(Object.values(err.response.data)[0][0])
         setIsPending(false)
       }
     }
