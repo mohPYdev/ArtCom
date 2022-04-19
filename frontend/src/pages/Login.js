@@ -97,8 +97,12 @@ componentDidUpdate(){
 
 
         <div className="login--header">
-            <h1>ArtCom</h1>
+            <h1>ArtCom</h1>  <h5>آرتکام</h5>  
+            
         </div>
+        {/* <div className='login--header--sub'>
+          
+        </div> */}
             
        <div id="pizzaUp">
            <p id="pizzaUp--context"> اگه توی آرتکام حساب نداری همین الان وقتشه ثبت نام کنی

@@ -33,9 +33,9 @@ function OverflowLogin(){
         <label  id="login--password-label" className="item" >رمز عبور</label>
       
       
-        { !isPending && <button id="btn-login-form" className="item" type>ورود </button>}
-        {isPending && <button disabled className='btn'>Loading ...</button>}
-        {error && <div className='error'>{error}</div>}
+        { <button id="btn-login-form" className="item" type>ورود </button>}
+        {/* {isPending && <button disabled className='btn'>Loading ...</button>} */}
+        {/* {error && <div className='error'>{error}</div>} */}
         <Link to="/forgotpassword" id="forget-pass-btn" > فراموشی رمز عبور </Link>
       </form>
     </>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useAuthContext } from './useAuthContext'
 import axios from 'axios'
-
+import { useAlert } from 'react-alert'
 export const useLogin = () => {
   const [isCancelled, setIsCancelled] = useState(false)
   const [error, setError] = useState(null)
@@ -10,7 +10,7 @@ export const useLogin = () => {
 
   const LOGIN_URL = 'http://localhost:8000/auth/token/login/'
   const ME_URL = 'http://localhost:8000/auth/users/me/'
-
+  const alert = useAlert();
   const login = async (username, password) => {
     setError(null)
     setIsPending(true)
@@ -33,17 +33,21 @@ export const useLogin = () => {
 
 
       // dispatch login action
-      dispatch({ type: 'LOGIN', payload: JSON.parse(res2.data) })
+      dispatch({ type: 'LOGIN', payload: res2.data })
+     
 
       if (!isCancelled) {
         setIsPending(false)
         setError(null)
+        alert.success('شما با موفقیت وارد سایت شدید ')
+
       }
     } 
     catch(err) {
       if (!isCancelled) {
         setError(err.message)
         setIsPending(false)
+        alert.error('رمز عبور یا نام کاربری اشتباه می باشد ')
       }
     }
   }
