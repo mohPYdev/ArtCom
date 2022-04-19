@@ -22,7 +22,7 @@ function Auction () {
             + roomName
             + '/'
         );
-        
+
     const cs = useRef(chatSocket);
 
 
@@ -50,7 +50,6 @@ function Auction () {
     return (
         <>
             <div id="Auction_Page">
-                <button onClick={handleclick} style={{color:"red"}}>hello test</button>
                 <img src={easel} id="easel"/>
                 <div id="top-grid"> 
                     <img src={infoicon} id="info-icon" />
@@ -73,26 +72,26 @@ function Auction () {
                     <img src={moneyicon} id="money-icon" /> 
                     <div id="percent-box">
                         
-                    <a href="#">
+                    <button onClick={handleclick}>
                     <div className="percent">
                         + 5 %
                     </div>
-                    </a>  
-                    <a href="#">
+                    </button>  
+                    <button onClick={handleclick}>
                     <div className="percent">
                         + 10 %
                     </div>
-                    </a>
-                    <a href="#">
+                    </button>
+                    <button onClick={handleclick}>
                     <div className="percent">
                         + 15 %
                     </div>
-                    </a>
-                    <a href="#">
+                    </button>
+                    <button onClick={handleclick}>
                     <div className="percent">
                         + 20 %
                     </div>
-                    </a>
+                    </button>
                     </div>  
                     
                     </div>
