@@ -8,7 +8,8 @@
     background-position: 561px 235px,414px 2px,117px -63px,572px 451px,360px 451px ,784px 451px;
     position: absolute;
     background-color: #C2CCC1;
-    overflow: auto;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 #sn_image {
     position: absolute;

@@ -21,20 +21,6 @@ const options = {
   transition: transitions.FADE
 }
 
-function useImperativeDisableScroll({ element, disabled }) {
-  useEffect(() => {
-      if (!element) {
-          return
-      }
-
-      element.style.overflowY = disabled ? 'hidden' : 'scroll'
-      element.style.overflowX = disabled ? 'hidden' : 'scroll'
-      return () => {
-          element.style.overflowY = 'scroll'
-          element.style.overflowX = 'scroll'
-      }
-  }, [disabled])
-}
 
 
 
@@ -60,9 +46,7 @@ function App() {
       </Routes>
     </BrowserRouter>
      </AlertProvider>  
-     {
-    useImperativeDisableScroll({ element: document.body, disabled: true })
-    }
+     
     </>
   );
 }
