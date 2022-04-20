@@ -3,23 +3,20 @@ import brush from '../img/brush.svg';
 import { Link } from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import {useLogin} from '../hooks/useLogin'
+import {useNavigate} from 'react-router-dom'
 function OverflowLogin(){
 
   const [username , setUsername] = useState("");
   const [password, setPassword] = useState("");
   const {login, isPending, error } = useLogin()
-  const [forget , setForget] = useState("");
-  
-const loadHome =()=>{
-  login(username, password)
-  
-}
+  const navigate = useNavigate()
+
   const handleSubmit = (e) => {
-   e.preventDefault()
-   console.log(1);
-  //  <Link to="/forgotpassword" className='forget-link'>ارسال رمزعبور به ایمیل ثبت شده با این نام کاربری</Link>
-
-
+    e.preventDefault()
+    login(username, password)
+    if (!error){
+      navigate('/home')
+    }
   }
 
   useEffect(() => {
@@ -41,10 +38,9 @@ const loadHome =()=>{
         <label  id="login--password-label" className="item" >رمز عبور</label>
       
       
-        <button id="btn-login-form" className="item" type="button" onClick={loadHome}>ورود </button>
+        <button id="btn-login-form" className="item" type="submit" onClick={handleSubmit}>ورود </button>
         {/* {isPending && <button disabled className='btn'>Loading ...</button>} */}
-        {/* {error && <div className='error'>{error}</div>} */}
-        <button  id="forget-pass-btn" type="submit" > فراموشی رمز عبور </button>
+        <Link to={'/forgetPassword'}  id="forget-pass-btn"> فراموشی رمز عبور </Link>
 
       </form>
     </>
