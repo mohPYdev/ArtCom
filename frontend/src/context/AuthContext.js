@@ -32,9 +32,10 @@ export const AuthContextProvider = ({ children }) => {
       // add headers
       axios.defaults.headers.common['Authorization'] = `Token ${JSON.parse(token)}`
     }
+    console.log('AuthContext state:', state)
   }, [])
 
-  console.log('AuthContext state:', state)
+  
   
   return (
     <AuthContext.Provider value={{ ...state, dispatch }}>

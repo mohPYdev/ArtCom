@@ -6,6 +6,7 @@
     top: 0;
     left: 0;
     z-index: 100;
+    overflow-y: hidden;
 }
 
 #section-login{
@@ -39,6 +40,25 @@ top: 0;
 left: 50%;
 transform: translate(-50%,0);
 
+}
+
+.login--header h5{
+    font-family: vazir;
+    letter-spacing: 0;
+    font-size: 6rem;
+    text-align: right;
+    margin-right: 4rem;
+    margin-top: -3rem;
+}
+.login--header--sub{
+    font-family: vazir;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%,0);
+    color: #E9DAD3;
+z-index: 0;
+text-align: center;
 }
 .login--header h1{
     text-align: center;

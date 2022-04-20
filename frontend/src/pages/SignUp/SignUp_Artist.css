@@ -7,7 +7,8 @@
     background-size: 427px, 393px,691px, 503px, 498px,427px,427px;
     background-position: 137px -7px, 1206px 70px, -48px -48px, 991px 601px, 613px 602px,565px -7px, 994px -7px;
     background-color: #E9DAD3;
-    overflow: auto;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 .sa_box {
     width: 387px;

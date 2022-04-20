@@ -3,17 +3,23 @@ import brush from '../img/brush.svg';
 import { Link } from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import {useLogin} from '../hooks/useLogin'
-
 function OverflowLogin(){
 
   const [username , setUsername] = useState("");
   const [password, setPassword] = useState("");
   const {login, isPending, error } = useLogin()
+  const [forget , setForget] = useState("");
   
-
+const loadHome =()=>{
+  login(username, password)
+  
+}
   const handleSubmit = (e) => {
-    e.preventDefault()
-    login(username, password)
+   e.preventDefault()
+   console.log(1);
+  //  <Link to="/forgotpassword" className='forget-link'>ارسال رمزعبور به ایمیل ثبت شده با این نام کاربری</Link>
+
+
   }
 
   useEffect(() => {
@@ -28,16 +34,18 @@ function OverflowLogin(){
       <div className="login--container">
         <img src={brush} className="brush"/>
       </div>
-      <form id="login--form" onSubmit={handleSubmit}>
-        <input type="text" id="login--username" name="username" value={username} className="item" onChange={(e)=>setUsername(e.target.value  )} />
+      <form id="login--form" onSubmit={handleSubmit} >
+        <input type="text" id="login--username" name="username" value={username} className="item" onChange={(e)=>setUsername(e.target.value  )} required/>
         <label  id="login--username-label" className="item">نام کاربری</label>
-        <input type="password" id="login--password" name="password" value={password}  className="item" onChange={(e)=>setPassword( e.target.value)}/>
+        <input type="password" id="login--password" name="password" value={password}  className="item" onChange={(e)=>setPassword( e.target.value)} />
         <label  id="login--password-label" className="item" >رمز عبور</label>
       
       
-        { !isPending && <button id="btn-login-form" className="item" type>ورود </button>}
-        {isPending && <button disabled className='btn'>Loading ...</button>}
-        <Link to="/forgotpassword" id="forget-pass-btn" > فراموشی رمز عبور </Link>
+        <button id="btn-login-form" className="item" type="button" onClick={loadHome}>ورود </button>
+        {/* {isPending && <button disabled className='btn'>Loading ...</button>} */}
+        {/* {error && <div className='error'>{error}</div>} */}
+        <button  id="forget-pass-btn" type="submit" > فراموشی رمز عبور </button>
+
       </form>
     </>
   )

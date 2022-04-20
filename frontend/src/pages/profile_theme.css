@@ -1,32 +1,28 @@
 * 
 {
-    box-sizing: border-box;
-    /* bad az inke be container padding dadim ino mizarim 
-      ta fasele nagire safhe */
-    color: #29354A;
     margin: 0;
     padding: 0;
     font-family: 'B Yekan';
 }
-.bodyClass
+.bodyClass_profiless
 {
     background-color: #29354A !important;
     margin: 0px;
 }
-.main
+.main_profiless
 {
     overflow-x: hidden;
 }
-#img_back
+#img_back_profiless
 {
     display: flex;
     justify-content: center;
 }
-#img_back img
+#img_back_profiless img
 {
     width: 995px;
 }
-#img_back
+#img_back_profiless
 {
     transform: rotate(0.4deg);
     -webkit-transform: rotate(0.4deg);
@@ -34,14 +30,14 @@
     -o-transform: rotate(0.4);
     -ms-transform: rotate(0.4);
 }
-#img_prof
+#img_prof_profiless
 {
     position:fixed;
     margin-top: -650px;
     margin-left: 20px;
     z-index: 5;
 }
-#img_prof_btn
+#img_prof_btn_profiless
 {
     border-radius: 50%;
     width:30px;
@@ -51,7 +47,7 @@
     z-index: 3;
     position: fixed;
 }
-#Bio_textarea
+#Bio_textarea_profiless
 {
     background-color: #E9DAD3;
     resize: none;
@@ -67,8 +63,9 @@
     width: 165px;
     height: 310px;
 }
-.common_form
+.common_form_profiless
 {
+    box-sizing: border-box;
     float:left;
     margin-left: 420px;
     width:150px;
@@ -82,35 +79,35 @@
     direction: rtl;
     padding: 10px;
 }
-#firstname_text
+#firstname_text_profiless
 {
     margin-top:-580px;
     margin-left:670px;
 }
-#lastname_text
+#lastname_text_profiless
 {
     margin-top:-580px;
     width: 240px;
 }
-#username_text
+#username_text_profiless
 {
     margin-top:-520px;
     width: 400px;
     text-align: center;
 }
-#email_input
+#email_input_profiless
 {
     margin-top:-460px;
     width: 400px;
     text-align: center;
 }
-#phone_input
+#phone_input_profiless
 {
     margin-top:-400px;
     width: 400px;
     text-align: center;
 }
-#Address_textarea
+#Address_textarea_profiless
 {
     width:300px;
     height:180px;
@@ -127,13 +124,13 @@
     direction: rtl;
     padding: 5px;
 }
-#postalcode_input
+#postalcode_input_profiless
 {
     margin-top:-160px;
     width: 400px;
     text-align: center;
 }
-#submit_input
+#submit_input_profiless
 {
     margin-left: 600px;;
     margin-top:-100px;
@@ -148,11 +145,11 @@
     letter-spacing: 1;
     padding:0px;
     text-align: center;
-
+    font-family: vazir;
     background-color: #29354A ;
     color: white;
 }
-#invitation_codes_textarea
+#invitation_codes_textarea_profiless
 {
     width:180px;
     height:330px;
