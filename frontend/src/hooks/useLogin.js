@@ -34,7 +34,6 @@ export const useLogin = () => {
 
       // dispatch login action
       dispatch({ type: 'LOGIN', payload: res2.data })
-     
 
       if (!isCancelled) {
         setIsPending(false)
@@ -45,7 +44,7 @@ export const useLogin = () => {
     } 
     catch(err) {
       if (!isCancelled) {
-        setError(err.message)
+        setError(err.response.data['non_field_errors'])
         setIsPending(false)
         alert.error('رمز عبور یا نام کاربری اشتباه می باشد ')
       }

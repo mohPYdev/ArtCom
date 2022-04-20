@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useAuthContext } from './useAuthContext'
 import axios from 'axios'
 
-export const useSignup = () => {
+export const useSignupNormal = () => {
   const [isCancelled, setIsCancelled] = useState(false)
   const [error, setError] = useState(null)
   const [isPending, setIsPending] = useState(false)
@@ -30,7 +30,7 @@ export const useSignup = () => {
     } 
     catch(err) {
       if (!isCancelled) {
-        setError(err.message)
+        setError(Object.values(err.response.data)[0][0])
         setIsPending(false)
       }
     }

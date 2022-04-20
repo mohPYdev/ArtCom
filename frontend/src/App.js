@@ -38,7 +38,7 @@ function App() {
       
        <Route path="/signupn" element={<SignUpn/> }/>
           <Route path="/signupa" element={ <SignUpa/>}/>
-          <Route path="/auction" element={<Auction />} />
+          <Route path="/auction/:id" element={<Auction />} />
           <Route path="/post" element={<Post />} />
           <Route path="/forgotpassword" element={<ForgotPass />} />
           <Route path="/EmailActivation" element={<EmailActivation />} />

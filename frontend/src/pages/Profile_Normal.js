@@ -5,6 +5,7 @@ import profilePic from '../img/profile--picture.png';
 import { useState } from 'react';
 import {Prompt} from 'react-router';
 
+
 export default function Profile_Normal() {
   document.body.classList.add('bodyClass_profiless');
   window.onbeforeunload = function (e) {

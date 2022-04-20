@@ -26,6 +26,7 @@
     align-items: center;
     text-align: right;
     color: #FFFEFB;
+    padding-right: 15px;
 }
 #sa_firstname {
     left: 155px;
@@ -64,16 +65,22 @@
     font-size: 25px;
     width: 124px;
     text-align: center;
+    padding-right: 15px;
 }
 #sa_selection {
     left: 583px;
     top: 201px;
     width: 248px;
+    padding-right: 15px;
 }
 #sa_address {
     left: 1014px;
     top: 23px;
-    height: 162px;
+    height: 120px;
+}
+#sa_city{
+    top: 149px;
+    left: 1014px;
 }
 #sa_postalcode {
     left: 1013px;
@@ -101,6 +108,7 @@
     background-image: url('image/icons8-art-64.png');
     background-repeat: no-repeat;
     background-size: 40px;
+    padding-right: 10px;
 }
 .sa_box::placeholder {
     color: rgba(215, 211, 211, 0.82);

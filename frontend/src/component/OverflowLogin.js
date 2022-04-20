@@ -1,13 +1,10 @@
 import './OverflowLogin.css'
 import brush from '../img/brush.svg';
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { useAlert } from 'react-alert'
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {useLogin} from '../hooks/useLogin'
 function OverflowLogin(){
 
-  const alert = useAlert();
   const [username , setUsername] = useState("");
   const [password, setPassword] = useState("");
   const {login, isPending, error } = useLogin()
@@ -25,7 +22,12 @@ const loadHome =()=>{
 
   }
 
-  
+  useEffect(() => {
+    if(error){
+      setPassword("")
+      setUsername("")
+      }
+  }, [error])
 
   return(
     <>
@@ -43,6 +45,7 @@ const loadHome =()=>{
         {/* {isPending && <button disabled className='btn'>Loading ...</button>} */}
         {/* {error && <div className='error'>{error}</div>} */}
         <button  id="forget-pass-btn" type="submit" > فراموشی رمز عبور </button>
+
       </form>
     </>
   )
