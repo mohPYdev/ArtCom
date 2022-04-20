@@ -13,6 +13,7 @@ function SignUpa(){
     const [sa_postalcode,setSaPostalcode]=useState('');
     const handleSaSubmit=(event)=>{
         event.preventDefault();
+       
     }
     const handlechangeSaFirstname=(event)=>{
         setSaFirstname(event.target.value)
