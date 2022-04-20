@@ -13,7 +13,7 @@ function OverflowLogin() {
   const loadHome = () => {
     login(username, password);
   };
-  const handleSubmit = (e) => {
+  const forgetPass = (e) => {
     e.preventDefault();
     console.log(1);
     //  <Link to="/forgotpassword" className='forget-link'>ارسال رمزعبور به ایمیل ثبت شده با این نام کاربری</Link>
@@ -32,7 +32,7 @@ function OverflowLogin() {
       <div className="login--container">
         <img src={brush} className="brush" />
       </div>
-      <form id="login--form" onSubmit={handleSubmit}>
+      <div id="login--form">
         <input
           type="text"
           id="login--username"
@@ -40,7 +40,6 @@ function OverflowLogin() {
           value={username}
           className="item"
           onChange={(e) => setUsername(e.target.value)}
-          required
         />
         <label id="login--username-label" className="item">
           نام کاربری
@@ -67,11 +66,11 @@ function OverflowLogin() {
         </button>
         {/* {isPending && <button disabled className='btn'>Loading ...</button>} */}
         {/* {error && <div className='error'>{error}</div>} */}
-        <button id="forget-pass-btn" type="submit">
+        <button id="forget-pass-btn" type="button" onClick={forgetPass}>
           {" "}
           فراموشی رمز عبور{" "}
         </button>
-      </form>
+      </div>
     </>
   );
 }
