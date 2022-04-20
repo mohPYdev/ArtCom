@@ -3,7 +3,9 @@ import ps from './profile_theme.module.css';
 import backPic from '../img/Picture.png';
 import profilePic from '../img/profile--picture.png';
 
+
 export default function Profile_Normal() {
+
   document.body.classList.add(ps.bodyClass)
   return (
     <div>

@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'channels',
     'django.contrib.staticfiles',  # required for serving swagger ui's css/js files
     "corsheaders",
     'rest_framework',
@@ -82,6 +83,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'app.wsgi.application'
+# Channels
+ASGI_APPLICATION = 'app.asgi.application'
 
 
 REST_FRAMEWORK = {
@@ -109,6 +112,15 @@ DJOSER = {
         'user_update': 'djoser.serializers.UserUpdateSerializer',
         'user_delete': 'djoser.serializers.UserDeleteSerializer',
     }
+}
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('redis', 6379)],
+        },
+    },
 }
 
 # Database
