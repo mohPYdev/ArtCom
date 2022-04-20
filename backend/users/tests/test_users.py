@@ -1,3 +1,4 @@
+import cmd
 import email
 from django.test import TestCase
 from django.urls import reverse
@@ -11,13 +12,10 @@ from django.contrib.auth import get_user_model
 CREATE_USER_URL = reverse('users:user-list')
 
 class PublicUserApiTests(TestCase):
-    client = None
-
+    
     def setUp(self) -> None:
         self.client = APIClient()
-
-    def test_valid_user_creation(self):
-        reques_body =   {
+        self.reques_body =   {
             "email": "user@example.com",
             "username": "string",
             "password": "alaki1234",
@@ -29,12 +27,23 @@ class PublicUserApiTests(TestCase):
             "re_password": "alaki1234"
         }
 
-        response = self.client.post(CREATE_USER_URL, reques_body)
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+    def test_valid_user_creation(self):
+        response = self.client.post(CREATE_USER_URL, self.reques_body)
+        self.assertEqual(status.HTTP_201_CREATED, response.status_code)
 
-        x = response.json()
-        del x["image"]
-        user = get_user_model().objects.get(**x)
+        body = response.json()
+        del body["image"]
+        user = get_user_model().objects.get(**body)
 
-        self.assertEqual(reques_body['address'], user.address)
+        self.assertEqual(self.reques_body['address'], user.address)
         self.assertFalse(hasattr(user, 're_password'))
+        self.creation_user_twice()
+
+    def creation_user_twice(self):
+        response = self.client.post(CREATE_USER_URL, self.reques_body)
+        self.assertEqual(400, response.status_code)
+
+    def test_promition_denied(self):
+        self.assertRaises(Exception, self.client.get, path = CREATE_USER_URL)
+        #TODO check the status code 403
+
