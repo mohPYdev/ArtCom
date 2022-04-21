@@ -87,7 +87,7 @@
 {
     box-sizing: border-box;
     float:left;
-    margin-left: 420px;
+    margin-left: 510px;
     width:150px;
     height:40px;
     font-size: 15px;
@@ -102,7 +102,7 @@
 #firstname_text_profiless
 {
     margin-top:-580px;
-    margin-left:670px;
+    margin-left:760px;
 }
 #lastname_text_profiless
 {
@@ -136,7 +136,7 @@
     resize: none;
     margin-top: -340px;
     top: -175px;
-    margin-left: 420px;
+    margin-left: 510px;
     position:relative;
     border-radius: 5px;
     z-index: 2;
@@ -152,7 +152,7 @@
 }
 #submit_input_profiless
 {
-    margin-left: 600px;;
+    margin-left: 690px;;
     margin-top:-100px;
     width: 80px;
     height: 30px;
@@ -177,7 +177,7 @@
     background-color: #E9DAD3;
     resize: none;
     margin-top: -515px;
-    margin-left: 1150px;
+    margin-left: 1240px;
     position:fixed;
     border-radius: 5px;
     z-index: 5;
