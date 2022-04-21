@@ -198,6 +198,9 @@
     border-radius: 15px;
 }
 
+.bannera img{
+    margin: auto;
+}
 .bannere{
     grid-column: 3/4;
     grid-row: 1;
@@ -207,6 +210,9 @@
     text-align: center;
     padding: 20px;
     border-radius: 15px;
+}
+.bannere img{
+    margin: auto;
 }
 
 #status{
