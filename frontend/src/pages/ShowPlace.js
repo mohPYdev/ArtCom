@@ -110,12 +110,12 @@ export default function ShowPlace() {
           خروج
         </button>
         <div className={style.livebox}>
-        <img src={liveeye} alt="" id={style.liveimg} />
-        <input id={style.livecount} value={livecount} />
-</div>
-<div className={style.seenbox}>
-        <img src={seeneye} alt="" id={style.seenimg} />
-        <input id={style.seencount} value={seencount} />
+          <img src={liveeye} alt="" id={style.liveimg} />
+          <input id={style.livecount} value={livecount} />
+        </div>
+        <div className={style.seenbox}>
+          <img src={seeneye} alt="" id={style.seenimg} />
+          <input id={style.seencount} value={seencount} />
         </div>
       </div>
     </div>

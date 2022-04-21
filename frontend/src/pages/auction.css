@@ -1,50 +1,59 @@
-#Auction_Page{
+#Auction_Page {
     background-color: #1E2736;
     overflow-y: hidden;
     overflow-x: hidden;
 }
+
 .clearfix {
     overflow: auto;
-  }
+}
+
 .clearfix::after {
     content: "";
     clear: both;
     display: table;
-  }
-  a{
+}
+
+a {
     text-decoration: none;
-  }
-#easel{
+}
+
+#easel {
     padding-top: 12rem;
     width: 100vw;
     height: 100vh;
 }
-#top-grid{
+
+#top-grid {
     display: grid;
-    grid-template-columns :  1fr 1fr 1fr ;
+    grid-template-columns: 1fr 1fr 1fr;
     position: absolute;
     top: 1rem;
     width: 100vw;
     justify-items: center;
 
 }
-#info-icon{
-    width:8.4rem;
-    height:6.7rem;
+
+#info-icon {
+    width: 8.4rem;
+    height: 6.7rem;
 
 }
-#number-icon{
+
+#number-icon {
     color: #E9DAD3;
-    width:8.4rem;
-    height:6.7rem;
+    width: 8.4rem;
+    height: 6.7rem;
 }
-#profile-icon{
-    width:8.4rem;
-    height:6.7rem;
+
+#profile-icon {
+    width: 8.4rem;
+    height: 6.7rem;
 }
-#timer-box{
+
+#timer-box {
     display: grid;
-    grid-template-columns :  1fr 4fr 1fr ;
+    grid-template-columns: 1fr 4fr 1fr;
     position: absolute;
     top: 2rem;
     left: 50%;
@@ -53,63 +62,73 @@
     height: 9rem;
     transform: translateX(-50%);
 }
-#timerhalf{
+
+#timerhalf {
     align-self: end;
 }
-#dot{
-    
+
+#dot {
+
     font-size: 6rem;
     color: #E9DAD3;
     letter-spacing: 2rem;
     text-align: center;
     align-self: center;
 }
-#timerfull{
+
+#timerfull {
     align-self: end;
 }
-#center-grid{
+
+#center-grid {
     display: grid;
-    grid-template-columns :  1fr  1fr 1fr ;
+    grid-template-columns: 1fr 1fr 1fr;
     position: absolute;
     top: 20%;
     width: 100vw;
     height: 50vh;
     justify-items: center;
 }
-#money-box{
+
+#money-box {
     align-self: start;
     display: grid;
-    grid-template-rows :  1fr  1fr  ;
+    grid-template-rows: 1fr 1fr;
     justify-items: center;
-    align-items:center;
+    align-items: center;
 }
-#money-icon{
-    width:8.4rem;
-    height:6.7rem;
+
+#money-icon {
+    width: 8.4rem;
+    height: 6.7rem;
 }
-#percent-box{
+
+#percent-box {
     display: grid;
-    grid-template-columns :  1fr  1fr  ;
-    grid-template-rows :  1fr  1fr  ;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     height: 20rem;
     width: 20rem;
     justify-items: center;
     align-items: start;
 }
-.percent{
+
+.percent {
     font-weight: 700;
     font-size: 2.5rem;
     color: #E9DAD3;
     border: 2px solid #E9DAD3;
-  border-radius: 50%;
-  padding: .5rem;
-  
+    border-radius: 50%;
+    padding: .5rem;
+
 }
-#price-box{
+
+#price-box {
     align-self: center;
 
 }
-.price{
+
+.price {
     text-align: center;
     background-color: #E9DAD3;
     border-radius: 50%;
@@ -118,41 +137,48 @@
     font-weight: 700;
     margin: 0;
 }
-.prev-price{
+
+.prev-price {
     transform: scale(0.85);
     opacity: 0.65;
 }
-.prev-prev-price{
+
+.prev-prev-price {
     transform: scale(0.65);
     opacity: 0.45;
     margin-top: -1rem;
 }
-#bottom-grid{
+
+#bottom-grid {
     display: grid;
-    grid-template-columns :  1fr  1fr 1fr ;
+    grid-template-columns: 1fr 1fr 1fr;
     position: absolute;
     top: 85%;
     width: 100vw;
     justify-items: center;
 }
-#number-box{
+
+#number-box {
     font-weight: 700;
     font-size: 2.5rem;
     color: #E9DAD3;
     align-self: center;
 }
-#number-text{
+
+#number-text {
     float: right;
 }
-#view-icon{
-    width:4.2rem;
-    height:3.3rem;
+
+#view-icon {
+    width: 4.2rem;
+    height: 3.3rem;
 }
-#view-box{
-}
-#view-number{
-float: left;
-font-weight: 700;
+
+#view-box {}
+
+#view-number {
+    float: left;
+    font-weight: 700;
     font-size: 2.5rem;
     color: #E9DAD3;
     padding-right: 1rem;

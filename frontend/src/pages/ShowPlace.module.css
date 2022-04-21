@@ -7,10 +7,10 @@
     overflow-y: hidden;
 }
 
-.grid{
+.grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr ;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     align-content: center;
     height: 100vh;
     width: 100vw;
@@ -19,7 +19,7 @@
     left: 0;
 }
 
-.btn{
+.btn {
     background-color: #E9DAD3;
     padding: 0.5%;
     padding-left: 30px;
@@ -37,13 +37,13 @@
     cursor: pointer;
 }
 
-.btn:hover{
+.btn:hover {
     box-shadow: 0 0.25rem 0.25rem #e74c3c;
     transform: scale(1.1);
     transition: all 0.2s;
 }
 
-.container{
+.container {
     background-size: contain;
     background-repeat: no-repeat;
     border: 60px dashed transparent;
@@ -55,7 +55,7 @@
 }
 
 
-#profile{
+#profile {
     grid-row: 2/3;
     grid-column: 1;
     align-self: center;
@@ -64,7 +64,7 @@
     cursor: pointer;
 }
 
-#about{
+#about {
     margin: 5rem;
     color: white;
     font-family: 'B Yekan';
@@ -89,17 +89,17 @@
     resize: none;
 }
 
-#title{
+#title {
     color: white;
     font-family: 'B Yekan';
     font-style: normal;
-    font-size:  32px;
+    font-size: 32px;
     font-weight: 100;
     text-align: center;
     direction: rtl;
 }
 
-.Name{
+.Name {
     grid-row: 1;
     grid-column: 5;
     top: 20px;
@@ -108,7 +108,7 @@
     justify-self: center;
 }
 
-.Price{
+.Price {
     grid-row: 2;
     grid-column: 5;
     top: 158px;
@@ -117,7 +117,7 @@
     justify-self: center;
 }
 
-.Date{
+.Date {
     grid-row: 3;
     grid-column: 5;
     top: 321px;
@@ -126,7 +126,7 @@
     justify-self: center;
 }
 
-#back{
+#back {
     width: 118px;
     grid-row: 4;
     grid-column: 1;
@@ -135,7 +135,7 @@
     cursor: pointer;
 }
 
-#next{
+#next {
     width: 118px;
     grid-row: 4;
     grid-column: 5;
@@ -146,11 +146,11 @@
     cursor: pointer;
 }
 
-#seencount{
+#seencount {
     color: white;
     font-family: 'B Yekan';
     font-style: normal;
-    font-size:  20px;
+    font-size: 20px;
     font-weight: 100;
     position: fixed;
     bottom: 5px;
@@ -160,18 +160,18 @@
     pointer-events: none;
 }
 
-#seenimg{
+#seenimg {
     position: fixed;
     bottom: 10px;
     left: 97%;
     width: 20px;
 }
 
-#livecount{
+#livecount {
     color: white;
     font-family: 'B Yekan';
     font-style: normal;
-    font-size:  20px;
+    font-size: 20px;
     font-weight: 100;
     position: fixed;
     bottom: 5px;
@@ -181,41 +181,42 @@
     pointer-events: none;
 }
 
-#liveimg{
+#liveimg {
     position: fixed;
     bottom: 10px;
     left: 1%;
     width: 20px;
 }
 
-#exit{
+#exit {
 
     grid-row: 1;
     grid-column: 1;
     align-self: center;
     justify-self: center;
 }
-#buy{
+
+#buy {
     grid-row: 5;
     grid-column: 2;
     align-self: center;
     justify-self: center;
 }
 
-#play{
+#play {
     grid-row: 5;
     grid-column: 4;
     align-self: center;
     justify-self: center;
 }
 
-.values{
+.values {
     background-color: transparent;
     border: none;
     pointer-events: none;
 }
 
-.likecontain{
+.likecontain {
     grid-row: 5;
     grid-column: 3;
     align-self: center;
@@ -224,10 +225,10 @@
     display: grid;
     grid-column: 1fr 1fr 1fr;
     grid-row: 1fr 1fr;
-    
+
 }
 
-.like{
+.like {
     border-radius: 20px;
     padding: 5px;
     align-self: center;
@@ -240,12 +241,12 @@
     cursor: pointer;
 }
 
-.like:hover{
+.like:hover {
     background-color: hsl(0, 64%, 48%);
     outline: 3px dashed white;
 }
 
-.liked{
+.liked {
     background-color: hsl(0, 64%, 48%);
     outline: 3px dashed white;
     border-radius: 20px;
@@ -260,12 +261,12 @@
     cursor: pointer;
 }
 
-#count{
+#count {
     text-align: center;
     color: white;
     font-family: 'B Yekan';
     font-style: normal;
-    font-size:  24px;
+    font-size: 24px;
     font-weight: 100;
     align-self: center;
     justify-self: center;
@@ -276,19 +277,21 @@
     grid-column: 2;
     align-self: center;
     justify-self: center;
-    
-}
-.livebox{
-grid-row: 5;
-grid-column: 1;
-display: grid;
-grid-row: 1fr 1fr;
 
 }
-.seenbox{
+
+.livebox {
+    grid-row: 5;
+    grid-column: 1;
+    display: grid;
+    grid-row: 1fr 1fr;
+
+}
+
+.seenbox {
     grid-row: 5;
     grid-column: 5;
     display: grid;
     grid-row: 1fr 1fr;
-    
+
 }

@@ -1,64 +1,63 @@
-* 
-{
+* {
     margin: 0;
     padding: 0;
     font-family: 'B Yekan';
 }
-.bodyClass_profiless
-{
+
+.bodyClass_profiless {
     background-color: #29354A !important;
     margin: 0px;
 }
-.main_profiless
-{
+
+.main_profiless {
     overflow-x: hidden;
 }
-#img_back_profiless
-{
+
+#img_back_profiless {
     display: flex;
     justify-content: center;
 }
-#img_back_profiless img
-{
+
+#img_back_profiless img {
     width: 995px;
 }
-#img_back_profiless
-{
+
+#img_back_profiless {
     transform: rotate(0.4deg);
     -webkit-transform: rotate(0.4deg);
     -moz-transform: rotate(0.4);
     -o-transform: rotate(0.4);
     -ms-transform: rotate(0.4);
 }
-#img_prof_profiless
-{
-    position:fixed;
+
+#img_prof_profiless {
+    position: fixed;
     margin-top: -650px;
     margin-left: 20px;
     z-index: 5;
 }
-#profile_image_profiless
-{
+
+#profile_image_profiless {
     width: 144px;
     height: 138px;
     border-radius: 100px;
 }
-#img_prof_btn_profiless
-{
+
+#img_prof_btn_profiless {
     border-radius: 50%;
-    width:30px;
-    height:30px;
+    width: 30px;
+    height: 30px;
     margin-left: -45px;
     margin-top: 110px;
     z-index: 3;
     position: fixed;
     display: none;
 }
-#img_prof_label_profiless
-{
+
+#img_prof_label_profiless {
     border-radius: 50%;
-    width:30px;
-    height:30px;
+    width: 30px;
+    height: 30px;
     margin-left: 92px;
     margin-top: -26px;
     z-index: 3;
@@ -67,14 +66,14 @@
     background-color: #FFFEFB;
     text-align: center;
 }
-#Bio_textarea_profiless
-{
+
+#Bio_textarea_profiless {
     background-color: #E9DAD3;
     resize: none;
     margin-top: -515px;
     margin-left: 15px;
     border-style: dashed;
-    position:fixed;
+    position: fixed;
     border-radius: 5px;
     text-align: right;
     direction: rtl;
@@ -83,13 +82,13 @@
     width: 165px;
     height: 310px;
 }
-.common_form_profiless
-{
+
+.common_form_profiless {
     box-sizing: border-box;
-    float:left;
+    float: left;
     margin-left: 510px;
-    width:150px;
-    height:40px;
+    width: 150px;
+    height: 40px;
     font-size: 15px;
     background-color: #E9DAD3;
     position: relative;
@@ -99,61 +98,62 @@
     direction: rtl;
     padding: 10px;
 }
-#firstname_text_profiless
-{
-    margin-top:-580px;
-    margin-left:760px;
+
+#firstname_text_profiless {
+    margin-top: -580px;
+    margin-left: 760px;
 }
-#lastname_text_profiless
-{
-    margin-top:-580px;
+
+#lastname_text_profiless {
+    margin-top: -580px;
     width: 240px;
 }
-#username_text_profiless
-{
-    margin-top:-520px;
+
+#username_text_profiless {
+    margin-top: -520px;
     width: 400px;
     text-align: center;
 }
-#email_input_profiless
-{
-    margin-top:-460px;
+
+#email_input_profiless {
+    margin-top: -460px;
     width: 400px;
     text-align: center;
 }
-#phone_input_profiless
-{
-    margin-top:-400px;
+
+#phone_input_profiless {
+    margin-top: -400px;
     width: 400px;
     text-align: center;
 }
-#Address_textarea_profiless
-{
-    width:300px;
-    height:180px;
+
+#Address_textarea_profiless {
+    width: 300px;
+    height: 180px;
     font-size: 18px;
     background-color: #E9DAD3;
     resize: none;
     margin-top: -340px;
     top: -175px;
     margin-left: 510px;
-    position:relative;
+    position: relative;
     border-radius: 5px;
     z-index: 2;
     text-align: right;
     direction: rtl;
     padding: 5px;
 }
-#postalcode_input_profiless
-{
-    margin-top:-160px;
+
+#postalcode_input_profiless {
+    margin-top: -160px;
     width: 400px;
     text-align: center;
 }
-#submit_input_profiless
-{
-    margin-left: 690px;;
-    margin-top:-100px;
+
+#submit_input_profiless {
+    margin-left: 690px;
+    ;
+    margin-top: -100px;
     width: 80px;
     height: 30px;
 
@@ -163,22 +163,22 @@
     font-size: 12px;
     font-weight: bold;
     letter-spacing: 1;
-    padding:0px;
+    padding: 0px;
     text-align: center;
     font-family: vazir;
-    background-color: #29354A ;
+    background-color: #29354A;
     color: white;
 }
-#invitation_codes_textarea_profiless
-{
-    width:180px;
-    height:330px;
+
+#invitation_codes_textarea_profiless {
+    width: 180px;
+    height: 330px;
     font-size: 18px;
     background-color: #E9DAD3;
     resize: none;
     margin-top: -515px;
     margin-left: 1330px;
-    position:fixed;
+    position: fixed;
     border-radius: 5px;
     z-index: 5;
     direction: rtl;
