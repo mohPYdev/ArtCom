@@ -37,6 +37,12 @@
     margin-left: 20px;
     z-index: 5;
 }
+#profile_image_profiless
+{
+    width: 144px;
+    height: 138px;
+    border-radius: 100px;
+}
 #img_prof_btn_profiless
 {
     border-radius: 50%;
@@ -46,6 +52,20 @@
     margin-top: 110px;
     z-index: 3;
     position: fixed;
+    display: none;
+}
+#img_prof_label_profiless
+{
+    border-radius: 50%;
+    width:30px;
+    height:30px;
+    margin-left: -45px;
+    margin-top: 110px;
+    z-index: 3;
+    position: fixed;
+    cursor: pointer;
+    background-color: #FFFEFB;
+    text-align: center;
 }
 #Bio_textarea_profiless
 {
