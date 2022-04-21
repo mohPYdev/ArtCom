@@ -1,5 +1,5 @@
-#login--page{
-    background-color:#1E2736 ;
+#login--page {
+    background-color: #1E2736;
     width: 100vw;
     height: 100vh;
     position: relative;
@@ -7,42 +7,45 @@
     left: 0;
     z-index: 100;
     overflow-y: hidden;
+    overflow-x: hidden;
 }
 
-#section-login{
+#section-login {
     position: relative;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
-    background-color:#1E2736 ;
+    background-color: #1E2736;
     z-index: -2;
 }
-#section-overflowLogin{
+
+#section-overflowLogin {
     height: 100%;
     width: 100%;
-    background-color:#C2CCC1 ;
+    background-color: #C2CCC1;
 }
-.login--header{
+
+.login--header {
     /* position: absolute;
     left: 50%;
     transform: translateX(-50%); */
-font-family: 'ZCOOL KuaiLe';
-font-size: 10rem;
+    font-family: 'ZCOOL KuaiLe';
+    font-size: 10rem;
 
-text-align: center;
-letter-spacing: 0.365em;
+    text-align: center;
+    letter-spacing: 0.365em;
 
-color: #E9DAD3;
-z-index: 0;
-position: absolute;
-top: 0;
-left: 50%;
-transform: translate(-50%,0);
+    color: #E9DAD3;
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
 
 }
 
-.login--header h5{
+.login--header h5 {
     font-family: vazir;
     letter-spacing: 0;
     font-size: 6rem;
@@ -50,19 +53,22 @@ transform: translate(-50%,0);
     margin-right: 4rem;
     margin-top: -3rem;
 }
-.login--header--sub{
+
+.login--header--sub {
     font-family: vazir;
     position: absolute;
     top: 5%;
     left: 50%;
-    transform: translate(-50%,0);
+    transform: translate(-50%, 0);
     color: #E9DAD3;
-z-index: 0;
-text-align: center;
-}
-.login--header h1{
+    z-index: 0;
     text-align: center;
 }
+
+.login--header h1 {
+    text-align: center;
+}
+
 #pizzaUp {
     position: absolute;
     top: 4rem;
@@ -72,7 +78,8 @@ text-align: center;
     z-index: 0;
 
 }
-#pizzaUp--context{
+
+#pizzaUp--context {
     font-size: 1.5rem;
     font-weight: 700;
     position: relative;
@@ -84,18 +91,16 @@ text-align: center;
     line-height: 4rem;
 }
 
-#sliceUp{
+#sliceUp {
     position: relative;
     top: -44rem;
     left: 1rem;
     width: 60rem;
     height: 38rem;
-    
-}
-#EllipseUp{
-    
 
 }
+
+#EllipseUp {}
 
 #EllipseUp1 {
     position: relative;
@@ -103,21 +108,24 @@ text-align: center;
     left: 14.2rem;
     height: 12rem;
 }
-#EllipseUp2{
+
+#EllipseUp2 {
     position: relative;
     top: -18rem;
     left: 11rem;
 
-    
+
 }
-#pizzaDown{
+
+#pizzaDown {
     position: absolute;
     left: 38rem;
     top: 28rem;
     height: 33rem;
     width: 46rem;
 }
-#pizzaDown--context{
+
+#pizzaDown--context {
     font-size: 1.5rem;
     font-weight: 700;
     position: relative;
@@ -128,29 +136,32 @@ text-align: center;
     z-index: 1;
     line-height: 4rem;
 }
+
 #EllipseDown {
     position: relative;
     top: -2vh;
     left: 4rem;
     height: 40rem;
-    
+
 }
+
 #Ellipse4 {
     position: relative;
     top: -44rem;
     left: 24.7rem;
     height: 22rem;
-    
+
 }
 
-#hero{
+#hero {
     height: 80%;
     width: 40%;
     position: relative;
     top: 20%;
     left: 60%;
-    }
-#line{
+}
+
+#line {
     position: absolute;
     top: 15%;
     left: 20%;
@@ -159,8 +170,9 @@ text-align: center;
     height: 65%;
 
 }
-#btn-login{
-    
+
+#btn-login {
+
     padding: 9rem;
     position: relative;
     top: -58rem;
@@ -168,26 +180,28 @@ text-align: center;
     border-radius: 100%;
     /* background-color: brown; */
     /* z-index: 100; */
- 
+
 }
-#btn-signup-a{
+
+#btn-signup-a {
     position: relative;
     top: 12rem;
     left: 16rem;
     /* background-color: yellowgreen; */
     padding: 7rem;
     border-radius: 100%;
-    
- 
+
+
 }
-#btn-signup-n{
+
+#btn-signup-n {
     position: relative;
     top: -31rem;
     left: 10.5rem;
     /* background-color: yellow; */
     padding: 7rem;
     border-radius: 100%;
-    
- 
+
+
 
 }

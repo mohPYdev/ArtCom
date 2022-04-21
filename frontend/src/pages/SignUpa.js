@@ -78,7 +78,7 @@ function SignUpa(){
     }
 return(
     <>
-    <div id="sa_wrapper">
+      <div id="sa_wrapper">
         <form method="get" onSubmit={handleSaSubmit}>
             <input value={sa_firstname} onChange={handlechangeSaFirstname} type="text" id="sa_firstname" class="sa_box" name="firstname" placeholder="نام" /><br />
             <input value={sa_lastname} onChange={handlechangeSaLastname} type="text" id="sa_lastname" class="sa_box" name="lastname" placeholder="نام خانوادگی" /><br />
@@ -101,8 +101,8 @@ return(
                 <input value={sa_postalcode} onChange={handlechangeSaPostalcode} type="number" id="sa_postalcode" class="sa_box" name="postalcode" placeholder="کد پستی" />
                 <input type="submit" id="sa_singup" value="ثبت نام" />
         </form>
-    </div>
+      </div>
     </>
-)
+  );
 }
 export default SignUpa;
