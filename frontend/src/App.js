@@ -10,6 +10,10 @@ import Post from './component/Post';
 import ForgotPass from './component/ForgotPass';
 import EmailActivation from './component/EmailActivation';
 import ReceiveEmail from './component/ReceiveEmail';
+import ProfileNormal from './pages/Profile_Normal';
+import ProfileArtist from './pages/Profile_Artist';
+import Home from './pages/HomePage';
+import ShowPlace from './pages/ShowPlace';
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic'
 const options = {
@@ -57,6 +61,10 @@ function App() {
           <Route path="/forgotpassword" element={<ForgotPass />} />
           <Route path="/EmailActivation" element={<EmailActivation />} />
           <Route path="/ReceiveEmail" element={<ReceiveEmail />} />
+          <Route path="/ProfileNormal" element={<ProfileNormal />} />
+          <Route path="/ProfileArtist" element={<ProfileArtist />} />
+          <Route path="/Home" element={<Home />} />
+          <Route path="/show" element={<ShowPlace />} />
       </Routes>
     </BrowserRouter>
      </AlertProvider>  
