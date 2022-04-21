@@ -15,8 +15,6 @@ function OverflowLogin() {
   };
   const forgetPass = (e) => {
     e.preventDefault();
-    console.log(1);
-    //  <Link to="/forgotpassword" className='forget-link'>ارسال رمزعبور به ایمیل ثبت شده با این نام کاربری</Link>
     navigate(`/forgotpassword`);
   };
 

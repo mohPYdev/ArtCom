@@ -162,9 +162,3 @@
     transform: translateY(-1rem);
     transition: all 0.5s;
 }
-
-forget-link {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-}
