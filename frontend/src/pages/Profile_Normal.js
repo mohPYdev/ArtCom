@@ -68,7 +68,7 @@ export default function Profile_Normal() {
         <form id="profile-form" onSubmit={submitting} method="get" style={{zIndex: 10}}>
             {/* <!--adding profile image--> */}
             <div id='img_prof_profiless'>
-                <img src={imageUrl} />
+                <img id='profile_image_profiless' src={imageUrl} />
                 <label id="img_prof_label_profiless" for="img_prof_btn_profiless">
                   +
                   <input accept="image/*" type="file" id="img_prof_btn_profiless" onChange={e => setSelectedImage(e.target.files[0])} />
