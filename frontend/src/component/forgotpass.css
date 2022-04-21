@@ -1,87 +1,133 @@
-#forgotpass--page{
+#forgotpass--page {
     background-image: url(../img/Awesome\ Pastels\ Aesthetic\ Computer\ Wallpapers\ -\ WallpaperAccess.jpg);
     background-size: cover;
     transform: scale(1.00075);
     height: 100vh;
     width: 100%;
     direction: rtl;
+
 }
-#FG_newpassword_l{
-    width: 200px;
-    font-size:24px;
+.visible{
+    visibility: visible;
+}
+.hidden{
+    visibility: hidden;
+}
+
+.FG_email_l {
+    font-size: 24px;
     color: #E9DAD3;
     display: inline-block;
-    
+    grid-row: 2;
 }
-#FG_newpassword{
-    margin: 15px auto;
-    width: 280px;
-    height: 40px;
+
+.FG_email {
     border-radius: 5px;
     background-color: #E9DAD3;
     box-shadow: 0 0 5px;
     color: #1E2736;
     font-size: 18px;
+    grid-row: 2;
+    grid-column: 1/3;
 }
-#FG_confirmnewpassword_l{
-    width: 200px;
-    font-size:24px;
-    display: inline-block;
+
+.FG_newpassword_l {
+    font-size: 24px;
     color: #E9DAD3;
+    display: inline-block;
+    grid-row: 1;
+
+  
+
 }
-#FG_confirmnewpassword{
-    margin: 15px auto;
-    width: 280px;
-    height: 40px;
+
+.FG_newpassword {
+
     border-radius: 5px;
     background-color: #E9DAD3;
     box-shadow: 0 0 5px;
     color: #1E2736;
     font-size: 18px;
-    
+    grid-row: 1;
+    grid-column: 1/3;
+
+  
 }
-#FG_save{
-    width: 100px;
-    padding: 6px 8px;
+
+.FG_confirmnewpassword_l {
+    font-size: 24px;
+    display: inline-block;
+    color: #E9DAD3;
+    grid-row: 3;
+
+  
+}
+
+.FG_confirmnewpassword {
+    border-radius: 5px;
+    background-color: #E9DAD3;
+    box-shadow: 0 0 5px;
+    color: #1E2736;
+    font-size: 18px;
+    grid-row: 3;
+    grid-column: 1/3;
+
+
+}
+
+.FG_save {
+
     font-size: 18px;
     background-color: #B4c5de;
     border: 1px solid gray;
     border-radius: 4px;
-    top: 280px;
-    left: -250px;
-    position: relative;
+    grid-row: 4;
+    grid-column: 1/2;
 }
-#FG_save:hover{
+.send-pass{
+
+}
+.FG_save:hover {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.8);
-    transform: scale(1.3);
+    transform: scale(1.1);
     transition: all 0.5s;
 }
 
-#FG_back{
-    width: 100px;
-    padding: 6px 8px;
+#FG_back {
+
     background-color: #B4c5de;
     border: 1px solid gray;
     border-radius: 4px;
-    top: 280px;
-    left: -300px;
-    position: relative;
     font-size: 18px;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.8);
+    grid-row: 4;
+    grid-column: 2/3;
+
 }
-#FG_back:hover{
+
+#FG_back:hover {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.8);
-    transform: scale(1.3);
+    transform: scale(1.1);
     transition: all 0.5s;
 }
-#FG_Form{
-    top: 30%;
-    left: -35%;
-    position: relative;
-    background-color: #1E2736;
-    display: inline-block;
-    width: 500px;
-    height: 200px;
+
+#FG_Form {
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+    background-color: #817d82;
+    opacity: 0.8;
+    display: grid;
+    row-gap: 5rem;
+    column-gap: 5rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
     border-radius: 20px;
     padding-right: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2%;
+    align-content: center;
+
+
 }
