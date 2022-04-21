@@ -7,16 +7,11 @@
     overflow-y: hidden;
 }
 
-#like{
-    border-radius: 20px;
-    padding: 10px;
-    position: relative;
-    top: -850px;
-    left: 40%;
-}
-#like:hover{
-    background-color: hsl(0, 64%, 48%);
-    outline: 3px dashed white;
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    align-content: center;
 }
 
 .btn{
@@ -33,27 +28,35 @@
     font-size: 24px;
     font-weight: bold;
     color: black;
-    margin-right: 320px;
-    margin-top: 40px;
     width: 180px;
-
-    position: relative;
-    top: -1050px;
-    /* margin: 60px; */
-    left: 11%;
+    cursor: pointer;
 }
 
-#frame{
-    left: 32%;
-    top: 36px;
-    position: relative;
-    width: 600px;
+.btn:hover{
+    box-shadow: 0 0.25rem 0.25rem #e74c3c;
+    transform: scale(1.1);
+    transition: all 0.2s;
 }
+
+.container{
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: 60px dashed transparent;
+    padding: 15px;
+    border-image: url(../img/frame.png) 120;
+    background-position: center;
+    grid-row: 1/5;
+    grid-column: 2/5;
+}
+
 
 #profile{
-    position: relative;
-    top: -400px;
-    left: 177px;
+    grid-row: 1/3;
+    grid-column: 1;
+    align-self: center;
+    justify-self: center;
+    width: 130px;
+    cursor: pointer;
 }
 
 #about{
@@ -65,13 +68,19 @@
     width: 270px;
     height: 200px;
     line-height: 200%;
-    overflow: auto;
+    overflow-x: none;
     text-align: center;
     direction: rtl;
-
-    position: relative;
-    top: -400px;
-    left: 114px;
+    grid-row: 2/4;
+    grid-column: 1;
+    align-self: center;
+    justify-self: center;
+    background-color: transparent;
+    border: none;
+    pointer-events: none;
+    text-align: right;
+    direction: rtl;
+    resize: none;
 }
 
 #title{
@@ -82,67 +91,188 @@
     font-weight: 100;
     text-align: center;
     direction: rtl;
-    position: relative;
-    top: -800px;
-    right: -560px;
 }
 
-#count{
-    color: white;
-    font-family: 'B Yekan';
-    font-style: normal;
-    font-size:  32px;
-    font-weight: 100;
-    position: relative;
-    top: -944px;
-    left: 54%;
+.Name{
+    grid-row: 1;
+    grid-column: 5;
+    top: 20px;
+    right: 180px;
+    align-self: center;
+    justify-self: center;
+}
+
+.Price{
+    grid-row: 2;
+    grid-column: 5;
+    top: 158px;
+    right: 167px;
+    align-self: center;
+    justify-self: center;
+}
+
+.Date{
+    grid-row: 3;
+    grid-column: 5;
+    top: 321px;
+    right: 170px;
+    align-self: center;
+    justify-self: center;
 }
 
 #back{
-    position: relative;
-    top: -854px;
-    left:450px;
     width: 118px;
+    grid-row: 4;
+    grid-column: 1;
+    align-self: center;
+    justify-self: center;
+    cursor: pointer;
 }
 
 #next{
-    position: relative;
-    top: -1056px;
-    left:1000px;
     width: 118px;
+    grid-row: 4;
+    grid-column: 5;
+    width: 111px;
+    align-self: center;
+    justify-self: center;
+    cursor: pointer;
+    cursor: pointer;
 }
 
 #seencount{
     color: white;
     font-family: 'B Yekan';
     font-style: normal;
-    font-size:  28px;
+    font-size:  20px;
     font-weight: 100;
-    position: relative;
-    top: -1222px;
-    left: 94%;
+    position: fixed;
+    bottom: 5px;
+    left: 95%;
+    background-color: transparent;
+    border: none;
+    pointer-events: none;
 }
 
 #seenimg{
-    position: relative;
-    top: -1154px;
+    position: fixed;
+    bottom: 10px;
     left: 97%;
-    width: 28px;
+    width: 20px;
 }
 
 #livecount{
     color: white;
     font-family: 'B Yekan';
     font-style: normal;
-    font-size:  28px;
+    font-size:  20px;
     font-weight: 100;
-    position: relative;
-    top: -1088px;
-    left: 4%;
+    position: fixed;
+    bottom: 5px;
+    left: 3%;
+    background-color: transparent;
+    border: none;
+    pointer-events: none;
 }
 
 #liveimg{
-    position: relative;
-    top: -1017px;
+    position: fixed;
+    bottom: 10px;
     left: 1%;
+    width: 20px;
+}
+
+#exit{
+    left: 10%;
+    grid-row: 1;
+    grid-column: 1;
+    align-self: center;
+    justify-self: center;
+    top: 10px;
+    position: fixed;
+    left: 47px;
+}
+
+#buy{
+    grid-row: 5;
+    grid-column: 2;
+    align-self: center;
+    justify-self: center;
+}
+
+#play{
+    grid-row: 5;
+    grid-column: 4;
+    align-self: center;
+    justify-self: center;
+}
+
+.values{
+    background-color: transparent;
+    border: none;
+    pointer-events: none;
+}
+
+.likecontain{
+    grid-row: 5;
+    grid-column: 3;
+    align-self: center;
+    justify-self: center;
+    justify-content: center;
+    display: grid;
+    grid-column: 1fr 1fr 1fr;
+    grid-row: 1fr 1fr;
+    
+}
+
+.like{
+    border-radius: 20px;
+    padding: 5px;
+    align-self: center;
+    justify-self: center;
+    grid-row: 1;
+    grid-column: 2;
+    align-self: center;
+    justify-self: center;
+    width: 50px;
+    cursor: pointer;
+}
+
+.like:hover{
+    background-color: hsl(0, 64%, 48%);
+    outline: 3px dashed white;
+}
+
+.liked{
+    background-color: hsl(0, 64%, 48%);
+    outline: 3px dashed white;
+    border-radius: 20px;
+    padding: 5px;
+    align-self: center;
+    justify-self: center;
+    grid-row: 1;
+    grid-column: 2;
+    align-self: center;
+    justify-self: center;
+    width: 50px;
+    cursor: pointer;
+}
+
+#count{
+    text-align: center;
+    color: white;
+    font-family: 'B Yekan';
+    font-style: normal;
+    font-size:  24px;
+    font-weight: 100;
+    align-self: center;
+    justify-self: center;
+    background-color: transparent;
+    border: none;
+    pointer-events: none;
+    grid-row: 2;
+    grid-column: 2;
+    align-self: center;
+    justify-self: center;
+    
 }
