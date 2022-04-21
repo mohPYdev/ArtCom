@@ -10,8 +10,8 @@ import hero from "../img/hero1.svg";
 import pinkLine from "../img/pinkLine.svg";
 
 class Login extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = { isShownSignup: "", isShownLogin: "" };
   }
   loginBtnMouseEnter() {
@@ -27,9 +27,9 @@ class Login extends React.Component {
     const slice = document.getElementById("Ellipse4");
     const pizza = document.getElementById("EllipseDown");
     slice.style.transform = "scale(1) ";
-    // slice.style.transform +="translate(1rem,-2rem)"
+
     pizza.style.transform = "scale(1) ";
-    // pizza.style.transform += "translate(-1rem,2rem)";
+   
     pizza.style.opacity = 1;
   }
   signUpBtnMouseEnter() {
@@ -49,11 +49,11 @@ class Login extends React.Component {
     const slice2 = document.getElementById("EllipseUp2");
     const pizza = document.getElementById("EllipseUp");
     slice1.style.transform = "scale(1) ";
-    // slice1.style.transform +="translate(1rem,-2rem)";
+
     slice2.style.transform = "scale(1) ";
-    // slice2.style.transform +="translate(-1rem,2rem)"
+   
     pizza.style.transform = "scale(1) ";
-    // pizza.style.transform += "translate(1rem,-2rem)";
+    
     pizza.style.opacity = 1;
   }
   componentDidMount() {}
@@ -130,7 +130,7 @@ class Login extends React.Component {
 
           <img src={Ellipse4} id="Ellipse4" />
           <Link
-            to="/overflow"
+            to="/login"
             id="btn-login"
             onMouseEnter={() => this.setState({ isShownLogin: true })}
             onMouseLeave={() => this.setState({ isShownLogin: false })}

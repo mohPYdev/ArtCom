@@ -56,7 +56,7 @@ function SignUpn({value}) {
     if (!error) {
         
       alert.success(`${sn_firstname}} عزیز به آرتکام خوش آمدی !`);
-      navigate(`/overflow`)
+      navigate(`/login`)
       
     }
   };

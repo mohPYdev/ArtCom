@@ -32,7 +32,7 @@ function EmailActivation() {
                 به خانواده ArtCom خوش آمدید.
             </h>
             <p id="AE_Text"> 
-            از اینکه شما را در جمع دوستانه خود داریم، بسیار خوشحالیم :))
+            از اینکه شما را در جمع دوستانه خود داریم، بسیار خوشحالیم :
             </p>
             <button onClick={handleClick} type="button" id="AE_button">ورود به ArtCom</button>
         </div>

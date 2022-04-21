@@ -42,13 +42,10 @@ function SignUpa(){
         if (!error) {
         
             alert.success(`${sa_firstname}} عزیز به آرتکام خوش آمدی !`);
-            navigate(`/overflow`)
+            console.log(error);
+            navigate(`/login`)
             
           }
-
-        if (!error){
-            navigate('/login')
-        }
 
     }
 
