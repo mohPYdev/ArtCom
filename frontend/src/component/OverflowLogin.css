@@ -7,6 +7,8 @@
     left: 50%;
     transform: translate(-50%,-50%);
     z-index: 100;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 .brush{
     height: 100vh;

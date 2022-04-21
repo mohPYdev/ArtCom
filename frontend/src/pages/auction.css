@@ -1,5 +1,7 @@
 #Auction_Page{
     background-color: #1E2736;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 .clearfix {
     overflow: auto;
