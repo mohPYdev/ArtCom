@@ -59,8 +59,8 @@
     border-radius: 50%;
     width:30px;
     height:30px;
-    margin-left: -45px;
-    margin-top: 110px;
+    margin-left: 92px;
+    margin-top: -26px;
     z-index: 3;
     position: fixed;
     cursor: pointer;
@@ -177,7 +177,7 @@
     background-color: #E9DAD3;
     resize: none;
     margin-top: -515px;
-    margin-left: 1240px;
+    margin-left: 1330px;
     position:fixed;
     border-radius: 5px;
     z-index: 5;
