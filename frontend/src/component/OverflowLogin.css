@@ -163,13 +163,16 @@
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.171);
     transform: translateY(-1rem);
     transition: all 0.5s;
-<<<<<<< HEAD
   }
   forget-link{
 position: absolute;
 top: 1rem;
 left: 1rem;
   }
-=======
+
+
+forget-link {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
 }
->>>>>>> Frontend
