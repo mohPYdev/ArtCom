@@ -63,21 +63,20 @@
   
 }
 
-#FG_confirmnewpassword {
-    margin: 15px auto;
-    width: 280px;
-    height: 40px;
+.FG_confirmnewpassword {
     border-radius: 5px;
     background-color: #E9DAD3;
     box-shadow: 0 0 5px;
     color: #1E2736;
     font-size: 18px;
+    grid-row: 3;
+    grid-column: 1/3;
+
 
 }
 
-#FG_save {
-    width: 100px;
-    padding: 6px 8px;
+.FG_save {
+
     font-size: 18px;
     background-color: #B4c5de;
     border: 1px solid gray;
@@ -88,16 +87,14 @@
 .send-pass{
 
 }
-
-#FG_save:hover {
+.FG_save:hover {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.8);
     transform: scale(1.1);
     transition: all 0.5s;
 }
 
 #FG_back {
-    width: 100px;
-    padding: 6px 8px;
+
     background-color: #B4c5de;
     border: 1px solid gray;
     border-radius: 4px;
@@ -114,13 +111,15 @@
 }
 
 #FG_Form {
-    top: 30%;
-    left: -35%;
-    position: relative;
-    background-color: #1E2736;
-    display: inline-block;
-    width: 500px;
-    height: 200px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+    background-color: #817d82;
+    opacity: 0.8;
+    display: grid;
+    row-gap: 5rem;
+    column-gap: 5rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
     border-radius: 20px;
     padding-right: 5px;
     position: absolute;
@@ -129,6 +128,7 @@
     transform: translate(-50%, -50%);
     padding: 2%;
     align-content: center;
+    width: 50%;
 
 
 }
