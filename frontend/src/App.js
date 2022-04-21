@@ -13,6 +13,9 @@ import EmailActivation from './component/EmailActivation';
 import ReceiveEmail from './component/ReceiveEmail';
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic'
+
+
+
 const options = {
   // you can also just use 'bottom center'
   position: positions.TOP_CENTER,
@@ -33,17 +36,16 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route index element={<Login />}/>
-  
-  
-          <Route path="/overflow" element={<OverflowLogin  />} />
-      
-       <Route path="/signupn" element={<SignUpn/> }/>
+          <Route path="/login" element={<OverflowLogin  />} />
+          <Route path="/signupn" element={<SignUpn/> }/>
           <Route path="/signupa" element={ <SignUpa/>}/>
           <Route path="/auction/:id" element={<Auction />} />
           <Route path="/post" element={<Post />} />
           <Route path="/forgotpassword" element={<ForgotPass1 />} />
           <Route path="/forgotpassword/:uid/:token" element={<ForgotPass2 />} />
-          <Route path="/EmailActivation" element={<EmailActivation />} />
+
+          <Route path="/activate/:uid/:token" element={<EmailActivation />} />
+
           <Route path="/ReceiveEmail" element={<ReceiveEmail />} />
       </Routes>
     </BrowserRouter>

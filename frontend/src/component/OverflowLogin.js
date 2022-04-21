@@ -12,12 +12,16 @@ function OverflowLogin() {
 
   const loadHome = () => {
     login(username, password);
+    if (!error){
+      navigate('/home')
+    }
   };
   const forgetPass = (e) => {
     e.preventDefault();
     navigate(`/forgotpassword`);
   };
 
+  
   useEffect(() => {
     if (error) {
       setPassword("");
