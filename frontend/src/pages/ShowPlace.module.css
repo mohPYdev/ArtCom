@@ -83,7 +83,6 @@
     justify-self: center;
     background-color: transparent;
     border: none;
-    pointer-events: none;
     text-align: right;
     direction: rtl;
     resize: none;
@@ -229,7 +228,7 @@
 }
 
 .like {
-    border-radius: 20px;
+    border-radius: 12px;
     padding: 5px;
     align-self: center;
     justify-self: center;
