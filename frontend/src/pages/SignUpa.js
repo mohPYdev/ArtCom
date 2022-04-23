@@ -50,17 +50,8 @@ function SignUpa(){
 
     useEffect(() => {
         if(error){
-            setSaAddress('')
-            setSaCity('')
             setSaConfirmpassword('')
-            setSaEmail('')
-            setSaFirstname('')
-            setSaLastname('')
             setSaPassword('')
-            setSaPostalcode('')
-            setSaUsername('')
-            setSaInvitationcode('')
-            setSaselectValue('')
           }
       }, [error])
 

@@ -4,12 +4,12 @@ import painter from './SignUp/image/painter-holding-paint-roller-4891279-4077630
 import puzzle from './SignUp/image/puzzle.png';
 import {useSignupNormal} from '../hooks/useSignupNormal';
 
-import {useNavigate} from 'react-router-dom';
+
 
 function SignUpn(){
 
     const { signup, isPending, error } = useSignupNormal()
-    const navigate = useNavigate()
+
 
     const [sn_firstname,setSnFirstname]=useState('');
     const [sn_lastname,setSnLastname]=useState('');
@@ -23,6 +23,7 @@ function SignUpn(){
 
 
     useEffect(() => {
+
         if (error) {
             alert(error)
             setSnAddress('')
@@ -39,9 +40,9 @@ function SignUpn(){
 
 
     // handle submit
-    const handleSnSubmit=(event)=>{
+    const handleSnSubmit= async(event)=>{
         event.preventDefault();
-        signup(
+        await signup(
             sn_email,
             sn_password,
             sn_username,
@@ -53,9 +54,6 @@ function SignUpn(){
             sn_lastname
         );
 
-        if (!error){
-            navigate('/login')
-        }
     }
 
 

@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react'
 import { useAuthContext } from './useAuthContext'
 import axios from 'axios'
+import {useNavigate} from 'react-router-dom'
 
 export const useSignupNormal = () => {
   const [isCancelled, setIsCancelled] = useState(false)
   const [error, setError] = useState(null)
   const [isPending, setIsPending] = useState(false)
   const { dispatch } = useAuthContext()
+  const navigate = useNavigate()
 
   const SIGNUP_URL = "http://localhost:8000/auth/users/"
 
@@ -26,12 +28,13 @@ export const useSignupNormal = () => {
       if (!isCancelled) {
         setIsPending(false)
         setError(null)
+        navigate('/login')
       }
     } 
     catch(err) {
       if (!isCancelled) {
         setError(Object.values(err.response.data)[0][0])
-        setIsPending(false)
+        setIsPending(false)    
       }
     }
   }
