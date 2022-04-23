@@ -248,7 +248,7 @@
 .liked {
     background-color: hsl(0, 64%, 48%);
     outline: 3px dashed white;
-    border-radius: 20px;
+    border-radius: 12px;
     padding: 5px;
     align-self: center;
     justify-self: center;
