@@ -7,7 +7,8 @@ import SignUpn from "./pages/SignUpn";
 import SignUpa  from './pages/SignUpa';
 import Auction from './pages/Auction' ;
 import Post from './component/Post';
-import ForgotPass from './component/ForgotPass';
+import ForgotPass1 from './component/ForgotPass1';
+import ForgotPass2 from './component/ForgotPass2';
 import EmailActivation from './component/EmailActivation';
 import ReceiveEmail from './component/ReceiveEmail';
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
@@ -40,13 +41,10 @@ function App() {
           <Route path="/signupa" element={ <SignUpa/>}/>
           <Route path="/auction/:id" element={<Auction />} />
           <Route path="/post" element={<Post />} />
-
-          
-          <Route path="/password/reset/confirm/:uid/:token" element={<ForgotPass />} />
-
+          <Route path="/forgotpassword" element={<ForgotPass1 />} />
+          <Route path="/forgotpassword/:uid/:token" element={<ForgotPass2 />} />
 
           <Route path="/activate/:uid/:token" element={<EmailActivation />} />
-
 
           <Route path="/ReceiveEmail" element={<ReceiveEmail />} />
       </Routes>

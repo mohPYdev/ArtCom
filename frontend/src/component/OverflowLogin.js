@@ -20,17 +20,18 @@ function OverflowLogin(){
 
   }
 
+  
   useEffect(() => {
-    if(error){
-      setPassword("")
-      setUsername("")
-      }
-  }, [error])
+    if (error) {
+      setPassword("");
+      setUsername("");
+    }
+  }, [error]);
 
-  return(
+  return (
     <>
       <div className="login--container">
-        <img src={brush} className="brush"/>
+        <img src={brush} className="brush" />
       </div>
       <form id="login--form" onSubmit={handleSubmit} >
         <input type="text" id="login--username" name="username" value={username} className="item" onChange={(e)=>setUsername(e.target.value  )} required/>
@@ -43,8 +44,22 @@ function OverflowLogin(){
         {/* {isPending && <button disabled className='btn'>Loading ...</button>} */}
         <Link to={'/forgetPassword'}  id="forget-pass-btn"> فراموشی رمز عبور </Link>
 
+        {/* <button
+          id="btn-login-form"
+          className="item"
+          type="button"
+          onClick={loadHome}
+        >
+          ورود{" "}
+        </button> */}
+        {/* {isPending && <button disabled className='btn'>Loading ...</button>} */}
+        {/* {error && <div className='error'>{error}</div>} */}
+        {/* <button id="forget-pass-btn" type="button" onClick={forgetPass}>
+          {" "}
+          فراموشی رمز عبور{" "}
+        </button> */}
       </form>
     </>
-  )
+  );
 }
-export default (OverflowLogin);
+export default OverflowLogin;

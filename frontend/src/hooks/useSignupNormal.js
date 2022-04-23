@@ -20,6 +20,7 @@ export const useSignupNormal = () => {
       // signup
       const res = await axios.post(SIGNUP_URL, {email, username, password, re_password, 
                                                 first_name, last_name, city, address, postal_code})
+      console.log(res)
 
       if (!res) {
         throw new Error('Could not complete signup')
