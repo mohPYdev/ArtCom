@@ -16,17 +16,15 @@
     height: 50px;
     background: #E9DAD3;
     border-radius: 15px;
-    /* float: left; */
     position: relative;
-    /* font-family: Mj_Ramollah; */
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
     line-height: 26px;
     display: flex;
     align-items: center;
-    text-align: left;
-    padding-left: 40px;
+    text-align: right;
+    padding-right: 40px;
     color: #FFFEFB;
     margin-left: auto;
     margin-right: auto;
@@ -34,6 +32,7 @@
     background-image: url('../img/search-icon.png');
     background-repeat: no-repeat;
     background-size: 40px;
+    background-position: right;
     grid-column: 2/3;
     grid-row: 1;
     align-self: center;
@@ -179,9 +178,9 @@
     left: 30px;
     background-color: transparent;
     border: none;
-    font-size: 28px;
+    font-size: 24px;
     text-align: center;
-    width: 80px;
+    width: 150px;
     pointer-events: none;
 }
 
