@@ -19,7 +19,7 @@ function ForgotPass2() {
               const res = await axios.post(resetpass_url , {uid , token , newpass } );
               if(res.status == 204)
               alert.success("رمز شما با موفقیت تغییر کرد")
-              navigate(`/overflow`);
+              navigate(`/login`);
 
           }
           catch(err){

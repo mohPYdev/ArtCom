@@ -31,7 +31,7 @@ export const useSignupArtist = () => {
       if (!isCancelled) {
         setIsPending(false)
         setError(null)
-        navigate('/login')
+        navigate('/ReceiveEmail')
       }
     } 
     catch(err) {

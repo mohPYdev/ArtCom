@@ -1,14 +1,13 @@
 import {useState, useEffect} from 'react';
 import stylesheet from './SignUp/SignUp_Artist.css';
 import {useSignupArtist} from '../hooks/useSignupArtist'
-import { useAlert } from "react-alert";
-import { useNavigate } from "react-router-dom";
+
 
 function SignUpa(){
 
     const { signup , error, isPending} = useSignupArtist()
-    const alert = useAlert();
-    let navigate = useNavigate();
+
+
     const [sa_firstname,setSaFirstname]=useState('');
     const [sa_lastname,setSaLastname]=useState('');
     const [sa_email,setSaEmail]=useState('');
@@ -39,13 +38,6 @@ function SignUpa(){
             sa_selectValue,
             sa_invitationcode,
         )
-        if (!error) {
-        
-            alert.success(`${sa_firstname}} عزیز به آرتکام خوش آمدی !`);
-            console.log(error);
-            navigate(`/login`)
-            
-          }
 
     }
 

@@ -35,18 +35,21 @@ function App() {
     <AlertProvider template={AlertTemplate} {...options}>
     <BrowserRouter>
       <Routes>
-        <Route index element={<Login />}/>
+          <Route index element={<Login />}/>
           <Route path="/login" element={<OverflowLogin  />} />
           <Route path="/signupn" element={<SignUpn/> }/>
           <Route path="/signupa" element={ <SignUpa/>}/>
           <Route path="/auction/:id" element={<Auction />} />
-          <Route path="/post" element={<Post />} />
           <Route path="/forgotpassword" element={<ForgotPass1 />} />
-          <Route path="/forgotpassword/:uid/:token" element={<ForgotPass2 />} />
-
+          <Route path="/password/reset/confirm/{uid}/{token}" element={<ForgotPass2 />} />
+          <Route path="/ReceiveEmail" element={<ReceiveEmail />} />
           <Route path="/activate/:uid/:token" element={<EmailActivation />} />
 
-          <Route path="/ReceiveEmail" element={<ReceiveEmail />} />
+
+
+          <Route path="/post" element={<Post />} />
+
+
       </Routes>
     </BrowserRouter>
      </AlertProvider>  

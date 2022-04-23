@@ -41,23 +41,7 @@ function OverflowLogin(){
       
       
         <button id="btn-login-form" className="item" type="submit" onClick={handleSubmit}>ورود </button>
-        {/* {isPending && <button disabled className='btn'>Loading ...</button>} */}
-        <Link to={'/forgetPassword'}  id="forget-pass-btn"> فراموشی رمز عبور </Link>
-
-        {/* <button
-          id="btn-login-form"
-          className="item"
-          type="button"
-          onClick={loadHome}
-        >
-          ورود{" "}
-        </button> */}
-        {/* {isPending && <button disabled className='btn'>Loading ...</button>} */}
-        {/* {error && <div className='error'>{error}</div>} */}
-        {/* <button id="forget-pass-btn" type="button" onClick={forgetPass}>
-          {" "}
-          فراموشی رمز عبور{" "}
-        </button> */}
+        <Link to={'/forgotpassword'}  id="forget-pass-btn"> فراموشی رمز عبور </Link>
       </form>
     </>
   );
