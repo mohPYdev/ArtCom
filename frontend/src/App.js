@@ -41,7 +41,7 @@ function App() {
           <Route path="/signupa" element={ <SignUpa/>}/>
           <Route path="/auction/:id" element={<Auction />} />
           <Route path="/forgotpassword" element={<ForgotPass1 />} />
-          <Route path="/password/reset/confirm/{uid}/{token}" element={<ForgotPass2 />} />
+          <Route path="/password/reset/confirm/:uid/:token" element={<ForgotPass2 />} />
           <Route path="/ReceiveEmail" element={<ReceiveEmail />} />
           <Route path="/activate/:uid/:token" element={<EmailActivation />} />
 
