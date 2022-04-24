@@ -62,7 +62,7 @@ export default function HomePage() {
         <input
           type="text"
           id={style.search}
-          placeholder="Search"
+          placeholder="جست و جو"
           onChange={searchHandle}
         />
         <button className={style.contact} onClick={contactHandle}>
@@ -71,10 +71,10 @@ export default function HomePage() {
       </div>
 
       <div className={style.showplace}>
-        <input className={style.timer} type="text" value={timere} />
+        <input className={style.timer} type="text" value={timera} />
         <img src={back} alt="" className={style.back} onClick={backeHandle} />
         <div className={style.bannere}>
-          <img src={exhibPoster} alt="" className={style.postere} />
+          <img src={exhibPoster} alt="" className="" />
         </div>
         <img src={next} alt="" className={style.next} onClick={nexteHandle} />
 
@@ -96,10 +96,10 @@ export default function HomePage() {
       </div>
 
       <div className={style.auction}>
-        <input className={style.timer} type="text" value={timera} />
+        <input className={style.timer} type="text" value={timere} />
         <img src={back} alt="" className={style.backa} onClick={backaHandle} />
         <div className={style.bannera}>
-          <img src={auctionPoster} alt="" className={style.postera} />
+          <img src={auctionPoster} alt="" className="" />
         </div>
         <img src={next} alt="" className={style.nexta} onClick={nextaHandle} />
         <button
