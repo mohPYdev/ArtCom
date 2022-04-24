@@ -76,6 +76,23 @@
     justify-self: center;
 }
 
+
+#follow{
+    grid-row: 2;
+    grid-column: 6;
+    align-self: center;
+    justify-self: center;
+}
+
+
+#unfollow{
+    grid-row: 2;
+    grid-column: 6;
+    align-self: center;
+    justify-self: center;
+}
+
+
 .artcom{
     font-family: 'Akaya Kanadaka';
     width: 100%;
@@ -167,29 +184,124 @@
     background-color: #1E2736;
     border-radius: 10px;
     margin-top: 40px;
-    
+    cursor: pointer;
 }
 
 .cpost{
     color: white;
     font-size: 20px;
     font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
+    display: inline;    
+    position: relative;
+    left: 42%;
 }
 
 .addp1{
     width: 58px;
     display: inline;
     position: relative;
-    left: 20px;
+    left: 41%;
 }
 
 .addp2{
     width: 80px;
     display: inline;
     position: relative;
-    left: 200px;
+    left: 42%;
 }
+
+.exhibitionTitle{
+    font-size: 24px;
+    text-align: center;
+}
+
+.showplace{
+    margin: 20px;
+    background-color: #1E2736;
+    border-radius: 10px;
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-content: center;
+    padding: 50px;
+    height: 350px;
+}
+
+.back {
+    width: 120px;
+    height: auto;
+    grid-column: 2/3;
+    grid-row: 1;
+    justify-self: center;
+    align-self: center;
+    cursor: pointer;
+}
+
+.next {
+    width: 120px;
+    height: auto;
+    grid-column: 4/5;
+    grid-row: 1;
+    justify-self: center;
+    align-self: center;
+    cursor: pointer;
+}
+
+.bannere {
+    grid-column: 3/4;
+    grid-row: 1;
+    background-color: #C4C4C4;
+    position: relative;
+    width: 600px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.bannere img {
+    margin: auto;
+}
+
+.postere{
+    height: 175px;
+}
+
+#status {
+    grid-row: 2;
+    grid-column: 2/3;
+    align-self: center;
+    justify-self: center;
+}
+
+#viewe {
+    grid-row: 2;
+    grid-column: 4/5;
+    align-self: center;
+    justify-self: center;
+}
+
+#createe {
+    grid-row: 2;
+    grid-column: 3/4;
+    align-self: center;
+    justify-self: center;
+}
+
+.btn2 {
+    background-color: #E9DAD3;
+    padding: 0.5%;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 15px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    color: black;
+    margin: 30px;
+    width: 200px;
+    cursor: pointer;
+}
+
