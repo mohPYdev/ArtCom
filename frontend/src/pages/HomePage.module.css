@@ -5,13 +5,13 @@
     margin: 0;
 }
 
-.header{
-    display: grid ;
+.header {
+    display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     align-content: center;
 }
 
-#search{
+#search {
     width: 640px;
     height: 50px;
     background: #E9DAD3;
@@ -38,9 +38,10 @@
     grid-row: 1;
     align-self: center;
     justify-self: center;
+    color: black;
 }
 
-.contact{
+.contact {
     background-color: #E9DAD3;
     height: 50px;
     right: 46px;
@@ -59,11 +60,12 @@
     grid-row: 1;
     align-self: center;
     justify-self: center;
+    cursor: pointer;
 }
 
-.profile{
+.profile {
     height: 80px;
-    width : 80px;
+    width: 80px;
     margin: 20px;
     top: -4px;
     position: relative;
@@ -72,9 +74,10 @@
     align-self: center;
     justify-self: center;
     left: -450px;
+    cursor: pointer;
 }
 
-.showplace{
+.showplace {
     background-color: #E9DAD3;
     width: 98%;
     height: 350px;
@@ -82,12 +85,12 @@
     border-radius: 15px;
     position: relative;
     top: -10px;
-    display: grid ;
+    display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     align-content: center;
 }
 
-.auction{
+.auction {
     background-color: #E9DAD3;
     width: 98%;
     height: 350px;
@@ -95,12 +98,12 @@
     border-radius: 15px;
     position: relative;
     top: 20px;
-    display: grid ;
+    display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     align-content: center;
 }
 
-.blue{
+.blue {
     background-color: #1E2736;
     padding: 0.5%;
     padding-left: 30px;
@@ -115,65 +118,76 @@
     color: white;
     margin: 30px;
     width: 200px;
+    cursor: pointer;
 }
 
-.background{
+.background {
     background-color: #C4C4C4;
     width: 400px;
     height: 200px;
 }
 
-.back{
+.back {
     width: 120px;
     height: auto;
     grid-column: 2/3;
     grid-row: 1;
     justify-self: center;
     align-self: center;
+    cursor: pointer;
 }
 
-.next{
+.next {
     width: 120px;
     height: auto;
     grid-column: 4/5;
     grid-row: 1;
     justify-self: center;
     align-self: center;
+    cursor: pointer;
 }
 
 
-.backa{
+.backa {
     width: 120px;
     height: auto;
     grid-column: 2/3;
     grid-row: 1;
     justify-self: center;
-    align-self: center;  
+    align-self: center;
+    cursor: pointer;
 }
 
-.nexta{
+.nexta {
     width: 120px;
     height: auto;
     grid-column: 4/5;
     grid-row: 1;
     justify-self: center;
     align-self: center;
+    cursor: pointer;
 }
 
 
 
-.timer{
+.timer {
     grid-column: 1/2;
     grid-row: 1;
     align-self: center;
     justify-self: center;
     position: inherit;
     left: 30px;
+    background-color: transparent;
+    border: none;
+    font-size: 28px;
+    text-align: center;
+    width: 80px;
+    pointer-events: none;
 }
 
 
 
-.bannera{
+.bannera {
     grid-column: 3/4;
     grid-row: 1;
     background-color: #C4C4C4;
@@ -184,7 +198,11 @@
     border-radius: 15px;
 }
 
-.bannere{
+.bannera img {
+    margin: auto;
+}
+
+.bannere {
     grid-column: 3/4;
     grid-row: 1;
     background-color: #C4C4C4;
@@ -195,49 +213,53 @@
     border-radius: 15px;
 }
 
-#status{
+.bannere img {
+    margin: auto;
+}
+
+#status {
     grid-row: 2;
     grid-column: 2/3;
     align-self: center;
     justify-self: center;
 }
 
-#profile{
+#profile {
     grid-row: 2;
     grid-column: 4/5;
     align-self: center;
     justify-self: center;
 }
 
-#enter{
+#enter {
     grid-row: 2;
     grid-column: 3/4;
     align-self: center;
     justify-self: center;
 }
 
-#statusa{
+#statusa {
     grid-row: 2;
     grid-column: 2/3;
     align-self: center;
     justify-self: center;
 }
 
-#asara{
+#asara {
     grid-row: 2;
     grid-column: 4/5;
     align-self: center;
     justify-self: center;
 }
 
-#entera{
+#entera {
     grid-row: 2;
     grid-column: 3/4;
     align-self: center;
     justify-self: center;
 }
 
-#bpost{
+#bpost {
     width: 70px;
     height: auto;
     position: absolute;
