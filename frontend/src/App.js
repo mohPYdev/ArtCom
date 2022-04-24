@@ -11,13 +11,10 @@ import ForgotPass1 from './component/ForgotPass1';
 import ForgotPass2 from './component/ForgotPass2';
 import EmailActivation from './component/EmailActivation';
 import ReceiveEmail from './component/ReceiveEmail';
-<<<<<<< HEAD
-=======
 import ProfileNormal from './pages/Profile_Normal';
 import ProfileArtist from './pages/Profile_Artist';
 import Home from './pages/HomePage';
 import ShowPlace from './pages/ShowPlace';
->>>>>>> 0461bbe980ee06a93a0f2344b94d38c2c3ad76e4
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic'
 
