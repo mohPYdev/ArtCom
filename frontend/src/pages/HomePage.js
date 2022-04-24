@@ -62,7 +62,7 @@ export default function HomePage() {
         <input
           type="text"
           id={style.search}
-          placeholder="Search"
+          placeholder="جست و جو"
           onChange={searchHandle}
         />
         <button className={style.contact} onClick={contactHandle}>
