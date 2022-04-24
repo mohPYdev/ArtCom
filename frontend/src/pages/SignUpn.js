@@ -93,6 +93,7 @@ function SignUpn(){
             className="sn_box"
             name="firstname"
             placeholder="نام"
+            required
           />
           <br />
           <input
@@ -103,6 +104,7 @@ function SignUpn(){
             className="sn_box"
             name="lastname"
             placeholder="نام خانوادگی"
+            required
           />
           <br />
           <input
@@ -113,6 +115,7 @@ function SignUpn(){
             className="sn_box"
             name="email"
             placeholder="ایمیل"
+            required
           />
           <br />
           <input
@@ -123,6 +126,7 @@ function SignUpn(){
             className="sn_box"
             name="username"
             placeholder="نام کاربری"
+            required
           />
           <input
             value={sn_password}
@@ -133,6 +137,7 @@ function SignUpn(){
             name="password"
             placeholder="رمزعبور"
             autoComplete="on"
+            required
           />
           <br />
           <input
@@ -144,6 +149,7 @@ function SignUpn(){
             name="confirmpassword"
             placeholder="تکرار رمزعبور"
             autoComplete="on"
+            required
           />
           <br />
           <textarea
@@ -153,6 +159,7 @@ function SignUpn(){
             className="sn_box"
             name="address"
             placeholder="آدرس"
+            required
           ></textarea>
           <input
             value={sn_city}
@@ -162,6 +169,7 @@ function SignUpn(){
             className="sn_box"
             name="city"
             placeholder="شهر"
+            required
           />
           <br />
           <br />
@@ -173,6 +181,7 @@ function SignUpn(){
             className="sn_box"
             name="postalcode"
             placeholder="کد پستی"
+            required
           />
           <input type="submit" id="sn_singup" value="ثبت نام" />
           {/* {isPending && <button disabled className='btn'>Loading ...</button>} */}

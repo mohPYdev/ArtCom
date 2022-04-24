@@ -10,7 +10,7 @@ from rest_framework import viewsets
 from rest_framework import status
 from rest_framework.exceptions import ValidationError
 
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from users.serializers import ArtistCreatePasswordRetypeSerializer, ArtistUpdateSerializer, \
                               CustomUserSerializer, TokenSerializer, FollowerSerializer, \
@@ -44,7 +44,7 @@ class UserViewSet(UserViewSet):
         return serializer
 
 
-    @action(detail=False, methods=["POST"], url_path="artist")
+    @action(detail=False, methods=["POST"], url_path="artist", permission_classes=[AllowAny])
     def artist_register(self, request):
         """
         Register a new artist
