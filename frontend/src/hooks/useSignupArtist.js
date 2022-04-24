@@ -57,7 +57,6 @@ export const useSignupArtist = () => {
     } 
     catch(err) {
       if (!isCancelled) {
-        console.log(Object.values(err.response.data))
         setError(Object.values(err.response.data)[0][0])
         setIsPending(false) 
         alert(Object.values(err.response.data)[0][0])
