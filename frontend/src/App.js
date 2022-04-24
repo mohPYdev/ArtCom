@@ -11,7 +11,13 @@ import ForgotPass1 from './component/ForgotPass1';
 import ForgotPass2 from './component/ForgotPass2';
 import EmailActivation from './component/EmailActivation';
 import ReceiveEmail from './component/ReceiveEmail';
-import PS_Normal from './pages/PS_Normal';
+<<<<<<< HEAD
+=======
+import ProfileNormal from './pages/Profile_Normal';
+import ProfileArtist from './pages/Profile_Artist';
+import Home from './pages/HomePage';
+import ShowPlace from './pages/ShowPlace';
+>>>>>>> 0461bbe980ee06a93a0f2344b94d38c2c3ad76e4
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic'
 
@@ -45,8 +51,17 @@ function App() {
           <Route path="/password/reset/confirm/:uid/:token" element={<ForgotPass2 />} />
           <Route path="/ReceiveEmail" element={<ReceiveEmail />} />
           <Route path="/activate/:uid/:token" element={<EmailActivation />} />
+<<<<<<< HEAD
           <Route path="/PSN" element={<PS_Normal />} />
 
+=======
+          <Route path="/ProfileNormal" element={<ProfileNormal />} />
+          <Route path="/ProfileArtist" element={<ProfileArtist />} />
+          <Route path="/Home" element={<Home />} />
+          <Route path="/show" element={<ShowPlace />} />
+          <Route path="/psn" element={<PS_Noraml />} />
+        
+>>>>>>> 0461bbe980ee06a93a0f2344b94d38c2c3ad76e4
 
 
           <Route path="/post" element={<Post />} />
