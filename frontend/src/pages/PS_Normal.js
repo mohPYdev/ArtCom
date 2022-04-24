@@ -1,7 +1,7 @@
 import style from './PS_Normal.module.css'
-import cherry from '../img/cherry.png'
-import psback from '../img/psback.png'
+import cherry from '../img/Premium_Vector___Photographer_man-removebg.png'
 import pablo from '../img/pablo.png'
+import picture from '../img/cherry.png'
 import profile from "../img/profile--picture.png";
 import { useState } from 'react';
 
@@ -38,9 +38,9 @@ export default function PS_Normal() {
         </div>
 
         <h1 className={style.artcom}>ArtCom</h1>
-        <img src={cherry}></img>
-        <img src={pablo}></img>
-        <img src={psback}></img>
+        <img id={style.img1} src={cherry}></img>
+        <img id={style.img2} src={pablo}></img>
+        <img id={style.img3} src={picture}></img>
     </div>
   )
 }

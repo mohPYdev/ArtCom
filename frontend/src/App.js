@@ -11,6 +11,7 @@ import ForgotPass1 from './component/ForgotPass1';
 import ForgotPass2 from './component/ForgotPass2';
 import EmailActivation from './component/EmailActivation';
 import ReceiveEmail from './component/ReceiveEmail';
+import PS_Normal from './pages/PS_Normal';
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic'
 
@@ -44,6 +45,7 @@ function App() {
           <Route path="/password/reset/confirm/:uid/:token" element={<ForgotPass2 />} />
           <Route path="/ReceiveEmail" element={<ReceiveEmail />} />
           <Route path="/activate/:uid/:token" element={<EmailActivation />} />
+          <Route path="/PSN" element={<PS_Normal />} />
 
 
 

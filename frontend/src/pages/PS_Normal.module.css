@@ -3,7 +3,7 @@
 
 .bodyclass{
     background-color: #E9DAD3;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 .header{
@@ -12,11 +12,11 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     align-content: center;
     margin-top: 20px;
-    height: 150px;
+    height: 176px;
 }
 
 .profile{
-    width: 100px;
+    width: 110px;
     grid-row: 1;
     grid-column: 1;
     align-self: center;
@@ -24,7 +24,7 @@
 }
 
 .name{
-    font-size: 30px;
+    font-size: 20px;
     grid-row: 2;
     grid-column: 1;
     align-self: center;
@@ -91,7 +91,25 @@
     font-family: 'Akaya Kanadaka';
     width: 100%;
     text-align: center;
-    font-size: 110px;
+    font-size: 106px;
     text-decoration: underline;
     letter-spacing: 0.165em;
+    color: #29354A;
+}
+#img1{
+    top: 45%;
+    position: fixed;
+    width: 406px;
+    left: 34%;
+}
+#img2{
+    top: 40%;
+    left: 59%;
+    width: 657px;
+    position: fixed;
+}
+#img3{
+    top: 40%;
+    width: 381px;
+    position: fixed;
 }
