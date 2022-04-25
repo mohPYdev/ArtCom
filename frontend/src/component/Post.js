@@ -29,7 +29,7 @@ import "./post.css";
 
 const product = {
   name: "شب پر ستاره",
-  price: "$5,000,000",
+  price: "5,000,000",
   href: "#",
   breadcrumbs: [
     { id: 1, name: "Men", href: "#" },
@@ -144,6 +144,12 @@ export default function Post() {
             <p className="text-3xl text-gray-900 centertext ">
               {product.price}
             </p>
+            <p className="mt-4 text-1xl text-gray-900 centertext ">
+              1400/05/06
+            </p>
+            <p className="mt-4 text-1xl text-gray-900 centertext ">
+              فروخته شده
+            </p>
 
             {/* Reviews */}
             {/* <div className="mt-6">
@@ -169,12 +175,18 @@ export default function Post() {
             </div> */}
 
             <form className="mt-10">
-              {/* Colors */}
+              {/* Colors  */}
               {/* <div>
                 <h3 className="text-sm text-gray-900 font-medium">Color</h3>
 
-                <RadioGroup value={selectedColor} onChange={setSelectedColor} className="mt-4">
-                  <RadioGroup.Label className="sr-only">Choose a color</RadioGroup.Label>
+                <RadioGroup
+                  value={selectedColor}
+                  onChange={setSelectedColor}
+                  className="mt-4"
+                >
+                  <RadioGroup.Label className="sr-only">
+                    Choose a color
+                  </RadioGroup.Label>
                   <div className="flex items-center space-x-3">
                     {product.colors.map((color) => (
                       <RadioGroup.Option
@@ -183,9 +195,9 @@ export default function Post() {
                         className={({ active, checked }) =>
                           classNames(
                             color.selectedClass,
-                            active && checked ? 'ring ring-offset-1' : '',
-                            !active && checked ? 'ring-2' : '',
-                            '-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none'
+                            active && checked ? "ring ring-offset-1" : "",
+                            !active && checked ? "ring-2" : "",
+                            "-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none"
                           )
                         }
                       >
@@ -196,7 +208,7 @@ export default function Post() {
                           aria-hidden="true"
                           className={classNames(
                             color.class,
-                            'h-8 w-8 border border-black border-opacity-10 rounded-full'
+                            "h-8 w-8 border border-black border-opacity-10 rounded-full"
                           )}
                         />
                       </RadioGroup.Option>
@@ -206,67 +218,14 @@ export default function Post() {
               </div> */}
 
               {/* Sizes */}
-              {/* <div className="mt-10">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-sm text-gray-900 font-medium">Size</h3>
-                  <a href="#" className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
-                    Size guide
+              <div className="mt-10 like-box">
+                <div className="flex items-center flexy">
+                  <h3 className="text-sm text-gray-900 font-medium">2k</h3>
+                  <a href="#" className=" hover:text-indigo-500">
+                    👍
                   </a>
                 </div>
-
-                <RadioGroup value={selectedSize} onChange={setSelectedSize} className="mt-4">
-                  <RadioGroup.Label className="sr-only">Choose a size</RadioGroup.Label>
-                  <div className="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
-                    {product.sizes.map((size) => (
-                      <RadioGroup.Option
-                        key={size.name}
-                        value={size}
-                        disabled={!size.inStock}
-                        className={({ active }) =>
-                          classNames(
-                            size.inStock
-                              ? 'bg-white shadow-sm text-gray-900 cursor-pointer'
-                              : 'bg-gray-50 text-gray-200 cursor-not-allowed',
-                            active ? 'ring-2 ring-indigo-500' : '',
-                            'group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6'
-                          )
-                        }
-                      >
-                        {({ active, checked }) => (
-                          <>
-                            <RadioGroup.Label as="p">{size.name}</RadioGroup.Label>
-                            {size.inStock ? (
-                              <div
-                                className={classNames(
-                                  active ? 'border' : 'border-2',
-                                  checked ? 'border-indigo-500' : 'border-transparent',
-                                  'absolute -inset-px rounded-md pointer-events-none'
-                                )}
-                                aria-hidden="true"
-                              />
-                            ) : (
-                              <div
-                                aria-hidden="true"
-                                className="absolute -inset-px rounded-md border-2 border-gray-200 pointer-events-none"
-                              >
-                                <svg
-                                  className="absolute inset-0 w-full h-full text-gray-200 stroke-2"
-                                  viewBox="0 0 100 100"
-                                  preserveAspectRatio="none"
-                                  stroke="currentColor"
-                                >
-                                  <line x1={0} y1={100} x2={100} y2={0} vectorEffect="non-scaling-stroke" />
-                                </svg>
-                              </div>
-                            )}
-                          </>
-                        )}
-                      </RadioGroup.Option>
-                    ))}
-                  </div>
-                </RadioGroup>
-              </div> */}
-
+              </div>
               <button
                 type="submit"
                 className="mt-10 w-full bg-sky-900 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-sky-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 centertext"
@@ -288,38 +247,7 @@ export default function Post() {
               </div>
             </div>
 
-            <div className="mt-10">
-              <h3 className="text-sm font-medium text-gray-900  centertext title">
-                نکات کلیدی
-              </h3>
-
-              <div className="mt-4">
-                <ul
-                  role="list"
-                  className="pl-4 list-disc text-sm space-y-2 righttext list"
-                >
-                  {product.highlights.map((highlight) => (
-                    <li key={highlight} className="text-gray-400 righttext">
-                      <span className="text-gray-600 righttext">
-                        {highlight}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <div className="mt-10">
-              <h2 className="text-sm font-medium text-gray-900 centertext title">
-                جزيیات
-              </h2>
-
-              <div className="mt-4 space-y-6">
-                <p className="text-sm text-gray-600 righttext">
-                  {product.details}
-                </p>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>

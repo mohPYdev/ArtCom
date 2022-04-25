@@ -2,7 +2,7 @@ import { React, useEffect, useState } from "react";
 import "./profile_theme.css";
 import backPic from "../img/Picture.png";
 import profilePic from "../img/profile--picture.png";
-
+import {useAuthContext} from '../hooks/useAuthContext'
 
 export default function Profile_Normal() {
   document.body.classList.add("bodyClass_profiless");
@@ -10,6 +10,8 @@ export default function Profile_Normal() {
     document.body.classList.remove("bodyClass_profiless");
   };
 
+
+  const {user} = useAuthContext()
   //file button
   const [selectedImage, setSelectedImage] = useState(null);
   const [imageUrl, setImageUrl] = useState(profilePic);
