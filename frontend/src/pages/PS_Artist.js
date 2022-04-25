@@ -63,7 +63,7 @@ export default function PS_Artist() {
             <img className={style.profile} src={profileImg}></img>
             <h2 className={style.name}>{name}</h2>
             <textarea value={bio} className={style.bio}></textarea>
-            <button className={style.btn} id={style.exit} onClick={exitHandle}>خروج</button>
+            {isSame && <button className={style.btn} id={style.exit} onClick={exitHandle}>خروج</button>}
             {isSame && <button className={style.btn} id={style.edit} onClick={editHandle}>ویرایش</button>}
             {!isSame && !followed && <button className={style.btn} id={style.follow} onClick={exitHandle}>follow</button>}
             {!isSame && followed && <button className={style.btn} id={style.unfollow} onClick={exitHandle}>unfollow</button>}
