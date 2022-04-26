@@ -6,13 +6,19 @@ import next from "../img/next.png";
 import mona from "../img/mona.png";
 import posts from "../img/posts.png";
 import { useEffect, useState } from "react";
-
+import { useAuthContext} from '../hooks/useAuthContext';
+import { useNavigate  } from "react-router-dom";
 export default function HomePage() {
   document.body.classList.add(style.bodyclass);
 
   window.onbeforeunload = function (event) {
     document.body.classList.remove(style.bodyclass);
   };
+
+  const navigator = useNavigate();
+
+  const { user } = useAuthContext();
+  console.log(user);
 
   const [profileImg, setProfileImg] = useState(profile);
   const [search, setSearch] = useState("");
@@ -34,12 +40,12 @@ export default function HomePage() {
   useEffect(() => {
     if (statuse) setStatusetext("درحال برگزاری");
     else setStatusetext("شروع نشده");
-  }, statuse);
+  }, [statuse , ]);
 
   useEffect(() => {
     if (statusa) setStatusatext("درحال برگزاری");
     else setStatusatext("شروع نشده");
-  }, statusa);
+  }, [statusa , ]);
 
   const searchHandle = (event) => {
     setSearch(event.target.value);
@@ -55,14 +61,23 @@ export default function HomePage() {
 
   const nextaHandle = () => {};
 
+  const GoToAuction =() => {
+    navigator('/auction/${user.id}')
+  }
+  const GoToShowPlace = () => {
+    navigator(`/show`)
+  }
+
   return (
     <div>
       <div className={style.header}>
-        <img src={profileImg} alt="" className={style.profile} />
+        <img src={user.image} alt="" className={style.profile} />
+        <h3 className={style.profile_name}>{user.first_name}</h3>
         <input
           type="text"
           id={style.search}
           placeholder="جست و جو"
+          value={search}
           onChange={searchHandle}
         />
         <button className={style.contact} onClick={contactHandle}>
@@ -87,7 +102,7 @@ export default function HomePage() {
         </button>
 
         <a href={entere} id={style.enter}>
-          <button className={style.blue}>ورود به نمایشگاه</button>
+          <button className={style.blue} onClick={GoToShowPlace}>ورود به نمایشگاه</button>
         </a>
 
         <a href={profilee} id={style.profile}>
@@ -110,7 +125,7 @@ export default function HomePage() {
           {statusatext}
         </button>
         <a href={entera} id={style.entera}>
-          <button className={style.blue}>ورود به مزایده</button>
+          <button className={style.blue} onClick={GoToAuction}>ورود به مزایده</button>
         </a>
         <a id={style.asara} href={asara}>
           <button className={style.blue}>آثار هنری</button>

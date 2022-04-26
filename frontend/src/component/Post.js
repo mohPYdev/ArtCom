@@ -98,7 +98,7 @@ export default function Post() {
               <div className="mt-10 like-box">
                 <div className="flex items-center justify-center">
                   <h3 className="mr-5 text-3xl text-gray-900 font-medium">2 k</h3>
-                  <button className=" focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="like--btn">
+                  <button className="hover:scale-125" id="like--btn">
                     <img src={like} className="icon" />
                   </button>
                 </div>
