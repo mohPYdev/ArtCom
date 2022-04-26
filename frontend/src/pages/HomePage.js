@@ -8,6 +8,7 @@ import posts from "../img/posts.png";
 import { useEffect, useState } from "react";
 import { useAuthContext} from '../hooks/useAuthContext';
 import { useNavigate  } from "react-router-dom";
+import Avatar from "../component/Avatar";
 export default function HomePage() {
   document.body.classList.add(style.bodyclass);
 
@@ -67,12 +68,20 @@ export default function HomePage() {
   const GoToShowPlace = () => {
     navigator(`/show`)
   }
+  const GoToProfileSeen =() => {
+    if(user.is_artist)
+    navigator(`/psa`)
+    else{
+      navigator(`/psn`)
+    }
+  }
+  
 
   return (
     <div>
       <div className={style.header}>
-        <img src={user.image} alt="" className={style.profile} />
-        <h3 className={style.profile_name}>{user.first_name}</h3>
+        <Avatar backColor="dark"/>
+
         <input
           type="text"
           id={style.search}

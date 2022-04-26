@@ -4,6 +4,9 @@ import pablo from '../img/pablo.png'
 import picture from '../img/cherry.png'
 import profile from "../img/profile--picture.png";
 import { useState } from 'react';
+import Avatar from '../component/Avatar';
+import { useNavigate } from 'react-router-dom';
+import { useAuthContext} from '../hooks/useAuthContext';
 
 
 export default function PS_Normal() {
@@ -12,25 +15,27 @@ export default function PS_Normal() {
     window.onbeforeunload = () => {
         document.body.classList.remove(style.bodyclass)
     }
-
+    const navigator = useNavigate ();
+    const { user } = useAuthContext();
     const [profileImg , setProfileImg] = useState(profile)
     const [name , setname] = useState('نام من')
     const [bio , setBio] = useState(' .... درباره من')
-    const [following , setFollowing] = useState(30)
+    const [following , setFollowing] = useState(user.following_count)
 
     const exitHandle = () => {
+      navigator(`/`)
 
     }
 
     const editHandle = () => {
+      navigator(`/ProfileNormal`)
 
     }
 
   return (
     <div>
         <div className={style.header}>
-            <img className={style.profile} src={profileImg}></img>
-            <h2 className={style.name}>{name}</h2>
+            <Avatar backColor="light"/>
             <textarea value={bio} className={style.bio}></textarea>
             <p className={style.following}>{following} Following</p>
             <button className={style.btn} id={style.edit} onClick={editHandle}>ویرایش</button>

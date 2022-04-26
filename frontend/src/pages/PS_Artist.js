@@ -8,6 +8,7 @@ import next from "../img/next.png";
 import mona from "../img/mona.png";
 
 import { useState , useEffect } from 'react';
+import Avatar from '../component/Avatar';
 
 export default function PS_Artist() {
     document.body.classList.add(style.bodyclass)
@@ -60,8 +61,7 @@ export default function PS_Artist() {
   return (
     <div>
         <div className={style.header}>
-            <img className={style.profile} src={profileImg}></img>
-            <h2 className={style.name}>{name}</h2>
+            <Avatar />
             <textarea value={bio} className={style.bio}></textarea>
             {isSame && <button className={style.btn} id={style.exit} onClick={exitHandle}>خروج</button>}
             {isSame && <button className={style.btn} id={style.edit} onClick={editHandle}>ویرایش</button>}
