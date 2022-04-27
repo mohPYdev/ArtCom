@@ -13,15 +13,16 @@ import { useEffect, useRef } from 'react';
 import {useParams} from 'react-router-dom';
 function Auction () {
 
-    const {roomName} = useParams();
+    const {id} = useParams();
     
     const chatSocket = new WebSocket(
             'ws://'
             + "localhost:8000"
             + '/ws/chat/'
-            + roomName
-            + '/'
+            + id
+            + `/?token=${JSON.parse(localStorage.getItem('token'))}`
         );
+    
 
     const cs = useRef(chatSocket);
 
@@ -32,7 +33,7 @@ function Auction () {
             const data = JSON.parse(e.data);
             console.log(data);
         };
-    }, [cs, roomName]);
+    }, [cs, id]);
 
 
     
@@ -42,7 +43,8 @@ function Auction () {
 
     const handleclick = (e) => {
         chatSocket.send(JSON.stringify({
-            'message': 'Hello world!'
+            'message': 'Hello world!',
+            'command': 'start'
         }));
     };
     
