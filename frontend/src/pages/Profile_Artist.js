@@ -4,6 +4,7 @@ import backPic from "../img/Picture.png";
 import profilePic from "../img/profile--picture.png";
 import {useAuthContext} from '../hooks/useAuthContext'
 
+
 export default function Profile_Artist() {
   document.body.classList.add("bodyClass_profiless");
   window.onbeforeunload = function (e) {
@@ -32,6 +33,7 @@ export default function Profile_Artist() {
     useState(user.address);
   const [postalcode_input_profiless, set_postalcode_input_profiless] =
     useState(user.postal_code);
+
 
   const changeBioTextarea = (event) => {
     set_Bio_textarea_profiless(event.target.value);

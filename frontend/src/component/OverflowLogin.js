@@ -1,3 +1,4 @@
+
 import './OverflowLogin.css'
 import brush from '../img/brush.svg';
 import { Link } from 'react-router-dom';
@@ -22,11 +23,12 @@ function OverflowLogin(){
 
   
   useEffect(() => {
-    if (error) {
-      setPassword("");
-      setUsername("");
-    }
+    if(error){
+      setPassword("")
+      setUsername("")
+      }
   }, [error]);
+
 
   return (
     <>

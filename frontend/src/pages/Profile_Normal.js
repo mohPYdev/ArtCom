@@ -10,9 +10,6 @@ export default function Profile_Normal() {
     document.body.classList.remove("bodyClass_profiless");
   };
 
-
-
-
   const {user} = useAuthContext()
   //file button
   const [selectedImage, setSelectedImage] = useState(null);
@@ -80,6 +77,7 @@ export default function Profile_Normal() {
           {/* <!--adding profile image--> */}
           <div id="img_prof_profiless">
             <img id="profile_image_profiless" src={user.image} />
+
             <label id="img_prof_label_profiless" for="img_prof_btn_profiless">
               +
               <input

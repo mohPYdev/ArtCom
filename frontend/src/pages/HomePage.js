@@ -39,11 +39,13 @@ export default function HomePage() {
   const [statusatext, setStatusatext] = useState("");
   const [entera, setEntera] = useState("#");
   const [asara, setAsara] = useState("#");
+
   
   useEffect(() => {
     if (statuse) setStatusetext("درحال برگزاری");
     else setStatusetext("شروع نشده");
   }, [statuse]);
+
 
   useEffect(() => {
     if (statusa) setStatusatext("درحال برگزاری");
@@ -56,6 +58,7 @@ export default function HomePage() {
     setExhibPoster(posts_list[indexOfExhibitons]);
     // console.log(exhibPoster)
 }, []);
+
 
   const searchHandle = (event) => {
     setSearch(event.target.value);
@@ -102,6 +105,7 @@ export default function HomePage() {
           id={style.search}
           placeholder="جست و جو"
           value={search}
+
           onChange={searchHandle}
         />
         <button className={style.contact} onClick={contactHandle}>
@@ -114,6 +118,7 @@ export default function HomePage() {
         <img src={back} alt="" className={style.back} onClick={backeHandle} />
         <div className={style.bannere}>
           <ExhibImage image_url={exhibPoster} />
+
         </div>
         <img src={next} alt="" className={style.next} onClick={nexteHandle} />
 
@@ -129,6 +134,7 @@ export default function HomePage() {
           <button className={style.blue} onClick={GoToShowPlace}>
             ورود به نمایشگاه
           </button>
+
         </a>
 
         <a href={profilee} id={style.profile}>
@@ -154,6 +160,7 @@ export default function HomePage() {
           <button className={style.blue} onClick={GoToAuction}>
             ورود به مزایده
           </button>
+
         </a>
         <a id={style.asara} href={asara}>
           <button className={style.blue}>آثار هنری</button>

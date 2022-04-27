@@ -1,11 +1,12 @@
-#AE_wrapper{
+#AE_wrapper {
     background-image: url(../img/pic1.jpg);
     background-size: cover;
     height: 100vh;
     width: 100vw;
     direction: rtl;
 }
-#AE_Thank{
+
+#AE_Thank {
     background-color: #1E2736;
     color: #E9DAD3;
     font-size: 32px;
@@ -18,7 +19,8 @@
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.8);
     border-radius: 15px;
 }
-#AE_Text{
+
+#AE_Text {
     background-color: #1E2736;
     color: #E9DAD3;
     font-size: 24px;
@@ -31,7 +33,8 @@
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.8);
     border-radius: 15px;
 }
-#AE_button{
+
+#AE_button {
     border: none;
     color: white;
     padding: 15px 32px;
@@ -45,8 +48,9 @@
     border-radius: 15px;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
 }
-#AE_button:hover{
+
+#AE_button:hover {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.8);
     transform: scale(1.3);
     transition: all 0.5s;
-  }
+}

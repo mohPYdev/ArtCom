@@ -89,6 +89,8 @@
     border-radius: 15px;
     position: relative;
     top: 30px;
+
+
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     align-content: center;
@@ -102,6 +104,7 @@
     border-radius: 15px;
     position: relative;
     top: 50px;
+
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     align-content: center;
@@ -271,7 +274,9 @@
     top: 360px;
     left: 48%;
 }
+
 .ExhibPost {
     width: 100%;
     height: 100%;
 }
+
