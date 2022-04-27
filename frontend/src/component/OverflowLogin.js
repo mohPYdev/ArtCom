@@ -1,26 +1,27 @@
 
-import "./OverflowLogin.css";
-import brush from "../img/brush.svg";
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { useLogin } from "../hooks/useLogin";
-import { useNavigate } from "react-router-dom";
-function OverflowLogin() {
-  const [username, setUsername] = useState("");
+import './OverflowLogin.css'
+import brush from '../img/brush.svg';
+import { Link } from 'react-router-dom';
+import {useState, useEffect} from 'react';
+import {useLogin} from '../hooks/useLogin'
+
+
+
+
+function OverflowLogin(){
+
+  const [username , setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { login, isPending, error } = useLogin();
-  let navigate = useNavigate();
+  const {login, isPending, error } = useLogin()
 
-  const loadHome = () => {
-    login(username, password);
-  };
-  const forgetPass = (e) => {
-    e.preventDefault();
-    console.log(1);
-    //  <Link to="/forgotpassword" className='forget-link'>ارسال رمزعبور به ایمیل ثبت شده با این نام کاربری</Link>
-    navigate(`/forgotpassword`);
-  };
 
+  const handleSubmit = async(e) => {
+    e.preventDefault()
+    await login(username, password)
+
+  }
+
+  
   useEffect(() => {
     if(error){
       setPassword("")
@@ -34,45 +35,16 @@ function OverflowLogin() {
       <div className="login--container">
         <img src={brush} className="brush" />
       </div>
-      <div id="login--form">
-        <input
-          type="text"
-          id="login--username"
-          name="username"
-          value={username}
-          className="item"
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <label id="login--username-label" className="item">
-          نام کاربری
-        </label>
-        <input
-          type="password"
-          id="login--password"
-          name="password"
-          value={password}
-          className="item"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <label id="login--password-label" className="item">
-          رمز عبور
-        </label>
-
-        <button
-          id="btn-login-form"
-          className="item"
-          type="button"
-          onClick={loadHome}
-        >
-          ورود{" "}
-        </button>
-        {/* {isPending && <button disabled className='btn'>Loading ...</button>} */}
-        {/* {error && <div className='error'>{error}</div>} */}
-        <button id="forget-pass-btn" type="button" onClick={forgetPass}>
-          {" "}
-          فراموشی رمز عبور{" "}
-        </button>
-      </div>
+      <form id="login--form" onSubmit={handleSubmit} >
+        <input type="text" id="login--username" name="username" value={username} className="item" onChange={(e)=>setUsername(e.target.value  )} required/>
+        <label  id="login--username-label" className="item">نام کاربری</label>
+        <input type="password" id="login--password" name="password" value={password}  className="item" onChange={(e)=>setPassword( e.target.value)} autoComplete='on'/>
+        <label  id="login--password-label" className="item" >رمز عبور</label>
+      
+      
+        <button id="btn-login-form" className="item" type="submit" onClick={handleSubmit}>ورود </button>
+        <Link to={'/forgotpassword'}  id="forget-pass-btn"> فراموشی رمز عبور </Link>
+      </form>
     </>
   );
 }

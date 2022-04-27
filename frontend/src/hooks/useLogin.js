@@ -2,11 +2,16 @@ import { useState, useEffect } from 'react'
 import { useAuthContext } from './useAuthContext'
 import axios from 'axios'
 import { useAlert } from 'react-alert'
+import {useNavigate} from 'react-router-dom'
+
+
 export const useLogin = () => {
   const [isCancelled, setIsCancelled] = useState(false)
   const [error, setError] = useState(null)
   const [isPending, setIsPending] = useState(false)
   const { dispatch } = useAuthContext()
+
+  const navigate = useNavigate()
 
   const LOGIN_URL = 'http://localhost:8000/auth/token/login/'
   const ME_URL = 'http://localhost:8000/auth/users/me/'
@@ -39,6 +44,7 @@ export const useLogin = () => {
         setIsPending(false)
         setError(null)
         alert.success('شما با موفقیت وارد سایت شدید ')
+        navigate('/home')
 
       }
     } 
