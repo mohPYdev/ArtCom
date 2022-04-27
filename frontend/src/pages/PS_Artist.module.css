@@ -14,6 +14,7 @@
     margin-top: 20px;
     height: 176px;
     margin-right: 50px;
+    margin-top: 5rem;
 }
 
 .profile{
@@ -65,14 +66,14 @@
 #exit{
     grid-row: 1;
     grid-column: 6;
-    align-self: center;
+    align-self: start;
     justify-self: center;
 }
 
 #edit{
-    grid-row: 2;
+    grid-row: 1;
     grid-column: 6;
-    align-self: center;
+    align-self: end;
     justify-self: center;
 }
 
@@ -106,7 +107,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     align-content: center;
-    margin-top: 30px;
+    margin-top: 5rem;
 }
 
 .postsNum{

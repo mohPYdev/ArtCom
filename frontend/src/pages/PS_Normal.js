@@ -7,7 +7,7 @@ import { useState } from 'react';
 import Avatar from '../component/Avatar';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext} from '../hooks/useAuthContext';
-
+import { useLogout } from '../hooks/useLogout';
 
 export default function PS_Normal() {
     document.body.classList.add(style.bodyclass)
@@ -15,6 +15,7 @@ export default function PS_Normal() {
     window.onbeforeunload = () => {
         document.body.classList.remove(style.bodyclass)
     }
+    const { logout, error, isPending } = useLogout();
     const navigator = useNavigate ();
     const { user } = useAuthContext();
     const [profileImg , setProfileImg] = useState(profile)
@@ -29,6 +30,7 @@ export default function PS_Normal() {
 
     const editHandle = () => {
       navigator(`/ProfileNormal`)
+      logout();
 
     }
 

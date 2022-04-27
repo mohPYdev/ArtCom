@@ -11,6 +11,8 @@ export default function Profile_Normal() {
   };
 
 
+
+
   const {user} = useAuthContext()
   //file button
   const [selectedImage, setSelectedImage] = useState(null);
