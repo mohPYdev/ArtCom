@@ -21,6 +21,8 @@ class CustomUserCreatePasswordRetypeSerializer(UserCreatePasswordRetypeSerialize
         attrs = super().validate(attrs)
         if attrs['email'] == '':
             raise serializers.ValidationError("Email is required")
+        if User.objects.filter(email=attrs['email']).exists():
+            raise serializers.ValidationError("Email already exists")
         return attrs
 
 

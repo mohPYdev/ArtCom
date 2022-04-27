@@ -1,4 +1,4 @@
-import react, { useState } from "react";
+import { useState, useEffect } from "react";
 import stylesheet from "./SignUp/SignUp_Artist.css";
 import { useSignupArtist } from "../hooks/useSignupArtist";
 
@@ -33,9 +33,14 @@ function SignUpa() {
       sa_selectValue,
       sa_invitationcode
     );
-
-    // redirect to login page
   };
+
+  useEffect(() => {
+    if (error) {
+      setSaConfirmpassword("");
+      setSaPassword("");
+    }
+  }, [error]);
 
   // setting the states
   const handlechangeSaFirstname = (event) => {
@@ -60,7 +65,6 @@ function SignUpa() {
     setSaInvitationcode(event.target.value);
   };
   const handlechangesaSelectValue = (event) => {
-    console.log("e :" + event.target.value);
     setSaselectValue(event.target.value);
   };
   const handlechangeSaAddress = (event) => {
@@ -127,6 +131,7 @@ function SignUpa() {
             className="sa_box"
             name="password"
             placeholder="رمزعبور"
+            autoComplete="on"
             required
           />
           <br />
@@ -138,6 +143,7 @@ function SignUpa() {
             className="sa_box"
             name="confirmpassword"
             placeholder="تکرار رمزعبور"
+            autoComplete="on"
             required
           />
           <br />
@@ -152,7 +158,7 @@ function SignUpa() {
             required
           />
           <br />
-          <label id="sa_label" className="sa_box">
+          <label id="sa_label" className="sa_box" required>
             تخصص:
           </label>
           <select
@@ -161,9 +167,12 @@ function SignUpa() {
             id="sa_selection"
             className="sa_box"
             name="education"
+            required
           >
             <option selected>--</option>
-            <option value="painter">نقاش</option>
+            <option value="painter" selected>
+              نقاش
+            </option>
             <option value="photographer">عکاس</option>
             <option value="Potter">سفالگر</option>
             <option value="Sculptor">مجسمه ساز</option>

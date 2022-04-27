@@ -15,6 +15,7 @@ function ForgotPass1() {
       const res = await axios.post(email_url, { email });
 
       if (res.status == 204) {
+        alert.success("ایمیل بازیابی رمز عبور با موفقیت ارسال شد");
       }
     } catch (err) {
       alert.error("ایمیل وارد شده در سامانه ثبت نشده است");

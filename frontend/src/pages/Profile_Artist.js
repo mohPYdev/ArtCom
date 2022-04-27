@@ -2,12 +2,16 @@ import { React, useEffect, useState } from "react";
 import "./profile_theme.css";
 import backPic from "../img/Picture.png";
 import profilePic from "../img/profile--picture.png";
+import {useAuthContext} from '../hooks/useAuthContext'
+
 
 export default function Profile_Artist() {
   document.body.classList.add("bodyClass_profiless");
   window.onbeforeunload = function (e) {
     document.body.classList.remove("bodyClass_profiless");
   };
+
+  const {user} = useAuthContext()
 
   //file button
   const [selectedImage, setSelectedImage] = useState(null);
@@ -20,15 +24,16 @@ export default function Profile_Artist() {
   //
 
   const [Bio_textarea_profiless, set_Bio_textarea_profiless] = useState("");
-  const [firstname_text_profiless, set_firstname_text_profiless] = useState("");
-  const [lastname_text_profiless, set_lastname_text_profiless] = useState("");
-  const [username_text_profiless, set_username_text_profiless] = useState("");
-  const [email_input_profiless, set_email_input_profiless] = useState("");
+  const [firstname_text_profiless, set_firstname_text_profiless] = useState(user.first_name);
+  const [lastname_text_profiless, set_lastname_text_profiless] = useState(user.last_name);
+  const [username_text_profiless, set_username_text_profiless] = useState(user.username);
+  const [email_input_profiless, set_email_input_profiless] = useState(user.email);
   const [phone_input_profiless, set_phone_input_profiless] = useState("");
   const [Address_textarea_profiless, set_Address_textarea_profiless] =
-    useState("");
+    useState(user.address);
   const [postalcode_input_profiless, set_postalcode_input_profiless] =
-    useState("");
+    useState(user.postal_code);
+
 
   const changeBioTextarea = (event) => {
     set_Bio_textarea_profiless(event.target.value);
@@ -74,7 +79,7 @@ export default function Profile_Artist() {
       >
         {/* <!--adding profile image--> */}
         <div id="img_prof_profiless">
-          <img id="profile_image_profiless" src={imageUrl} />
+          <img id="profile_image_profiless" src={user.image} />
           <label id="img_prof_label_profiless" for="img_prof_btn_profiless">
             +
             <input

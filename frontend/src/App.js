@@ -15,8 +15,13 @@ import ProfileNormal from './pages/Profile_Normal';
 import ProfileArtist from './pages/Profile_Artist';
 import Home from './pages/HomePage';
 import ShowPlace from './pages/ShowPlace';
+import PS_Noraml from './pages/PS_Normal';
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic'
+import PS_Artist from './pages/PS_Artist';
+
+
+
 const options = {
   // you can also just use 'bottom center'
   position: positions.TOP_CENTER,
@@ -36,23 +41,26 @@ function App() {
     <AlertProvider template={AlertTemplate} {...options}>
     <BrowserRouter>
       <Routes>
-        <Route index element={<Login />}/>
-  
-  
-          <Route path="/overflow" element={<OverflowLogin  />} />
-      
-       <Route path="/signupn" element={<SignUpn/> }/>
+          <Route index element={<Login />}/>
+          <Route path="/login" element={<OverflowLogin  />} />
+          <Route path="/signupn" element={<SignUpn/> }/>
           <Route path="/signupa" element={ <SignUpa/>}/>
           <Route path="/auction/:id" element={<Auction />} />
-          <Route path="/post" element={<Post />} />
           <Route path="/forgotpassword" element={<ForgotPass1 />} />
-          <Route path="/forgotpassword/:uid/:token" element={<ForgotPass2 />} />
-          <Route path="/EmailActivation" element={<EmailActivation />} />
+          <Route path="/password/reset/confirm/:uid/:token" element={<ForgotPass2 />} />
           <Route path="/ReceiveEmail" element={<ReceiveEmail />} />
+          <Route path="/activate/:uid/:token" element={<EmailActivation />} />
           <Route path="/ProfileNormal" element={<ProfileNormal />} />
           <Route path="/ProfileArtist" element={<ProfileArtist />} />
           <Route path="/Home" element={<Home />} />
           <Route path="/show" element={<ShowPlace />} />
+          <Route path="/psn" element={<PS_Noraml />} />
+          <Route path="/psa" element={<PS_Artist />} />
+        
+
+
+          <Route path="/post" element={<Post />} />
+
       </Routes>
     </BrowserRouter>
      </AlertProvider>  

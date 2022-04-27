@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { useAuthContext } from "./useAuthContext";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const useSignupNormal = () => {
   const [isCancelled, setIsCancelled] = useState(false);
   const [error, setError] = useState(null);
   const [isPending, setIsPending] = useState(false);
   const { dispatch } = useAuthContext();
+  const navigate = useNavigate();
 
   const SIGNUP_URL = "http://localhost:8000/auth/users/";
 
@@ -37,7 +39,6 @@ export const useSignupNormal = () => {
         address,
         postal_code,
       });
-      // console.log("try")
 
       if (!res) {
         throw new Error("Could not complete signup");
@@ -46,14 +47,12 @@ export const useSignupNormal = () => {
       if (!isCancelled) {
         setIsPending(false);
         setError(null);
+        navigate("/ReceiveEmail");
       }
     } catch (err) {
-      // console.log("catch")
-
-      if (isCancelled) {
+      if (!isCancelled) {
         setError(Object.values(err.response.data)[0][0]);
         setIsPending(false);
-        // console.log("cancelled")
         alert(Object.values(err.response.data)[0][0]);
       }
     }
