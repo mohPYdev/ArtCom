@@ -1,71 +1,44 @@
-import { useState, useEffect } from 'react'
-import { useAuthContext } from './useAuthContext'
-import axios from 'axios'
-import {useNavigate} from 'react-router-dom'
-
-export const useAuction = () => {
-  const [isCancelled, setIsCancelled] = useState(false)
-  const [error, setError] = useState(null)
-  const [isPending, setIsPending] = useState(false)
-  const navigate = useNavigate()
-
-  const AUCTION_URL = "http://localhost:8000/posts/auction/"
-
- 
-
-  const signup = async (email, password, username , re_password,
-                        city, address, postal_code, first_name, last_name,
-                        profession, token ) => {
-    setError(null)
-    setIsPending(true)
-  
-    try {
+import { useEffect, useState } from "react"
+import axios from "axios"
 
 
-      const payload = {
-        "email": email,
-        "username": username,
-        "password": password,
-        "city": city,
-        "address": address,
-        "postal_code": postal_code,
-        "image": null,
-        "first_name": first_name,
-        "last_name": last_name,
-        "artist": {
-            "description": "",
-            "profession": profession,
-            "inviters": {
-                "token": token
+export const useAuction = (url) => {
+    
+    const [data , setData] = useState(null)
+    const [isPending , setIsPending] = useState(false)
+    const [error , setError] = useState(null)
+
+
+    useEffect(() => {
+        
+        const controller = new AbortController()
+
+        const fetchData = async () => {
+            setIsPending(true)
+            try {
+            const res = await axios.get(url , {signal: controller.signal })
+            // const json = await res.data.json()
+            setIsPending(false)
+            setData(res.data)
+            setError(null)
+            }catch(err){
+                if (err.name === 'AbortError'){
+                    console.log("fetch was aborted!")
+                }else{
+                    setIsPending(false)
+                    console.log(err.message)
+                    setError('could not fetch the data')
+                }
             }
-        },
-        "re_password": re_password
-    }
-      // signup
-      const res = await axios.post(SIGNUP_ARTIST_URL, payload)
+        }
 
-      if (!res) {
-        throw new Error('Could not complete signup')
-      }
+        fetchData()
 
-      if (!isCancelled) {
-        setIsPending(false)
-        setError(null)
-        navigate('/ReceiveEmail')
-      }
-    } 
-    catch(err) {
-      if (!isCancelled) {
-        setError(Object.values(err.response.data)[0][0])
-        setIsPending(false) 
-        alert(Object.values(err.response.data)[0][0])
-      }
-    }
-  }
+        return () => {
+            controller.abort()
+        }
 
-  useEffect(() => {
-    return () => setIsCancelled(true)
-  }, [])
-
-  return { signup, error, isPending }
+    } , [url])
+    
+    return {data , isPending , error}
 }

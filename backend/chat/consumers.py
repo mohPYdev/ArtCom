@@ -9,6 +9,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         super().__init__(*args, **kwargs)
         self.t = 0
         self.run = False
+        self.task = None
 
 
     async def start(self, event):
@@ -17,7 +18,11 @@ class ChatConsumer(AsyncWebsocketConsumer):
             'command': 'start',
             'message': 'started the auction'
         }
-        await self.send_message(content)
+        while self.t < 10:
+            await self.send_message(content)
+            await asyncio.sleep(1)
+            self.t += 1
+
     
     def new_price(self, event):
         print('new_price')
@@ -32,6 +37,8 @@ class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = 'chat_%s' % self.room_name
+        print(self.scope['user'])
+        
 
 
         # Join room group
@@ -42,6 +49,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
         await self.accept()
 
+
     async def disconnect(self, close_code):
         # Leave room group
         await self.channel_layer.group_discard(
@@ -51,14 +59,15 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     # Receive message from WebSocket
     async def receive(self, text_data):
+        self.t = 0
+        if self.task:
+            self.task.cancel()
         data = json.loads(text_data)
-        self.run = False
-        await self.commands[data['command']](self, data)
+        self.task = asyncio.create_task(self.commands[data['command']](self, data))
 
 
 
     async def send_message(self, message):
-        print('send_message')
 
         await self.channel_layer.group_send(
             self.room_group_name,
@@ -71,15 +80,9 @@ class ChatConsumer(AsyncWebsocketConsumer):
     # Receive message from room group
     async def chat_message(self, event):
         message = event['message']
-        print('chat_message')
-        self.t = 0
-        self.run = True
-
-        # Send message to WebSocket
-        while self.t < 10:
-            await self.send(text_data=json.dumps({
-                'message': message,
-                'time': self.t,
-            }))
-            await asyncio.sleep(1)
-            self.t += 1
+        
+        await self.send(text_data=json.dumps({
+            'message': message,
+            'time': self.t,
+        }))
+        
