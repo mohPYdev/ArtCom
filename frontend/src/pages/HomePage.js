@@ -11,8 +11,10 @@ import getExhibitions from "../function/getExhibitions";
 function ExhibImage({ image_url }) {
   return <img src={image_url} alt="" className={style.ExhibPost} />;
 }
-let posts_list ;
 let indexOfExhibitons;
+let image_list;
+let date_start;
+
 
 export default function HomePage() {
 
@@ -52,10 +54,14 @@ export default function HomePage() {
     else setStatusatext("شروع نشده");
   }, [statusa]);
   useEffect( async() => {
-    posts_list = await getExhibitions();
+    const { posts_list , date_begin , date_end } = await getExhibitions();
+    date_start = date_begin ;
+    image_list = posts_list ;
     indexOfExhibitons = 0;
+    console.log(image_list)
 
-    setExhibPoster(posts_list[indexOfExhibitons]);
+
+    setExhibPoster(image_list[indexOfExhibitons]);
     // console.log(exhibPoster)
 }, []);
 
@@ -69,17 +75,17 @@ export default function HomePage() {
   const backeHandle = () => {
     // console.log("back");
     indexOfExhibitons = indexOfExhibitons -1;
-    if (indexOfExhibitons < 0) indexOfExhibitons = posts_list.length - 1;
-    setExhibPoster(posts_list[indexOfExhibitons]);
+    if (indexOfExhibitons < 0) indexOfExhibitons = image_list.length - 1;
+    setExhibPoster(image_list[indexOfExhibitons]);
     // console.log(indexOfExhibitons);
   };
 
   const nexteHandle = () => {
     // console.log("next");
     indexOfExhibitons++;
-    if (indexOfExhibitons >= posts_list.length) indexOfExhibitons = 0;
+    if (indexOfExhibitons >= image_list.length) indexOfExhibitons = 0;
 
-    setExhibPoster(posts_list[indexOfExhibitons]);
+    setExhibPoster(image_list[indexOfExhibitons]);
     // console.log(indexOfExhibitons);
   };
 

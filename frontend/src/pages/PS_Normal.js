@@ -25,12 +25,13 @@ export default function PS_Normal() {
 
     const exitHandle = () => {
       navigator(`/`)
+      logout();
 
     }
 
     const editHandle = () => {
       navigator(`/ProfileNormal`)
-      logout();
+      
 
     }
 

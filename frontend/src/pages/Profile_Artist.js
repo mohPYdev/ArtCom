@@ -62,6 +62,10 @@ export default function Profile_Artist() {
   const submitting = (event) => {
     event.preventDefault();
   };
+  useEffect(()=>{
+    
+
+  },[selectedImage])
 
   return (
     // <!--a div covering whole page-->
