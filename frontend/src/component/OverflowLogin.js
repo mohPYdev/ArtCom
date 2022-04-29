@@ -1,6 +1,7 @@
 
 import './OverflowLogin.css'
 import brush from '../img/brush.svg';
+import lghome from "../pages/SignUp/image/icons8-home-30.png"
 import { Link } from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import {useLogin} from '../hooks/useLogin'
@@ -35,6 +36,7 @@ function OverflowLogin(){
   return (
     <>
       <div className="login--container">
+        <img id="lg_home" src={lghome} />
         <img src={brush} className="brush" />
       </div>
       <form id="login--form" onSubmit={handleSubmit} >
