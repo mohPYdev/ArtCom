@@ -59,7 +59,7 @@ export default function HomePage() {
     exhibitions.current = list ;
     
     indexOfExhibitons.current = 0;
-    console.log(exhibitions.current)
+    //console.log(exhibitions.current)
     setTimerE(exhibitions.current[indexOfExhibitons.current].date_end);
 
 

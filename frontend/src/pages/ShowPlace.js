@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import getOneExhibition from "../function/getOneExhibition";
 import {useNavigate, useParams} from "react-router-dom";
 import getArtistInfo from "../function/getArtistInfo";
+import getPostInfo from "../function/getPostInfo";
 
 export default function ShowPlace() {
   document.body.classList.add(style.bodyclass);
@@ -16,7 +17,7 @@ export default function ShowPlace() {
     document.body.classList.remove(style.bodyclass);
   };
   const postsList = useRef("");
-  const indexOfPost = useRef("");
+  const indexOfPost = useRef(0);
   const {id} = useParams("");
   const navigator = useNavigate();
 
@@ -40,10 +41,13 @@ export default function ShowPlace() {
       setliked(true);
     }
   };
-  const ChangePost = async ()=>{
-    console.log(postsList.current)
-    setName(postsList.current[indexOfPost.current].name)
-    setArtwork( postsList.current[indexOfPost.current].image)
+  const ChangePost = async()=>{
+    //console.log(postsList.current)
+    const { image  , name , description , price } = await getPostInfo(+postsList.current[indexOfPost.current].id);
+    setName(name)
+    setArtwork( image)
+    setAbout(description)
+    setPrice(price)
 
   }
 
@@ -69,8 +73,8 @@ export default function ShowPlace() {
 
   // fetch data
   useEffect(async() => {
-    indexOfPost.current = 0 ;
     //console.log(id)
+    indexOfPost.current = 0 ;
     const {posts , artist , date_end} = await getOneExhibition(+id);
     postsList.current = posts ;
     const { image}= await getArtistInfo(+artist)
