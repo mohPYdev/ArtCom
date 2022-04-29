@@ -22,6 +22,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
             await self.send_message(content)
             await asyncio.sleep(1)
             self.t += 1
+            print(self.t)
 
     
     def new_price(self, event):

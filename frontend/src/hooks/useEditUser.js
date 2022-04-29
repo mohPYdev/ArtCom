@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 
 
-export const useAuction = (url) => {
+export const useEditUser = (url) => {
     
     const [data , setData] = useState(null)
     const [isPending , setIsPending] = useState(false)

@@ -22,15 +22,15 @@ export default function Profile_Normal() {
   //
 
   const [Bio_textarea_profiless, set_Bio_textarea_profiless] = useState();
-  const [firstname_text_profiless, set_firstname_text_profiless] = useState(user.first_name);
-  const [lastname_text_profiless, set_lastname_text_profiless] = useState(user.last_name);
-  const [username_text_profiless, set_username_text_profiless] = useState(user.username);
-  const [email_input_profiless, set_email_input_profiless] = useState(user.email);
+  const [firstname_text_profiless, set_firstname_text_profiless] = useState();
+  const [lastname_text_profiless, set_lastname_text_profiless] = useState();
+  const [username_text_profiless, set_username_text_profiless] = useState();
+  const [email_input_profiless, set_email_input_profiless] = useState();
   const [phone_input_profiless, set_phone_input_profiless] = useState("");
   const [Address_textarea_profiless, set_Address_textarea_profiless] =
-    useState(user.address);
+    useState();
   const [postalcode_input_profiless, set_postalcode_input_profiless] =
-    useState(user.postal_code);
+    useState();
 
   const changeBioTextarea = (event) => {
     set_Bio_textarea_profiless(event.target.value);
@@ -60,6 +60,18 @@ export default function Profile_Normal() {
     event.preventDefault();
   };
 
+  useEffect(() => {
+    if (user){
+      set_firstname_text_profiless(user.first_name);
+      set_lastname_text_profiless(user.last_name);
+      set_username_text_profiless(user.username);
+      set_email_input_profiless(user.email);
+      set_Address_textarea_profiless(user.address);
+      set_postalcode_input_profiless(user.postal_code);
+    }
+  },[user]);
+
+
   return (
     <div className="main_profiless">
       <div>
@@ -76,7 +88,7 @@ export default function Profile_Normal() {
         >
           {/* <!--adding profile image--> */}
           <div id="img_prof_profiless">
-            <img id="profile_image_profiless" src={user.image} />
+            <img id="profile_image_profiless" src={user?.image} />
 
             <label id="img_prof_label_profiless" for="img_prof_btn_profiless">
               +

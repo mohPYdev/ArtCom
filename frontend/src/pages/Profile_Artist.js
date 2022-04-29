@@ -24,15 +24,28 @@ export default function Profile_Artist() {
   //
 
   const [Bio_textarea_profiless, set_Bio_textarea_profiless] = useState("");
-  const [firstname_text_profiless, set_firstname_text_profiless] = useState(user.first_name);
-  const [lastname_text_profiless, set_lastname_text_profiless] = useState(user.last_name);
-  const [username_text_profiless, set_username_text_profiless] = useState(user.username);
-  const [email_input_profiless, set_email_input_profiless] = useState(user.email);
+  const [firstname_text_profiless, set_firstname_text_profiless] = useState();
+  const [lastname_text_profiless, set_lastname_text_profiless] = useState();
+  const [username_text_profiless, set_username_text_profiless] = useState();
+  const [email_input_profiless, set_email_input_profiless] = useState();
   const [phone_input_profiless, set_phone_input_profiless] = useState("");
   const [Address_textarea_profiless, set_Address_textarea_profiless] =
-    useState(user.address);
+    useState();
   const [postalcode_input_profiless, set_postalcode_input_profiless] =
-    useState(user.postal_code);
+    useState();
+
+
+  useEffect(() => {
+    if (user){
+      set_Bio_textarea_profiless(user.artist.description);
+      set_firstname_text_profiless(user.first_name);
+      set_lastname_text_profiless(user.last_name);
+      set_username_text_profiless(user.username);
+      set_email_input_profiless(user.email);
+      set_Address_textarea_profiless(user.address);
+      set_postalcode_input_profiless(user.postal_code);
+    }
+  },[user]);
 
 
   const changeBioTextarea = (event) => {
@@ -59,8 +72,11 @@ export default function Profile_Artist() {
   const changePostalcodeInput = (event) => {
     set_postalcode_input_profiless(event.target.value);
   };
-  const submitting = (event) => {
+
+
+  const handleSubmit = (event) => {
     event.preventDefault();
+    
   };
 
   return (
@@ -73,13 +89,12 @@ export default function Profile_Artist() {
 
       <form
         id="profile-form"
-        onSubmit={submitting}
-        method="get"
+        onSubmit={handleSubmit}
         style={{ zIndex: 10 }}
       >
         {/* <!--adding profile image--> */}
         <div id="img_prof_profiless">
-          <img id="profile_image_profiless" src={user.image} />
+          <img id="profile_image_profiless" src={user?.image} />
           <label id="img_prof_label_profiless" for="img_prof_btn_profiless">
             +
             <input

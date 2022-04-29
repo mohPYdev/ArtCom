@@ -53,8 +53,8 @@ export default function PS_Artist() {
       }, statuse);
 
     const exitHandle = () => {
-        navigator(`/`)
         logout();
+        navigator(`/`)
 
 
     }

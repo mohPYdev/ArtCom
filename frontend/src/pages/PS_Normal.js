@@ -21,17 +21,16 @@ export default function PS_Normal() {
     const [profileImg , setProfileImg] = useState(profile)
     const [name , setname] = useState('نام من')
     const [bio , setBio] = useState(' .... درباره من')
-    const [following , setFollowing] = useState(user.following_count)
+    const [following , setFollowing] = useState(user?.following_count)
 
     const exitHandle = () => {
+      logout()
       navigator(`/`)
 
     }
 
     const editHandle = () => {
       navigator(`/ProfileNormal`)
-      logout();
-
     }
 
   return (

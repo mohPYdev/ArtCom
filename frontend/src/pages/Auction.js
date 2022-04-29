@@ -11,20 +11,21 @@ import moneyicon from '../img/sack-dollar-solid.png';
 
 import { useEffect, useRef } from 'react';
 import {useParams} from 'react-router-dom';
-import {useAuction} from '../hooks/useAuction';
-
+import {useAxios} from '../hooks/useAxios';
+import {useAuthContext} from '../hooks/useAuthContext';
 
 function Auction () {
 
     const {id} = useParams();
-    const user = JSON.parse(localStorage.getItem('user'));
-    const {data, isPending, error} = useAuction('http://localhost:8000/post/auctions/'+id);
+    // const user = JSON.parse(localStorage.getItem('user'));
+    const {user} = useAuthContext();
+    const {data, isPending, error} = useAxios('http://localhost:8000/post/auctions/'+id);
     const ws = useRef(null);
 
     const [time, setTime] = useState(0)
     const [post, setPost] = useState(null)
-    const [next, setNext] = useState(false)
-    const [nPost, setNPost] = useState(null)
+    const [next, setNext] = useState(true)
+    const [nPost, setNPost] = useState(0)
     const [price, setPrice] = useState(0)
 
 
@@ -42,7 +43,7 @@ function Auction () {
         return () => {
             wsCurrent.close();
         };
-    }, [id,data]);
+    }, [id]);
 
     useEffect(() => {
         if (!ws.current) return;
@@ -57,13 +58,14 @@ function Auction () {
     useEffect(() => {
         // changing the next to true with trigger this function and set the next post on the screen
         if (!ws.current) return;
-
-        if (next){
+       
+        if (next && data){
+            setPost(data.post[nPost])
+            setPrice(data.post[nPost].price)
             setNPost(nPost+1)
             setNext(false)
-            setPost(data.post[nPost])
         }
-    } , [nPost, next]);
+    } , [nPost, next, data]);
 
 
     const handleclick = (e) => {
@@ -100,29 +102,29 @@ function Auction () {
                     <img src={moneyicon} id="money-icon" /> 
                     <div id="percent-box">
                         
-                    {user.is_superuser && <button onClick={handleclick}>
+                    {user?.is_superuser && <button onClick={handleclick}>
                     <div className="percent">
                        start
                     </div>
                     </button>}
                     <button onClick={handleclick}>
                     <div className="percent">
-                        + 5 %
+                        +{(price * 0.05).toFixed(2)}$
                     </div>
                     </button>  
                     <button onClick={handleclick}>
                     <div className="percent">
-                        + 10 %
+                        + {(price * 0.1).toFixed(2)}$
                     </div>
                     </button>
                     <button onClick={handleclick}>
                     <div className="percent">
-                        + 15 %
+                        + {(price * 0.15).toFixed(2)}$
                     </div>
                     </button>
                     <button onClick={handleclick}>
                     <div className="percent">
-                        + 20 %
+                    + {(price * 0.2).toFixed(2)}$
                     </div>
                     </button>
                     </div>  
@@ -132,9 +134,9 @@ function Auction () {
                         
                     </div>
                     <div id="price-box">
-                        <div className="current-price price">
-                            $2100
-                        </div>
+                        {price && <div className="current-price price">
+                            ${price} - {user?.username}
+                        </div>}
                         <div className="prev-price price">
                         $1800
                         </div>
