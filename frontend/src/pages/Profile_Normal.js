@@ -3,6 +3,10 @@ import "./profile_theme.css";
 import backPic from "../img/Picture.png";
 import profilePic from "../img/profile--picture.png";
 import {useAuthContext} from '../hooks/useAuthContext'
+import {useAxios} from '../hooks/useAxios'
+import { useAlert } from 'react-alert'
+
+import axios from 'axios';
 
 export default function Profile_Normal() {
   document.body.classList.add("bodyClass_profiless");
@@ -10,7 +14,10 @@ export default function Profile_Normal() {
     document.body.classList.remove("bodyClass_profiless");
   };
 
-  const {user} = useAuthContext()
+  const {user, dispatch} = useAuthContext()
+  const { data, isPending, error } = useAxios('http://localhost:8000/auth/users/me')
+
+  const alert = useAlert()
   //file button
   const [selectedImage, setSelectedImage] = useState(null);
   const [imageUrl, setImageUrl] = useState(profilePic);
@@ -22,15 +29,13 @@ export default function Profile_Normal() {
   //
 
   const [Bio_textarea_profiless, set_Bio_textarea_profiless] = useState();
-  const [firstname_text_profiless, set_firstname_text_profiless] = useState(user.first_name);
-  const [lastname_text_profiless, set_lastname_text_profiless] = useState(user.last_name);
-  const [username_text_profiless, set_username_text_profiless] = useState(user.username);
-  const [email_input_profiless, set_email_input_profiless] = useState(user.email);
-  const [phone_input_profiless, set_phone_input_profiless] = useState("");
-  const [Address_textarea_profiless, set_Address_textarea_profiless] =
-    useState(user.address);
-  const [postalcode_input_profiless, set_postalcode_input_profiless] =
-    useState(user.postal_code);
+  const [firstname_text_profiless, set_firstname_text_profiless] = useState();
+  const [lastname_text_profiless, set_lastname_text_profiless] = useState();
+  const [username_text_profiless, set_username_text_profiless] = useState();
+  const [email_input_profiless, set_email_input_profiless] = useState();
+  const [city_input_profiless, set_city_input_profiless] = useState("");
+  const [Address_textarea_profiless, set_Address_textarea_profiless] = useState();
+  const [postalcode_input_profiless, set_postalcode_input_profiless] =useState();
 
   const changeBioTextarea = (event) => {
     set_Bio_textarea_profiless(event.target.value);
@@ -47,8 +52,8 @@ export default function Profile_Normal() {
   const changeEmailInput = (event) => {
     set_email_input_profiless(event.target.value);
   };
-  const changePhoneInput = (event) => {
-    set_phone_input_profiless(event.target.value);
+  const changeCityInput = (event) => {
+    set_city_input_profiless(event.target.value);
   };
   const changeAddressTextarea = (event) => {
     set_Address_textarea_profiless(event.target.value);
@@ -56,9 +61,46 @@ export default function Profile_Normal() {
   const changePostalcodeInput = (event) => {
     set_postalcode_input_profiless(event.target.value);
   };
-  const submitting = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
+    let form_data = new FormData();
+    if (selectedImage){form_data.append("image", selectedImage);}
+    
+    form_data.append("first_name", firstname_text_profiless);
+    form_data.append("last_name", lastname_text_profiless);
+    form_data.append("username", username_text_profiless);
+    form_data.append("email", email_input_profiless);
+    form_data.append("city", city_input_profiless);
+    form_data.append("address", Address_textarea_profiless);
+    form_data.append("postal_code", postalcode_input_profiless);
+
+    let url = 'http://localhost:8000/auth/users/me/';
+    axios.patch(url, form_data, {
+      headers: {
+        'content-type': 'multipart/form-data'
+      }
+    })
+        .then(res => {
+          dispatch({ type: 'LOGIN', payload: res.data })
+          localStorage.setItem('user', JSON.stringify(res.data))
+          alert.success('اطلاعات با موفقیت بروزرسانی شد')
+        })
+        .catch(err => console.log(err))
   };
+
+  useEffect(() => {
+    if (user){
+      set_firstname_text_profiless(user.first_name);
+      set_lastname_text_profiless(user.last_name);
+      set_username_text_profiless(user.username);
+      set_email_input_profiless(user.email);
+      set_Address_textarea_profiless(user.address);
+      set_city_input_profiless(user.city);
+      set_postalcode_input_profiless(user.postal_code);
+      setImageUrl(user?.image);
+    }
+  },[user]);
+
 
   return (
     <div className="main_profiless">
@@ -70,13 +112,13 @@ export default function Profile_Normal() {
 
         <form
           id="profile-form"
-          onSubmit={submitting}
+          onSubmit={handleSubmit}
           method="get"
           style={{ zIndex: 10 }}
         >
           {/* <!--adding profile image--> */}
           <div id="img_prof_profiless">
-            <img id="profile_image_profiless" src={user.image} />
+            <img id="profile_image_profiless" src={imageUrl} />
 
             <label id="img_prof_label_profiless" for="img_prof_btn_profiless">
               +
@@ -142,8 +184,8 @@ export default function Profile_Normal() {
           />
           {/* <!--adding phone number input--> */}
           <input
-            value={phone_input_profiless}
-            onChange={changePhoneInput}
+            value={city_input_profiless}
+            onChange={changeCityInput}
             type="tel"
             className="common_form_profiless"
             id="phone_input_profiless"

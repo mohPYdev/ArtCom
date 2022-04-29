@@ -1,13 +1,22 @@
 import style from "./HomePage.module.css";
+
 import back from "../img/back.png";
 import next from "../img/next.png";
 import mona from "../img/mona.png";
 import posts from "../img/posts.png";
+
+// import { useAuthContext } from "../hooks/useAuthContext";
 import { useEffect, useState } from "react";
-import { useAuthContext } from "../hooks/useAuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+
 import Avatar from "../component/Avatar";
-import getExhibitions from "../function/getExhibitions";
+// import getExhibitions from "../function/getExhibitions";
+import { useAxios } from "../hooks/useAxios";
+
+
+
+
+
 function ExhibImage({ image_url }) {
   return <img src={image_url} alt="" className={style.ExhibPost} />;
 }
@@ -16,7 +25,9 @@ let indexOfExhibitons;
 
 export default function HomePage() {
 
-  const { user } = useAuthContext();
+
+  const {data, isPending, error} = useAxios('http://localhost:8000/post/exhibitions/');
+
   const [exhibPoster, setExhibPoster] = useState("");
   document.body.classList.add(style.bodyclass);
 
@@ -47,40 +58,22 @@ export default function HomePage() {
   }, [statuse]);
 
 
-  useEffect(() => {
-    if (statusa) setStatusatext("درحال برگزاری");
-    else setStatusatext("شروع نشده");
-  }, [statusa]);
-  useEffect( async() => {
-    posts_list = await getExhibitions();
-    indexOfExhibitons = 0;
-
-    setExhibPoster(posts_list[indexOfExhibitons]);
-    // console.log(exhibPoster)
-}, []);
-
-
   const searchHandle = (event) => {
     setSearch(event.target.value);
   };
 
-  const contactHandle = (event) => {};
 
   const backeHandle = () => {
-    // console.log("back");
     indexOfExhibitons = indexOfExhibitons -1;
     if (indexOfExhibitons < 0) indexOfExhibitons = posts_list.length - 1;
     setExhibPoster(posts_list[indexOfExhibitons]);
-    // console.log(indexOfExhibitons);
   };
 
   const nexteHandle = () => {
-    // console.log("next");
     indexOfExhibitons++;
     if (indexOfExhibitons >= posts_list.length) indexOfExhibitons = 0;
 
     setExhibPoster(posts_list[indexOfExhibitons]);
-    // console.log(indexOfExhibitons);
   };
 
   const backaHandle = () => {};
@@ -108,7 +101,8 @@ export default function HomePage() {
 
           onChange={searchHandle}
         />
-        <button className={style.contact} onClick={contactHandle}>
+
+        <button className={style.contact}>
           ارتباط با ما
         </button>
       </div>
@@ -134,7 +128,6 @@ export default function HomePage() {
           <button className={style.blue} onClick={GoToShowPlace}>
             ورود به نمایشگاه
           </button>
-
         </a>
 
         <a href={profilee} id={style.profile}>

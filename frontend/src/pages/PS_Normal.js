@@ -3,7 +3,7 @@ import cherry from '../img/Premium_Vector___Photographer_man-removebg.png'
 import pablo from '../img/pablo.png'
 import picture from '../img/cherry.png'
 import profile from "../img/profile--picture.png";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Avatar from '../component/Avatar';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext} from '../hooks/useAuthContext';
@@ -21,17 +21,25 @@ export default function PS_Normal() {
     const [profileImg , setProfileImg] = useState(profile)
     const [name , setname] = useState('نام من')
     const [bio , setBio] = useState(' .... درباره من')
-    const [following , setFollowing] = useState(user.following_count)
+    const [following , setFollowing] = useState(user?.following_count)
 
     const exitHandle = () => {
+      logout()
       navigator(`/`)
 
     }
 
+    useEffect(() => {
+      if (user){
+          setname(user.first_name + " " + user.last_name)
+          setBio(user.artist.description)
+          setProfileImg(user.image)
+          setFollowing(user.following_count)
+      }
+  } , [user])
+
     const editHandle = () => {
       navigator(`/ProfileNormal`)
-      logout();
-
     }
 
   return (

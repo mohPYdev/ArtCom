@@ -22,7 +22,11 @@ export const useLogin = () => {
   
     try {
       // login
+      
       const res = await axios.post(LOGIN_URL, {username, password})
+
+  
+
       
       // set headers
       axios.defaults.headers.common['Authorization'] = `Token ${res.data.auth_token}`

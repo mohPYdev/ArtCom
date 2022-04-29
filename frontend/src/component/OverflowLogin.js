@@ -4,6 +4,7 @@ import brush from '../img/brush.svg';
 import { Link } from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import {useLogin} from '../hooks/useLogin'
+import axios from 'axios'
 
 
 
@@ -14,6 +15,7 @@ function OverflowLogin(){
   const [password, setPassword] = useState("");
   const {login, isPending, error } = useLogin()
 
+  console.log(console.log(axios.defaults.headers.common['Authorization']))
 
   const handleSubmit = async(e) => {
     e.preventDefault()

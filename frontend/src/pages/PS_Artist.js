@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useState , useEffect } from 'react';
 import Avatar from '../component/Avatar';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 export default function PS_Artist() {
     document.body.classList.add(style.bodyclass)
@@ -20,6 +21,7 @@ export default function PS_Artist() {
     }
 
     const navigator = useNavigate();
+    const {user} = useAuthContext();
 
     const { logout, error, isPending } = useLogout();
 
@@ -50,11 +52,21 @@ export default function PS_Artist() {
     useEffect(() => {
         if (statuse) setStatusetext("درحال برگزاری");
         else setStatusetext("شروع نشده");
-      }, statuse);
+      }, [statuse]);
+
+    useEffect(() => {
+        if (user){
+            setname(user.first_name + " " + user.last_name)
+            setBio(user.artist.description)
+            setProfileImg(user.image)
+            setFollowersNum(user.artist.follower_count)
+            setFollowingNum(user.following_count)
+        }
+    } , [user])
 
     const exitHandle = () => {
-        navigator(`/`)
         logout();
+        navigator(`/`)
 
 
     }

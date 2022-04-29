@@ -183,3 +183,10 @@ a {
     color: #E9DAD3;
     padding-right: 1rem;
 }
+
+#time { 
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: #E9DAD3;
+    align-self: center;
+}

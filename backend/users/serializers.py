@@ -42,8 +42,8 @@ class ArtistTokenSerializer(serializers.ModelSerializer):
 class CustomUserSerializer(UserSerializer):
     class Meta(UserSerializer.Meta):
         model = User
-        fields = UserSerializer.Meta.fields + ('city', 'address', 'postal_code', 'image', 'first_name', 'last_name', 'is_artist', 'following_count')
-        read_only_fields = ['is_artist', 'email', 'following_count']
+        fields = UserSerializer.Meta.fields + ('city', 'address', 'postal_code', 'image', 'first_name', 'last_name', 'is_artist', 'following_count', 'is_superuser')
+        read_only_fields = ['is_artist', 'email', 'following_count', 'is_superuser']
 
 
 class ArtistSerializer(serializers.ModelSerializer):
@@ -80,10 +80,13 @@ class ArtistUpdateSerializer(CustomUserSerializer):
         
 
     def update(self, instance, validated_data):
-        artist_data = validated_data.pop('artist')
-        instance.artist.description = artist_data['description']
-        instance.artist.profession = artist_data['profession']
-        instance.artist.save()
+        try:
+            artist_data = validated_data.pop('artist')
+            instance.artist.description = artist_data['description']
+            instance.artist.profession = artist_data['profession']
+            instance.artist.save()
+        except KeyError:
+            pass
         return super().update(instance, validated_data)
     
 
@@ -124,13 +127,16 @@ class ArtistCreatePasswordRetypeSerializer(CustomUserCreatePasswordRetypeSeriali
         return user
     
     def validate(self, data):
-        artist = data.pop('artist')
-        if artist['profession'] == '':
-            raise serializers.ValidationError("Profession is required")
-        if data['email'] == '':
-            raise serializers.ValidationError("Email is required")
-        data =  super().validate(data)
-        data['artist'] = artist
+        try:
+            artist = data.pop('artist')
+            if artist['profession'] == '':
+                raise serializers.ValidationError("Profession is required")
+            if data['email'] == '':
+                raise serializers.ValidationError("Email is required")
+            data =  super().validate(data)
+            data['artist'] = artist
+        except KeyError:
+            data = super().validate(data)
         return data
         
 
