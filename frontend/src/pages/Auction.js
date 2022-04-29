@@ -1,5 +1,5 @@
 import './auction.css';
-import React from 'react';
+import React, { useState } from 'react';
 import easel from '../img/easel.svg';
 import timerfull from '../img/timer--full.svg';
 import timerhalf from '../img/timer--half.svg' ;
@@ -11,38 +11,65 @@ import moneyicon from '../img/sack-dollar-solid.png';
 
 import { useEffect, useRef } from 'react';
 import {useParams} from 'react-router-dom';
+import {useAxios} from '../hooks/useAxios';
+import {useAuthContext} from '../hooks/useAuthContext';
+
 function Auction () {
 
     const {id} = useParams();
-    
-    const chatSocket = new WebSocket(
-            'ws://'
-            + "localhost:8000"
-            + '/ws/chat/'
-            + id
-            + `/?token=${JSON.parse(localStorage.getItem('token'))}`
-        );
-    
+    // const user = JSON.parse(localStorage.getItem('user'));
+    const {user} = useAuthContext();
+    const {data, isPending, error} = useAxios('http://localhost:8000/post/auctions/'+id);
+    const ws = useRef(null);
 
-    const cs = useRef(chatSocket);
-
+    const [time, setTime] = useState(0)
+    const [post, setPost] = useState(null)
+    const [next, setNext] = useState(true)
+    const [nPost, setNPost] = useState(0)
+    const [price, setPrice] = useState(0)
 
 
     useEffect(() => {
-        cs.current.onmessage = (e) => {
-            const data = JSON.parse(e.data);
-            console.log(data);
+        ws.current = new WebSocket('ws://'
+                + "localhost:8000"
+                + '/ws/chat/'
+                + id
+                + `/?token=${JSON.parse(localStorage.getItem('token'))}`);
+        ws.current.onopen = () => console.log("ws opened");
+        ws.current.onclose = () => console.log("ws closed");
+
+        const wsCurrent = ws.current;
+
+        return () => {
+            wsCurrent.close();
         };
-    }, [cs, id]);
+    }, [id]);
 
+    useEffect(() => {
+        if (!ws.current) return;
 
-    
-    chatSocket.onclose = function(e) {
-        console.error('Chat socket closed unexpectedly');
-    };
+        ws.current.onmessage = e => {
+            const message = JSON.parse(e.data);
+            console.log(message.time);
+            setTime(message.time);
+        };
+    }, []);
+
+    useEffect(() => {
+        // changing the next to true with trigger this function and set the next post on the screen
+        if (!ws.current) return;
+       
+        if (next && data){
+            setPost(data.post[nPost])
+            setPrice(data.post[nPost].price)
+            setNPost(nPost+1)
+            setNext(false)
+        }
+    } , [nPost, next, data]);
+
 
     const handleclick = (e) => {
-        chatSocket.send(JSON.stringify({
+        ws.current.send(JSON.stringify({
             'message': 'Hello world!',
             'command': 'start'
         }));
@@ -55,7 +82,8 @@ function Auction () {
                 <img src={easel} id="easel"/>
                 <div id="top-grid"> 
                     <img src={infoicon} id="info-icon" />
-                    <img src={number1} id ="number-icon" />
+                    {/* <img src={number1} id ="number-icon" /> */}
+                    <p id='time'> {time} </p>
                     <img src={profileicon} id="profile-icon" />
                 </div>
 
@@ -74,24 +102,29 @@ function Auction () {
                     <img src={moneyicon} id="money-icon" /> 
                     <div id="percent-box">
                         
+                    {user?.is_superuser && <button onClick={handleclick}>
+                    <div className="percent">
+                       start
+                    </div>
+                    </button>}
                     <button onClick={handleclick}>
                     <div className="percent">
-                        + 5 %
+                        +{(price * 0.05).toFixed(2)}$
                     </div>
                     </button>  
                     <button onClick={handleclick}>
                     <div className="percent">
-                        + 10 %
+                        + {(price * 0.1).toFixed(2)}$
                     </div>
                     </button>
                     <button onClick={handleclick}>
                     <div className="percent">
-                        + 15 %
+                        + {(price * 0.15).toFixed(2)}$
                     </div>
                     </button>
                     <button onClick={handleclick}>
                     <div className="percent">
-                        + 20 %
+                    + {(price * 0.2).toFixed(2)}$
                     </div>
                     </button>
                     </div>  
@@ -101,9 +134,9 @@ function Auction () {
                         
                     </div>
                     <div id="price-box">
-                        <div className="current-price price">
-                            $2100
-                        </div>
+                        {price && <div className="current-price price">
+                            ${price} - {user?.username}
+                        </div>}
                         <div className="prev-price price">
                         $1800
                         </div>

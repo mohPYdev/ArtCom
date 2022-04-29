@@ -17,6 +17,7 @@ export const authReducer = (state, action) => {
 }
 
 export const AuthContextProvider = ({ children }) => {
+
   const [state, dispatch] = useReducer(authReducer, { 
     user: null,
     authIsReady: false
@@ -26,15 +27,14 @@ export const AuthContextProvider = ({ children }) => {
     const user = localStorage.getItem('user')
     const token = localStorage.getItem('token')
     if (user) {
-      dispatch({ type: 'LOGIN', payload: JSON.parse(user) })
-
+      dispatch({ type: 'AUTH_IS_READY', payload: JSON.parse(user) })
       
       // add headers
       axios.defaults.headers.common['Authorization'] = `Token ${JSON.parse(token)}`
     }
-    console.log('AuthContext state:', state)
   }, [])
-
+  
+  console.log('AuthContext state:', state)
   
   
   return (
