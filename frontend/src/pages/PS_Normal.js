@@ -32,7 +32,6 @@ export default function PS_Normal() {
     useEffect(() => {
       if (user){
           setname(user.first_name + " " + user.last_name)
-          setBio(user.artist.description)
           setProfileImg(user.image)
           setFollowing(user.following_count)
       }
