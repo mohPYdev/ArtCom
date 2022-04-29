@@ -8,5 +8,5 @@ export default  async function getOneExhibition (id ){
     const {posts , date_begin , date_end , artist } =  data ;
     //console.log(posts)
 
-    return {posts , artist , date_end } ;
+    return {posts , artist } ;
 }

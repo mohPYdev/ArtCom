@@ -7,10 +7,9 @@ import exhibition from "../img/exhibition.png";
 import next from "../img/next.png";
 import mona from "../img/mona.png";
 import { useLogout } from '../hooks/useLogout';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate , useParams } from 'react-router-dom';
 
 import { useState , useEffect } from 'react';
-import Avatar from '../component/Avatar';
 
 export default function PS_Artist() {
     document.body.classList.add(style.bodyclass)
@@ -20,6 +19,7 @@ export default function PS_Artist() {
     }
 
     const navigator = useNavigate();
+    const { id } = useParams("");
 
     const { logout, error, isPending } = useLogout();
 
@@ -71,7 +71,7 @@ export default function PS_Artist() {
   return (
     <div>
         <div className={style.header}>
-            <Avatar backColor="light"/>
+            
             <textarea value={bio} className={style.bio}></textarea>
             {isSame && <button className={style.btn} id={style.exit} onClick={exitHandle}>خروج</button>}
             {isSame && <button className={style.btn} id={style.edit} onClick={editHandle}>ویرایش</button>}

@@ -6,6 +6,6 @@ export default  async function getArtistInfo (id ){
     const { data } = await axios.get(url);
     const { image } = data ;
     //console.log(data)
-    return {image }
+    return {image , id }
 
 }
