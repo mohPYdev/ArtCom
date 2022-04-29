@@ -16,7 +16,7 @@ from users.serializers import ArtistCreatePasswordRetypeSerializer, ArtistUpdate
                               CustomUserSerializer, TokenSerializer, FollowerSerializer, \
                               FollowingSerializer
 
-from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 
 from core.models import Artist, InviteToken, Follow, Rate
 from django.contrib.auth import get_user_model
@@ -27,7 +27,7 @@ class UserViewSet(UserViewSet):
     Custom UserViewSet that allows us to override the default serializer
     """
 
-    parser_classes = (MultiPartParser, FormParser)
+    parser_classes = (MultiPartParser, FormParser, JSONParser)
 
 
     def get_serializer_class(self):
