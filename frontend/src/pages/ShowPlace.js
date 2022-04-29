@@ -1,12 +1,13 @@
 import style from "./ShowPlace.module.css";
-import frame from "../img/artwork.png";
-import profile from "../img/profile.png";
 import back from "../img/back.png";
 import like from "../img/like.png";
 import next from "../img/next.png";
 import liveeye from "../img/liveeye.png";
 import seeneye from "../img/seeneye.png";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import getOneExhibition from "../function/getOneExhibition";
+import {useNavigate, useParams} from "react-router-dom";
+import getArtistInfo from "../function/getArtistInfo";
 
 export default function ShowPlace() {
   document.body.classList.add(style.bodyclass);
@@ -14,15 +15,18 @@ export default function ShowPlace() {
   window.onbeforeunload = function () {
     document.body.classList.remove(style.bodyclass);
   };
+  const postsList = useRef("");
+  const indexOfPost = useRef("");
+  const {id} = useParams("");
+  const navigator = useNavigate();
 
-  const [about, setAbout] = useState(
-    "ایدهٔ این‌که پروانه‌ای می‌تواند باعث تغییری آشوبی شود نخستین بار در ۱۹۵۲ در داستان کوتاهی به نام آوای تندر اثر ری بردبری مطرح شد. عبارت «اثر پروانه‌ای» هم در ۱۹۶۱ در پی مقاله‌ای از ادوارد لورنتس به وجود آمد. وی در صد و سی و نهمین ؟»"
-  );
-  const [name, setName] = useState("-----");
+
+  const [about, setAbout] = useState("info about this post");
+  const [name, setName] = useState("");
   const [price, setPrice] = useState("---,---,---");
   const [date, setDate] = useState("--/--/--");
-  const [profileImg, setProfileImg] = useState(profile);
-  const [artwork, setArtwork] = useState(frame);
+  const [profileImg, setProfileImg] = useState("");
+  const [artwork, setArtwork] = useState();
   const [count, setCount] = useState("--");
   const [livecount, setLivecount] = useState("--");
   const [seencount, setSeencount] = useState("--");
@@ -36,19 +40,50 @@ export default function ShowPlace() {
       setliked(true);
     }
   };
+  const ChangePost = async ()=>{
+    console.log(postsList.current)
+    setName(postsList.current[indexOfPost.current].name)
+    setArtwork( postsList.current[indexOfPost.current].image)
 
-  const backHandler = () => {};
+  }
 
-  const nextHandler = () => {};
+  const backHandler = () => {
+    indexOfPost.current--;
+    if (indexOfPost.current < 0) indexOfPost.current = postsList.current.length - 1;
+    ChangePost();
+  };
 
-  const exitHandler = () => {};
+  const nextHandler = () => {
+    indexOfPost.current++;
+    if (indexOfPost.current >= postsList.current.length) indexOfPost.current = 0;
+    ChangePost();
+  };
+
+  const exitHandler = () => {
+    navigator(`/home`)
+  };
 
   const playHandler = () => {};
 
   const buyHandler = () => {};
 
   // fetch data
-  useEffect(() => {}, []);
+  useEffect(async() => {
+    indexOfPost.current = 0 ;
+    //console.log(id)
+    const {posts , artist , date_end} = await getOneExhibition(+id);
+    postsList.current = posts ;
+    const { image}= await getArtistInfo(+artist)
+    setProfileImg(image);
+    ChangePost();
+    
+    
+
+  }, []);
+  const GotoProfile =()=>{
+    navigator(`/psa`)
+
+  }
 
   return (
     <div>
@@ -58,7 +93,7 @@ export default function ShowPlace() {
           style={{ backgroundImage: `url(${artwork})` }}
         ></div>
 
-        <img src={profileImg} alt="" id={style.profile} />
+        <img src={profileImg} alt="" id={style.profile} onClick={GotoProfile} />
         <textarea value={about} id={style.about} cols="18" rows="20"></textarea>
 
         <div className={style.Name}>

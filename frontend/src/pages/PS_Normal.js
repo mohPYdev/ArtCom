@@ -16,7 +16,9 @@ export default function PS_Normal() {
         document.body.classList.remove(style.bodyclass)
     }
     const { logout, error, isPending } = useLogout();
+    
     const navigator = useNavigate ();
+    
     const { user } = useAuthContext();
     const [profileImg , setProfileImg] = useState(profile)
     const [name , setname] = useState('نام من')
