@@ -128,3 +128,13 @@
     transform: translateY(-1rem);
     transition: all 0.5s;
 }
+#sa_home{
+    position: absolute;
+    top: 3%;
+    left: 2%;
+    width: 50px;
+}
+#sa_home:hover{
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+}
