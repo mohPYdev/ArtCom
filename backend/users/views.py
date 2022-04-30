@@ -30,15 +30,6 @@ class UserViewSet(UserViewSet):
 
     parser_classes = (MultiPartParser, FormParser, JSONParser)
 
-    def perform_update(self, serializer):
-        super(viewsets.ModelViewSet, self).perform_update(serializer)
-        # user = serializer.instance
-        # if user.is_artist:
-            # print(serializer.validated_data['artist']['description'])
-            # user.artist.save(description=serializer.validated_data['artist']['description'])
-
-
-
 
     def get_serializer_class(self):
         """
