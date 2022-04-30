@@ -1,4 +1,5 @@
 import style from './PS_Artist.module.css'
+import psahome from "../img/icons8-home-page-50.png";
 import profile from "../img/profile--picture.png";
 import addp1 from "../img/addpost1.png";
 import addp2 from "../img/addpost2.png";
@@ -8,7 +9,7 @@ import next from "../img/next.png";
 import mona from "../img/mona.png";
 import { useLogout } from '../hooks/useLogout';
 import { useNavigate } from 'react-router-dom';
-
+import { Outlet, Link } from "react-router-dom";
 import { useState , useEffect } from 'react';
 import Avatar from '../component/Avatar';
 import { useAuthContext } from '../hooks/useAuthContext';
@@ -82,7 +83,9 @@ export default function PS_Artist() {
     
   return (
     <div>
+        
         <div className={style.header}>
+        <Link to="/home"><span><img id={style.psahome} src={psahome} /></span></Link>
             <Avatar backColor="light"/>
             <textarea value={bio} className={style.bio}></textarea>
             {isSame && <button className={style.btn} id={style.exit} onClick={exitHandle}>خروج</button>}

@@ -90,6 +90,7 @@ export default function HomePage() {
 
   return (
     <div>
+      
       <div className={style.header}>
         <Avatar backColor="dark" />
 

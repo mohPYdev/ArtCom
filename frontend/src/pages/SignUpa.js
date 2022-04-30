@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import stylesheet from "./SignUp/SignUp_Artist.css";
 import sahome from "./SignUp/image/icons8-home-30.png"
 import { useSignupArtist } from "../hooks/useSignupArtist";
+import { Outlet, Link } from "react-router-dom";
 
 function SignUpa() {
   const { signup, error, isPending } = useSignupArtist();
@@ -80,7 +81,7 @@ function SignUpa() {
   return (
     <>
       <div id="sa_wrapper">
-        <img id="sa_home" src={sahome} />
+      <Link to="/"><span><img id="sa_home" src={sahome} /></span></Link>
         <form method="get" onSubmit={handleSaSubmit}>
           <input
             value={sa_firstname}

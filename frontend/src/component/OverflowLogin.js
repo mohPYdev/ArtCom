@@ -10,6 +10,7 @@ import axios from 'axios'
 
 
 
+
 function OverflowLogin(){
 
   const [username , setUsername] = useState("");
@@ -36,7 +37,7 @@ function OverflowLogin(){
   return (
     <>
       <div className="login--container">
-        <img id="lg_home" src={lghome} />
+      <Link to="/"><span><img id="lg_home" src={lghome} /></span></Link>
         <img src={brush} className="brush" />
       </div>
       <form id="login--form" onSubmit={handleSubmit} >
