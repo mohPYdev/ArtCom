@@ -82,11 +82,13 @@ class ArtistUpdateSerializer(CustomUserSerializer):
     def update(self, instance, validated_data):
         try:
             artist_data = validated_data.pop('artist')
-            instance.artist.description = artist_data['description']
-            instance.artist.profession = artist_data['profession']
+            if artist_data.get('description') is not None:
+                instance.artist.description = artist_data['description']
+            if artist_data.get('profession') is not None:
+                instance.artist.profession = artist_data['profession']
             instance.artist.save()
-        except KeyError:
-            pass
+        except KeyError as e:
+            print(e)
         return super().update(instance, validated_data)
     
 

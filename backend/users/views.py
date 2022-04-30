@@ -1,6 +1,5 @@
 from djoser.views import UserViewSet
 from djoser.permissions import CurrentUserOrAdmin
-from djoser import signals
 
 import json
 
@@ -29,6 +28,9 @@ class UserViewSet(UserViewSet):
     """
 
     parser_classes = (MultiPartParser, FormParser, JSONParser)
+
+    def perform_update(self, serializer):
+        super(viewsets.ModelViewSet, self).perform_update(serializer)
 
 
     def get_serializer_class(self):
