@@ -88,7 +88,7 @@ export default function Profile_Artist() {
     let form_data = new FormData();
     if (selectedImage){form_data.append("image", selectedImage);}
     
-    form_data.append("description", Bio_textarea_profiless);
+    form_data.append("artist.description", Bio_textarea_profiless);
     form_data.append("first_name", firstname_text_profiless);
     form_data.append("last_name", lastname_text_profiless);
     form_data.append("username", username_text_profiless);
