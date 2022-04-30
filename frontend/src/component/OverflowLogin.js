@@ -1,10 +1,12 @@
 
 import './OverflowLogin.css'
 import brush from '../img/brush.svg';
+import lghome from "../pages/SignUp/image/icons8-home-30.png"
 import { Link } from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import {useLogin} from '../hooks/useLogin'
 import axios from 'axios'
+
 
 
 
@@ -35,6 +37,7 @@ function OverflowLogin(){
   return (
     <>
       <div className="login--container">
+      <Link to="/"><span><img id="lg_home" src={lghome} /></span></Link>
         <img src={brush} className="brush" />
       </div>
       <form id="login--form" onSubmit={handleSubmit} >

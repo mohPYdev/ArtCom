@@ -2,8 +2,8 @@
     background-repeat: no-repeat;
     direction: rtl;
     background-image: url(image/addon.png),url(image/Presentation1-removebg-preview.png),url(image/Prقثesentation1-removebg-preview.png),url('image/puzzle-piece.png'),url('image/puzzle-piece.png'),url('image/puzzle-piece.png');
-    width: 2000px;
-    height: 772px;
+    width: 1536px;
+    height: 721px;
     background-size: 332px,706px,758px,275px,275px,275px;
     background-position: 561px 235px,414px 2px,117px -63px,572px 451px,360px 451px ,784px 451px;
     position: absolute;
@@ -24,6 +24,16 @@
     transform: matrix(-1, -0.01, 0.01, -1, 0, 0);
     top: 53px;
     left: 847px;
+}
+#sn_home{
+    position: absolute;
+    top: 3%;
+    left: 2%;
+    width: 50px;
+}
+#sn_home:hover{
+    transform: translateY(-1rem);
+    transition: all 0.5s;
 }
 .sn_box {
     background: rgba(0, 0, 0, 0.08);

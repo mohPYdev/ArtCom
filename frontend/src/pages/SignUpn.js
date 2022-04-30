@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import stylesheet from "./SignUp/SignUp_Normal.css";
 import painter from "./SignUp/image/painter-holding-paint-roller-4891279-4077630.png";
 import puzzle from "./SignUp/image/puzzle.png";
+import snhome from "./SignUp/image/icons8-home-30.png";
 import { useSignupNormal } from "../hooks/useSignupNormal";
 import { useAlert } from "react-alert";
+import { Outlet, Link } from "react-router-dom";
 
 
 
@@ -82,6 +84,7 @@ function SignUpn(){
     <>
     
       <div id="sn_wrapper">
+        <Link to="/"><span><img id="sn_home" src={snhome} /></span></Link>
         <img id="sn_image" src={painter} />
         <img id="sn_puzzle" src={puzzle} />
         <form method="get" onSubmit={handleSnSubmit}>
