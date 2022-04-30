@@ -45,8 +45,9 @@ export const useSignupArtist = () => {
       // signup
       const res = await axios.post(SIGNUP_ARTIST_URL, payload)
 
+      console.log("try");
       if (!res) {
-        throw new Error('Could not complete signup')
+        throw new Error("Could not complete signup");
       }
 
       if (!isCancelled) {
@@ -54,19 +55,19 @@ export const useSignupArtist = () => {
         setError(null)
         navigate('/ReceiveEmail')
       }
-    } 
-    catch(err) {
+    } catch (err) {
+      console.log("catch");
       if (!isCancelled) {
         setError(Object.values(err.response.data)[0][0])
         setIsPending(false) 
         alert(Object.values(err.response.data)[0][0])
       }
     }
-  }
+  };
 
   useEffect(() => {
-    return () => setIsCancelled(true)
-  }, [])
+    return () => setIsCancelled(true);
+  }, []);
 
-  return { signup, error, isPending }
-}
+  return { signup, error, isPending };
+};
