@@ -115,6 +115,9 @@ DJOSER = {
     }
 }
 
+DOMAIN = 'localhost:3000'
+SITE_NAME = 'localhost:3000'
+
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
