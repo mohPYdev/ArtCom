@@ -47,3 +47,5 @@ class PublicUserApiTests(TestCase):
         self.assertRaises(Exception, self.client.get, path = CREATE_USER_URL)
         #TODO check the status code 403
 
+class AuthenticatedUserApiTests(TestCase):
+
