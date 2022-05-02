@@ -8,11 +8,14 @@ import exhibition from "../img/exhibition.png";
 import next from "../img/next.png";
 import mona from "../img/mona.png";
 import { useLogout } from '../hooks/useLogout';
-import { useNavigate } from 'react-router-dom';
-import { Outlet, Link } from "react-router-dom";
-import { useState , useEffect } from 'react';
+import { useNavigate , useParams } from 'react-router-dom';
+import { Outlet, Link  } from "react-router-dom";
+import { useState , useEffect, useRef } from 'react';
 import Avatar from '../component/Avatar';
 import { useAuthContext } from '../hooks/useAuthContext';
+import getArtistInfo from '../function/getArtistInfo';
+import ShowPlaceProfile from '../sections/ShowPlaceProfile';
+import AuctionsProfile from '../sections/AuctionsProfile';
 
 export default function PS_Artist() {
     document.body.classList.add(style.bodyclass)
@@ -22,7 +25,9 @@ export default function PS_Artist() {
     }
 
     const navigator = useNavigate();
-    const {user} = useAuthContext();
+
+    const {artistId} = useParams();
+    const {user } = useAuthContext();
 
     const { logout, error, isPending } = useLogout();
 
@@ -39,31 +44,44 @@ export default function PS_Artist() {
     const [followersNum , setFollowersNum] = useState(1200)
     const [followingNum , setFollowingNum] = useState(50)
 
-    const [exhibPoster, setExhibPoster] = useState(exhibition);
-    const [statuse, setStatuse] = useState(true);
-    const [statusetext, setStatusetext] = useState("");
-    const [view, setView] = useState("#");
 
-    const [auctionPoster, setAuctionPoster] = useState(mona);
-    const [statusa, setStatusa] = useState(false);
-    const [statusatext, setStatusatext] = useState("");
-    const [entera, setEntera] = useState("#");
-    const [asara, setAsara] = useState("#");
 
-    useEffect(() => {
-        if (statuse) setStatusetext("درحال برگزاری");
-        else setStatusetext("شروع نشده");
-      }, [statuse]);
 
-    useEffect(() => {
-        if (user){
+
+
+
+
+
+    useEffect(()=>{
+        
+        async function fetchData(){
+
+            console.log(artistId);
+
+            const {first_name , last_name , description , image  , following_count} = await getArtistInfo(+artistId);
+            setname(first_name + " " + last_name)
+            setBio(description)
+            setProfileImg(image)
+            //setFollowersNum(follower_count)
+            setFollowingNum(following_count)
+            
+
+        }
+        if(artistId){
+
+        //see profile for other artist
+        fetchData()
+        }
+        else{
+            //see your profile 
             setname(user.first_name + " " + user.last_name)
             setBio(user.artist.description)
             setProfileImg(user.image)
-            setFollowersNum(user.artist.follower_count)
+            //setFollowersNum(user.artist.follower_count)
             setFollowingNum(user.following_count)
         }
-    } , [user])
+
+    },[])
 
     const exitHandle = () => {
         logout();
@@ -77,16 +95,13 @@ export default function PS_Artist() {
 
     }
 
-    const backeHandle = () => {};
-
-    const nexteHandle = () => {};
     
   return (
     <div>
         
         <div className={style.header}>
         <Link to="/home"><span><img id={style.psahome} src={psahome} /></span></Link>
-            <Avatar backColor="light"/>
+        <img src={profileImg} alt="" className={style.profile} />
             <textarea value={bio} className={style.bio}></textarea>
             {isSame && <button className={style.btn} id={style.exit} onClick={exitHandle}>خروج</button>}
             {isSame && <button className={style.btn} id={style.edit} onClick={editHandle}>ویرایش</button>}
@@ -109,58 +124,13 @@ export default function PS_Artist() {
                 <img src={addp2} className={style.addp2}></img>
             </a>
         </div>
+        <ShowPlaceProfile />
+        <AuctionsProfile />
         
-        <h1 className={style.exhibitionTitle}>نمایشگاه</h1>
 
-        <div className={style.showplace}>
-            <img src={back} alt="" className={style.back} onClick={backeHandle} />
-            <div className={style.bannere}>
-                <img src={exhibPoster}  alt="" className={style.postere} />
-            </div>
-            <img src={next} alt="" className={style.next} onClick={nexteHandle} />
 
-            <button
-                id={style.status}
-                className={style.btn2}
-                style={{ color: statuse ? "green" : "red" }}
-                >
-                {statusetext}
-            </button>
 
-            <a href={'#'} id={style.createe}>
-                <button className={style.btn2}>ساخت نمایشگاه</button>
-            </a>
 
-            <a href={view} id={style.viewe}>
-                <button className={style.btn2}>مشاهده</button>
-            </a>
-        </div>
-
-        <h1 className={style.exhibitionTitle}>مزایده</h1>
-
-        <div className={style.showplace}>
-            <img src={back} alt="" className={style.back} onClick={backeHandle} />
-            <div className={style.bannere}>
-                <img src={auctionPoster}  alt="" className={style.postere} />
-            </div>
-            <img src={next} alt="" className={style.next} onClick={nexteHandle} />
-
-            <button
-                id={style.status}
-                className={style.btn2}
-                style={{ color: statuse ? "green" : "red" }}
-                >
-                {statusetext}
-            </button>
-
-            <a href={'#'} id={style.createe}>
-                <button className={style.btn2}>ساخت مزایده</button>
-            </a>
-
-            <a href={view} id={style.viewe}>
-                <button className={style.btn2}>مشاهده</button>
-            </a>
-        </div>
 
     </div>
   )

@@ -13,11 +13,6 @@ export default function ShowPlaceHomePage() {
   //  const { data, isPending, error } = useAxios(
   //       "http://localhost:8000/post/exhibitions/"
   //     );
-  //     console.log(data)
-  //     const [...listy] = data ;
-  //     console.log(listy)
-  //     console.log(listy[0])
-  //     console.log(listy[0])
 
   //Ref
   const indexOfExhibitons = useRef("");
@@ -66,6 +61,8 @@ export default function ShowPlaceHomePage() {
     if (statuse === "open") setStatusetext("درحال برگزاری");
     else setStatusetext("شروع نشده");
   }, [statuse]);
+
+  
   useEffect(() => {
     async function fetchData() {
       const list = await getExhibitions();

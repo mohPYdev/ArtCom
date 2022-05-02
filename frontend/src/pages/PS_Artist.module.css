@@ -18,12 +18,17 @@
 }
 
 .profile{
-    width: 100px;
+    height: 140px;
+    width: 140px;
+    margin: 40px;
     grid-row: 1;
     grid-column: 1;
     align-self: center;
     justify-self: center;
+    border-radius: 50%;
+    border: 0.2rem solid #1E2736;
 }
+
 
 .name{
     font-size: 30px;

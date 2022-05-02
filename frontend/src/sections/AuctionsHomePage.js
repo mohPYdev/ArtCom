@@ -2,16 +2,22 @@ import React from "react";
 import style from "../pages/HomePage.module.css";
 import back from "../img/back.png";
 import next from "../img/next.png";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import posts from "../img/posts.png";
+import { useAuthContext } from "../hooks/useAuthContext";
+import getAuctions from "../function/getAuctions";
 
 export default function AuctionsHomePage() {
-
-    //fetch-data
-    // const { data, isPending, error } = useAxios(
-    //   "http://localhost:8000/post/exhibitions/"
-    // );
+  //fetch-data
+  // const { data, isPending, error } = useAxios(
+  //   "http://localhost:8000/post/auctions/"
+  // );
+  //Ref
+  const indexOfAuctions = useRef("");
+  const auctions = useRef("");
+  const navigator = useNavigate();
+  const { user } = useAuthContext();
   //state
   const [timera, setTimerA] = useState("--:--:--");
   const [statusa, setStatusa] = useState(false);
@@ -21,18 +27,45 @@ export default function AuctionsHomePage() {
   const [statusatext, setStatusatext] = useState("");
   //func
 
-  const backaHandle = () => {};
+  const changePost = () => {
+    setAuctionPoster(auctions.current[indexOfAuctions.current].post[0].image);
+    setStatusa(auctions.current[indexOfAuctions.current].status);
 
-  const nextaHandle = () => {};
+    setTimerA(auctions.current[indexOfAuctions.current].date_end);
+    
+  };
+  const backaHandle = () => {
+    indexOfAuctions.current = indexOfAuctions.current - 1;
+    if (indexOfAuctions.current < 0)
+      indexOfAuctions.current = auctions.current.length - 1;
+    changePost();
+  };
+
+  const nextaHandle = () => {
+    indexOfAuctions.current++;
+    if (indexOfAuctions.current >= auctions.current.length)
+      indexOfAuctions.current = 0;
+    changePost();
+  };
   const GoToAuction = () => {
-    // navigator(`/auction/${user.id}`);
+    navigator(`/auction/${user.id}`);
   };
 
   //useEffect
   useEffect(() => {
-    if (statusa) setStatusatext("درحال برگزاری");
+    if (statusa === "open") setStatusatext("درحال برگزاری");
     else setStatusatext("شروع نشده");
   }, [statusa]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const list = await getAuctions();
+      auctions.current = list;
+      indexOfAuctions.current = 0;
+      changePost();
+    }
+    fetchData();
+  }, []);
 
   return (
     <div className={style.auction}>
@@ -45,16 +78,18 @@ export default function AuctionsHomePage() {
       <button
         id={style.statusa}
         className={style.blue}
-        style={{ color: statusa ? "green" : "red" }}
+        style={{ color: statusa === "open" ? "green" : "red" }}
       >
         {statusatext}
       </button>
-      <Link to={entera} id={style.entera}>
-        <button className={style.blue}>ورود به مزایده</button>
-      </Link>
-      <Link id={style.asara} to={asara}>
+      <div to={entera} id={style.entera}>
+        <button className={style.blue} onClick={GoToAuction}>
+          ورود به مزایده
+        </button>
+      </div>
+      <div id={style.asara} to={asara}>
         <button className={style.blue}>آثار هنری</button>
-      </Link>
+      </div>
       <img src={posts} alt="posts" id={style.bpost} />
     </div>
   );
