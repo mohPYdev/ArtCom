@@ -3,14 +3,21 @@ import style from "../pages/HomePage.module.css";
 import back from "../img/back.png";
 import next from "../img/next.png";
 import { useEffect, useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import getExhibitions from "../function/getExhibitions";
 import { useAxios } from "../hooks/useAxios";
 function ExhibImage({ image_url }) {
   return <img src={image_url} alt="" className={style.ExhibPost} />;
 }
 export default function ShowPlaceHomePage() {
-
+  //  const { data, isPending, error } = useAxios(
+  //       "http://localhost:8000/post/exhibitions/"
+  //     );
+  //     console.log(data)
+  //     const [...listy] = data ;
+  //     console.log(listy)
+  //     console.log(listy[0])
+  //     console.log(listy[0])
 
   //Ref
   const indexOfExhibitons = useRef("");
@@ -22,52 +29,49 @@ export default function ShowPlaceHomePage() {
   const [exhibPoster, setExhibPoster] = useState("");
   const [statusetext, setStatusetext] = useState("");
   const [entere, setEntere] = useState("#");
+  const navigator = useNavigate("");
 
   //func
+  const changePost = () => {
+    setExhibPoster(
+      exhibitions.current[indexOfExhibitons.current].posts[0].image
+    );
+    setStatuse(exhibitions.current[indexOfExhibitons.current].status);
+
+    setTimerE(exhibitions.current[indexOfExhibitons.current].date_end);
+  };
+
   const backeHandle = () => {
-    // console.log("back");
     indexOfExhibitons.current = indexOfExhibitons.current - 1;
     if (indexOfExhibitons.current < 0)
       indexOfExhibitons.current = exhibitions.current.length - 1;
-    setExhibPoster(
-      exhibitions.current[indexOfExhibitons.current].posts[0].image
-    );
-    // console.log(indexOfExhibitons.current);
+    changePost();
   };
 
   const nexteHandle = () => {
-    // console.log("next");
     indexOfExhibitons.current++;
     if (indexOfExhibitons.current >= exhibitions.current.length)
       indexOfExhibitons.current = 0;
-
-    setExhibPoster(
-      exhibitions.current[indexOfExhibitons.current].posts[0].image
-    );
-    // console.log(indexOfExhibitons.current);
+    changePost();
   };
   const GoToShowPlace = () => {
-    setEntere(`/show/${indexOfExhibitons.current}`);
+    navigator(`/show/${indexOfExhibitons.current}`);
+  };
+  const GoToArtist = () => {
+    navigator(`/psa/${+exhibitions.current[indexOfExhibitons.current].artist}`);
   };
 
   //useEffect
   useEffect(() => {
-    if (statuse) setStatusetext("درحال برگزاری");
+    if (statuse === "open") setStatusetext("درحال برگزاری");
     else setStatusetext("شروع نشده");
   }, [statuse]);
   useEffect(() => {
     async function fetchData() {
       const list = await getExhibitions();
       exhibitions.current = list;
-
       indexOfExhibitons.current = 0;
-      //console.log(exhibitions.current)
-      setTimerE(exhibitions.current[indexOfExhibitons.current].date_end);
-
-      setExhibPoster(
-        exhibitions.current[indexOfExhibitons.current].posts[0].image
-      );
-      // console.log(exhibPoster)
+      changePost();
     }
     fetchData();
   }, []);
@@ -84,18 +88,22 @@ export default function ShowPlaceHomePage() {
       <button
         id={style.status}
         className={style.blue}
-        style={{ color: statuse ? "green" : "red" }}
+        style={{ color: statuse === "open" ? "green" : "red" }}
       >
         {statusetext}
       </button>
 
-      <Link to={entere} id={style.enter}>
-        <button className={style.blue} onClick={GoToShowPlace}>ورود به نمایشگاه</button>
-      </Link>
+      <div id={style.enter}>
+        <button className={style.blue} onClick={GoToShowPlace}>
+          ورود به نمایشگاه
+        </button>
+      </div>
 
-      <Link to={profilee} id={style.profile}>
-        <button className={style.blue}>پروفایل هنرمند</button>
-      </Link>
+      <div id={style.profile}>
+        <button className={style.blue} onClick={GoToArtist}>
+          پروفایل هنرمند
+        </button>
+      </div>
     </div>
   );
 }
