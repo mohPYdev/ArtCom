@@ -53,9 +53,9 @@ function App() {
           <Route path="/ProfileNormal" element={<ProfileNormal />} />
           <Route path="/ProfileArtist" element={<ProfileArtist />} />
           <Route path="/Home" element={<Home />} />
-          <Route path="/show" element={<ShowPlace />} />
+          <Route path="/show/:id" element={<ShowPlace />} />
           <Route path="/psn" element={<PS_Noraml />} />
-          <Route path="/psa" element={<PS_Artist />} />
+          <Route path="/psa/:id" element={<PS_Artist />} />
         
 
 

@@ -110,6 +110,10 @@ export default function Profile_Artist() {
         })
         .catch(err => console.log(err))
   };
+  useEffect(()=>{
+    
+
+  },[selectedImage])
 
 
   return (

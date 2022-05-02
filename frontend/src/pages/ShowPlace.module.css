@@ -62,6 +62,8 @@
     justify-self: center;
     width: 130px;
     cursor: pointer;
+    border: 0.5rem solid #E9DAD3;
+    padding: 0 2rem;
 }
 
 #about {
