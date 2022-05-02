@@ -36,11 +36,17 @@ export const useAxios = (url , method = 'GET') => {
     const fetchData = async (fetchOptions) => {
       setIsPending(true)
       
-      try {
-        const res = await fetch(url, {...fetchOptions, signal: controller.signal })
+      const headers = {
+        "Content-Type": "application/json",
+        "Authorization": `Token ${JSON.parse(localStorage.getItem("token"))}`
+      }
 
+      try {
+        const res = await fetch(url, {...fetchOptions, headers: headers , signal: controller.signal })
+        const jres = await res.json()
+        console.log(jres)
         setIsPending(false)
-        setData(res.data)
+        setData(jres)
         setError(null)
       } catch (err) {
         if (err.name === "AbortError") {

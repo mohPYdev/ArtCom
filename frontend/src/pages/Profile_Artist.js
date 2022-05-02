@@ -16,7 +16,7 @@ export default function Profile_Artist() {
   };
 
   const {user , dispatch} = useAuthContext()
-  const { data, isPending, error , putData } = useAxios('http://localhost:8000/auth/users/me/');
+  const { data, isPending, error } = useAxios('http://localhost:8000/auth/me/token/');
   const alert = useAlert()
 
   //file button
@@ -38,6 +38,7 @@ export default function Profile_Artist() {
   const [city_input_profiless, set_city_input_profiless] = useState("");
   const [Address_textarea_profiless, set_Address_textarea_profiless] =useState();
   const [postalcode_input_profiless, set_postalcode_input_profiless] =useState();
+  const [inviteToken, setInviteToken] = useState("");
 
 
   useEffect(() => {
@@ -54,6 +55,18 @@ export default function Profile_Artist() {
     }
   },[user]);
 
+  useEffect(() => {
+    if (data){
+      let invite = ""
+      data.map(item => {
+         invite += item.token + "\n"
+      })
+      setInviteToken(invite)
+    }
+
+  },[data])
+
+  console.log(inviteToken)
 
   const changeBioTextarea = (event) => {
     set_Bio_textarea_profiless(event.target.value);
@@ -234,6 +247,8 @@ export default function Profile_Artist() {
         name="invitation_codes_textarea"
         placeholder="کدهای دعوت"
         readonly
+        value={inviteToken}
+        
       ></textarea>
     </div>
   );
