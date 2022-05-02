@@ -7,6 +7,11 @@ import { Link } from "react-router-dom";
 import posts from "../img/posts.png";
 
 export default function AuctionsHomePage() {
+
+    //fetch-data
+    // const { data, isPending, error } = useAxios(
+    //   "http://localhost:8000/post/exhibitions/"
+    // );
   //state
   const [timera, setTimerA] = useState("--:--:--");
   const [statusa, setStatusa] = useState(false);

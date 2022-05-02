@@ -13,9 +13,6 @@ import ShowPlaceHomePage from "../sections/ShowPlaceHomePage";
 import AuctionsHomePage from "../sections/AuctionsHomePage";
 
 export default function HomePage() {
-  const { data, isPending, error } = useAxios(
-    "http://localhost:8000/post/exhibitions/"
-  );
 
   document.body.classList.add(style.bodyclass);
 

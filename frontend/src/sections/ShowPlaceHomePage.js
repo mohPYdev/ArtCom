@@ -5,10 +5,14 @@ import next from "../img/next.png";
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import getExhibitions from "../function/getExhibitions";
+import { useAxios } from "../hooks/useAxios";
 function ExhibImage({ image_url }) {
   return <img src={image_url} alt="" className={style.ExhibPost} />;
 }
 export default function ShowPlaceHomePage() {
+
+
+  //Ref
   const indexOfExhibitons = useRef("");
   const exhibitions = useRef("");
   //state
@@ -43,7 +47,7 @@ export default function ShowPlaceHomePage() {
     // console.log(indexOfExhibitons.current);
   };
   const GoToShowPlace = () => {
-    //navigator(`/show/${indexOfExhibitons.current}`);
+    setEntere(`/show/${indexOfExhibitons.current}`);
   };
 
   //useEffect
@@ -86,7 +90,7 @@ export default function ShowPlaceHomePage() {
       </button>
 
       <Link to={entere} id={style.enter}>
-        <button className={style.blue}>ورود به نمایشگاه</button>
+        <button className={style.blue} onClick={GoToShowPlace}>ورود به نمایشگاه</button>
       </Link>
 
       <Link to={profilee} id={style.profile}>
