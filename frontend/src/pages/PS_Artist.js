@@ -26,13 +26,13 @@ export default function PS_Artist() {
 
   return (
     <div>
-      <HeaderProfile id={artistId}/>
+      <HeaderProfile artistId={artistId}/>
 
-      <InfoBarProfile id={artistId}/>
+      <InfoBarProfile artistId={artistId}/>
 
-      <AddPostHome id={artistId}/>
-      <ShowPlaceProfile id={artistId}/>
-      <AuctionsProfile id={artistId} />
+      <AddPostHome artistId={artistId}/>
+      <ShowPlaceProfile artistId={artistId}/>
+      <AuctionsProfile artistId={artistId} />
     </div>
   );
 }

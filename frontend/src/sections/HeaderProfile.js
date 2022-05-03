@@ -66,7 +66,7 @@ export default function HeaderProfile({artistId}) {
 
         </Link>
         <img src={profileImg} alt="" className={style.profile} />
-        <textarea value={bio} className={style.bio}></textarea>
+        <div  className={style.bio}>{bio}</div>
         {isSame && (
           <button className={style.btn} id={style.exit} onClick={exitHandle}>
             خروج
