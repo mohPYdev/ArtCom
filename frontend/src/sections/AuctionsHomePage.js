@@ -60,12 +60,14 @@ export default function AuctionsHomePage() {
   //useEffect
   useEffect(() => {
     if (statusa === "open") setStatusatext("درحال برگزاری");
-    else setStatusatext("شروع نشده");
+      else if (statusa === "finished") setStatusatext("تمام شده");
+      else if (statusa === "ns") setStatusatext("شروع نشده");
   }, [statusa]);
 
   useEffect(() => {
     async function fetchData() {
-      const list = await getAuctions();
+      const state = "home"
+      const list = await getAuctions(state);
       auctions.current = list;
       indexOfAuctions.current = 0;
       changePost();

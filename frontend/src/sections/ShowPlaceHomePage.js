@@ -60,6 +60,7 @@ export default function ShowPlaceHomePage() {
     navigator(`/show/${indexOfExhibitons.current}`);
   };
   const GoToArtist = () => {
+    
     navigator(`/psa/${+exhibitions.current[indexOfExhibitons.current].artist}`);
   };
 
