@@ -29,17 +29,21 @@ export default function AuctionsHomePage() {
   const changePost = () => {
     setAuctionPoster(auctions.current[indexOfAuctions.current].post[0].image);
     setStatusa(auctions.current[indexOfAuctions.current].status);
+    if (statusa === "open") {
+      var end = auctions.current[indexOfAuctions.current].date_end;
 
-    var end =  auctions.current[indexOfAuctions.current].date_end ;
-    
-    
-   setTimerA(calculateRemainedTime(end));
-    
+      setTimerA(calculateRemainedTime(end));
+    } else {
+      var start = auctions.current[indexOfAuctions.current].date_begin;
+
+      setTimerA(calculateRemainedTime(start));
+    }
   };
   const backaHandle = () => {
     indexOfAuctions.current = indexOfAuctions.current - 1;
     if (indexOfAuctions.current < 0)
       indexOfAuctions.current = auctions.current.length - 1;
+
     changePost();
   };
 
@@ -71,7 +75,7 @@ export default function AuctionsHomePage() {
 
   return (
     <div className={style.auction}>
-      <div className={style.timer} >{timera}</div>
+      <div className={style.timer}>{timera}</div>
       <img src={back} alt="" className={style.backa} onClick={backaHandle} />
       <div className={style.bannera}>
         <img src={auctionPoster} alt="" className="" />
@@ -89,7 +93,7 @@ export default function AuctionsHomePage() {
           ورود به مزایده
         </button>
       </div>
-      <div id={style.asara} >
+      <div id={style.asara}>
         <button className={style.blue}>آثار هنری</button>
       </div>
       <img src={posts} alt="posts" id={style.bpost} />

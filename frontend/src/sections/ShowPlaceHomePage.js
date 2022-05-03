@@ -8,8 +8,6 @@ import getExhibitions from "../function/getExhibitions";
 import { useAxios } from "../hooks/useAxios";
 import calculateRemainedTime from "../function/calculateRemainedTime";
 
-
-
 function ExhibImage({ image_url }) {
   return <img src={image_url} alt="" className={style.ExhibPost} />;
 }
@@ -35,9 +33,14 @@ export default function ShowPlaceHomePage() {
     );
     setStatuse(exhibitions.current[indexOfExhibitons.current].status);
 
-     var end =  exhibitions.current[indexOfExhibitons.current].date_end ;
+    if (statuse === "open") {
+      var end = exhibitions.current[indexOfExhibitons.current].date_end;
+      setTimerE(calculateRemainedTime(end));
+    } else {
+      var start = exhibitions.current[indexOfExhibitons.current].date_begin;
 
-    setTimerE(calculateRemainedTime(end));
+      setTimerE(calculateRemainedTime(start));
+    }
   };
 
   const backeHandle = () => {
@@ -66,7 +69,6 @@ export default function ShowPlaceHomePage() {
     else setStatusetext("شروع نشده");
   }, [statuse]);
 
-  
   useEffect(() => {
     async function fetchData() {
       const list = await getExhibitions();
@@ -79,7 +81,7 @@ export default function ShowPlaceHomePage() {
 
   return (
     <div className={style.showplace}>
-      <div className={style.timer} >{timere} </div>
+      <div className={style.timer}>{timere} </div>
       <img src={back} alt="" className={style.back} onClick={backeHandle} />
       <div className={style.bannere}>
         <ExhibImage image_url={exhibPoster} />
