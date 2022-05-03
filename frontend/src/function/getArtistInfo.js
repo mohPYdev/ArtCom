@@ -11,7 +11,6 @@ export default  async function getArtistInfo (id ){
     const url = `http://localhost:8000/auth/users/${id}`
     const { data } = await axios.get(url, config);
     const {first_name , last_name , description , image  , following_count} = data ;
-    console.log(data)
     return {first_name , last_name , description , image  , following_count}
 
 }

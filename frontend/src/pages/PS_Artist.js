@@ -1,16 +1,15 @@
 import style from "./PS_Artist.module.css";
 
 import { useNavigate, useParams } from "react-router-dom";
-import { Outlet, Link } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
-import Avatar from "../component/Avatar";
+
 import { useAuthContext } from "../hooks/useAuthContext";
-import getArtistInfo from "../function/getArtistInfo";
+
 import ShowPlaceProfile from "../sections/ShowPlaceProfile";
 import AuctionsProfile from "../sections/AuctionsProfile";
 import InfoBarProfile from "../sections/InfoBarProfile";
-import AddPostHome from "../sections/AddPostHome";
+import AddPostProfile from "../sections/AddPostProfile";
 import HeaderProfile from "../sections/HeaderProfile";
+
 export default function PS_Artist() {
   document.body.classList.add(style.bodyclass);
 
@@ -23,15 +22,18 @@ export default function PS_Artist() {
   const { artistId } = useParams();
   const { user } = useAuthContext();
 
-
   return (
     <div>
-      <HeaderProfile artistId={artistId}/>
+      <HeaderProfile artistId={artistId} />
 
-      <InfoBarProfile artistId={artistId}/>
+      <InfoBarProfile artistId={artistId} />
 
-      <AddPostHome artistId={artistId}/>
-      <ShowPlaceProfile artistId={artistId}/>
+      {artistId === undefined || artistId == user.id ? (
+        <AddPostProfile artistId={artistId} />
+      ) : (
+        <></>
+      )}
+      <ShowPlaceProfile artistId={artistId} />
       <AuctionsProfile artistId={artistId} />
     </div>
   );

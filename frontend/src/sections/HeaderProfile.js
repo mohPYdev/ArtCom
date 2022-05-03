@@ -23,7 +23,6 @@ export default function HeaderProfile({artistId}) {
 
   useEffect(() => {
     async function fetchData() {
-      console.log(artistId);
 
       const { first_name, last_name, description, image, following_count } =
         await getArtistInfo(+artistId);

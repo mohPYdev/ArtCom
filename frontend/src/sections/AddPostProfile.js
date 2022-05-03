@@ -6,7 +6,7 @@ import { useState , useEffect, useRef } from 'react';
 import addp1 from "../img/addpost1.png";
 import addp2 from "../img/addpost2.png";
 
-export default function AddPostHome() {
+export default function AddPostProfile() {
   return (
     <div className={style.addpost}>
             <a>

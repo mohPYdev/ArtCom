@@ -4,8 +4,13 @@ import next from "../img/next.png";
 import back from "../img/back.png";
 import mona from "../img/mona.png";
 import { useState , useEffect, useRef } from 'react';
+import { useAuthContext } from "../hooks/useAuthContext";
 
 export default function AuctionsProfile() {
+
+  const { user } = useAuthContext();
+
+  //State
     const [auctionPoster, setAuctionPoster] = useState(mona);
     const [statusa, setStatusa] = useState(false);
     const [statusatext, setStatusatext] = useState("");
@@ -15,10 +20,13 @@ export default function AuctionsProfile() {
     const [status, setStatus] = useState(true);
     const [statustext, setStatustext] = useState("");
 
+    //useEffect
     useEffect(() => {
         if (status) setStatustext("درحال برگزاری");
         else setStatustext("شروع نشده");
       }, [status]);
+
+      //func
     const backaHandle = () => {};
 
     const nextaHandle = () => {};

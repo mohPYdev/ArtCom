@@ -66,12 +66,13 @@ export default function ShowPlaceHomePage() {
   //useEffect
   useEffect(() => {
     if (statuse === "open") setStatusetext("درحال برگزاری");
-    else setStatusetext("شروع نشده");
+    else if(statuse === "finished") setStatusetext("تمام شده");
+    else if(statuse === "ns") setStatusetext("شروع نشده");
   }, [statuse]);
 
   useEffect(() => {
     async function fetchData() {
-      const list = await getExhibitions();
+      const list = await getExhibitions("home");
       exhibitions.current = list;
       indexOfExhibitons.current = 0;
       changePost();
