@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import posts from "../img/posts.png";
 import { useAuthContext } from "../hooks/useAuthContext";
 import getAuctions from "../function/getAuctions";
+import calculateRemainedTime from "../function/calculateRemainedTime";
 
 export default function AuctionsHomePage() {
   //fetch-data
@@ -19,10 +20,8 @@ export default function AuctionsHomePage() {
   const navigator = useNavigate();
   const { user } = useAuthContext();
   //state
-  const [timera, setTimerA] = useState("--:--:--");
-  const [statusa, setStatusa] = useState(false);
-  const [entera, setEntera] = useState("#");
-  const [asara, setAsara] = useState("#");
+  const [timera, setTimerA] = useState("");
+  const [statusa, setStatusa] = useState();
   const [auctionPoster, setAuctionPoster] = useState("");
   const [statusatext, setStatusatext] = useState("");
   //func
@@ -32,23 +31,9 @@ export default function AuctionsHomePage() {
     setStatusa(auctions.current[indexOfAuctions.current].status);
 
     var end =  auctions.current[indexOfAuctions.current].date_end ;
-    var time_list = end.slice(0,10).split('-')
-    var end_year = time_list[0]
-    var end_month = time_list[1]
-    var end_day = time_list[2]
-    time_list= end.slice(11 ,19).split(':')
-    var end_hour = time_list[0]
-    var end_min = time_list[1]
-    var end_sec = time_list[2]
-    var today = new Date();
-    var time_str =`  سال : ${+end_year - (+today.getFullYear())}
-    ماه : ${Math.abs(+end_month - (+today.getMonth()+1))}
-    روز : ${Math.abs(+end_day - (+today.getDate()))}
-    ساعت : ${Math.abs(+end_hour - (+today.getHours()))}
-    دقیقه : ${Math.abs(+end_min - (+today.getMinutes()+1))}
-    ثانیه : ${Math.abs(+end_sec - (+today.getSeconds()+1))}
-    `
-   setTimerA(time_str);
+    
+    
+   setTimerA(calculateRemainedTime(end));
     
   };
   const backaHandle = () => {
@@ -99,12 +84,12 @@ export default function AuctionsHomePage() {
       >
         {statusatext}
       </button>
-      <div to={entera} id={style.entera}>
+      <div id={style.entera}>
         <button className={style.blue} onClick={GoToAuction}>
           ورود به مزایده
         </button>
       </div>
-      <div id={style.asara} to={asara}>
+      <div id={style.asara} >
         <button className={style.blue}>آثار هنری</button>
       </div>
       <img src={posts} alt="posts" id={style.bpost} />

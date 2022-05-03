@@ -21,7 +21,6 @@ export default function HeaderProfile({artistId}) {
     const [name, setname] = useState("نام من");
     const [bio, setBio] = useState(" .... درباره من");
 
-
   useEffect(() => {
     async function fetchData() {
       console.log(artistId);
@@ -34,7 +33,7 @@ export default function HeaderProfile({artistId}) {
       //setFollowersNum(follower_count)
       setFollowingNum(following_count);
     }
-    if (artistId) {
+    if (artistId && artistId != user.id) {
       //see profile for other artist
       fetchData();
       setIsSame(false);

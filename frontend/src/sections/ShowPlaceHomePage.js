@@ -6,6 +6,10 @@ import { useEffect, useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import getExhibitions from "../function/getExhibitions";
 import { useAxios } from "../hooks/useAxios";
+import calculateRemainedTime from "../function/calculateRemainedTime";
+
+
+
 function ExhibImage({ image_url }) {
   return <img src={image_url} alt="" className={style.ExhibPost} />;
 }
@@ -18,12 +22,10 @@ export default function ShowPlaceHomePage() {
   const indexOfExhibitons = useRef("");
   const exhibitions = useRef("");
   //state
-  const [timere, setTimerE] = useState("--:--:--");
-  const [statuse, setStatuse] = useState(true);
-  const [profilee, setProfilee] = useState("#");
+  const [timere, setTimerE] = useState("");
+  const [statuse, setStatuse] = useState();
   const [exhibPoster, setExhibPoster] = useState("");
   const [statusetext, setStatusetext] = useState("");
-  const [entere, setEntere] = useState("#");
   const navigator = useNavigate("");
 
   //func
@@ -34,25 +36,8 @@ export default function ShowPlaceHomePage() {
     setStatuse(exhibitions.current[indexOfExhibitons.current].status);
 
      var end =  exhibitions.current[indexOfExhibitons.current].date_end ;
-     var time_list = end.slice(0,10).split('-')
-     var end_year = time_list[0]
-     var end_month = time_list[1]
-     var end_day = time_list[2]
-     time_list= end.slice(11 ,19).split(':')
-     var end_hour = time_list[0]
-     var end_min = time_list[1]
-     var end_sec = time_list[2]
 
-
-     var today = new Date();
-     var time_str =`  سال : ${+end_year - (+today.getFullYear())}
-     ماه : ${Math.abs(+end_month - (+today.getMonth()+1))}
-     روز : ${Math.abs(+end_day - (+today.getDate()))}
-     ساعت : ${Math.abs(+end_hour - (+today.getHours()))}
-     دقیقه : ${Math.abs(+end_min - (+today.getMinutes()+1))}
-     ثانیه : ${Math.abs(+end_sec - (+today.getSeconds()+1))}
-     `
-    setTimerE(time_str);
+    setTimerE(calculateRemainedTime(end));
   };
 
   const backeHandle = () => {
