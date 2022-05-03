@@ -17,9 +17,8 @@ import {useAuthContext} from '../hooks/useAuthContext';
 function Auction () {
 
     const {id} = useParams();
-    // const user = JSON.parse(localStorage.getItem('user'));
     const {user} = useAuthContext();
-    const {data, isPending, error} = useAxios('http://localhost:8000/post/auctions/'+id);
+    const {data} = useAxios('http://localhost:8000/post/auctions/'+id);
     const ws = useRef(null);
 
     const [time, setTime] = useState(0)
@@ -52,29 +51,48 @@ function Auction () {
             const message = JSON.parse(e.data);
             console.log(message.time);
             setTime(message.time);
+            setPrice(message.price)
         };
     }, []);
 
     useEffect(() => {
-        // changing the next to true with trigger this function and set the next post on the screen
+        // changing the next to true by triggering this function and setting the next post on the screen
         if (!ws.current) return;
        
         if (next && data){
             setPost(data.post[nPost])
-            setPrice(data.post[nPost].price)
+            setPrice(parseFloat(data.post[nPost].price))
             setNPost(nPost+1)
             setNext(false)
         }
     } , [nPost, next, data]);
 
 
-    const handleclick = (e) => {
+
+    // handling different commands from the websocket
+
+    // TODO: add username of the highest bidder to message
+
+    const handleStart = (e) => {
         ws.current.send(JSON.stringify({
-            'message': 'Hello world!',
-            'command': 'start'
+            'command': 'start',
+            'price': price
         }));
     };
     
+    const handleNewBid = (e) => {
+        const np = parseFloat(e.target.value)
+        setPrice(np + price)
+        ws.current.send(JSON.stringify({
+            'price': price + np,
+            'command': 'new_price'
+        }));
+        ws.current.send(JSON.stringify({
+            'price': price + np,
+            'command': 'start'
+        }));
+    };
+
 
     return (
         <>
@@ -102,30 +120,22 @@ function Auction () {
                     <img src={moneyicon} id="money-icon" /> 
                     <div id="percent-box">
                         
-                    {user?.is_superuser && <button onClick={handleclick}>
+                    {user?.is_superuser && <button onClick={handleStart}>
                     <div className="percent">
                        start
                     </div>
                     </button>}
-                    <button onClick={handleclick}>
-                    <div className="percent">
+                    <button className='percent' onClick={handleNewBid} value={(price * 0.05).toFixed(2)}> 
                         +{(price * 0.05).toFixed(2)}$
-                    </div>
                     </button>  
-                    <button onClick={handleclick}>
-                    <div className="percent">
+                    <button className='percent' onClick={handleNewBid} value={(price * 0.1).toFixed(2)}>
                         + {(price * 0.1).toFixed(2)}$
-                    </div>
                     </button>
-                    <button onClick={handleclick}>
-                    <div className="percent">
+                    <button className='percent' onClick={handleNewBid} value={(price * 0.15).toFixed(2)}>
                         + {(price * 0.15).toFixed(2)}$
-                    </div>
                     </button>
-                    <button onClick={handleclick}>
-                    <div className="percent">
-                    + {(price * 0.2).toFixed(2)}$
-                    </div>
+                    <button className='percent' onClick={handleNewBid} value={(price * 0.2).toFixed(2)}>
+                        + {(price * 0.2).toFixed(2)}$
                     </button>
                     </div>  
                     

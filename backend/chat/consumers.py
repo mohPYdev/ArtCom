@@ -5,29 +5,28 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 
 class ChatConsumer(AsyncWebsocketConsumer):
 
+    t = 0
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.t = 0
         self.run = False
         self.task = None
 
 
     async def start(self, event):
-        print('start')
-        content = {
-            'command': 'start',
-            'message': 'started the auction'
-        }
-        while self.t < 10:
+        global t
+        content = event['price']
+        print(event['price'])
+        while t < 10:
             await self.send_message(content)
             await asyncio.sleep(1)
-            self.t += 1
-            print(self.t)
+            t += 1
 
     
-    def new_price(self, event):
-        print('new_price')
-        pass
+    async def new_price(self, event):
+        message = event['price']
+        await self.send_message(message)
+        
     
     commands = {
         'start': start,
@@ -60,7 +59,8 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     # Receive message from WebSocket
     async def receive(self, text_data):
-        self.t = 0
+        global t
+        t = 0
         if self.task:
             self.task.cancel()
         data = json.loads(text_data)
@@ -81,9 +81,10 @@ class ChatConsumer(AsyncWebsocketConsumer):
     # Receive message from room group
     async def chat_message(self, event):
         message = event['message']
+
         
         await self.send(text_data=json.dumps({
-            'message': message,
-            'time': self.t,
+            'price': message,
+            'time': t,
         }))
         
