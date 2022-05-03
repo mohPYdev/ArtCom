@@ -1,12 +1,15 @@
 import axios from "axios";
 
 export default  async function getOneExhibition (id ){
-    //console.log(id)
+    let config = {
+        headers : {
+            "Authorization": `Token ${JSON.parse(localStorage.getItem("token"))}`
+        }
+    }
     const url = `http://localhost:8000/post/exhibitions/${id+1}`;
-    const { data } = await axios.get(url);
-    //console.log(data);
+    const { data } = await axios.get(url , config);
+
     const {posts , date_begin , date_end , artist } =  data ;
-    //console.log(posts)
 
     return {posts , artist } ;
 }

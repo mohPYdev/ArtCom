@@ -182,14 +182,13 @@
     grid-row: 1;
     align-self: center;
     justify-self: center;
-    position: inherit;
-    left: 30px;
     background-color: transparent;
     border: none;
-    font-size: 24px;
+    font-size: 2rem;
     text-align: center;
-    width: 150px;
     pointer-events: none;
+    word-wrap: break-word;
+
 }
 
 

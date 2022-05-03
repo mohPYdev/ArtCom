@@ -117,31 +117,32 @@ export default function ShowPlace() {
           id={style.profile}
           onClick={GotoArtistProfile}
         />
-        <textarea value={about} id={style.about} cols="18" rows="20"></textarea>
+        <div id={style.about} cols="18" rows="20">{about}</div>
 
         <div className={style.Name}>
           <h2 id={style.title}>نام</h2>
-          <input
-            type="text"
+          <div
+
             id={style.title}
             className={style.values}
-            value={name}
-          />
+            
+          >
+            {name}</div>
         </div>
 
         <div className={style.Price}>
           <h2 id={style.title}>قیمت</h2>
-          <input
-            type="text"
+          <div
+
             id={style.title}
             className={style.values}
-            value={price}
-          />
+            
+          >{price}</div>
         </div>
 
         <div className={style.Date}>
           <h2 id={style.title}>تاریخ</h2>
-          <input id={style.title} className={style.values} value={date} />
+          <div id={style.title} className={style.values} >{date}</div>
         </div>
 
         <img src={back} alt="back" id={style.back} onClick={backHandler} />
@@ -153,7 +154,7 @@ export default function ShowPlace() {
             alt=""
             onClick={likeHandler}
           />
-          <input id={style.count} value={count}></input>
+          <div id={style.count} >{count}</div>
         </div>
 
         <img src={next} alt="next" id={style.next} onClick={nextHandler} />
@@ -169,11 +170,11 @@ export default function ShowPlace() {
         </button>
         <div className={style.livebox}>
           <img src={liveeye} alt="" id={style.liveimg} />
-          <input id={style.livecount} value={livecount} />
+          <div id={style.livecount}  >{livecount}</div>
         </div>
         <div className={style.seenbox}>
           <img src={seeneye} alt="" id={style.seenimg} />
-          <input id={style.seencount} value={seencount} />
+          <div id={style.seencount}  >{seencount}</div>
         </div>
       </div>
     </div>
