@@ -61,10 +61,9 @@ export default function HeaderProfile({artistId}) {
 
   return (
     <div className={style.header}>
-        <Link to="/home">
-          <span>
+        <Link to="/home" id="homebtn">
             <img id={style.psahome} src={psahome} />
-          </span>
+
         </Link>
         <img src={profileImg} alt="" className={style.profile} />
         <textarea value={bio} className={style.bio}></textarea>
