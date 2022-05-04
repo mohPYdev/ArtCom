@@ -9,7 +9,7 @@ import number1 from '../img/1-solid.png';
 import viewicon from '../img/view.png';
 import moneyicon from '../img/sack-dollar-solid.png';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import {useParams} from 'react-router-dom';
 import {useAxios} from '../hooks/useAxios';
 import {useAuthContext} from '../hooks/useAuthContext';
@@ -25,7 +25,9 @@ function Auction () {
     const [post, setPost] = useState(null)
     const [next, setNext] = useState(true)
     const [nPost, setNPost] = useState(0)
-    const [price, setPrice] = useState(0)
+    const [price, setPrice] = useState(null)
+    const [finish, setFinish] = useState(false)
+
 
 
     useEffect(() => {
@@ -44,6 +46,7 @@ function Auction () {
         };
     }, [id]);
 
+
     useEffect(() => {
         if (!ws.current) return;
 
@@ -51,47 +54,93 @@ function Auction () {
             const message = JSON.parse(e.data);
             console.log(message.time);
             setTime(message.time);
+            setNPost(message.post_id)
             setPrice(message.price)
+            if (message.time === 10 && !finish)
+            {
+                setNext(true)
+            }         
         };
     }, []);
 
+
+
+
+
+// ///////////////////////////////////////////////////////////////////////////
+
+
+
     useEffect(() => {
-        // changing the next to true by triggering this function and setting the next post on the screen
-        if (!ws.current) return;
-       
+        if (!ws.current) return;  
         if (next && data){
-            setPost(data.post[nPost])
-            setPrice(parseFloat(data.post[nPost].price))
-            setNPost(nPost+1)
+            
+            if (nPost < data.post.length )
+            {
+                setPost(data.post[nPost])
+                setPrice(data.post[nPost].price)
+                setNPost(nPost => nPost + 1)
+            }          
+            else{
+                setFinish(true)
+            }
+            
             setNext(false)
         }
     } , [nPost, next, data]);
 
 
 
-    // handling different commands from the websocket
 
-    // TODO: add username of the highest bidder to message
+    
 
-    const handleStart = (e) => {
+
+    useEffect(() => {
+        console.log(nPost)
+        if (!data) return;
+        if (time === 10 && !finish)
+        {
+            handleStart()
+        }
+    }, [finish, nPost])
+
+
+
+
+    const handleStart =() => {
         ws.current.send(JSON.stringify({
             'command': 'start',
-            'price': price
+            'price': price,
+            'post_id': nPost
         }));
-    };
+    }
     
+
+
+
+
+
+
     const handleNewBid = (e) => {
         const np = parseFloat(e.target.value)
-        setPrice(np + price)
+        const p = parseFloat(price)
+        setPrice(np + p)
         ws.current.send(JSON.stringify({
-            'price': price + np,
-            'command': 'new_price'
+            'price': p + np,
+            'command': 'new_price',
+            'post_id': nPost - 1
         }));
         ws.current.send(JSON.stringify({
-            'price': price + np,
-            'command': 'start'
+            'price': p + np,
+            'command': 'start',
+            'post_id': nPost - 1
         }));
     };
+
+
+
+
+
 
 
     return (
@@ -125,18 +174,21 @@ function Auction () {
                        start
                     </div>
                     </button>}
-                    <button className='percent' onClick={handleNewBid} value={(price * 0.05).toFixed(2)}> 
-                        +{(price * 0.05).toFixed(2)}$
-                    </button>  
-                    <button className='percent' onClick={handleNewBid} value={(price * 0.1).toFixed(2)}>
-                        + {(price * 0.1).toFixed(2)}$
-                    </button>
-                    <button className='percent' onClick={handleNewBid} value={(price * 0.15).toFixed(2)}>
-                        + {(price * 0.15).toFixed(2)}$
-                    </button>
-                    <button className='percent' onClick={handleNewBid} value={(price * 0.2).toFixed(2)}>
-                        + {(price * 0.2).toFixed(2)}$
-                    </button>
+                    <>
+                        <button className='percent' onClick={handleNewBid} value={(price * 0.05).toFixed(2)}> 
+                            +{(price * 0.05).toFixed(2)}$
+                        </button>
+                        <button className='percent' onClick={handleNewBid} value={(price * 0.1).toFixed(2)}>
+                            + {(price * 0.1).toFixed(2)}$
+                        </button>
+                        <button className='percent' onClick={handleNewBid} value={(price * 0.15).toFixed(2)}>
+                            + {(price * 0.15).toFixed(2)}$
+                        </button>
+                        <button className='percent' onClick={handleNewBid} value={(price * 0.2).toFixed(2)}>
+                            + {(price * 0.2).toFixed(2)}$
+                        </button>
+                    </>
+                    
                     </div>  
                     
                     </div>
@@ -150,9 +202,9 @@ function Auction () {
                         <div className="prev-price price">
                         $1800
                         </div>
-                        <div className="prev-prev-price price">
-                        $1200
-                        </div>
+                        {post && <div className="prev-prev-price price">
+                            {post.name}
+                        </div>}
                 </div>
                     
                 </div>

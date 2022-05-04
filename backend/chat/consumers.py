@@ -15,16 +15,24 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     async def start(self, event):
         global t
-        content = event['price']
-        print(event['price'])
-        while t < 10:
+        content = {
+            'price':event['price'],
+            'command':'start',
+            'post_id':event['post_id'],
+        }
+        await self.send(text_data=json.dumps(content))
+        while t <= 10:
             await self.send_message(content)
             await asyncio.sleep(1)
             t += 1
 
     
     async def new_price(self, event):
-        message = event['price']
+        message = {
+            'price':event['price'],
+            'command':'new_price',
+            'post_id':event['post_id'],
+        }
         await self.send_message(message)
         
     
@@ -82,9 +90,12 @@ class ChatConsumer(AsyncWebsocketConsumer):
     async def chat_message(self, event):
         message = event['message']
 
+        print(message)
         
         await self.send(text_data=json.dumps({
-            'price': message,
+            'price': message['price'],
+            'command': message['command'],
+            'post_id': message['post_id'],
             'time': t,
         }))
         
