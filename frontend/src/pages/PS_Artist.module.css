@@ -315,6 +315,12 @@
     width: 58px;
     align-self: center;
     justify-self: center;
+    position: absolute;
+    top: 1%;
+}
+#psahome:hover{
+    transform: translateY(-1rem);
+    transition: all 0.5s;
 }
 #homebtn{
     grid-row: 1;

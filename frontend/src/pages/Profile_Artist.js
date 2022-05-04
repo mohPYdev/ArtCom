@@ -5,7 +5,8 @@ import profilePic from "../img/profile--picture.png";
 import {useAuthContext} from '../hooks/useAuthContext';
 import {useAxios} from '../hooks/useAxios';
 import { useAlert } from 'react-alert'
-
+import phome from "../img/icons8-home-page-50.png";
+import { Outlet, Link } from "react-router-dom";
 import axios from 'axios';
 
 
@@ -132,11 +133,12 @@ export default function Profile_Artist() {
   return (
     // <!--a div covering whole page-->
     <div className="main_profiless">
+      
       {/* <!--adding page background image--> */}
       <div id="img_back_profiless">
         <img src={backPic} />
       </div>
-
+      <Link to="/psa"><span><img id="phome" src={phome} /></span></Link>
       <form
         id="profile-form"
         onSubmit={handleSubmit}
@@ -236,13 +238,12 @@ export default function Profile_Artist() {
           placeholder="کد پستی"
         />
         {/* <!--adding submit button--> */}
-        <input
-          type="submit"
-          className="common_form_profiless"
-          id="submit_input_profiless"
-          name="submit_input"
-          value="اعمال"
-        />
+        <button
+            type="submit"
+            className="common_form_profiless"
+            id="submit_input_profiless"
+            name="submit_input">اعمال
+          </button>
       </form>
 
       {/* <!--adding invitation codes textarea--> */}

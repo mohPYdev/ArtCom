@@ -41,6 +41,7 @@
     width: 144px;
     height: 138px;
     border-radius: 100px;
+    margin-left: 50px;
 }
 
 #img_prof_btn_profiless {
@@ -58,7 +59,7 @@
     border-radius: 50%;
     width: 30px;
     height: 30px;
-    margin-left: 92px;
+    margin-left: 152px;
     margin-top: -26px;
     z-index: 3;
     position: fixed;
@@ -71,7 +72,7 @@
     background-color: #E9DAD3;
     resize: none;
     margin-top: -515px;
-    margin-left: 15px;
+    margin-left: 58px;
     border-style: dashed;
     position: fixed;
     border-radius: 5px;
@@ -152,14 +153,11 @@
 
 #submit_input_profiless {
     margin-left: 690px;
-    ;
     margin-top: -100px;
     width: 80px;
     height: 30px;
-
     border-radius: 0px;
     border: 5px outset #29354A;
-
     font-size: 12px;
     font-weight: bold;
     letter-spacing: 1;
@@ -169,7 +167,10 @@
     background-color: #29354A;
     color: white;
 }
-
+#submit_input_profiless:hover{
+    transform: scale(1.5);
+    transition: all 0.5s;
+}
 #invitation_codes_textarea_profiless {
     width: 180px;
     height: 330px;
@@ -183,4 +184,14 @@
     z-index: 5;
     direction: rtl;
     text-align: right;
+}
+#phome{
+    width: 58px;
+    position: absolute;
+    top: 1%;
+    left: 4px;
+}
+#phome:hover{
+    transform: translateY(-1rem);
+    transition: all 0.5s;
 }

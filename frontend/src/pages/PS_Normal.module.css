@@ -124,7 +124,11 @@
 }
 #psnhome{
     width: 58px;
-    position: relative;
-    top: -5%;
-    left: 6px;
+    position: absolute;
+    top: 1%;
+    left: 5px;
+}
+#psnhome:hover{
+    transform: translateY(-1rem);
+    transition: all 0.5s;
 }
