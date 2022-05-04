@@ -5,9 +5,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 import ShowPlaceProfile from "../sections/ShowPlaceProfile";
-import AuctionsProfile from "../sections/AuctionsProfile";
+import PostProfile from "../sections/PostProfile";
 import InfoBarProfile from "../sections/InfoBarProfile";
-import AddPostProfile from "../sections/AddPostProfile";
 import HeaderProfile from "../sections/HeaderProfile";
 
 export default function PS_Artist() {
@@ -28,13 +27,9 @@ export default function PS_Artist() {
 
       <InfoBarProfile artistId={artistId} />
 
-      {artistId === undefined || artistId == user.id ? (
-        <AddPostProfile artistId={artistId} />
-      ) : (
-        <></>
-      )}
+      
       <ShowPlaceProfile artistId={artistId} />
-      <AuctionsProfile artistId={artistId} />
+      <PostProfile artistId={artistId} />
     </div>
   );
 }

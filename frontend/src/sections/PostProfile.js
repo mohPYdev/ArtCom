@@ -5,16 +5,16 @@ import back from "../img/back.png";
 import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
-import getAuctions from "../function/getAuctions";
+import getPosts from "../function/getPosts";
 
 export default function AuctionsProfile({ artistId }) {
   const { user } = useAuthContext();
-  const indexOfAuctions = useRef("");
-  const auctions = useRef("");
+  const indexOfPost = useRef("");
+  const posts = useRef("");
   const navigator = useNavigate();
 
   //State
-  const [auctionPoster, setAuctionPoster] = useState("");
+  const [poster, setPoster] = useState("");
   const [status, setStatus] = useState("");
   const [statustext, setStatustext] = useState("");
 
@@ -30,10 +30,10 @@ export default function AuctionsProfile({ artistId }) {
       if (artistId === undefined || artistId == user.id) state = "myProfile";
       else state = "otherProfile";
 
-      const list = await getAuctions(state, artistId);
+      const list = await getPosts(state, artistId);
 
-      auctions.current = list;
-      indexOfAuctions.current = 0;
+      posts.current = list;
+      indexOfPost.current = 0;
       changePost();
     }
     fetchData();
@@ -42,37 +42,37 @@ export default function AuctionsProfile({ artistId }) {
   //func
 
   const changePost = () => {
-    setAuctionPoster(auctions.current[indexOfAuctions.current].post[0].image);
-    setStatus(auctions.current[indexOfAuctions.current].status);
+    setPoster(posts.current[indexOfPost.current].image);
+    setStatus(posts.current[indexOfPost.current].status);
   };
   const backaHandle = () => {
-    indexOfAuctions.current = indexOfAuctions.current - 1;
-    if (indexOfAuctions.current < 0)
-      indexOfAuctions.current = auctions.current.length - 1;
+    indexOfPost.current = indexOfPost.current - 1;
+    if (indexOfPost.current < 0)
+      indexOfPost.current = posts.current.length - 1;
 
     changePost();
   };
 
   const nextaHandle = () => {
-    indexOfAuctions.current++;
-    if (indexOfAuctions.current >= auctions.current.length)
-      indexOfAuctions.current = 0;
+    indexOfPost.current++;
+    if (indexOfPost.current >= posts.current.length)
+      indexOfPost.current = 0;
     changePost();
   };
 
-  const GoToAuction = ()=>{
+  const GoToPost = ()=>{
 
   }
-  const createAuction = () => {
+  const createPost = () => {
     
   }
   return (
     <>
-      <h1 className={style.exhibitionTitle}>مزایده</h1>
+      <h1 className={style.exhibitionTitle}>پست</h1>
       <div className={style.showplace}>
         <img src={back} alt="" className={style.back} onClick={backaHandle} />
         <div className={style.bannere}>
-          <img src={auctionPoster} alt="" className={style.postere} />
+          <img src={poster} alt="" className={style.postere} />
         </div>
         <img src={next} alt="" className={style.next} onClick={nextaHandle} />
 
@@ -85,11 +85,11 @@ export default function AuctionsProfile({ artistId }) {
         </button>
         {artistId === undefined || artistId === user.id ? (
         <div id={style.createe}>
-          <button className={style.btn2} onClick={createAuction}>ساخت مزایده</button>
+          <button className={style.btn2} onClick={createPost}>ایجاد پست </button>
         </div>) : <></> }
 
         <div id={style.viewe}>
-          <button className={style.btn2} onClick={GoToAuction}>مشاهده</button>
+          <button className={style.btn2} onClick={GoToPost}>مشاهده</button>
         </div>
       </div>
     </>
