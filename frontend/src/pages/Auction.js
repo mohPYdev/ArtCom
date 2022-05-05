@@ -96,9 +96,8 @@ function Auction () {
 
 
     useEffect(() => {
-        console.log(nPost)
         if (!data) return;
-        if (time === 10 && !finish)
+        if (time === 10 && !finish && user.is_superuser)
         {
             handleStart()
         }
@@ -111,7 +110,8 @@ function Auction () {
         ws.current.send(JSON.stringify({
             'command': 'start',
             'price': price,
-            'post_id': nPost
+            'post_id': nPost,
+            'username': user.username,
         }));
     }
     
@@ -128,12 +128,14 @@ function Auction () {
         ws.current.send(JSON.stringify({
             'price': p + np,
             'command': 'new_price',
-            'post_id': nPost - 1
+            'post_id': nPost,
+            'username': user.username,
         }));
         ws.current.send(JSON.stringify({
             'price': p + np,
             'command': 'start',
-            'post_id': nPost - 1
+            'post_id': nPost,
+            'username': user.username,
         }));
     };
 

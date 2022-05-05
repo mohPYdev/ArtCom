@@ -2,15 +2,16 @@ import asyncio
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 
+task = None
 
 class ChatConsumer(AsyncWebsocketConsumer):
 
     t = 0
+    
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.run = False
-        self.task = None
 
 
     async def start(self, event):
@@ -19,6 +20,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
             'price':event['price'],
             'command':'start',
             'post_id':event['post_id'],
+            'username':event['username'],
         }
         await self.send(text_data=json.dumps(content))
         while t <= 10:
@@ -32,6 +34,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
             'price':event['price'],
             'command':'new_price',
             'post_id':event['post_id'],
+            'username':event['username'],
         }
         await self.send_message(message)
         
@@ -69,10 +72,14 @@ class ChatConsumer(AsyncWebsocketConsumer):
     async def receive(self, text_data):
         global t
         t = 0
-        if self.task:
-            self.task.cancel()
+
+        global task
+
+        if task:
+            task.cancel()
+            print('cancled')
         data = json.loads(text_data)
-        self.task = asyncio.create_task(self.commands[data['command']](self, data))
+        task = asyncio.create_task(self.commands[data['command']](self, data))
 
 
 
@@ -97,5 +104,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
             'command': message['command'],
             'post_id': message['post_id'],
             'time': t,
+            'username': message['username'],
         }))
         
