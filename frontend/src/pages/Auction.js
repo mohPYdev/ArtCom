@@ -141,6 +141,15 @@ function Auction () {
 
 
 
+    const handlePause = () => {
+        ws.current.send(JSON.stringify({
+            'command': 'pause',
+            'post_id': nPost,
+            'username': user.username,
+        }));
+    }
+
+
 
 
 
@@ -173,7 +182,12 @@ function Auction () {
                         
                     {user?.is_superuser && <button onClick={handleStart}>
                     <div className="percent">
-                       start
+                       start/resume
+                    </div>
+                    </button>}
+                    {user?.is_superuser && <button onClick={handlePause}>
+                    <div className="percent">
+                       pause
                     </div>
                     </button>}
                     <>

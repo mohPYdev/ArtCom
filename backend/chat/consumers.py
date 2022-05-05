@@ -3,6 +3,7 @@ import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 
 task = None
+p_command = ''
 
 class ChatConsumer(AsyncWebsocketConsumer):
 
@@ -12,6 +13,9 @@ class ChatConsumer(AsyncWebsocketConsumer):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.run = False
+
+    async def pause(self, event):
+        print('pausing')
 
 
     async def start(self, event):
@@ -41,7 +45,8 @@ class ChatConsumer(AsyncWebsocketConsumer):
     
     commands = {
         'start': start,
-        'new_price': new_price
+        'new_price': new_price,
+        'pause': pause,
     }
 
 
@@ -70,15 +75,21 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     # Receive message from WebSocket
     async def receive(self, text_data):
-        global t
-        t = 0
-
         global task
+        global t
+        global p_command
+        data = json.loads(text_data)
+
+        if data['command'] != 'pause' and p_command != 'pause':
+            t = 0
+
 
         if task:
             task.cancel()
             print('cancled')
-        data = json.loads(text_data)
+
+
+        p_command = data['command']
         task = asyncio.create_task(self.commands[data['command']](self, data))
 
 
