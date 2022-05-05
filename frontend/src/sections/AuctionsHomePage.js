@@ -66,8 +66,7 @@ export default function AuctionsHomePage() {
 
   useEffect(() => {
     async function fetchData() {
-      const state = "home"
-      const list = await getAuctions(state);
+      const list = await getAuctions();
       auctions.current = list;
       indexOfAuctions.current = 0;
       changePost();

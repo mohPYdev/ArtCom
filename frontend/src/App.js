@@ -60,7 +60,7 @@ function App() {
         
 
 
-          <Route path="/post" element={<Post />} />
+          <Route path="/post/:postId/:artistId" element={<Post />} />
 
       </Routes>
     </BrowserRouter>

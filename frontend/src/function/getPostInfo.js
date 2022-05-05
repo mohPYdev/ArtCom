@@ -11,4 +11,5 @@ export default  async function getPostInfo (user_id , post_id ){
     const { image  , name , description , price , like_count , liked } = data ;
     return { image  , name , description , price ,like_count , liked }
 
+
 }
