@@ -1,4 +1,3 @@
-
 /*
   This example requires Tailwind CSS v2.0+ 
   
@@ -27,24 +26,39 @@ import { useEffect, useState } from "react";
 import { StarIcon } from "@heroicons/react/solid";
 import { RadioGroup } from "@headlessui/react";
 import "./post.css";
-import like from "../img/like--post.png";
+import like from "../img/like.png";
 import icon1 from "../img/add-to-cart.png";
-import warning from '../img/warning.png';
-const artwork = {
-  name: "شب پر ستاره",
-  price: "5,000,000",
-  liked: false,
-  like_count: 2500,
-  artist: "",
-  sold: true,
-  image_url: vangogh,
-  description:
-    "شبِ پُرستاره (به هلندی: De sterrennacht) یک نقاشی رنگ روغن است که توسط نقاش و طراح معروف سمبولیسم هلندی، وینسنت ون گوگ، در سال ۱۸۸۹ خلق شده‌است. این اثر نه‌تنها یکی از شاهکارهای ون گوگ است، بلکه به‌عنوان یکی از نمادهای هنر نوگرای اروپا نیز به‌شمار می‌آید",
-};
+import warning from "../img/warning.png";
+import getPostInfo from "../function/getPostInfo";
+import { useParams } from "react-router-dom";
 
 export default function Post() {
-  const [sold, setSold] = useState(artwork.sold);
-  const [liked, setLiked] = useState(artwork.liked);
+  const { postId, artistId } = useParams();
+
+  const likedbtn = "likedbtn"
+  const unlikedbtn = "unlikedbtn" 
+
+  //State
+  const [name, setName] = useState();
+  const [price, setPrice] = useState();
+  const [liked, setLiked] = useState();
+  const [likeCount, setLikeCount] = useState();
+  const [artist, setArtist] = useState();
+  const [sold, setSold] = useState();
+  const [image, setImage] = useState();
+  const [description, setDescription] = useState();
+
+  //func
+  const likeHandler = () => {
+    if (liked) {
+      setLiked(false);
+      setLikeCount((prevcount) => prevcount - 1);
+    } else {
+      setLiked(true);
+      setLikeCount((prevcount) => prevcount + 1);
+    }
+  };
+  //useEffect
   useEffect(() => {
     if (sold) {
       const sold_btn = document.getElementById("sold--btn");
@@ -52,20 +66,21 @@ export default function Post() {
       sold_label.classList.remove("invisible");
       sold_btn.style.opacity = 0.2;
       sold_btn.style.pointerEvents = "none";
-
     }
   }, [sold]);
   useEffect(() => {
-    const like_btn = document.getElementById("like--btn");
-    if (liked) {
-      
-      like_btn.style.pointerEvents="none";
-      like_btn.classList.add("grayscale");
+    async function fetchData() {
+      const { image, name, description, price, like_count, liked } =
+        await getPostInfo(artistId, postId);
+      setImage(image);
+      setName(name);
+      setDescription(description);
+      setPrice(price);
+      setLikeCount(like_count);
+      setLiked(liked);
     }
-    else{
-      like_btn.classList.remove("grayscale")
-    }
-  }, [liked]);
+    fetchData();
+  }, []);
   return (
     <div className="post-page">
       <div className="pt-6">
@@ -73,7 +88,7 @@ export default function Post() {
         <div className="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-1 lg:gap-x-8">
           <div className=" aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
             <img
-              src={artwork.image_url}
+              src={image}
               className="w-full h-full object-center object-cover"
             />
           </div>
@@ -83,43 +98,47 @@ export default function Post() {
         <div className="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
           <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
             <h1 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl centertext">
-              {artwork.name}
+              {name}
             </h1>
           </div>
 
           {/* Options */}
           <div className="mt-4 lg:mt-0 lg:row-span-3">
-            <p className="text-3xl text-gray-900 centertext ">
-              {artwork.price}
-            </p>
+            <p className="text-3xl text-gray-900 centertext ">{price}</p>
             <p className="mt-4 text-1xl text-gray-900 centertext ">
               1400/05/06
             </p>
-              {/* like */}
-              <div className="mt-10 like-box">
-                <div className="flex items-center justify-center">
-                  <h3 className="mr-5 text-3xl text-gray-900 font-medium">2 k</h3>
-                  <button className="hover:scale-125" id="like--btn">
-                    <img src={like} className="icon" />
-                  </button>
-                </div>
+            {/* like */}
+            <div className="mt-10 ">
+              <div className="flex items-center justify-center">
+                <h3 className="mr-5 text-3xl text-gray-900 font-medium">
+                  {likeCount}
+                </h3>
+                  <img
+                    src={like}
+                    className={liked ? likedbtn : unlikedbtn}
+                    alt=""
+                    onClick={likeHandler}
+                  />
               </div>
-              <button
-                className="mt-10 w-full bg-sky-900 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-sky-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 centertext"
-                id="sold--btn"
-              >
-                اضافه کردن به سبد خرید
-                <img src={icon1} className="shopping-icon icon" />
-              </button>
-              <div className=" mt-10 flex items-center justify-center">
-              <img src={warning} className="icon" />
-              <p className=" mx-5 text-3xl text-gray-900 font-medium invisible" id="sold--label">
-              فروخته شده
-            
-            </p>
-            <img src={warning} className="icon" />
             </div>
-
+            <button
+              className="mt-10 w-full bg-sky-900 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-sky-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 centertext"
+              id="sold--btn"
+            >
+              اضافه کردن به سبد خرید
+              <img src={icon1} className="shopping-icon icon" />
+            </button>
+            <div className=" mt-10 flex items-center justify-center">
+              {sold ? <img src={warning} className="icon" /> : <></>}
+              <p
+                className=" mx-5 text-3xl text-gray-900 font-medium invisible"
+                id="sold--label"
+              >
+                فروخته شده
+              </p>
+              {sold ? <img src={warning} className="icon" /> : <></>}
+            </div>
           </div>
 
           <div className="py-10 lg:pt-6 lg:pb-16 lg:col-start-1 lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
@@ -129,7 +148,7 @@ export default function Post() {
 
               <div className="space-y-6">
                 <p className="text-base text-gray-900 righttext">
-                  {artwork.description}
+                  {description}
                 </p>
               </div>
             </div>
@@ -139,4 +158,3 @@ export default function Post() {
     </div>
   );
 }
-
