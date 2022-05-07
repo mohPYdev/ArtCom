@@ -1,12 +1,15 @@
 import style from "./ShowPlace.module.css";
-import frame from "../img/artwork.png";
-import profile from "../img/profile.png";
 import back from "../img/back.png";
 import like from "../img/like.png";
 import next from "../img/next.png";
 import liveeye from "../img/liveeye.png";
 import seeneye from "../img/seeneye.png";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import getOneExhibition from "../function/getOneExhibition";
+import { useNavigate, useParams } from "react-router-dom";
+import getArtistInfo from "../function/getArtistInfo";
+import getPostInfo from "../function/getPostInfo";
+import { useAlert } from "react-alert";
 
 export default function ShowPlace() {
   document.body.classList.add(style.bodyclass);
@@ -14,16 +17,21 @@ export default function ShowPlace() {
   window.onbeforeunload = function () {
     document.body.classList.remove(style.bodyclass);
   };
+  const postsList = useRef("");
+  const indexOfPost = useRef("");
+  const user_id = useRef("");
+  const alert = useAlert();
 
-  const [about, setAbout] = useState(
-    "ایدهٔ این‌که پروانه‌ای می‌تواند باعث تغییری آشوبی شود نخستین بار در ۱۹۵۲ در داستان کوتاهی به نام آوای تندر اثر ری بردبری مطرح شد. عبارت «اثر پروانه‌ای» هم در ۱۹۶۱ در پی مقاله‌ای از ادوارد لورنتس به وجود آمد. وی در صد و سی و نهمین ؟»"
-  );
-  const [name, setName] = useState("-----");
-  const [price, setPrice] = useState("---,---,---");
+  const { id } = useParams("");
+  const navigator = useNavigate();
+
+  const [about, setAbout] = useState("");
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
   const [date, setDate] = useState("--/--/--");
-  const [profileImg, setProfileImg] = useState(profile);
-  const [artwork, setArtwork] = useState(frame);
-  const [count, setCount] = useState("--");
+  const [profileImg, setProfileImg] = useState("");
+  const [artwork, setArtwork] = useState();
+  const [count, setCount] = useState("");
   const [livecount, setLivecount] = useState("--");
   const [seencount, setSeencount] = useState("--");
 
@@ -31,24 +39,69 @@ export default function ShowPlace() {
 
   const likeHandler = () => {
     if (liked) {
+
       setliked(false);
+      setCount((prevcount)=>prevcount-1)
     } else {
       setliked(true);
+      setCount((prevcount)=>prevcount+1)
     }
   };
+  const ChangePost = async () => {
+    const { image, name, description, price , like_count , liked } = await getPostInfo(
+      user_id.current,
+      +postsList.current[indexOfPost.current].id
+    );
+    setName(name);
+    setArtwork(image);
+    setAbout(description);
+    setPrice(+price);
+    setCount(+like_count)
+    setliked(liked)
+  };
 
-  const backHandler = () => {};
+  const backHandler = () => {
+    indexOfPost.current--;
+    if (indexOfPost.current < 0) {
+      indexOfPost.current = 0;
+      alert.error("اولین اثر نمایشگاه می باشد");
+    }
+    ChangePost();
+  };
 
-  const nextHandler = () => {};
+  const nextHandler = () => {
+    indexOfPost.current++;
+    if (indexOfPost.current >= postsList.current.length) {
+      indexOfPost.current = postsList.current.length - 1;
+      alert.error("آخرین اثر نمایشگاه می باشد");
+    }
+    ChangePost();
+  };
 
-  const exitHandler = () => {};
+  const exitHandler = () => {
+    navigator(`/home`);
+  };
 
   const playHandler = () => {};
 
   const buyHandler = () => {};
 
   // fetch data
-  useEffect(() => {}, []);
+  useEffect(() => {
+    async function getData() {
+      indexOfPost.current = 0;
+      const { posts, artist } = await getOneExhibition(+id);
+      postsList.current = posts;
+      const { image, id: temp_id } = await getArtistInfo(+artist);
+      user_id.current = temp_id;
+      setProfileImg(image);
+      ChangePost();
+    }
+    getData();
+  }, []);
+  const GotoArtistProfile = () => {
+    navigator(`/psa/${user_id.current}`);
+  };
 
   return (
     <div>
@@ -58,32 +111,38 @@ export default function ShowPlace() {
           style={{ backgroundImage: `url(${artwork})` }}
         ></div>
 
-        <img src={profileImg} alt="" id={style.profile} />
-        <textarea value={about} id={style.about} cols="18" rows="20"></textarea>
+        <img
+          src={profileImg}
+          alt=""
+          id={style.profile}
+          onClick={GotoArtistProfile}
+        />
+        <div id={style.about} cols="18" rows="20">{about}</div>
 
         <div className={style.Name}>
           <h2 id={style.title}>نام</h2>
-          <input
-            type="text"
+          <div
+
             id={style.title}
             className={style.values}
-            value={name}
-          />
+            
+          >
+            {name}</div>
         </div>
 
         <div className={style.Price}>
           <h2 id={style.title}>قیمت</h2>
-          <input
-            type="text"
+          <div
+
             id={style.title}
             className={style.values}
-            value={price}
-          />
+            
+          >{price}</div>
         </div>
 
         <div className={style.Date}>
           <h2 id={style.title}>تاریخ</h2>
-          <input id={style.title} className={style.values} value={date} />
+          <div id={style.title} className={style.values} >{date}</div>
         </div>
 
         <img src={back} alt="back" id={style.back} onClick={backHandler} />
@@ -95,7 +154,7 @@ export default function ShowPlace() {
             alt=""
             onClick={likeHandler}
           />
-          <input id={style.count} value={count}></input>
+          <div id={style.count} >{count}</div>
         </div>
 
         <img src={next} alt="next" id={style.next} onClick={nextHandler} />
@@ -111,11 +170,11 @@ export default function ShowPlace() {
         </button>
         <div className={style.livebox}>
           <img src={liveeye} alt="" id={style.liveimg} />
-          <input id={style.livecount} value={livecount} />
+          <div id={style.livecount}  >{livecount}</div>
         </div>
         <div className={style.seenbox}>
           <img src={seeneye} alt="" id={style.seenimg} />
-          <input id={style.seencount} value={seencount} />
+          <div id={style.seencount}  >{seencount}</div>
         </div>
       </div>
     </div>

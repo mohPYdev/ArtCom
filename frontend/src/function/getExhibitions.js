@@ -1,14 +1,29 @@
 import axios from "axios";
 
-export default  async function getExhibitions (){
-    const url = `http://localhost:8000/post/exhibitions/me`;
-    const { data } = await axios.get(url);
-    //console.log(data);
-    const {posts} =  data[0] ;
-     console.log(posts)
-    // for(let i=0;i< posts.lendth ; i++)
-    const images_list =  posts.map( element =>  element.image);
-    // console.log(images_list)
+export default  async function getExhibitions ( state , artistId ){
+    let config = {
+        headers : {
+            "Authorization": `Token ${JSON.parse(localStorage.getItem("token"))}`
+        }
+    }
+    let allData ;
 
-    return images_list;
+    if(state === "home"){
+    const url = `http://localhost:8000/post/exhibitions`;
+    const { data } = await axios.get(url , config);
+    allData = data
+    }
+    if(state === "myProfile"){
+        const url = `http://localhost:8000/post/exhibitions/me`
+        const { data } = await axios.get(url , config);
+        allData = data
+    }
+    if(state === "otherProfile"){
+        const url = `http://localhost:8000/post/exhibitions/${artistId}/`
+        const { data } = await axios.get(url , config);
+        allData = data
+    }
+    return allData ;
+
+    
 }

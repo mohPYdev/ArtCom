@@ -2,7 +2,6 @@ import style from "./HomePage.module.css";
 
 import mona from "../img/mona.png";
 
-
 // import { useAuthContext } from "../hooks/useAuthContext";
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
@@ -13,11 +12,7 @@ import { useAxios } from "../hooks/useAxios";
 import ShowPlaceHomePage from "../sections/ShowPlaceHomePage";
 import AuctionsHomePage from "../sections/AuctionsHomePage";
 
-
 export default function HomePage() {
-
-
-  const {data, isPending, error} = useAxios('http://localhost:8000/post/exhibitions/');
 
   document.body.classList.add(style.bodyclass);
 
@@ -27,17 +22,15 @@ export default function HomePage() {
   const navigator = useNavigate();
 
   const [search, setSearch] = useState("");
-  
-
 
   const searchHandle = (event) => {
     setSearch(event.target.value);
   };
 
+  const contactHandle = (event) => {};
 
   return (
     <div>
-      
       <div className={style.header}>
         <Avatar backColor="dark" />
 
@@ -46,20 +39,13 @@ export default function HomePage() {
           id={style.search}
           placeholder="جست و جو"
           value={search}
-
           onChange={searchHandle}
         />
 
-        <button className={style.contact}>
-          ارتباط با ما
-        </button>
+        <button className={style.contact}>ارتباط با ما</button>
       </div>
       <ShowPlaceHomePage />
       <AuctionsHomePage />
-
-
-
-      
     </div>
   );
 }

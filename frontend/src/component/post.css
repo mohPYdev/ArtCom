@@ -25,8 +25,24 @@
 .list{
     list-style: none;
 }
-.like-box{
-    
+.likedbtn{
+    background-color: hsl(0, 64%, 48%);
+    outline: 3px dashed white;
+    border-radius: 12px;
+    padding: 5px;
+    width: 50px;
+    cursor: pointer;
+}
+.unlikedbtn {
+    border-radius: 12px;
+    padding: 5px;
+    width: 50px;
+    cursor: pointer;
+}
+
+.unlikedbtn:hover {
+    background-color: hsl(0, 64%, 48%);
+    outline: 3px dashed white;
 }
 .flexy{
     justify-content: space-around;

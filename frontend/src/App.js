@@ -53,13 +53,14 @@ function App() {
           <Route path="/ProfileNormal" element={<ProfileNormal />} />
           <Route path="/ProfileArtist" element={<ProfileArtist />} />
           <Route path="/Home" element={<Home />} />
-          <Route path="/show" element={<ShowPlace />} />
+          <Route path="/show/:id" element={<ShowPlace />} />
           <Route path="/psn" element={<PS_Noraml />} />
+          <Route path="/psa/:artistId" element={<PS_Artist />} />
           <Route path="/psa" element={<PS_Artist />} />
         
 
 
-          <Route path="/post" element={<Post />} />
+          <Route path="/post/:postId/:artistId" element={<Post />} />
 
       </Routes>
     </BrowserRouter>
