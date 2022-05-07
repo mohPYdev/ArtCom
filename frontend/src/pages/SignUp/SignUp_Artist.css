@@ -1,21 +1,16 @@
-﻿*{
-    padding:0;
-    margin:0;
-}
-body {
-    background-color: #E9DAD3;
-    overflow: auto;
-}
-#wrapper {
+﻿#sa_wrapper {
     background-repeat: no-repeat;
     direction: rtl;
     background-image: url(image/Image2.png), url(image/Two_Styles_of_Girls_illustrations-removebg-preview.png),url('image/Abbey_Lossing_on_what_it_s_like_to_be_a_staff_illustrator_at_Buzzfeed_and_Vice_News-removebg-preview.png'),url(image/Image1.png),url(image/Image1.png),url(image/Image2.png),url(image/Image2.png);
-    width: 1500px;
-    height: 772px;
+    width: 1518px;
+    height: 721px;
     background-size: 427px, 393px,691px, 503px, 498px,427px,427px;
     background-position: 137px -7px, 1206px 70px, -48px -48px, 991px 601px, 613px 602px,565px -7px, 994px -7px;
+    background-color: #E9DAD3;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
-.box {
+.sa_box {
     width: 387px;
     height: 45px;
     background: #1E2736;
@@ -31,63 +26,70 @@ body {
     align-items: center;
     text-align: right;
     color: #FFFEFB;
+    padding-right: 15px;
 }
-#firstname {
+#sa_firstname {
     left: 155px;
     top: 23px;
 }
-#lastname {
+#sa_lastname {
     left: 154px;
     top: 82px;
 }
-#email {
+#sa_email {
     left: 154px;
     top: 141px;
     text-align: left;
 }
-#username {
+#sa_username {
     left: 154px;
     top: 201px;
 }
-#password {
+#sa_password {
     left: 583px;
     top: 23px;
 }
-#confirmpassword {
+#sa_confirmpassword {
     left: 583px;
     top: 82px;
 }
-#invitationcode {
+#sa_invitationcode {
     left: 583px;
     top: 141px;
     text-align: left;
 }
-#label {
+#sa_label {
     font-family: Mj_Ramollah;
     left: 846px;
     top: 201px;
     font-size: 25px;
     width: 124px;
     text-align: center;
+    padding-right: 15px;
 }
-#selection {
+#sa_selection {
     left: 583px;
     top: 201px;
     width: 248px;
+    padding-right: 15px;
 }
-#address {
+#sa_address {
     left: 1014px;
     top: 23px;
-    height: 162px;
+    height: 120px;
 }
-#postalcode {
+#sa_city{
+    top: 149px;
+    left: 1014px;
+}
+#sa_postalcode {
     left: 1013px;
     top: 200px;
     text-align: left;
 }
-#singup {
-    width: 106px;
-    height: 45px;
+#sa_singup {
+    width: 120px;
+        height: 60px;
     background: #1E2736;
     border-radius: 15px;
     float: left;
@@ -106,8 +108,33 @@ body {
     background-image: url('image/icons8-art-64.png');
     background-repeat: no-repeat;
     background-size: 40px;
+    padding-right: 10px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
 }
-::placeholder {
+.sa_box::placeholder {
     color: rgba(215, 211, 211, 0.82);
     text-align:center;
+}
+#sa_singup:focus {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.171);
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+}
+
+#sa_singup:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.171);
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+}
+#sa_home{
+    position: absolute;
+    top: 3%;
+    left: 2%;
+    width: 50px;
+}
+#sa_home:hover{
+    transform: translateY(-1rem);
+    transition: all 0.5s;
 }

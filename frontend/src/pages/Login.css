@@ -1,135 +1,207 @@
-body{
-    background-color:#1E2736 ;
+#login--page {
+    background-color: #1E2736;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
-a{
-    text-decoration: none;
-    color: #1E2736;
-    font-size: 1.5rem;
-    transform: rotateX(20);
-}
-#section-login{
+
+#section-login {
     position: relative;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
-    background-color:#1E2736 ;
+    background-color: #1E2736;
     z-index: -2;
 }
-#section-overflowLogin{
+
+#section-overflowLogin {
     height: 100%;
     width: 100%;
-    background-color:#C2CCC1 ;
+    background-color: #C2CCC1;
 }
-.header{
-    padding-top: 2rem;
-font-family: 'ZCOOL KuaiLe';
-font-size: 7rem;
 
-text-align: center;
-letter-spacing: 0.365em;
+.login--header {
+    /* position: absolute;
+    left: 50%;
+    transform: translateX(-50%); */
+    font-family: 'ZCOOL KuaiLe';
+    font-size: 10rem;
 
-color: #E9DAD3;
-z-index: 0;
+    text-align: center;
+    letter-spacing: 0.365em;
+
+    color: #E9DAD3;
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+
 }
+
+.login--header h5 {
+    font-family: vazir;
+    letter-spacing: 0;
+    font-size: 6rem;
+    text-align: right;
+    margin-right: 4rem;
+    margin-top: -3rem;
+}
+
+.login--header--sub {
+    font-family: vazir;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    color: #E9DAD3;
+    z-index: 0;
+    text-align: center;
+}
+
+.login--header h1 {
+    text-align: center;
+}
+
 #pizzaUp {
     position: absolute;
-    top: 12rem;
+    top: 4rem;
     width: 37rem;
     height: 46rem;
     left: 0rem;
+    z-index: 0;
 
 }
-#sliceUp{
+
+#pizzaUp--context {
+    font-size: 1.5rem;
+    font-weight: 700;
+    position: relative;
+    top: 28rem;
+    left: 3rem;
+    width: 11rem;
+    height: 10rem;
+    z-index: 1;
+    line-height: 4rem;
+}
+
+#sliceUp {
     position: relative;
     top: -44rem;
     left: 1rem;
     width: 60rem;
     height: 38rem;
-    
+
 }
+
+#EllipseUp {}
+
 #EllipseUp1 {
     position: relative;
-    top: 21rem;
-    left: 13.2rem;
+    top: 21.5rem;
+    left: 14.2rem;
     height: 12rem;
 }
-#EllipseUp2{
+
+#EllipseUp2 {
     position: relative;
     top: -18rem;
-    left: -15rem;
+    left: 11rem;
 
-    
+
 }
-#pizzaDown{
+
+#pizzaDown {
     position: absolute;
     left: 38rem;
-    top: 38rem;
+    top: 28rem;
     height: 33rem;
     width: 46rem;
-    
 }
+
+#pizzaDown--context {
+    font-size: 1.5rem;
+    font-weight: 700;
+    position: relative;
+    top: 29rem;
+    left: 8rem;
+    width: 14rem;
+    height: 16rem;
+    z-index: 1;
+    line-height: 4rem;
+}
+
 #EllipseDown {
     position: relative;
     top: -2vh;
     left: 4rem;
     height: 40rem;
-    
+
 }
+
 #Ellipse4 {
     position: relative;
     top: -44rem;
     left: 24.7rem;
     height: 22rem;
-    
+
 }
 
-#hero{
+#hero {
+    height: 80%;
+    width: 40%;
     position: relative;
-    top: 0rem;
-    left: 79rem;
-    height: 80vh;
-    width: 70rem;
+    top: 20%;
+    left: 60%;
 }
-#line{
-    position: relative;
-    top: -60rem;
-    left: 15rem;
+
+#line {
+    position: absolute;
+    top: 15%;
+    left: 20%;
     z-index: -1;
     width: 100vw;
-    height: 30rem;
+    height: 65%;
 
 }
-#btn-login{
-    
+
+#btn-login {
+
     padding: 9rem;
     position: relative;
-    top: -55rem;
-    left: 5rem;
+    top: -58rem;
+    left: 21rem;
     border-radius: 100%;
     /* background-color: brown; */
     /* z-index: 100; */
-    
- 
+
 }
-#btn-signup-a{
+
+#btn-signup-a {
     position: relative;
-    top: 14rem;
-    left: -6rem;
+    top: 12rem;
+    left: 16rem;
     /* background-color: yellowgreen; */
     padding: 7rem;
     border-radius: 100%;
-    
- 
+
+
 }
-#btn-signup-n{
+
+#btn-signup-n {
     position: relative;
-    top: -29rem;
-    left: 8rem;
+    top: -31rem;
+    left: 10.5rem;
     /* background-color: yellow; */
     padding: 7rem;
     border-radius: 100%;
-    
- 
+
+
 
 }

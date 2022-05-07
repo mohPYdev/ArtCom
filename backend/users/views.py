@@ -10,11 +10,13 @@ from rest_framework import viewsets
 from rest_framework import status
 from rest_framework.exceptions import ValidationError
 
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from users.serializers import ArtistCreatePasswordRetypeSerializer, ArtistUpdateSerializer, \
                               CustomUserSerializer, TokenSerializer, FollowerSerializer, \
                               FollowingSerializer
+
+from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 
 from core.models import Artist, InviteToken, Follow, Rate
 from django.contrib.auth import get_user_model
@@ -24,6 +26,11 @@ class UserViewSet(UserViewSet):
     """
     Custom UserViewSet that allows us to override the default serializer
     """
+
+    parser_classes = (MultiPartParser, FormParser, JSONParser)
+
+    def perform_update(self, serializer):
+        super(viewsets.ModelViewSet, self).perform_update(serializer)
 
 
     def get_serializer_class(self):
@@ -44,8 +51,7 @@ class UserViewSet(UserViewSet):
         return serializer
 
 
-
-    @action(detail=False, methods=["POST"], url_path="artist")
+    @action(detail=False, methods=["POST"], url_path="artist", permission_classes=[AllowAny])
     def artist_register(self, request):
         """
         Register a new artist
