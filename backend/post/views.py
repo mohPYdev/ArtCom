@@ -10,11 +10,12 @@ from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
 
 from .permissions import IsArtist, IsCurrentUserArtist
-from core.models import Post, Like, Exhibition, Auction
+from core.models import Post, Like, Exhibition, Auction, Order
 from post.serializers import PostSerializer, LikeSerializer, ExhibitionSerializer,\
                              ExhibitionCreateSerializer, AuctionCreateSerializer,\
                              AuctionSerializer,\
-                             AuctionArtistSerializer, PostPaymentSerializer
+                             AuctionArtistSerializer, PostPaymentSerializer,\
+                             OrderSerializer
 
 User = get_user_model()
 
@@ -136,6 +137,17 @@ class PostPayView(generics.CreateAPIView):
         user = User.objects.get(id=user_pk)
         obj = get_object_or_404(Post, id=post_pk, artist=user.artist)
         return obj
+
+
+class OrderViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows orders to be viewed or edited.
+    """
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+    permission_classes = (IsAuthenticated,)
+
+    
 
 
 

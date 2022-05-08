@@ -28,6 +28,8 @@ function Auction () {
     const [price, setPrice] = useState(null)
     const [finish, setFinish] = useState(false)
 
+    const [is_allowed, setIsAllowed] = useState(false)
+
 
 
     useEffect(() => {
@@ -56,7 +58,18 @@ function Auction () {
             setTime(message.time);
             setNPost(message.post_id)
             setPrice(message.price)
-            if (message.time === 10 && !finish)
+
+            
+
+            if (message.command === 'pause'){
+                setIsAllowed(false)
+            }
+            
+            if (message.command === 'start' && message.username === 'admin'){
+                setIsAllowed(true)
+            }
+
+            if (message.time === 11 && !finish)
             {
                 setNext(true)
             }         
@@ -97,7 +110,7 @@ function Auction () {
 
     useEffect(() => {
         if (!data) return;
-        if (time === 10 && !finish && user.is_superuser)
+        if (time === 11 && !finish && user.is_superuser)
         {
             handleStart()
         }
@@ -110,7 +123,8 @@ function Auction () {
         ws.current.send(JSON.stringify({
             'command': 'start',
             'price': price,
-            'post_id': nPost,
+            'n_post': nPost,
+            'post_id': post.id,
             'username': user.username,
         }));
     }
@@ -128,13 +142,15 @@ function Auction () {
         ws.current.send(JSON.stringify({
             'price': p + np,
             'command': 'new_price',
-            'post_id': nPost,
+            'n_post': nPost,
+            'post_id': post.id,
             'username': user.username,
         }));
         ws.current.send(JSON.stringify({
             'price': p + np,
             'command': 'start',
-            'post_id': nPost,
+            'n_post': nPost,
+            'post_id': post.id,
             'username': user.username,
         }));
     };
@@ -144,7 +160,9 @@ function Auction () {
     const handlePause = () => {
         ws.current.send(JSON.stringify({
             'command': 'pause',
-            'post_id': nPost,
+            'price': price,
+            'n_post': nPost,
+            'post_id': post.id,
             'username': user.username,
         }));
     }
@@ -190,7 +208,7 @@ function Auction () {
                        pause
                     </div>
                     </button>}
-                    <>
+                    {!user?.is_superuser && is_allowed && <>
                         <button className='percent' onClick={handleNewBid} value={(price * 0.05).toFixed(2)}> 
                             +{(price * 0.05).toFixed(2)}$
                         </button>
@@ -203,7 +221,7 @@ function Auction () {
                         <button className='percent' onClick={handleNewBid} value={(price * 0.2).toFixed(2)}>
                             + {(price * 0.2).toFixed(2)}$
                         </button>
-                    </>
+                    </>}
                     
                     </div>  
                     
@@ -236,7 +254,7 @@ function Auction () {
                 </div>
                         <div id="number-box">
                             <div id="number-text" className="clearfix">
-                                ۱ اثر هنری شماره 
+                                {nPost} اثر هنری شماره 
                             </div> 
                         </div>
                     </div>
