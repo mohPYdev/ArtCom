@@ -14,17 +14,14 @@ import AuctionsHomePage from "../sections/AuctionsHomePage";
 
 export default function HomePage() {
 
-  document.body.classList.add(style.bodyclass);
+  document.body.className = '';
 
-  window.onload = function(){
-    if(!window.location.hash){
-      window.location.reload();
-    }
-  }
+  document.body.classList.add(style.bodyclass);
 
   window.onbeforeunload = function (event) {
     document.body.classList.remove(style.bodyclass);
   };
+  
   const navigator = useNavigate();
 
   const [search, setSearch] = useState("");
