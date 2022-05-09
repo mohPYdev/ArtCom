@@ -16,6 +16,12 @@ export default function HomePage() {
 
   document.body.classList.add(style.bodyclass);
 
+  window.onload = function(){
+    if(!window.location.hash){
+      window.location.reload();
+    }
+  }
+
   window.onbeforeunload = function (event) {
     document.body.classList.remove(style.bodyclass);
   };

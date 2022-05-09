@@ -17,6 +17,14 @@ export default function PS_Normal() {
     window.onbeforeunload = () => {
         document.body.classList.remove(style.bodyclass)
     }
+
+    window.onload = function(){
+      if(!window.location.hash){
+        window.location.reload();
+      }
+    }
+  
+
     const { logout, error, isPending } = useLogout();
     
     const navigator = useNavigate ();

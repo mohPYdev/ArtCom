@@ -17,6 +17,14 @@ export default function ShowPlace() {
   window.onbeforeunload = function () {
     document.body.classList.remove(style.bodyclass);
   };
+
+  window.onload = function(){
+    if(!window.location.hash){
+      window.location.reload();
+    }
+  }
+
+
   const postsList = useRef("");
   const indexOfPost = useRef("");
   const user_id = useRef("");

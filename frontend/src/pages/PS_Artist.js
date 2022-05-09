@@ -17,6 +17,13 @@ export default function PS_Artist() {
     document.body.classList.remove(style.bodyclass);
   };
 
+  window.onload = function(){
+    if(!window.location.hash){
+      window.location.reload();
+    }
+  }
+
+
   const navigator = useNavigate();
 
   const { artistId } = useParams();
