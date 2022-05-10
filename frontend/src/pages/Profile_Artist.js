@@ -10,6 +10,7 @@ import axios from 'axios';
 
 
 export default function Profile_Artist() {
+  document.body.className = '';
   document.body.classList.add("bodyClass_profiless");
   window.onbeforeunload = function (e) {
     document.body.classList.remove("bodyClass_profiless");

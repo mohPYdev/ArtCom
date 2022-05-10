@@ -11,6 +11,8 @@ import HeaderProfile from "../sections/HeaderProfile";
 import addp1 from "../img/addpost1.png";
 import addp2 from "../img/addpost2.png";
 export default function PS_Artist() {
+  
+  document.body.className = '';
   document.body.classList.add(style.bodyclass);
 
   window.onbeforeunload = () => {

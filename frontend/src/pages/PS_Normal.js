@@ -12,11 +12,14 @@ import { useLogout } from '../hooks/useLogout';
 import { Outlet, Link } from "react-router-dom";
 
 export default function PS_Normal() {
+
+    document.body.className = '';
     document.body.classList.add(style.bodyclass)
 
     window.onbeforeunload = () => {
         document.body.classList.remove(style.bodyclass)
     }
+
     const { logout, error, isPending } = useLogout();
     
     const navigator = useNavigate ();

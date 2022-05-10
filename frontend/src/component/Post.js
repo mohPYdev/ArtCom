@@ -106,7 +106,7 @@ export default function Post() {
           <div className="mt-4 lg:mt-0 lg:row-span-3">
             <p className="text-3xl text-gray-900 centertext ">{price}</p>
             <p className="mt-4 text-1xl text-gray-900 centertext ">
-              1400/05/06
+              1400/05/07
             </p>
             {/* like */}
             <div className="mt-10 ">
