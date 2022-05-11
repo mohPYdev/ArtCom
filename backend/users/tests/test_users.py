@@ -11,6 +11,8 @@ from users import serializers, views
 from django.contrib.auth import get_user_model
 
 CREATE_USER_URL = reverse('users:user-list')
+ME_URL = '/auth/users/me/'
+UsersClass = get_user_model()
 
 def create_user(**params):
     return get_user_model().objects.create_user(**params)
@@ -23,8 +25,7 @@ sample_user = {
             "address": "string",
             "postal_code": "string",
             "first_name": "string",
-            "last_name": "string",
-            "re_password": "alaki1234"
+            "last_name": "string"
         }
 # class PublicUserApiTests(TestCase):
     
@@ -54,11 +55,16 @@ sample_user = {
 
 class AuthenticatedUserApiTests(TestCase):
     def setUp(self) -> None:
-        self.user = sample_user
+        self.userAuth = sample_user
+        u  = create_user(**sample_user)
         self.client = APIClient()
-        self.client.force_authenticate(user=self.user)
+        
+        x = self.client.force_authenticate(user=u)
+        print(x)
 
     def test_get_current_user(self):
-        response = self.client.get(CREATE_USER_URL)
+        response = self.client.get(ME_URL)
+        print(type(response))
         self.assertEqual(200, response.status_code)
-        print(response.data)
+        
+
