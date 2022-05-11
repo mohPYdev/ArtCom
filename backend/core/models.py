@@ -121,10 +121,11 @@ class Exhibition(models.Model):
 
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    post = models.ManyToManyField(Post)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True, blank=True)
     transaction_id = models.CharField(max_length=300 , null=True)
     date_ordered = models.DateField(auto_now_add=True , null=True)
-    shipped = models.BooleanField(default=False)
+    is_shipped = models.BooleanField(default=False)
+    is_paid = models.BooleanField(default=False)
 
 
 class InviteToken(models.Model):

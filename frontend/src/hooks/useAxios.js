@@ -12,7 +12,8 @@ export const useAxios = (url , method = 'GET') => {
     setOptions({
       method:"POST",
       headers:{
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `Token ${JSON.parse(localStorage.getItem("token"))}`
       },
       body: JSON.stringify(Pdata),
     })
