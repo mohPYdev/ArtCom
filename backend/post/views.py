@@ -170,8 +170,8 @@ class ExhibitionViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         if self.action in ['me', 'update', 'partial_update', 'destroy']:
             return self.queryset.filter(artist=self.request.user.artist)
-        elif self.action == 'list':
-            return (x for x in self.queryset.all() if x.get_status() in ['open' , 'ns'])
+        # elif self.action == 'list':
+        #     return (x for x in self.queryset.all() if x.get_status() in ['open' , 'ns'])
         return self.queryset
 
     def get_object(self):
