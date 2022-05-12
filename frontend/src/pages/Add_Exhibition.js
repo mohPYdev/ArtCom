@@ -83,7 +83,8 @@ export default function Add_Exhibition(){
                 <fieldset id="date_addex">
                     <legend>:تاریخ شروع نمایشگاه</legend>
                     <select value={year_date_addex} onChange={changeYear} className='date_addex'>
-                        <option value=" " disabled selected hidden>سال</option>
+                        <option value=" " hidden>سال</option>
+                        <option value=" " disabled selected>سال</option>
                         {(()=>{
                             const items=[];
                             for(let i =1401; i<=1403;i++){
@@ -93,7 +94,8 @@ export default function Add_Exhibition(){
                         })()}
                     </select>
                     <select value={month_date_addex} onChange={changeMonth} className='date_addex'>
-                        <option value=" " disabled selected hidden>ماه</option>
+                        <option value=" " hidden>ماه</option>
+                        <option value=" " disabled selected>ماه</option>
                         {(()=>{
                             const items=[];
                             for(let i =1; i<=12;i++){
@@ -103,7 +105,8 @@ export default function Add_Exhibition(){
                         })()}
                     </select>
                     <select value={day_date_addex} onChange={changeDay} className='date_addex'>
-                        <option value=" " disabled selected hidden>روز</option>
+                        <option value=" " hidden>روز</option>
+                        <option value=" " disabled selected>روز</option>
                         {(()=>{
                             const items=[];
                             for(let i =1; i<=31;i++){
@@ -113,7 +116,8 @@ export default function Add_Exhibition(){
                         })()}
                     </select>
                     <select value={hour_date_addex} onChange={changeHour} className='date_addex'>
-                        <option value=" " disabled selected hidden>ساعت</option>
+                        <option value=" " hidden>ساعت</option>
+                        <option value=" " disabled selected>ساعت</option>
                         {(()=>{
                             const items=[];
                             for(let i =0; i<=23;i++){
@@ -123,7 +127,8 @@ export default function Add_Exhibition(){
                         })()}
                     </select>
                     <select value={minute_date_addex} onChange={changeMinute} className='date_addex'>
-                        <option value=" " disabled selected hidden>دقیقه</option>
+                        <option value=" " hidden>دقیقه</option>
+                        <option value=" " disabled selected>دقیقه</option>
                         {(()=>{
                             const items=[];
                             for(let i =0; i<=45;i+=15){
@@ -135,8 +140,9 @@ export default function Add_Exhibition(){
                 </fieldset>
 
                 {/*adding posts*/}
-                <select value={postselect_addex} onChange={changePosts} name='postselect_addex' id='postselect_addex' placeholder='انتخاب پست ها'>
-                    <option value=" " disabled selected hidden>انتخاب پست ها</option>
+                <select value={postselect_addex} onChange={changePosts} name='postselect_addex' id='postselect_addex' >
+                    <option value="4" hidden >انتخاب پست ها</option>
+                    <option value="4" disabled selected>انتخاب پست ها</option>
                     <option value='1'>پست 1</option>
                     <option value='2'>پست 2</option>
                     <option value='3'>پست 3</option>
