@@ -67,7 +67,7 @@ class ExhibitionCreateSerializer(serializers.ModelSerializer):
     date_end = serializers.DateTimeField(format='%Y-%m-%d %H:%M:%S')
     class Meta:
         model = Exhibition
-        fields = ( 'posts', 'date_begin', 'date_end')
+        fields = ('posts', 'date_begin', 'date_end','cover')
 
     def validate(self, attrs):
         attr =  super().validate(attrs)
@@ -95,7 +95,7 @@ class ExhibitionSerializer(serializers.ModelSerializer):
         return obj.get_status()
     class Meta:
         model = Exhibition
-        fields = ('id', 'artist', 'posts', 'date_begin', 'date_end', 'status')
+        fields = ('id', 'artist', 'posts', 'date_begin', 'date_end', 'status', 'cover')
         read_only_fields = ('id', 'artist')
 
 class LikeSerializer(serializers.ModelSerializer):

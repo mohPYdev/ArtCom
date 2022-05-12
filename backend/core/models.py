@@ -108,6 +108,7 @@ class Exhibition(models.Model):
     posts = models.ManyToManyField(Post)
     date_begin = models.DateTimeField(default=timezone.now)
     date_end = models.DateTimeField(default=timezone.now)
+    cover = models.ImageField(upload_to=upload_post_image_path, null=True)
     
 
     def get_status(self):
