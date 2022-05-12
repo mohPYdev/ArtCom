@@ -3,15 +3,15 @@ import { useEffect, useState } from "react";
 export default function Example() {
     return (
       <>
-        <div className="items-center justify-center">
-          <div className="md:grid md:grid-cols-3 md:gap-6">
-            <div className="mt-5 md:mt-0 md:col-span-2">
+        <div className="h-screen bg-gradient-to-b from-blue-200 to-blue-900"	>
+          <div className="md:grid md:grid-cols-3 md:gap-6 righttext">
+            <div className="mt-5 md:mt-0 md:col-span-2 righttext">
               <form action="#" method="POST">
-                <div className="shadow sm:rounded-md sm:overflow-hidden">
-                  <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
+                <div className="shadow sm:rounded-md sm:overflow-hidden righttext ">
+                  <div className="px-4 py-5 bg-white space-y-6 sm:p-6 ">
                     <div className="grid grid-cols-3 gap-6">
-                      <div className="col-span-3 sm:col-span-2">
-                        <label htmlFor="company-website" className="block text-sm font-medium text-gray-700">
+                      <div className="col-span-3 sm:col-span-3">
+                        <label htmlFor="company-website" className="block text-sm font-medium text-gray-700 righttext" >
                           نام اثر
                         </label>
                         <div className="mt-1 flex rounded-md shadow-sm">
@@ -20,22 +20,22 @@ export default function Example() {
                           name="first-name"
                           id="first-name"
                           autoComplete="given-name"
-                          className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                          className="p-3 righttext text-3xl shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full border border-gray-300 rounded-md"
                         />
                         </div>
                       </div>
                     </div>
   
                     <div>
-                      <label htmlFor="about" className="block text-sm font-medium text-gray-700">
+                      <label htmlFor="about" className="righttext block text-sm font-medium text-gray-700">
                         توضیحات
                       </label>
                       <div className="mt-1">
                         <textarea
                           id="about"
                           name="about"
-                          rows={3}
-                          className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
+                          rows={10}
+                          className="p-3	righttext text-3xl shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full border border-gray-300 rounded-md"
                           defaultValue={''}
                         />
                       </div>
@@ -45,11 +45,11 @@ export default function Example() {
                     </div>
   
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">فایل عکس</label>
+                      <label className="righttext block text-sm font-medium text-gray-700">فایل عکس</label>
                       <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                         <div className="space-y-1 text-center">
                           <svg
-                            className="mx-auto h-12 w-12 text-gray-400"
+                            className="mx-auto h-20 w-20 text-gray-400"
                             stroke="currentColor"
                             fill="none"
                             viewBox="0 0 48 48"
@@ -76,9 +76,8 @@ export default function Example() {
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <fieldset>
-                      <legend className="contents text-base font-medium text-gray-900">آیا قصد فروش این اثر را دارید؟</legend>
+                    <fieldset>
+                      <legend className="righttext contents text-base font-medium text-gray-900">آیا قصد فروش این اثر را دارید؟</legend>
                       <div className="mt-4 space-y-4">
                         <div className="flex items-center">
                           <input
@@ -87,33 +86,32 @@ export default function Example() {
                             type="radio"
                             className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
                           />
-                          <label htmlFor="push-everything" className="ml-3 block text-sm font-medium text-gray-700">
+                          <label className="righttext ml-3 block text-sm font-medium text-gray-700">
                             بله
                           </label>
                         </div>
-                        <div className="flex items-center">
+                        <div className="righttext flex items-center">
                           <input
                             id="push-email"
                             name="push-notifications"
                             type="radio"
                             className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
                           />
-                          <label htmlFor="push-email" className="ml-3 block text-sm font-medium text-gray-700">
+                          <label className="righttext ml-3 block text-sm font-medium text-gray-700">
                             خیر
                           </label>
                         </div>
                       </div>
                     </fieldset>
-                  <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                    <button
+                  </div>      
+                </div>
+              </form>
+              <button
                       type="submit"
-                      className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      className="m-2 text-2xl	inline-flex justify-center py-2 px-4 border border-transparent shadow-sm rounded-md text-black bg-amber-300 hover:bg-yellow-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
                       ثبت اثر
                     </button>
-                  </div>
-                </div>
-              </form>
             </div>
           </div>
         </div>
