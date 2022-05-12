@@ -3,7 +3,16 @@ import './add_exhibition.css';
 import mainPic from '../img/Verano Fresco Pequeño Fronteras PNG , Frontera De Verano, Fronteras De Plantas, Frontera De Vides PNG y PSD para Descargar Gratis _ Pngtree.jpg';
 import exhiPic from '../img/exhibition.png';
 
+import {useAxios} from '../hooks/useAxios';
+import axios from 'axios';
+import { useAlert } from 'react-alert';
+
 export default function Add_Exhibition(){
+
+    const {data:posts} = useAxios('http://localhost:8000/post/posts/');
+    const alert = useAlert();
+
+
     document.body.classList.add('bodyClass_addex');
     window.onbeforeunload = function (e) {
       document.body.classList.remove('bodyClass_addex');
@@ -48,9 +57,38 @@ export default function Add_Exhibition(){
     const changePosts=(event)=>{
         set_postselect_addex(event.target.value)
     }
-    const submitting=(event)=>{
-        event.preventDefault();
+
+
+
+
+
+    const handlesubmit=(e)=>{
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('title', title_addex);
+        formData.append('year', year_date_addex);
+        formData.append('month', month_date_addex);
+        formData.append('day', day_date_addex);
+        formData.append('hour', hour_date_addex);
+        formData.append('minute', minute_date_addex);
+        formData.append('post', postselect_addex);
+        formData.append('image', selectedImage);
+
+        let url = 'http://localhost:8000/post/exhibitions/';
+        axios.post(url, formData, {
+        headers: {
+            'content-type': 'multipart/form-data'
+        }
+        })
+        .then(res => {
+          alert.success('اطلاعات با موفقیت ثبت شد')
+        })
+        .catch(err => console.log(err))
+
     }
+
+
+
 
     return(
         <div className='main_div'>
@@ -66,7 +104,7 @@ export default function Add_Exhibition(){
                 </p>
             </div>
             
-            <form onSubmit={submitting} id='form_addex' method="get">
+            <form onSubmit={handlesubmit} id='form_addex' method="get">
                 {/* <!--adding exhibition image--> */}
                 <div id='img_exhi_addex'>
                     <img id='exhi_image_addex' src={imageUrl} />
@@ -143,9 +181,13 @@ export default function Add_Exhibition(){
                 <select value={postselect_addex} onChange={changePosts} name='postselect_addex' id='postselect_addex' >
                     <option value="4" hidden >انتخاب پست ها</option>
                     <option value="4" disabled selected>انتخاب پست ها</option>
-                    <option value='1'>پست 1</option>
-                    <option value='2'>پست 2</option>
-                    <option value='3'>پست 3</option>
+                    {posts &&
+                        posts.map(post =>
+                            (
+                            <option value={post.id}>{post.name}</option>
+                            )
+                        )
+                    }
                 </select>
 
                 <input type="submit" id='submit_addex' name='submit_addex' value='ایجاد'/>
