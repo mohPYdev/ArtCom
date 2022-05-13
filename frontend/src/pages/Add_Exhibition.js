@@ -140,7 +140,7 @@ export default function Add_Exhibition(){
                 </fieldset>
 
                 {/*adding posts*/}
-                <select value={postselect_addex} onChange={changePosts} name='postselect_addex' id='postselect_addex' >
+                <select value={postselect_addex} onChange={changePosts} name='postselect_addex' id='postselect_addex' multiple >
                     <option value="4" hidden >انتخاب پست ها</option>
                     <option value="4" disabled selected>انتخاب پست ها</option>
                     <option value='1'>پست 1</option>
