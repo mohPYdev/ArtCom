@@ -1,7 +1,6 @@
 import cmd
 import email
 import copy
-from re import X
 from django.test import TestCase
 from django.urls import reverse
 
