@@ -1,6 +1,7 @@
 import cmd
 import email
 import copy
+from re import X
 from django.test import TestCase
 from django.urls import reverse
 
@@ -10,9 +11,12 @@ from rest_framework import status
 from users import serializers, views
 
 from django.contrib.auth import get_user_model
+from core.models import InviteToken
+from core.models import Artist
 
 CREATE_USER_URL = reverse('users:user-list')
 ME_URL = '/auth/users/me/'
+CREATE_ARTIST_URL = '/auth/users/artist/'
 UsersClass = get_user_model()
 
 def create_user(**params):
@@ -29,6 +33,25 @@ sample_user = {
             "last_name": "string",
             "re_password": "alaki1234"
         }
+
+sample_artist = {
+  "email": "user2@example.com",
+  "username": "string2",
+  "password": "azxsdcvf",
+  "city": "string",
+  "address": "string",
+  "postal_code": "string2",
+  "first_name": "string2",
+  "last_name": "string2",
+  "artist": {
+    "description": "I am good",
+    "profession": "sucker",
+    "inviters": {
+      "token": None
+    }
+  },
+  "re_password": "azxsdcvf"
+}
 
 class PublicUserApiTests(TestCase):
     
@@ -69,4 +92,32 @@ class AuthenticatedUserApiTests(TestCase):
         response = self.client.get(ME_URL)
         self.assertEqual(200, response.status_code)
         
+class PublicArtistApiTests(TestCase):
+    
+    def setUp(self) -> None:
+        self.client = APIClient()
+        self.reques_body = sample_artist
+        
+
+    def test_valid_artist_creation(self):
+        self.userAuth = copy.copy(sample_user)
+        del self.userAuth["re_password"]
+        u  = create_user(**self.userAuth)
+        token = InviteToken.objects.filter(artist = Artist.objects.create(user = u))[0]
+        self.reques_body['artist']['inviters']['token'] = token.token
+        response = self.client.post(CREATE_ARTIST_URL, self.reques_body, format='json')
+        self.assertEqual(status.HTTP_201_CREATED, response.status_code)
+
+        body = response.json()
+        del body["image"]
+        del body['artist']
+        user = get_user_model().objects.get(**body)
+
+        self.assertEqual(self.reques_body['address'], user.address)
+        self.assertFalse(hasattr(user, 're_password'))
+
+        
+    
+
+
 
