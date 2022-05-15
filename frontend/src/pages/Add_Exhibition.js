@@ -4,10 +4,6 @@ import mainPic from '../img/Verano Fresco Pequeño Fronteras PNG , Frontera De V
 import exhiPic from '../img/exhibition.png';
 
 export default function Add_Exhibition(){
-    document.body.classList.add('bodyClass_addex');
-    window.onbeforeunload = function (e) {
-      document.body.classList.remove('bodyClass_addex');
-    }
 
     //file button
     const [selectedImage, setSelectedImage] = useState(null);
