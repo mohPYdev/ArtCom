@@ -40,13 +40,13 @@ export default function ShowPlaceHomePage() {
 
     if (statuse === "open") {
       var end = exhibitions.current[indexOfExhibitons.current].date_end;
-      setTimerE(getRemainedTime(end));
-      setShamsiDate(getShamsiDate(end))
+      setTimerE(getRemainedTime(end , statuse));
+      setShamsiDate(getShamsiDate(end, statuse))
     } else {
       var start = exhibitions.current[indexOfExhibitons.current].date_begin;
 
-      setTimerE(getRemainedTime(start));
-      setShamsiDate(getShamsiDate(start));
+      setTimerE(getRemainedTime(start, statuse));
+      setShamsiDate(getShamsiDate(start, statuse));
     }
   };
 
@@ -90,7 +90,9 @@ export default function ShowPlaceHomePage() {
 
   return (
     <div className={style.showplace}>
-      <div className={style.timer}>{timere} </div>
+      <div className={style.timer}><span>
+      {statuse ==='open' ? ` : زمان مانده تا پایان  ` : ` : زمان مانده تا شروع ` }
+      </span><br /><br />{timere} </div>
       <Calendar
       calendar={persian}
       locale={persian_fa}

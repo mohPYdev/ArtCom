@@ -36,13 +36,13 @@ export default function AuctionsHomePage() {
     if (statusa === "open") {
       var end = auctions.current[indexOfAuctions.current].date_end;
 
-      setTimerA(getRemainedTime(end));
-      setShamsiDate(getShamsiDate(end));
+      setTimerA(getRemainedTime(end , statusa));
+      setShamsiDate(getShamsiDate(end , statusa));
     } else {
       var start = auctions.current[indexOfAuctions.current].date_begin;
 
-      setTimerA(getRemainedTime(start));
-      setShamsiDate(getShamsiDate(start));
+      setTimerA(getRemainedTime(start , statusa));
+      setShamsiDate(getShamsiDate(start , statusa));
     }
   };
   const backaHandle = () => {
@@ -85,7 +85,9 @@ export default function AuctionsHomePage() {
 
   return (
     <div className={style.auction}>
-      <div className={style.timer}>{timera}</div>
+      <div className={style.timer}><span>
+      {statusa ==='open' ? ` : زمان مانده تا پایان  ` : ` : زمان مانده تا شروع  ` }
+      </span><br /><br />{timera}</div>
       <Calendar
       calendar={persian}
       locale={persian_fa}

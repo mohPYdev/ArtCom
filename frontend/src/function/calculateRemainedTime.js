@@ -2,7 +2,7 @@ import persian from "react-date-object/calendars/persian"
 import persian_fa from "react-date-object/locales/persian_fa"
 import DateObject from "react-date-object"
 
-export function getRemainedTime(end) {
+export function getRemainedTime(end , status) {
 
   var time_list = end.slice(0, 10).split("-");
   var end_year = time_list[0];
@@ -13,8 +13,10 @@ export function getRemainedTime(end) {
   var end_min = time_list[1];
   var end_sec = time_list[2];
   var today = new Date();
-  var time_str = ` 
-    ماه : ${Math.abs(+end_month - (+today.getMonth() + 1))}
+  var time_str =`` ;
+  
+  
+  time_str += ` 
     روز : ${Math.abs(+end_day - +today.getDate())}
     ساعت : ${Math.abs(+end_hour - +today.getHours())}
     دقیقه : ${Math.abs(+end_min - (+today.getMinutes() + 1))}`
