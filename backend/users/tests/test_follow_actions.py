@@ -18,6 +18,7 @@ from core.models import Artist
 FOLLOW_API = "/auth/users/{}/follow/"
 GET_FOLLOWERS_API = "/auth/me/followers/"
 GET_FOLLOWINGS_API = "/auth/me/followings/"
+UNFOLLOW_API = "/auth/users/{}/unfollow/"
 
 UsersRepository = get_user_model()
 
@@ -106,6 +107,26 @@ class GetFollowApiTest(TestCase):
         response = self.client.get(GET_FOLLOWINGS_API)
         self.assertEqual(2, response.data[0]['artist']['user']['id'])
         self.assertEqual(1, len(response.data))
+
+class UnfollowApiTest(TestCase):
+    def setUp(self) -> None:
+        self.client = APIClient()
+        self.user  = create_user(**sample_user1)
+        artistUser = create_user(**sample_user2, is_artist = True)
+        self.artist = Artist.objects.create(user = artistUser)
+        Follow.objects.create(user = self.user, artist = self.artist)
+        self.client.force_authenticate(user=self.user)
+
+    def test_unfollow_api(self):
+        response = self.client.post(UNFOLLOW_API.format(str(self.artist.user.id)), request_body2)
+        self.assertEqual(200, response.status_code)
+
+    def test_unfollow_non_following(self):
+        response = self.client.post(UNFOLLOW_API.format(str(self.artist.user.id)), request_body2)
+        self.assertEqual(200, response.status_code)
+        response = self.client.post(UNFOLLOW_API.format(str(self.artist.user.id)), request_body2)
+        self.assertEqual(400, response.status_code)
+
 
         
 
