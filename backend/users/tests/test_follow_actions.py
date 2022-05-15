@@ -45,6 +45,24 @@ sample_user2 = {
             "last_name": "2string"
         }
 
+request_body1 = {
+            "username": "1string",
+            "city": "1string",
+            "address": "1string",
+            "postal_code": "1string",
+            "first_name": "1string",
+            "last_name": "1string"
+        }
+
+
+request_body2 = {
+            "username": "2string",
+            "city": "2string",
+            "address": "2string",
+            "postal_code": "2string",
+            "first_name": "2string",
+            "last_name": "2string"
+        }
 class AuthenticatedUserApiTests(TestCase):
     def setUp(self) -> None:
         self.client = APIClient()
@@ -54,17 +72,18 @@ class AuthenticatedUserApiTests(TestCase):
         self.client.force_authenticate(user=self.user)
 
     def test_follow_Api(self):
-        request_body = {
-            "username": "2string",
-            "city": "2string",
-            "address": "2string",
-            "postal_code": "2string",
-            "first_name": "2string",
-            "last_name": "2string"
-        }
-        print(self.artist)
-        print(str(self.artist.user.id))
-        response = self.client.post(FOLLOW_API.format(str(self.artist.user.id)), request_body)
-        print(response.data)
+        response = self.client.post(FOLLOW_API.format(str(self.artist.user.id)), request_body2)
         self.assertEqual(200, response.status_code)
+
+    def test_follow_twice(self):
+        response = self.client.post(FOLLOW_API.format(str(self.artist.user.id)), request_body2)
+        self.assertEqual(200, response.status_code)
+        response = self.client.post(FOLLOW_API.format(str(self.artist.user.id)), request_body2)
+        self.assertEqual(400, response.status_code)
+
+    def test_follow_bad_user(self):
+        self.client.force_authenticate(user=self.artist.user)
+        response = self.client.post(FOLLOW_API.format(str(self.user.id)), request_body1)
+        self.assertEqual(400, response.status_code)
+        
 
