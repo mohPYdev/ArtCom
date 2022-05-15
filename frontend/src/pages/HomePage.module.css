@@ -38,6 +38,7 @@
     align-self: center;
     justify-self: center;
     color: black;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .contact {
@@ -57,6 +58,7 @@
     cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
+
 .contact:focus {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.171);
     transform: translateY(-1rem);
@@ -86,7 +88,18 @@
     border: 0.2rem solid #E9DAD3;
 }
 
-.profile_name{
+.profile:focus {
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+}
+
+.profile:hover {
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+
+}
+
+.profile_name {
     grid-row: 1;
     grid-column: 1;
     align-self: end;
@@ -95,6 +108,7 @@
     color: #E9DAD3;
     font-weight: 700;
 }
+
 .showplace {
     background-color: #E9DAD3;
     width: 98%;
@@ -108,7 +122,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     align-content: center;
-}
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;}
 
 .auction {
     background-color: #E9DAD3;
@@ -122,6 +136,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     align-content: center;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .blue {
@@ -179,6 +194,7 @@
     align-self: center;
     cursor: pointer;
 }
+
 .next:focus {
     transform: translateY(-1rem);
     transition: all 0.5s;
@@ -200,6 +216,7 @@
     align-self: center;
     cursor: pointer;
 }
+
 .backa:focus {
     transform: translateY(-1rem);
     transition: all 0.5s;
@@ -210,6 +227,7 @@
     transition: all 0.5s;
 
 }
+
 .nexta {
     width: 120px;
     height: auto;
@@ -219,6 +237,7 @@
     align-self: center;
     cursor: pointer;
 }
+
 .nexta:focus {
     transform: translateY(-1rem);
     transition: all 0.5s;
@@ -244,10 +263,12 @@
     word-wrap: break-word;
 
 }
-.calendere{
+
+.calendere {
     grid-column: 5/6;
     grid-row: 1;
 }
+
 .calendera {
     grid-column: 5/6;
     grid-row: 1;
@@ -302,10 +323,12 @@
     align-self: center;
     justify-self: center;
 }
-#profile button{
+
+#profile button {
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 
 }
+
 #profile button:focus {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.171);
     transform: translateY(-1rem);
@@ -318,6 +341,7 @@
     transition: all 0.5s;
 
 }
+
 #enter {
     grid-row: 2;
     grid-column: 3/4;
@@ -325,10 +349,12 @@
     justify-self: center;
 
 }
-#enter button{
+
+#enter button {
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 
 }
+
 #enter button:focus {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.171);
     transform: translateY(-1rem);
@@ -341,6 +367,7 @@
     transition: all 0.5s;
 
 }
+
 #statusa {
     grid-row: 2;
     grid-column: 2/3;
@@ -356,10 +383,12 @@
     justify-self: center;
 
 }
-#asara button{
+
+#asara button {
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 
 }
+
 #asara button:focus {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.171);
     transform: translateY(-1rem);
@@ -380,10 +409,12 @@
     justify-self: center;
 
 }
+
 #entera button {
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 
 }
+
 #entera button:focus {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.171);
     transform: translateY(-1rem);
@@ -396,6 +427,7 @@
     transition: all 0.5s;
 
 }
+
 #bpost {
     width: 70px;
     height: auto;
@@ -408,4 +440,3 @@
     width: 100%;
     height: 100%;
 }
-

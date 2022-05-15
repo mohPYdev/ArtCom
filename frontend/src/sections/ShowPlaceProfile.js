@@ -77,7 +77,7 @@ export default function ShowPlaceProfile({ artistId }) {
 
         <button
           id={style.status}
-          className={style.btn2}
+          className={style.btn3}
           style={{ color: status === "open" ? "green" : "red" }}
         >
           {statustext}
