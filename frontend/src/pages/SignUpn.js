@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import stylesheet from "./SignUp/SignUp_Normal.css";
-import painter from "./SignUp/image/painter-holding-paint-roller-4891279-4077630.png";
-import puzzle from "./SignUp/image/puzzle.png";
-import snhome from "./SignUp/image/icons8-home-30.png";
+import "./SignUp_Normal.css";
+import painter from "../img/painter-holding-paint-roller-4891279-4077630.png";
+import puzzle from "../img/puzzle.png";
+import snhome from "../img/icons8-home-30.png";
 import { useSignupNormal } from "../hooks/useSignupNormal";
 import { useAlert } from "react-alert";
 import { Outlet, Link } from "react-router-dom";
