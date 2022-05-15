@@ -7,8 +7,11 @@ import { Link, useNavigate } from "react-router-dom";
 import posts from "../img/posts.png";
 import { useAuthContext } from "../hooks/useAuthContext";
 import getAuctions from "../function/getAuctions";
-import calculateRemainedTime from "../function/calculateRemainedTime";
-
+import { getShamsiDate , getRemainedTime} from "../function/calculateRemainedTime";
+import { Calendar } from "react-multi-date-picker"
+import persian from "react-date-object/calendars/persian"
+import persian_fa from "react-date-object/locales/persian_fa"
+import DateObject from "react-date-object"
 export default function AuctionsHomePage() {
   //fetch-data
   // const { data, isPending, error } = useAxios(
@@ -24,6 +27,7 @@ export default function AuctionsHomePage() {
   const [statusa, setStatusa] = useState();
   const [auctionPoster, setAuctionPoster] = useState("");
   const [statusatext, setStatusatext] = useState("");
+  const [shamsiDate , setShamsiDate] = useState("");
   //func
 
   const changePost = () => {
@@ -32,11 +36,13 @@ export default function AuctionsHomePage() {
     if (statusa === "open") {
       var end = auctions.current[indexOfAuctions.current].date_end;
 
-      setTimerA(calculateRemainedTime(end));
+      setTimerA(getRemainedTime(end));
+      setShamsiDate(getShamsiDate(end));
     } else {
       var start = auctions.current[indexOfAuctions.current].date_begin;
 
-      setTimerA(calculateRemainedTime(start));
+      setTimerA(getRemainedTime(start));
+      setShamsiDate(getShamsiDate(start));
     }
   };
   const backaHandle = () => {
@@ -70,6 +76,9 @@ export default function AuctionsHomePage() {
       auctions.current = list;
       indexOfAuctions.current = 0;
       changePost();
+
+      
+      
     }
     fetchData();
   }, []);
@@ -77,6 +86,12 @@ export default function AuctionsHomePage() {
   return (
     <div className={style.auction}>
       <div className={style.timer}>{timera}</div>
+      <Calendar
+      calendar={persian}
+      locale={persian_fa}
+      className={style.calendera}
+      value={shamsiDate}
+    />
       <img src={back} alt="" className={style.backa} onClick={backaHandle} />
       <div className={style.bannera}>
         <img src={auctionPoster} alt="" className="" />
