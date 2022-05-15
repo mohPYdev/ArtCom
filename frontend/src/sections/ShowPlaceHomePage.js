@@ -97,7 +97,9 @@ export default function ShowPlaceHomePage() {
       className={style.calendere}
       value={shamsiDate}
     />
-      <img src={back} alt="" className={style.back} onClick={backeHandle} />
+      <button   className={style.back} onClick={backeHandle} >
+        <img src={back}/>
+      </button>
       <div className={style.bannere}>
         <ExhibImage image_url={exhibPoster} />
       </div>

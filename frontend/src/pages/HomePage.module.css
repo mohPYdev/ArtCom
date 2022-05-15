@@ -55,6 +55,19 @@
     align-self: center;
     justify-self: center;
     cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.contact:focus {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.171);
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+}
+
+.contact:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.171);
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+
 }
 
 .profile {
@@ -72,6 +85,7 @@
     border-radius: 50%;
     border: 0.2rem solid #E9DAD3;
 }
+
 .profile_name{
     grid-row: 1;
     grid-column: 1;
@@ -142,6 +156,18 @@
     justify-self: center;
     align-self: center;
     cursor: pointer;
+    border-radius: 100%;
+}
+
+.back:focus {
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+}
+
+.back:hover {
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+
 }
 
 .next {
@@ -152,6 +178,16 @@
     justify-self: center;
     align-self: center;
     cursor: pointer;
+}
+.next:focus {
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+}
+
+.next:hover {
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+
 }
 
 
@@ -164,7 +200,16 @@
     align-self: center;
     cursor: pointer;
 }
+.backa:focus {
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+}
 
+.backa:hover {
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+
+}
 .nexta {
     width: 120px;
     height: auto;
@@ -174,7 +219,16 @@
     align-self: center;
     cursor: pointer;
 }
+.nexta:focus {
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+}
 
+.nexta:hover {
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+
+}
 
 
 .timer {
@@ -208,6 +262,7 @@
     text-align: center;
     padding: 10px;
     border-radius: 15px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
 .bannera img {
@@ -224,6 +279,7 @@
     text-align: center;
     padding: 20px;
     border-radius: 15px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
 .bannere img {
@@ -237,6 +293,7 @@
     grid-column: 2/3;
     align-self: center;
     justify-self: center;
+    cursor: auto;
 }
 
 #profile {
@@ -245,19 +302,51 @@
     align-self: center;
     justify-self: center;
 }
+#profile button{
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 
+}
+#profile button:focus {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.171);
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+}
+
+#profile button:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.171);
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+
+}
 #enter {
     grid-row: 2;
     grid-column: 3/4;
     align-self: center;
     justify-self: center;
+
+}
+#enter button{
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+}
+#enter button:focus {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.171);
+    transform: translateY(-1rem);
+    transition: all 0.5s;
 }
 
+#enter button:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.171);
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+
+}
 #statusa {
     grid-row: 2;
     grid-column: 2/3;
     align-self: center;
     justify-self: center;
+    cursor: auto;
 }
 
 #asara {
@@ -265,6 +354,23 @@
     grid-column: 4/5;
     align-self: center;
     justify-self: center;
+
+}
+#asara button{
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+}
+#asara button:focus {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.171);
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+}
+
+#asara button:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.171);
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+
 }
 
 #entera {
@@ -272,8 +378,24 @@
     grid-column: 3/4;
     align-self: center;
     justify-self: center;
+
+}
+#entera button {
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+}
+#entera button:focus {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.171);
+    transform: translateY(-1rem);
+    transition: all 0.5s;
 }
 
+#entera button:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.171);
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+
+}
 #bpost {
     width: 70px;
     height: auto;
