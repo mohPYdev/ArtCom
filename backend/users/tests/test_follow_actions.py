@@ -12,10 +12,11 @@ from rest_framework import status
 from users import serializers, views
 
 from django.contrib.auth import get_user_model
-from core.models import InviteToken
+from core.models import Follow
 from core.models import Artist
 
 FOLLOW_API = "/auth/users/{}/follow/"
+GET_FOLLOERS_API = "/auth/me/followers/"
 
 
 UsersRepository = get_user_model()
@@ -63,7 +64,7 @@ request_body2 = {
             "first_name": "2string",
             "last_name": "2string"
         }
-class AuthenticatedUserApiTests(TestCase):
+class FollowApiTests(TestCase):
     def setUp(self) -> None:
         self.client = APIClient()
         self.user  = create_user(**sample_user1)
@@ -85,5 +86,20 @@ class AuthenticatedUserApiTests(TestCase):
         self.client.force_authenticate(user=self.artist.user)
         response = self.client.post(FOLLOW_API.format(str(self.user.id)), request_body1)
         self.assertEqual(400, response.status_code)
+
+class GetFollowesApiTest(TestCase):
+    def setUp(self) -> None:
+        self.client = APIClient()
+        self.user  = create_user(**sample_user1)
+        artistUser = create_user(**sample_user2, is_artist = True)
+        self.artist = Artist.objects.create(user = artistUser)
+        Follow.objects.create(user = self.user, artist = self.artist)
+        self.client.force_authenticate(user=self.artist.user)
+
+    def test_get_one_follower(self):
+        response = self.client.get(GET_FOLLOERS_API)
+        self.assertEqual(1, response.data[0]['user']['id'])
+        self.assertEqual(1, len(response.data))
+
         
 
