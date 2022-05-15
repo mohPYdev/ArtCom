@@ -16,8 +16,8 @@ from core.models import Follow
 from core.models import Artist
 
 FOLLOW_API = "/auth/users/{}/follow/"
-GET_FOLLOERS_API = "/auth/me/followers/"
-
+GET_FOLLOWERS_API = "/auth/me/followers/"
+GET_FOLLOWINGS_API = "/auth/me/followings/"
 
 UsersRepository = get_user_model()
 
@@ -87,18 +87,24 @@ class FollowApiTests(TestCase):
         response = self.client.post(FOLLOW_API.format(str(self.user.id)), request_body1)
         self.assertEqual(400, response.status_code)
 
-class GetFollowesApiTest(TestCase):
+class GetFollowApiTest(TestCase):
     def setUp(self) -> None:
         self.client = APIClient()
         self.user  = create_user(**sample_user1)
         artistUser = create_user(**sample_user2, is_artist = True)
         self.artist = Artist.objects.create(user = artistUser)
         Follow.objects.create(user = self.user, artist = self.artist)
-        self.client.force_authenticate(user=self.artist.user)
 
     def test_get_one_follower(self):
-        response = self.client.get(GET_FOLLOERS_API)
+        self.client.force_authenticate(user=self.artist.user)
+        response = self.client.get(GET_FOLLOWERS_API)
         self.assertEqual(1, response.data[0]['user']['id'])
+        self.assertEqual(1, len(response.data))
+    
+    def test_get_one_following(self):
+        self.client.force_authenticate(user=self.user)
+        response = self.client.get(GET_FOLLOWINGS_API)
+        self.assertEqual(2, response.data[0]['artist']['user']['id'])
         self.assertEqual(1, len(response.data))
 
         
