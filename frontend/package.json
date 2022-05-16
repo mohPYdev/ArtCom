@@ -9,6 +9,7 @@
     "@fortawesome/react-fontawesome": "^0.1.18",
     "@headlessui/react": "^1.5.0",
     "@heroicons/react": "^1.0.6",
+    "@tailwindcss/aspect-ratio": "^0.4.0",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
@@ -16,6 +17,7 @@
     "babel-plugin-macros": "^3.1.0",
     "headlessui": "^0.0.0",
     "heroicons": "^1.0.6",
+    "particlesjs": "^2.2.3",
     "react": "^17.0.2",
     "react-alert": "^7.0.3",
     "react-alert-template-basic": "^1.0.2",
@@ -59,6 +61,6 @@
     "autoprefixer": "^10.4.4",
     "file-loader": "^6.2.0",
     "postcss": "^8.4.12",
-    "tailwindcss": "^3.0.23"
+    "tailwindcss": "^3.0.24"
   }
 }

@@ -1,4 +1,3 @@
-@tailwindcss/aspect-ratio
 module.exports = {
   theme: {
     extend: {
@@ -10,6 +9,5 @@ module.exports = {
   plugins: {
     tailwindcss: {},
     autoprefixer: {},
-    require('@tailwindcss/aspect-ratio'),
   },
 }
