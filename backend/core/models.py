@@ -87,7 +87,6 @@ class Rate(models.Model):
 
 
 class Auction(models.Model):
-    artist = models.ManyToManyField(Artist, blank=True)
     post = models.ManyToManyField(Post, blank=True)
     date_created = models.DateField(auto_now_add=True)
     date_begin = models.DateTimeField(default=timezone.now)
