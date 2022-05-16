@@ -9,6 +9,7 @@ import { useAlert } from 'react-alert'
 import axios from 'axios';
 
 export default function Profile_Normal() {
+  document.body.className = '';
   document.body.classList.add("bodyClass_profiless");
   window.onbeforeunload = function (e) {
     document.body.classList.remove("bodyClass_profiless");

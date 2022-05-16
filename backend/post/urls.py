@@ -9,6 +9,7 @@ router = DefaultRouter()
 router.register("posts", views.PostViewSet)
 router.register("exhibitions", views.ExhibitionViewSet)
 router.register('auctions', views.AuctionViewSet)
+router.register('orders', views.OrderViewSet)
 
 urlpatterns = router.urls
 

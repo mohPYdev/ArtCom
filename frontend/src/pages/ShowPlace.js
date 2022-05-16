@@ -12,11 +12,14 @@ import getPostInfo from "../function/getPostInfo";
 import { useAlert } from "react-alert";
 
 export default function ShowPlace() {
+
+  document.body.className = '';
   document.body.classList.add(style.bodyclass);
 
   window.onbeforeunload = function () {
     document.body.classList.remove(style.bodyclass);
   };
+
   const postsList = useRef("");
   const indexOfPost = useRef("");
   const user_id = useRef("");

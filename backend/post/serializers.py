@@ -1,9 +1,13 @@
 from rest_framework import serializers
 
 from users.serializers import ArtistFollowSerializer
-from core.models import Post, Like, Exhibition, Artist, Auction
+from core.models import Post, Like, Exhibition, Artist, Auction, Order
 
 from django.utils.timezone import now
+from django.contrib.auth import get_user_model
+
+
+User = get_user_model()
 
 
 class PostSerializer(serializers.ModelSerializer):
@@ -34,6 +38,17 @@ class PostPaymentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = ('id', 'sold',)
+
+
+class OrderSerializer(serializers.ModelSerializer):
+    """serializes the order model"""
+    # post = PostSerializer(queryset=Post.objects.all(), many=False)
+    # user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), many=False)
+
+    class Meta:
+        model = Order
+        fields = ('id', 'post', 'user', 'date_ordered', 'is_paid', 'is_shipped')
+        read_only_fields = ('id','date_ordered')
     
 
 
