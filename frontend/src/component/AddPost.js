@@ -20,29 +20,29 @@ export default function Example() {
   const handlechangeApNo = (event) => {
     setApNo(event.target.value);
   };
-  const handleApSubmit = (e) => {
-    e.preventDefault();
-    addpost(
-      ap_name,
-      ap_describe
-    );
-  };
+  // const handleApSubmit = (e) => {
+  //   e.preventDefault();
+  //   addpost(
+  //     ap_name,
+  //     ap_describe
+  //   );
+  // };
 
-   useEffect(() => {
-    if (selectedImage) {
-      setImageUrl(URL.createObjectURL(selectedImage));
-      console.log(selectedImage)
-    }
-  }, [selectedImage]);
+  //  useEffect(() => {
+  //   if (selectedImage) {
+  //     setImageUrl(URL.createObjectURL(selectedImage));
+  //     console.log(selectedImage)
+  //   }
+  // }, [selectedImage]);
   
     return (
       <>
-        <div className="h-screen bg-gradient-to-b from-blue-200 to-blue-900"	>
+        <div className="h-screen bg-gradient-to-b from-cyan-600 to-cyan-900"	>
           <div className="md:grid md:grid-cols-3 md:gap-6 righttext">
-            <div className="mt-5 md:mt-0 md:col-span-2 righttext">
-              <form method="get" onSubmit={handleApSubmit}>
-                <div className="shadow sm:rounded-md sm:overflow-hidden righttext ">
-                  <div className="px-4 py-5 bg-white space-y-6 sm:p-6 ">
+            <div className="mt-5 md:mt-0 md:col-span-2 righttext ">
+              <form method="get"/* onSubmit={handleApSubmit} */	>
+                <div className="shadow sm:rounded-md sm:overflow-hidden righttext  ">
+                  <div className="px-4 py-5 bg-white space-y-6 sm:p-6 bg-indigo-200">
                     <div className="grid grid-cols-3 gap-6">
                       <div className="col-span-3 sm:col-span-3">
                         <label htmlFor="company-website" className="block text-sm font-medium text-gray-700 righttext" >
