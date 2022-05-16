@@ -112,14 +112,13 @@ class AuctionCreateSerializer(serializers.ModelSerializer):
     """serializer for creating an auction by the admin"""
 
     post = serializers.PrimaryKeyRelatedField(queryset=Post.objects.all(), many=True)
-    post = serializers.PrimaryKeyRelatedField(queryset=Post.objects.all(), many=True)
 
     date_begin = serializers.DateTimeField(format='%Y-%m-%d %H:%M:%S')
     date_end = serializers.DateTimeField(format='%Y-%m-%d %H:%M:%S')
 
     class Meta:
         model = Auction
-        fields = ('post', 'artist', 'date_begin', 'date_end')
+        fields = ('post', 'date_begin', 'date_end')
 
 
 

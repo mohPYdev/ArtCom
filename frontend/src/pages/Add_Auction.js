@@ -2,6 +2,7 @@ import {React , useEffect, useState} from 'react';
 import './add_auction.css';
 
 import {useAxios} from '../hooks/useAxios';
+import {useAlert} from 'react-alert'
 
 export default function Add_Auction(){
 
@@ -9,16 +10,38 @@ export default function Add_Auction(){
     const {data:posts} = useAxios('http://localhost:8000/post/posts/');
     const {data:auctions} = useAxios('http://localhost:8000/post/auctions/');
 
-
+    const alert = useAlert()
 
 
     const[auctionselect_addau, set_auctionselect_addau] = useState('');
     const[postselect_addau, set_postselect_addau] = useState('');
 
-    const url = 'http://localhost:8000/post/auctions/'+auctionselect_addau+'/add-post/';
+    const [url , setUrl] = useState('');
     const {data, postData} = useAxios(url, 'POST');
 
 
+    useEffect(()=> {
+        if(auctionselect_addau !== ''){
+            setUrl('http://localhost:8000/post/auctions/'+auctionselect_addau+'/add-post/');
+        }
+    }, [auctionselect_addau]);
+
+
+    useEffect(() => {
+        if (data?.detail){
+            alert.error("این پست قبلا به مزایده اضافه شده است")
+        }
+        else if (data){
+            alert.success('پست با موفقیت به مزایده اضافه شد')
+        }
+    },[alert, data]);
+    
+
+
+    const clearForm = () => {
+        set_auctionselect_addau('');
+        set_postselect_addau('');
+    }
 
 
     const changeAuction=(event)=>{
@@ -32,6 +55,8 @@ export default function Add_Auction(){
         postData({
             post:[postselect_addau,]
         });
+  
+        clearForm()
     }
 
     return(
@@ -57,7 +82,8 @@ export default function Add_Auction(){
 
                 {/*adding post*/}
                 {posts && <select value={postselect_addau} onChange={changePost} name='postselect_addau' id='postselect_addau' >
-                    <option value="4" disabled selected >انتخاب پست</option>
+                     <option value=" " hidden >انتخاب پست</option>
+                    <option value=" " disabled selected >انتخاب پست</option>
                     {posts.map(post => (
                         <option key={post.id} value={post.id}>{post.name}</option>
                     ))}

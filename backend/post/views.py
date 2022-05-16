@@ -266,7 +266,7 @@ class AuctionViewSet(viewsets.ModelViewSet):
             if auction.post.filter(id__in=request.data['post']).exists():
                 raise ValidationError({'detail':'you have already added this post'})
             serializer.save()
-            return Response(status=status.HTTP_200_OK)
+            return Response(status=status.HTTP_200_OK, data=serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     @action(detail=True, methods=['post'], url_path='remove-post', permission_classes=[IsArtist])
