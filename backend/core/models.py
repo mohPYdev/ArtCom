@@ -104,6 +104,7 @@ class Auction(models.Model):
 
 class Exhibition(models.Model):
 
+    title = models.CharField(max_length=255, blank=True)
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
     posts = models.ManyToManyField(Post)
     date_begin = models.DateTimeField(default=timezone.now)

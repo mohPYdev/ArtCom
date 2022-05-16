@@ -1,7 +1,9 @@
 import {React , useEffect, useState} from 'react';
 import './add_exhibition.css';
-import mainPic from '../img/Verano Fresco Pequeño Fronteras PNG , Frontera De Verano, Fronteras De Plantas, Frontera De Vides PNG y PSD para Descargar Gratis _ Pngtree.jpg';
 import exhiPic from '../img/exhibition.png';
+import Multiselect from 'multiselect-react-dropdown';
+
+import moment from 'jalali-moment';
 
 import {useAxios} from '../hooks/useAxios';
 import axios from 'axios';
@@ -12,11 +14,8 @@ export default function Add_Exhibition(){
     const {data:posts} = useAxios('http://localhost:8000/post/posts/');
     const alert = useAlert();
 
+    
 
-    document.body.classList.add('bodyClass_addex');
-    window.onbeforeunload = function (e) {
-      document.body.classList.remove('bodyClass_addex');
-    }
 
     //file button
     const [selectedImage, setSelectedImage] = useState(null);
@@ -34,7 +33,7 @@ export default function Add_Exhibition(){
     const[day_date_addex, set_day_date_addex] = useState('');
     const[hour_date_addex, set_hour_date_addex] = useState('');
     const[minute_date_addex, set_minute_date_addex] = useState('');
-    const[postselect_addex, set_postselect_addex] = useState('');
+    const[selectedPosts ,setSelectedPost] = useState([]);
 
     const changeExhibitionTitle=(event)=>{
         set_title_addex(event.target.value)
@@ -54,8 +53,15 @@ export default function Add_Exhibition(){
     const changeMinute=(event)=>{
         set_minute_date_addex(event.target.value)
     }
-    const changePosts=(event)=>{
-        set_postselect_addex(event.target.value)
+
+
+
+    const onSelect = (selectedList, selectedItem) => {
+        setSelectedPost(selectedPosts => [...selectedPosts, parseInt(selectedItem.id)]);
+    }
+
+    const onRemove = (selectedList, selectedItem) => {
+        setSelectedPost(selectedPosts => selectedPosts.filter(item => item !== parseInt(selectedItem.id)));
     }
 
 
@@ -64,15 +70,23 @@ export default function Add_Exhibition(){
 
     const handlesubmit=(e)=>{
         e.preventDefault();
+
+        const date = `${year_date_addex}-${month_date_addex}-${day_date_addex}`;
+
+        const start = moment.from(date, 'fa', 'YYYY-MM-DD').format('YYYY-MM-DD');
+        const end = moment(start).add(2, 'day').locale('en').format('YYYY-MM-DD');
+
+        const time = `${hour_date_addex}:${minute_date_addex}:00`;
+
+        const start_date = `${start} ${time}`;
+        const end_date = `${end} ${time}`;
+
+
         const formData = new FormData();
         formData.append('title', title_addex);
-        formData.append('year', year_date_addex);
-        formData.append('month', month_date_addex);
-        formData.append('day', day_date_addex);
-        formData.append('hour', hour_date_addex);
-        formData.append('minute', minute_date_addex);
-        formData.append('post', postselect_addex);
-        formData.append('image', selectedImage);
+        formData.append('date_begin', start_date);
+        formData.append('date_end', end_date);
+        formData.append('cover', selectedImage);
 
         let url = 'http://localhost:8000/post/exhibitions/';
         axios.post(url, formData, {
@@ -81,7 +95,17 @@ export default function Add_Exhibition(){
         }
         })
         .then(res => {
-          alert.success('اطلاعات با موفقیت ثبت شد')
+            url += res.data.id + '/';
+            axios.patch(url, {'posts': selectedPosts, 'date_begin': start_date, 'date_end': end_date} , {
+                headers: {
+                    'content-type': 'application/json'
+                }
+            }).then(res2 => {
+                console.log(res2)
+                alert.success('اطلاعات با موفقیت ثبت شد')
+          })
+          .catch(err => console.log(err))  
+            console.log(res.data)       
         })
         .catch(err => console.log(err))
 
@@ -91,11 +115,7 @@ export default function Add_Exhibition(){
 
 
     return(
-        <div className='main_div'>
-            {/* <!--adding page background image--> */}
-            <div id='img_back_addex'>
-                <img src={mainPic}/>
-            </div>
+        <div className='main_div_addex'>
 
             {/*adding page title*/}
             <div id='p_addex'>
@@ -178,17 +198,15 @@ export default function Add_Exhibition(){
                 </fieldset>
 
                 {/*adding posts*/}
-                <select value={postselect_addex} onChange={changePosts} name='postselect_addex' id='postselect_addex' multiple >
-                    <option value="4" hidden >انتخاب پست ها</option>
-                    <option value="4" disabled selected>انتخاب پست ها</option>
-                    {posts &&
-                        posts.map(post =>
-                            (
-                            <option value={post.id}>{post.name}</option>
-                            )
-                        )
-                    }
-                </select>
+                { posts && <Multiselect id='postselect_addex'
+                options= {posts} // Options to display in the dropdown
+                onSelect={onSelect} // Function will trigger on select event
+                onRemove={onRemove} // Function will trigger on remove event
+                displayValue="name" // Property name to display in the dropdown options
+                showArrow={true}
+                showCheckbox={true}
+                placeholder=" انتخاب آثار "
+                />}
 
                 <input type="submit" id='submit_addex' name='submit_addex' value='ایجاد'/>
             </form>

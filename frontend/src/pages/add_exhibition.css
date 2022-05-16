@@ -1,32 +1,26 @@
-/*.bodyClass_addex
-{
-    overflow-y: hidden;
-}*/
-.main_div
+.main_div_addex
 {
     text-align: right;
     direction: ltr;
-    background-color: #f5f5f5;
     overflow: hidden;
-}
-#img_back_addex
-{
-    text-align: center;
+    background-image: url('../img/Verano Fresco Pequeño Fronteras PNG , Frontera De Verano, Fronteras De Plantas, Frontera De Vides PNG y PSD para Descargar Gratis _ Pngtree.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height:100vh;
+    background-color: #f5f5f5;
 }
 #p_addex
 {
-    position: absolute;
-    margin-left: 860px;
-    margin-top: -530px;
+    margin-right: 350px;
+    margin-top: 140px;
     font-size: 22px;
 }
 
 #img_exhi_addex
 {
-    position:fixed;
-    margin-top: -560px;
-    margin-left: 320px;
-    z-index: 5;
+    margin-top: -60px;
+    margin-right: 800px;
 }
 #exhi_image_addex
 {
@@ -35,24 +29,13 @@
 }
 #img_exhi_btn_addex
 {
-    border-radius: 50%;
-    width:30px;
-    height:30px;
-    margin-left: -45px;
-    margin-top: 110px;
-    z-index: 3;
-    position: fixed;
     display: none;
 }
 #img_exhi_label_addex
 {
     border-radius: 50%;
-    width:40px;
-    height:40px;
     margin-left: 5px;
-    margin-top: 55px;
     z-index: 3;
-    position: fixed;
     cursor: pointer;
     background-color: #d1d1d1;
     text-align: center;
@@ -63,9 +46,8 @@
 {
     width: 620px;
     height: 40px;
-    position: absolute;
-    margin-left: -1000px;
-    margin-top: -450px;
+    margin-right: 350px;
+    margin-top: 10px;
     direction: ltr;
     text-align: right;
     padding: 10px;
@@ -80,40 +62,50 @@
 }
 #date_addex
 {
-    position: absolute;
-    margin-left: 350px;
-    margin-top: -370px;
+    margin-left: 373px;
+    margin-top: 10px;
     direction: ltr;
     text-align: right;
     width: 600px;
-    padding : 20px;
+    padding: 20px;
 }
 #postselect_addex
 {
-    width: 645px;
-    height: 80px;
-    position: absolute;
-    margin-left: -1000px;
-    margin-top: -230px;
-    direction: ltr;
+    direction: rtl;
     text-align: right;
+    width: 643px;
+    margin-left: 374px;
+    margin-top: 20px;
+    background-color: white;
+}
+.searchWrapper
+{
+    border: 1px solid #ccc !important;
+    border-radius: 4px !important;
+    padding: 5px !important;
+    min-height: 22px !important;
+    position: relative !important;
+    padding-right: 30px !important;
+    padding-top: 10px !important;
+    height: 45px !important;
+}
+.highlightOption
+{
+    background: none !important;
+    color: black !important;
 }
 #submit_addex
 {
-    position: absolute;
-    margin-left: -720px;;
-    margin-top:-160px;
+    margin-left: -720px;
     width: 80px;
     height: 30px;
-
     border-radius: 20px;
     border: 5px outset #a2bff3;
-
-    font-size: 12px;
     font-weight: bold;
     letter-spacing: 1;
-    padding:0px;
     text-align: center;
-    background-color: #d1d1d1 ;
+    background-color: #d1d1d1;
     color: #00324a;
+    margin-top: 30px;
+    margin-right: 47%;
 }
