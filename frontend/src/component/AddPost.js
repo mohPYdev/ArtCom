@@ -1,10 +1,31 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
+import { useAlert } from "react-alert";
 
 export default function Example() {
   const [ap_name, setApName] = useState("");
   const [ap_describe, setApDescribe] = useState("");
   const [ap_price, setApPrice] = useState("");
   const [forSale, setForSale] = useState(false);
+
+  //file button
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null);
+  useEffect(() => {
+      if (selectedImage) {
+      setImageUrl(URL.createObjectURL(selectedImage));
+      }
+  }, [selectedImage]);
+
+  const alert = useAlert();
+
+  const clearForm = () => {
+    setApName("");
+    setApDescribe("");
+    setApPrice("");
+    setForSale(false);
+    setSelectedImage(null);
+  }
 
   const handlechangeApName = (event) => {
     setApName(event.target.value);
@@ -25,17 +46,29 @@ export default function Example() {
 
   const handleApSubmit = (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append('name', ap_name);
+    formData.append('description', ap_describe);
+    formData.append('price', parseFloat(ap_price));
+    formData.append('image', selectedImage);
+    formData.append('for_sale', forSale);
+
+    let url = 'http://localhost:8000/post/posts/';
+    axios.post(url, formData, {
+    headers: {
+        'content-type': 'multipart/form-data'
+    }
+    })
+    .then(res => {
+         console.log(res); 
+         alert.success('پست با موفقیت ساخته شد')
+         clearForm()
+    })
+    .catch(err => console.log(err))
     
   };
 
-    //file button
-    const [selectedImage, setSelectedImage] = useState(null);
-    const [imageUrl, setImageUrl] = useState(null);
-    useEffect(() => {
-        if (selectedImage) {
-        setImageUrl(URL.createObjectURL(selectedImage));
-        }
-    }, [selectedImage]);
+    
   
     return (
       <>
@@ -172,13 +205,14 @@ export default function Example() {
                     </fieldset>
                   </div>      
                 </div>
-              </form>
-              <button
+                <button
                       type="submit"
                       className="m-2 text-2xl	inline-flex justify-center py-2 px-4 border border-transparent shadow-sm rounded-md text-black bg-amber-300 hover:bg-yellow-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
                       ثبت اثر
                     </button>
+              </form>
+              
             </div>
           </div>
         </div>
