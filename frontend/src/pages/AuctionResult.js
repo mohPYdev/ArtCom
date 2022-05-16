@@ -53,7 +53,7 @@ const products = [
 
   // More products...
 ];
-export default function AuctionResault() {
+export default function AuctionResult() {
   return (
     <>
       <div className="bg-center bg-bg-auctionres w-screen max-h-fit z-0 ">
