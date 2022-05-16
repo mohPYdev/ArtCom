@@ -1,10 +1,25 @@
 import {React , useEffect, useState} from 'react';
 import './add_auction.css';
 
+import {useAxios} from '../hooks/useAxios';
+
 export default function Add_Auction(){
+
+
+    const {data:posts} = useAxios('http://localhost:8000/post/posts/');
+    const {data:auctions} = useAxios('http://localhost:8000/post/auctions/');
+
+
+
 
     const[auctionselect_addau, set_auctionselect_addau] = useState('');
     const[postselect_addau, set_postselect_addau] = useState('');
+
+    const url = 'http://localhost:8000/post/auctions/'+auctionselect_addau+'/add-post/';
+    const {data, postData} = useAxios(url, 'POST');
+
+
+
 
     const changeAuction=(event)=>{
         set_auctionselect_addau(event.target.value)
@@ -14,6 +29,9 @@ export default function Add_Auction(){
     }
     const submitting=(event)=>{
         event.preventDefault();
+        postData({
+            post:[postselect_addau,]
+        });
     }
 
     return(
@@ -29,26 +47,21 @@ export default function Add_Auction(){
             <form onSubmit={submitting} id='form_addex' method="get">
                 
                 {/*adding available auctions}*/}
-                <select value={auctionselect_addau} onChange={changeAuction} name='auctionselect_addau' id='auctionselect_addau'>
+                {auctions && <select value={auctionselect_addau} onChange={changeAuction} name='auctionselect_addau' id='auctionselect_addau'>
                     <option value=" " hidden >انتخاب مزایده</option>
                     <option value=" " disabled selected >انتخاب مزایده</option>
-                    <option value='1'>مزایده 1</option>
-                    <option value='2'>مزایده 2</option>
-                    <option value='3'>مزایده 3</option>
-                    <option value='4'>مزایده 4</option>
-                    <option value='5'>مزایده 5</option>
-                    <option value='6'>مزایده 6</option>
-                </select>
+                    {auctions.map(auction => (
+                    <option key={auction.id} value={auction.id}>{auction.date_begin}</option>
+                    ))}
+                </select>}
 
                 {/*adding post*/}
-                <select value={postselect_addau} onChange={changePost} name='postselect_addau' id='postselect_addau' size="4" multiple >
+                {posts && <select value={postselect_addau} onChange={changePost} name='postselect_addau' id='postselect_addau' >
                     <option value="4" disabled selected >انتخاب پست</option>
-                    <option value='1'>پست 1</option>
-                    <option value='2'>پست 2</option>
-                    <option value='3'>پست 3</option>
-                    <option value='4'>پست 4</option>
-                    <option value='5'>پست 5</option>
-                </select>
+                    {posts.map(post => (
+                        <option key={post.id} value={post.id}>{post.name}</option>
+                    ))}
+                </select>}
                 
                 <input type='submit' id='submit_addau' name='submit_addau' value='شرکت'/>
             </form>

@@ -254,7 +254,7 @@ class AuctionViewSet(viewsets.ModelViewSet):
         permission_classes = self.permission_classes
         if self.action in ['create', 'destroy', 'update', 'partial_update']:
             permission_classes = [IsAdminUser,]
-        elif self.action in ['add-artist', 'add_post', 'remove_post', 'remove-artist']:
+        elif self.action in ['add_post', 'remove_post']:
             permission_classes = [IsArtist,]
         return [permission() for permission in permission_classes]
 
