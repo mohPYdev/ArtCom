@@ -1,7 +1,7 @@
 import {React , useEffect, useState} from 'react';
 import './add_exhibition.css';
-import mainPic from '../img/Verano Fresco Pequeño Fronteras PNG , Frontera De Verano, Fronteras De Plantas, Frontera De Vides PNG y PSD para Descargar Gratis _ Pngtree.jpg';
 import exhiPic from '../img/exhibition.png';
+import Multiselect from 'multiselect-react-dropdown';
 
 export default function Add_Exhibition(){
 
@@ -21,7 +21,7 @@ export default function Add_Exhibition(){
     const[day_date_addex, set_day_date_addex] = useState('');
     const[hour_date_addex, set_hour_date_addex] = useState('');
     const[minute_date_addex, set_minute_date_addex] = useState('');
-    const[postselect_addex, set_postselect_addex] = useState('');
+    const[options ,set_options_addex] = useState( [{name: 'Option 1️⃣', id: 1},{name: 'Option 2️⃣', id: 2}]);
 
     const changeExhibitionTitle=(event)=>{
         set_title_addex(event.target.value)
@@ -42,18 +42,14 @@ export default function Add_Exhibition(){
         set_minute_date_addex(event.target.value)
     }
     const changePosts=(event)=>{
-        set_postselect_addex(event.target.value)
+        set_options_addex(event.target.value)
     }
     const submitting=(event)=>{
         event.preventDefault();
     }
 
     return(
-        <div className='main_div'>
-            {/* <!--adding page background image--> */}
-            <div id='img_back_addex'>
-                <img src={mainPic}/>
-            </div>
+        <div className='main_div_addex'>
 
             {/*adding page title*/}
             <div id='p_addex'>
@@ -136,13 +132,16 @@ export default function Add_Exhibition(){
                 </fieldset>
 
                 {/*adding posts*/}
-                <select value={postselect_addex} onChange={changePosts} name='postselect_addex' id='postselect_addex' multiple >
-                    <option value="4" hidden >انتخاب پست ها</option>
-                    <option value="4" disabled selected>انتخاب پست ها</option>
-                    <option value='1'>پست 1</option>
-                    <option value='2'>پست 2</option>
-                    <option value='3'>پست 3</option>
-                </select>
+                <Multiselect id='postselect_addex'
+                options= {options} // Options to display in the dropdown
+                // onSelect={this.onSelect} // Function will trigger on select event
+                // onRemove={this.onRemove} // Function will trigger on remove event
+                displayValue="name" // Property name to display in the dropdown options
+                showArrow={true}
+                showCheckbox={true}
+                onChange={changePosts}
+                placeholder=" انتخاب آثار "
+                />
 
                 <input type="submit" id='submit_addex' name='submit_addex' value='ایجاد'/>
             </form>
