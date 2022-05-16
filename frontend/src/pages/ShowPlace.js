@@ -87,7 +87,9 @@ export default function ShowPlace() {
 
   const playHandler = () => {};
 
-  const buyHandler = () => {};
+  const buyHandler = () => {
+    navigator(`/post/${+postsList.current[indexOfPost.current].id}/${user_id.current}`)
+  };
 
   // fetch data
   useEffect(() => {
