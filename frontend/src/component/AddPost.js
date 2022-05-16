@@ -3,9 +3,8 @@ import { useEffect, useState } from "react";
 export default function Example() {
   const [ap_name, setApName] = useState("");
   const [ap_describe, setApDescribe] = useState("");
-  const [yes, setApYes] = useState("");
-  const [no, setApNo] = useState("");
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [ap_price, setApPrice] = useState("");
+  const [forSale, setForSale] = useState(false);
 
   const handlechangeApName = (event) => {
     setApName(event.target.value);
@@ -15,25 +14,28 @@ export default function Example() {
   };
 
   const handlechangeApYes = (event) => {
-    setApYes(event.target.value);
+    setForSale(true);
   };
   const handlechangeApNo = (event) => {
-    setApNo(event.target.value);
+    setForSale(false);
   };
+  const handlechangeApPrice = (event) => {
+    setApPrice(event.target.value);
+  }
+
   const handleApSubmit = (e) => {
     e.preventDefault();
-    addpost(
-      ap_name,
-      ap_describe
-    );
+    
   };
 
-   useEffect(() => {
-    if (selectedImage) {
-      setImageUrl(URL.createObjectURL(selectedImage));
-      console.log(selectedImage)
-    }
-  }, [selectedImage]);
+    //file button
+    const [selectedImage, setSelectedImage] = useState(null);
+    const [imageUrl, setImageUrl] = useState(null);
+    useEffect(() => {
+        if (selectedImage) {
+        setImageUrl(URL.createObjectURL(selectedImage));
+        }
+    }, [selectedImage]);
   
     return (
       <>
@@ -61,6 +63,29 @@ export default function Example() {
                         </div>
                       </div>
                     </div>
+                    
+                    <div className="grid grid-cols-3 gap-6">
+                      <div className="col-span-3 sm:col-span-3">
+                        <label htmlFor="company-website" className="block text-sm font-medium text-gray-700 righttext" >
+                           قیمت اثر
+                        </label>
+                        <div className="mt-1 flex rounded-md shadow-sm">
+                        <input
+                          value={ap_price}
+                          onChange={handlechangeApPrice}
+                          type="text"
+                          name="price"
+                          id="name"
+                          autoComplete="given-name"
+                          className="p-3 righttext text-3xl shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full border border-gray-300 rounded-md"
+                        />
+                        </div>
+                      </div>
+                    </div>
+
+                    
+
+
   
                     <div>
                       <label htmlFor="about" className="righttext block text-sm font-medium text-gray-700">
@@ -85,7 +110,7 @@ export default function Example() {
                       <label className="righttext block text-sm font-medium text-gray-700">فایل عکس</label>
                       <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                         <div className="space-y-1 text-center">
-                          <svg
+                          {!selectedImage  && <svg
                             className="mx-auto h-20 w-20 text-gray-400"
                             stroke="currentColor"
                             fill="none"
@@ -98,16 +123,17 @@ export default function Example() {
                               strokeLinecap="round"
                               strokeLinejoin="round"
                             />
-                          </svg>
+                          </svg>}
                           <div className="flex text-sm text-gray-600">
                             <label
                               htmlFor="file-upload"
                               className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
                             >
                               <span>Upload a file</span>
+                              <img id='exhi_image_addex' src={imageUrl} />
                               <input onChange={(e) => setSelectedImage(e.target.files[0])} id="file-upload" name="file-upload" type="file" className="sr-only" />
                             </label>
-                            <p className="pl-1">or drag and drop</p>
+                            {!selectedImage && <p className="pl-1">or drag and drop</p>}
                           </div>
                           <p className="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
                         </div>
@@ -122,6 +148,7 @@ export default function Example() {
                             name="yes"
                             type="radio"
                             onChange={handlechangeApYes}
+                            {...(forSale ? { checked: true } : {})}
                             className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
                           />
                           <label className="righttext ml-3 block text-sm font-medium text-gray-700">
@@ -131,8 +158,9 @@ export default function Example() {
                         <div className="righttext flex items-center">
                           <input
                             id="no"
-                            name="no"
+                            name="yes"
                             type="radio"
+                            {...(!forSale ? { checked: true } : {})}
                             onChange={handlechangeApNo}
                             className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
                           />

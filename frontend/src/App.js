@@ -58,7 +58,7 @@ function App() {
           <Route path="/psn" element={<PS_Noraml />} />
           <Route path="/psa/:artistId" element={<PS_Artist />} />
           <Route path="/psa" element={<PS_Artist />} />
-          <Route path="/addpost" element={<Addpost />} />
+          <Route path="/add/post" element={<Addpost />} />
           <Route path="/post/:postId/:artistId" element={<Post />} />
 
       </Routes>
