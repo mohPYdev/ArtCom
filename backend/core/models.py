@@ -87,7 +87,6 @@ class Rate(models.Model):
 
 
 class Auction(models.Model):
-    artist = models.ManyToManyField(Artist, blank=True)
     post = models.ManyToManyField(Post, blank=True)
     date_created = models.DateField(auto_now_add=True)
     date_begin = models.DateTimeField(default=timezone.now)
@@ -104,10 +103,12 @@ class Auction(models.Model):
 
 class Exhibition(models.Model):
 
+    title = models.CharField(max_length=255, blank=True)
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
     posts = models.ManyToManyField(Post)
     date_begin = models.DateTimeField(default=timezone.now)
     date_end = models.DateTimeField(default=timezone.now)
+    cover = models.ImageField(upload_to=upload_post_image_path, null=True)
     
 
     def get_status(self):
