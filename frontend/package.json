@@ -16,6 +16,8 @@
     "babel-plugin-macros": "^3.1.0",
     "headlessui": "^0.0.0",
     "heroicons": "^1.0.6",
+    "jalali-moment": "^3.3.11",
+    "multiselect-react-dropdown": "^2.0.22",
     "react": "^17.0.2",
     "react-alert": "^7.0.3",
     "react-alert-template-basic": "^1.0.2",
