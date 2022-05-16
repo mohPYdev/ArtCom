@@ -12,14 +12,13 @@ from rest_framework import status
 from users import serializers, views
 
 from django.contrib.auth import get_user_model
-from core.models import Follow
-from core.models import Artist
+from core.models import Follow, Artist, Rate
 
 FOLLOW_API = "/auth/users/{}/follow/"
 GET_FOLLOWERS_API = "/auth/me/followers/"
 GET_FOLLOWINGS_API = "/auth/me/followings/"
 UNFOLLOW_API = "/auth/users/{}/unfollow/"
-
+RATE_API = "/auth/users/{}/rate/"
 UsersRepository = get_user_model()
 
 def create_user(**params):
@@ -107,6 +106,13 @@ class GetFollowApiTest(TestCase):
         response = self.client.get(GET_FOLLOWINGS_API)
         self.assertEqual(2, response.data[0]['artist']['user']['id'])
         self.assertEqual(1, len(response.data))
+
+    def test_rate(self):
+        self.client.force_authenticate(user=self.user)
+        response = self.client.post(RATE_API.format(self.artist.user.id), {'star':4})
+        self.assertEqual(200, response.status_code)
+        self.assertEqual(4, Rate.objects.get(user = self.user, artist = self.artist).star)
+
 
 class UnfollowApiTest(TestCase):
     def setUp(self) -> None:

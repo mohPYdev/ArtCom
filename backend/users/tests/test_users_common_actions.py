@@ -16,6 +16,8 @@ from core.models import Artist
 CREATE_USER_URL = reverse('users:user-list')
 ME_URL = '/auth/users/me/'
 CREATE_ARTIST_URL = '/auth/users/artist/'
+USER_URL = '/auth/users/{}/'
+
 UsersClass = get_user_model()
 
 def create_user(**params):
@@ -82,15 +84,24 @@ class AuthenticatedUserApiTests(TestCase):
     def setUp(self) -> None:
         self.userAuth = copy.copy(sample_user)
         del self.userAuth["re_password"]
-        u  = create_user(**self.userAuth)
+        self.current_user  = create_user(**self.userAuth)
         self.client = APIClient()
-        self.client.force_authenticate(user=u)
+        self.client.force_authenticate(user=self.current_user)
         
 
     def test_get_current_user(self):
         response = self.client.get(ME_URL)
         self.assertEqual(200, response.status_code)
         
+    def test_update_user(self):
+        changing_user = copy.copy(sample_user)
+        changing_user['city'] = 'isf'
+        del changing_user['re_password']
+        response = self.client.put(USER_URL.format(self.current_user.id), changing_user)
+        self.assertEqual(200, response.status_code)
+        self.assertEqual('isf', UsersClass.objects.get(id = self.current_user.id).city)
+
+
 class PublicArtistApiTests(TestCase):
     
     def setUp(self) -> None:
@@ -114,9 +125,4 @@ class PublicArtistApiTests(TestCase):
 
         self.assertEqual(self.reques_body['address'], user.address)
         self.assertFalse(hasattr(user, 're_password'))
-
-        
-    
-
-
 
