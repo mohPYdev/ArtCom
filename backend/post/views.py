@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 
 from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
@@ -158,6 +159,7 @@ class ExhibitionViewSet(viewsets.ModelViewSet):
     queryset = Exhibition.objects.all()
     serializer_class = ExhibitionSerializer
     permission_classes = (IsAuthenticated,)
+    parser_classes = (MultiPartParser, FormParser, JSONParser)
 
     def perform_create(self, serializer):
         serializer.save(artist=self.request.user.artist)
@@ -170,8 +172,8 @@ class ExhibitionViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         if self.action in ['me', 'update', 'partial_update', 'destroy']:
             return self.queryset.filter(artist=self.request.user.artist)
-        elif self.action == 'list':
-            return (x for x in self.queryset.all() if x.get_status() in ['open' , 'ns'])
+        # elif self.action == 'list':
+        #     return (x for x in self.queryset.all() if x.get_status() in ['open' , 'ns'])
         return self.queryset
 
     def get_object(self):
@@ -252,7 +254,7 @@ class AuctionViewSet(viewsets.ModelViewSet):
         permission_classes = self.permission_classes
         if self.action in ['create', 'destroy', 'update', 'partial_update']:
             permission_classes = [IsAdminUser,]
-        elif self.action in ['add-artist', 'add_post', 'remove_post', 'remove-artist']:
+        elif self.action in ['add_post', 'remove_post']:
             permission_classes = [IsArtist,]
         return [permission() for permission in permission_classes]
 
@@ -264,7 +266,7 @@ class AuctionViewSet(viewsets.ModelViewSet):
             if auction.post.filter(id__in=request.data['post']).exists():
                 raise ValidationError({'detail':'you have already added this post'})
             serializer.save()
-            return Response(status=status.HTTP_200_OK)
+            return Response(status=status.HTTP_200_OK, data=serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     @action(detail=True, methods=['post'], url_path='remove-post', permission_classes=[IsArtist])
