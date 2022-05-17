@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import stylesheet from "./SignUp/SignUp_Artist.css";
-import sahome from "./SignUp/image/icons8-home-30.png"
+import "./SignUp_Artist.css";
+import sahome from "../img/icons8-home-30.png"
 import { useSignupArtist } from "../hooks/useSignupArtist";
 import { Outlet, Link } from "react-router-dom";
 

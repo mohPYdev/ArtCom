@@ -1,6 +1,5 @@
 import style from "./HomePage.module.css";
 
-import mona from "../img/mona.png";
 
 // import { useAuthContext } from "../hooks/useAuthContext";
 import { useEffect, useState } from "react";

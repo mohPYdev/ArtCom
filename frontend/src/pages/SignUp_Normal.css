@@ -1,7 +1,7 @@
 ﻿#sn_wrapper {
     background-repeat: no-repeat;
     direction: rtl;
-    background-image: url(image/addon.png),url(image/Presentation1-removebg-preview.png),url(image/Prقثesentation1-removebg-preview.png),url('image/puzzle-piece.png'),url('image/puzzle-piece.png'),url('image/puzzle-piece.png');
+    background-image: url(../img/addon.png),url(../img/Presentation1-removebg-preview.png),url(../img/Presentation1-removebg-preview.png),url(../img/puzzle-piece.png),url(../img/puzzle-piece.png),url(../img/puzzle-piece.png);
     width: 1536px;
     height: 721px;
     background-size: 332px,706px,758px,275px,275px,275px;

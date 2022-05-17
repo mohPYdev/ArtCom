@@ -6,7 +6,10 @@ import { useEffect, useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import getExhibitions from "../function/getExhibitions";
 import { useAxios } from "../hooks/useAxios";
-import calculateRemainedTime from "../function/calculateRemainedTime";
+import { getShamsiDate , getRemainedTime} from "../function/calculateRemainedTime";
+import { Calendar } from "react-multi-date-picker"
+import persian from "react-date-object/calendars/persian"
+import persian_fa from "react-date-object/locales/persian_fa"
 
 function ExhibImage({ image_url }) {
   return <img src={image_url} alt="" className={style.ExhibPost} />;
@@ -17,6 +20,7 @@ export default function ShowPlaceHomePage() {
   //     );
 
   //Ref
+  const end_date = useRef("")
   const indexOfExhibitons = useRef("");
   const exhibitions = useRef("");
   //state
@@ -24,6 +28,7 @@ export default function ShowPlaceHomePage() {
   const [statuse, setStatuse] = useState();
   const [exhibPoster, setExhibPoster] = useState("");
   const [statusetext, setStatusetext] = useState("");
+  const [shamsiDate , setShamsiDate] = useState("");
   const navigator = useNavigate("");
 
   //func
@@ -35,11 +40,13 @@ export default function ShowPlaceHomePage() {
 
     if (statuse === "open") {
       var end = exhibitions.current[indexOfExhibitons.current].date_end;
-      setTimerE(calculateRemainedTime(end));
+      setTimerE(getRemainedTime(end , statuse));
+      setShamsiDate(getShamsiDate(end, statuse))
     } else {
       var start = exhibitions.current[indexOfExhibitons.current].date_begin;
 
-      setTimerE(calculateRemainedTime(start));
+      setTimerE(getRemainedTime(start, statuse));
+      setShamsiDate(getShamsiDate(start, statuse));
     }
   };
 
@@ -83,8 +90,18 @@ export default function ShowPlaceHomePage() {
 
   return (
     <div className={style.showplace}>
-      <div className={style.timer}>{timere} </div>
-      <img src={back} alt="" className={style.back} onClick={backeHandle} />
+      <div className={style.timer}><span>
+      {statuse ==='open' ? ` : زمان مانده تا پایان  ` : ` : زمان مانده تا شروع ` }
+      </span><br /><br />{timere} </div>
+      <Calendar
+      calendar={persian}
+      locale={persian_fa}
+      className={style.calendere}
+      value={shamsiDate}
+    />
+      <button   className={style.back} onClick={backeHandle} >
+        <img src={back}/>
+      </button>
       <div className={style.bannere}>
         <ExhibImage image_url={exhibPoster} />
       </div>

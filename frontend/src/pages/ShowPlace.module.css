@@ -37,11 +37,17 @@
     cursor: pointer;
 }
 
-.btn:hover {
-    box-shadow: 0 0.25rem 0.25rem #e74c3c;
-    transform: scale(1.1);
-    transition: all 0.2s;
+.btn:focus {
+    transform: translateY(-1rem);
+    transition: all 0.5s;
 }
+
+.btn:hover {
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+
+}
+
 
 .container {
     background-size: contain;
@@ -52,6 +58,7 @@
     background-position: center;
     grid-row: 1/4;
     grid-column: 2/5;
+    
 }
 
 
@@ -64,6 +71,16 @@
     cursor: pointer;
     border: 0.5rem solid #E9DAD3;
     padding: 0 2rem;
+}
+#profile:focus {
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+}
+
+#profile:hover {
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+
 }
 
 #about {
@@ -135,6 +152,17 @@
     justify-self: center;
     cursor: pointer;
 }
+#back:focus {
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+}
+
+#back:hover {
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+
+}
+
 
 #next {
     width: 118px;
@@ -145,6 +173,16 @@
     justify-self: center;
     cursor: pointer;
     cursor: pointer;
+}
+#next:focus {
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+}
+
+#next:hover {
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+
 }
 
 #seencount {

@@ -12,4 +12,5 @@ export default  async function getPostInfo (user_id , post_id ){
     return { image  , name , description , price ,like_count , liked }
 
 
+
 }
