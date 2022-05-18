@@ -412,3 +412,8 @@
     transition: all 0.5s;
 
 }
+.star_rate{
+    position: absolute;
+    top: 33%;
+    left: 5%;
+}
