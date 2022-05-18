@@ -49,6 +49,7 @@
     padding: 15px;
     border-radius: 20px;
     margin-right: 120px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
 .btn{
@@ -66,8 +67,23 @@
     color: black;
     width: 180px;
     cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
 }
 
+
+.btn:focus {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.171);
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+}
+
+.btn:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.171);
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+
+}
 #exit{
     grid-row: 2;
     grid-column: 6;
@@ -191,8 +207,18 @@
     border-radius: 10px;
     margin-top: 40px;
     cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.addpost:focus {
+    transform: translateY(-1rem);
+    transition: all 0.5s;
 }
 
+.addpost:hover {
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+
+}
 .cpost{
     color: white;
     font-size: 20px;
@@ -233,6 +259,7 @@
     align-content: center;
     padding: 50px;
     height: 350px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .back {
@@ -244,7 +271,16 @@
     align-self: center;
     cursor: pointer;
 }
+.back:focus {
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+}
 
+.back:hover {
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+
+}
 .next {
     width: 120px;
     height: auto;
@@ -254,7 +290,16 @@
     align-self: center;
     cursor: pointer;
 }
+.next:focus {
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+}
 
+.next:hover {
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+
+}
 .bannere {
     grid-column: 3/4;
     grid-row: 1;
@@ -264,6 +309,8 @@
     text-align: center;
     padding: 20px;
     border-radius: 15px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
 }
 
 .bannere img {
@@ -310,14 +357,58 @@
     margin: 30px;
     width: 200px;
     cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+}
+.btn2:focus {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.171);
+
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+}
+
+.btn2:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.171);
+
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+}
+.btn3{
+    background-color: #E9DAD3;
+    padding: 0.5%;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 15px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    color: black;
+    margin: 30px;
+    width: 200px;
+    cursor: auto;
 }
 #psahome{
     width: 58px;
     align-self: center;
     justify-self: center;
 }
-#homebtn{
+#homebtn {
     grid-row: 1;
     grid-column: 1;
+
  
+}
+
+
+#homebtn img:focus {
+    transform: scale(1.4);
+    transition: all 0.5s;
+}
+
+#homebtn img:hover {
+    transform: scale(1.4);
+    transition: all 0.5s;
+
 }

@@ -23,7 +23,7 @@ export default function AuctionsProfile({ artistId }) {
   //useEffect
   useEffect(() => {
     if (status ) setStatustext("فروخته شده");
-    else  setStatustext("خرید");
+    else  setStatustext("فروخته نشده");
 
   }, [status]);
   useEffect(() => {
@@ -76,7 +76,7 @@ export default function AuctionsProfile({ artistId }) {
 
         <button
           id={style.status}
-          className={style.btn2}
+          className={style.btn3}
           style={{ color: status ? "red" : "green"}}
         >
           {statustext}

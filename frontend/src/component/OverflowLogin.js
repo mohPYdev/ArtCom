@@ -1,7 +1,7 @@
 
 import './OverflowLogin.css'
 import brush from '../img/brush.svg';
-import lghome from "../pages/SignUp/image/icons8-home-30.png"
+import lghome from "../img/icons8-home-30.png"
 import { Link } from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import {useLogin} from '../hooks/useLogin'

@@ -59,7 +59,7 @@ export default function HeaderProfile({artistId}) {
 
   return (
     <div className={style.header}>
-        <Link to="/home" id="homebtn">
+        <Link to="/home" id={style.homebtn}>
             <img id={style.psahome} src={psahome} />
 
         </Link>

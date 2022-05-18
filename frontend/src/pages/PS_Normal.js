@@ -55,7 +55,7 @@ export default function PS_Normal() {
         <div className={style.header}>
         
             <Avatar backColor="light"/>
-            <textarea value={bio} className={style.bio}></textarea>
+            <div className={style.bio}>{bio}</div>
             <p className={style.following}>{following} Following</p>
             <button className={style.btn} id={style.edit} onClick={editHandle}>ویرایش</button>
             <button className={style.btn} id={style.exit} onClick={exitHandle}>خروج</button>

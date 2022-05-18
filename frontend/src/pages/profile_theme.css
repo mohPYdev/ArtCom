@@ -3,7 +3,6 @@
     padding: 0;
     font-family: 'B Yekan';
 }
-
 .bodyClass_profiless {
     background-color: #29354A !important;
     margin: 0px;
@@ -35,6 +34,15 @@
     margin-top: -650px;
     margin-left: 20px;
     z-index: 5;
+}
+#img_prof_profiless:hover {
+    transform: scale(1.1) translateY(-2rem);
+    transition: all 0.5s;
+
+}
+#img_prof_profiless:focus {
+    transform: scale(1.1) translateY(-2rem);
+    transition: all 0.5s;
 }
 
 #profile_image_profiless {
@@ -82,7 +90,15 @@
     width: 165px;
     height: 310px;
 }
+#Bio_textarea_profiless:hover {
+    transform: scale(1.1) translateY(2rem);
+    transition: all 0.5s;
 
+}
+#Bio_textarea_profiless:focus {
+    transform: scale(1.1) translateY(2rem);
+    transition: all 0.5s;
+}
 .common_form_profiless {
     box-sizing: border-box;
     float: left;
@@ -99,32 +115,47 @@
     padding: 10px;
 }
 
+.common_form_profiless:hover {
+    transform: scale(1.1);
+    transition: all 0.5s;
+
+}
+.common_form_profiless:focus {
+    transform: scale(1.1);
+    transition: all 0.5s;
+}
 #firstname_text_profiless {
     margin-top: -580px;
     margin-left: 760px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 #lastname_text_profiless {
     margin-top: -580px;
     width: 240px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 #username_text_profiless {
     margin-top: -520px;
     width: 400px;
     text-align: center;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 #email_input_profiless {
     margin-top: -460px;
     width: 400px;
     text-align: center;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+
 }
 
 #phone_input_profiless {
     margin-top: -400px;
     width: 400px;
     text-align: center;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 #Address_textarea_profiless {
@@ -142,25 +173,35 @@
     text-align: right;
     direction: rtl;
     padding: 5px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
+#Address_textarea_profiless:hover {
+    transform: scale(1.1);
+    transition: all 0.5s;
 
+}
+#Address_textarea_profiless:focus {
+    transform: scale(1.1);
+    transition: all 0.5s;
+}
 #postalcode_input_profiless {
     margin-top: -160px;
     width: 400px;
     text-align: center;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 #submit_input_profiless {
     margin-left: 690px;
     ;
     margin-top: -100px;
-    width: 80px;
-    height: 30px;
+    width: 10rem;
+    height: 5rem;
 
     border-radius: 0px;
     border: 5px outset #29354A;
 
-    font-size: 12px;
+    font-size: 2rem;
     font-weight: bold;
     letter-spacing: 1;
     padding: 0px;
@@ -168,8 +209,20 @@
     font-family: vazir;
     background-color: #29354A;
     color: white;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+    
+}
+#submit_input_profiless:focus {
+    transform: translateY(-1rem);
+    transition: all 0.5s;
 }
 
+#submit_input_profiless:hover {
+    transform: translateY(-1rem);
+    transition: all 0.5s;
+
+}
 #invitation_codes_textarea_profiless {
     width: 180px;
     height: 330px;
