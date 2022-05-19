@@ -10,6 +10,7 @@ import InfoBarProfile from "../sections/InfoBarProfile";
 import HeaderProfile from "../sections/HeaderProfile";
 import addp1 from "../img/addpost1.png";
 import addp2 from "../img/addpost2.png";
+
 export default function PS_Artist() {
   
   document.body.className = '';
@@ -24,8 +25,10 @@ export default function PS_Artist() {
   const { artistId } = useParams();
   const { user } = useAuthContext();
 
+
   return (
     <div>
+    
       <HeaderProfile artistId={artistId} />
 
       <InfoBarProfile artistId={artistId} />

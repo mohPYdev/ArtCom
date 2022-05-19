@@ -1,10 +1,12 @@
 import { React, useEffect, useState } from "react";
 import "./profile_theme.css";
 import backPic from "../img/Picture.png";
+import pahome from "../img/homepage.png";
 import profilePic from "../img/profile--picture.png";
 import {useAuthContext} from '../hooks/useAuthContext';
 import {useAxios} from '../hooks/useAxios';
 import { useAlert } from 'react-alert'
+import { Outlet, Link } from "react-router-dom";
 
 import axios from 'axios';
 
@@ -40,7 +42,7 @@ export default function Profile_Artist() {
   const [Address_textarea_profiless, set_Address_textarea_profiless] =useState();
   const [postalcode_input_profiless, set_postalcode_input_profiless] =useState();
   const [inviteToken, setInviteToken] = useState("");
-
+  
   useEffect(() => {
     if (user){
       set_Bio_textarea_profiless(user.artist.description);
@@ -129,6 +131,17 @@ export default function Profile_Artist() {
     
 
   },[selectedImage])
+  function openForm() {
+    const myform = document.getElementsByClassName("myForm")[0];
+    console.log(myform);
+    myform.style.visibility = "visible";
+  }
+  
+  function closeForm() {
+    const myform = document.getElementsByClassName("myForm")[0];
+    console.log(myform);
+   myform.style.visibility = "hidden";
+  }
 
   return (
     
@@ -139,7 +152,27 @@ export default function Profile_Artist() {
       <div id="img_back_profiless">
         <img src={backPic} />
       </div>
+      <div id="img_home_icon">
+      <Link to="/psa"><span><img src={pahome} /></span></Link>
+      </div>
+      <button class="open-button" onclick={openForm()}>تغییر رمزعبور</button>
 
+      <div className="form-popup myForm">
+        <form className="form-container">
+
+          <label for="oldpassword"><b>رمزعبور قدیمی</b></label>
+          <input type="password" name="oldpassword" required/>
+
+          <label for="newpassword"><b>رمزعبور جدید</b></label>
+          <input type="password" name="newpassword" required/>
+
+          <label for="confirmnewpassword"><b>تکرار رمزعبور جدید</b></label>
+          <input type="password" name="confirmnewpassword" required/>
+
+          <button type="submit" className="btn">ثبت</button>
+          <button type="button" className="btn cancel" onclick={closeForm()}>بستن</button>
+        </form>
+      </div>
       <form
         id="profile-form"
         onSubmit={handleSubmit}
