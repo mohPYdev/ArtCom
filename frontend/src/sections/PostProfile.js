@@ -28,7 +28,7 @@ export default function AuctionsProfile({ artistId }) {
   }, [status]);
   useEffect(() => {
     async function fetchData() {
-      if (artistid.current === undefined || artistid.current == user.id) {
+      if (artistid.current === undefined || +artistid.current === user.id) {
         artistid.current = user.id;
       } 
 
@@ -83,7 +83,7 @@ export default function AuctionsProfile({ artistId }) {
         >
           {statustext}
         </button>
-        {artistid.current === undefined || artistid.current === user.id ? (
+        {artistid.current === undefined || +artistid.current === user.id ? (
           <div id={style.createe}>
             <button className={style.btn2} onClick={createPost}>
               ایجاد پست{" "}
