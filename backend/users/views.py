@@ -14,7 +14,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from users.serializers import ArtistCreatePasswordRetypeSerializer, ArtistUpdateSerializer, \
                               CustomUserSerializer, TokenSerializer, FollowerSerializer, \
-                              FollowingSerializer
+                              FollowingSerializer, WalletSerializer
 
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 
@@ -47,6 +47,10 @@ class UserViewSet(UserViewSet):
             if self.request.user.is_artist:
                 return ArtistUpdateSerializer
             return CustomUserSerializer
+
+        if self.action == 'add_wallet' or self.action == 'remove_wallet':
+            return WalletSerializer
+
         
         return serializer
 
@@ -118,7 +122,39 @@ class UserViewSet(UserViewSet):
                 Rate.objects.create(artist=user.artist, user=request.user, star=request.data['star'])
             return Response(status=status.HTTP_200_OK) 
         return Response({'error':'rated user must be an artist'}, status=400)
+
+    @action(detail=False, methods=["POST"], url_path="add/wallet", permission_classes=[IsAuthenticated])
+    def add_wallet(self, request, id=None):
+        user = request.user
+        serializer = self.get_serializer(
+            user,
+            request.data
+        )
+        if serializer.is_valid():
+            user.wallet += serializer.validated_data['wallet']    
+            user.save()
+            return Response(serializer.data, status=200)
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST
+        )
     
+    @action(detail=False, methods=["POST"], url_path="remove/wallet", permission_classes=[IsAuthenticated])
+    def remove_wallet(self, request, id=None):
+        user = request.user
+        serializer = self.get_serializer(
+            user,
+            request.data
+        )
+        if serializer.is_valid():
+            print(serializer.data['wallet'])
+            user.wallet -= serializer.validated_data['wallet']
+            user.save()
+            return Response(serializer.data, status=200)
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST
+        )
 
 
 class TokenListView(ListAPIView):

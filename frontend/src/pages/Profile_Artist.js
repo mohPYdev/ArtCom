@@ -1,10 +1,12 @@
 import { React, useEffect, useState } from "react";
 import "./profile_theme.css";
 import backPic from "../img/Picture.png";
+import pahome from "../img/homepage.png";
 import profilePic from "../img/profile--picture.png";
 import {useAuthContext} from '../hooks/useAuthContext';
 import {useAxios} from '../hooks/useAxios';
 import { useAlert } from 'react-alert'
+import { Outlet, Link } from "react-router-dom";
 
 import axios from 'axios';
 
@@ -40,8 +42,7 @@ export default function Profile_Artist() {
   const [Address_textarea_profiless, set_Address_textarea_profiless] =useState();
   const [postalcode_input_profiless, set_postalcode_input_profiless] =useState();
   const [inviteToken, setInviteToken] = useState("");
-
-
+  
   useEffect(() => {
     if (user){
       set_Bio_textarea_profiless(user.artist.description);
@@ -59,8 +60,10 @@ export default function Profile_Artist() {
   useEffect(() => {
     if (data){
       let invite = ""
+      var c = 1
       data.map(item => {
-         invite += item.token + "\n"
+         invite += c + "- " + item.token + "\n"
+         c += 1
       })
       setInviteToken(invite)
     }
@@ -129,13 +132,17 @@ export default function Profile_Artist() {
 
   },[selectedImage])
 
-
   return (
+    
     // <!--a div covering whole page-->
     <div className="main_profiless">
+      
       {/* <!--adding page background image--> */}
       <div id="img_back_profiless">
         <img src={backPic} />
+      </div>
+      <div id="img_home_icon">
+      <Link to="/psa"><span><img src={pahome} /></span></Link>
       </div>
 
       <form
@@ -253,7 +260,7 @@ export default function Profile_Artist() {
         placeholder="کدهای دعوت"
         readonly
         value={inviteToken}
-        
+        wrap="off"
       ></textarea>
     </div>
   );
