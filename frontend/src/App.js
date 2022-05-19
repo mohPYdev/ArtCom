@@ -20,6 +20,9 @@ import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic'
 import PS_Artist from './pages/PS_Artist';
 import Addpost from './component/AddPost';
+import Add_Exhibition from './pages/Add_Exhibition';
+import Add_Auction from './pages/Add_Auction';
+
 
 
 
@@ -58,7 +61,10 @@ function App() {
           <Route path="/psn" element={<PS_Noraml />} />
           <Route path="/psa/:artistId" element={<PS_Artist />} />
           <Route path="/psa" element={<PS_Artist />} />
-          <Route path="/addpost" element={<Addpost />} />
+          <Route path="/add/post" element={<Addpost />} />
+          <Route path="/add/exhibition" element={<Add_Exhibition />} />
+          <Route path="/add/auction" element={<Add_Auction />} />
+
           <Route path="/post/:postId/:artistId" element={<Post />} />
 
       </Routes>
