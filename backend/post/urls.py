@@ -10,6 +10,7 @@ router.register("posts", views.PostViewSet)
 router.register("exhibitions", views.ExhibitionViewSet)
 router.register('auctions', views.AuctionViewSet)
 router.register('orders', views.OrderViewSet)
+router.register('comments', views.CommentViewSet)
 
 urlpatterns = router.urls
 

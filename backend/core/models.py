@@ -30,6 +30,7 @@ class User(AbstractUser):
     image = models.ImageField(upload_to=upload_user_image_path, null=True, blank=True)
     is_artist = models.BooleanField(default=False)
     following_count = models.IntegerField(default=0)
+    wallet  = models.FloatField(default=0)
     
     USERNAME_FIELD = 'username'
 
@@ -67,6 +68,16 @@ class Post(models.Model):
 
     def __str__(self) -> str:
         return self.name + ' ' + str(self.id)
+
+
+class Comment(models.Model):
+    user= models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
+    text = models.CharField(max_length=255, blank=True)
+    date_added = models.DateField(auto_now_add=True)
+
+    def __str__(self) -> str:
+        return self.user.username + ' ' + self.text
 
 
 class Like(models.Model):
