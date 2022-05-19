@@ -34,8 +34,10 @@ export default function PS_Artist() {
     else  setIsSame(true);
   },[])
 
+
   return (
     <div>
+    
       <HeaderProfile artistId={artistId} />
 
       <InfoBarProfile artistId={artistId} />
