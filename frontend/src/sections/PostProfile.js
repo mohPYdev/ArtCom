@@ -63,7 +63,9 @@ export default function AuctionsProfile({ artistId }) {
   const GoToPost = () => {
     navigator(`/post/${posts.current[indexOfPost.current].id}/${artistid.current}`)
   };
-  const createPost = () => {};
+  const createPost = () => {
+    navigator(`/add/post`);
+  };
   return (
     <>
       <h1 className={style.exhibitionTitle}>پست</h1>
