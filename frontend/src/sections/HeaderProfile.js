@@ -7,45 +7,45 @@ import psahome from "../img/icons8-home-page-50.png";
 import profile from "../img/profile--picture.png";
 import { useLogout } from "../hooks/useLogout";
 import { Outlet, Link  , Navigate, useNavigate} from "react-router-dom";
+
+import {useAxios} from '../hooks/useAxios'
+
 export default function HeaderProfile({artistId}) {
 
     const { user } = useAuthContext();
+    const {data:artist} = useAxios("http://localhost:8000/auth/users/"+artistId+"/profile");
 
     const { logout, error, isPending } = useLogout();
     const navigator = useNavigate();
-    const [followingNum, setFollowingNum] = useState(50);
+    
+
     const [followed, setFollowed] = useState(true);
-    const [isSame, setIsSame] = useState();
+    const [isSame, setIsSame] = useState(false);
   
     const [profileImg, setProfileImg] = useState(profile);
     const [name, setname] = useState("نام من");
     const [bio, setBio] = useState(" .... درباره من");
 
-  useEffect(() => {
-    async function fetchData() {
 
-      const { first_name, last_name, description, image, following_count } =
-        await getArtistInfo(+artistId);
-      setname(first_name + " " + last_name);
-      setBio(description);
-      setProfileImg(image);
-      //setFollowersNum(follower_count)
-      setFollowingNum(following_count);
+
+  useEffect(() => {
+
+    if (artistId && artistId !== user.id) {
+      setIsSame(false)
+      setname(artist.username)
+      setBio(artist.artist.description)
+      setProfileImg(artist.image)
+      setFollowed(artist.artist.followed)
     }
-    if (artistId && artistId != user.id) {
-      //see profile for other artist
-      fetchData();
-      setIsSame(false);
-    } else {
-      //see your profile
-      setname(user.first_name + " " + user.last_name);
-      setBio(user.artist.description);
-      setProfileImg(user.image);
-      //setFollowersNum(user.artist.follower_count)
-      setFollowingNum(user.following_count);
-      setIsSame(true);
+    else{
+      setIsSame(true)
+      setname(user.username)
+      setBio(user.artist.description)
+      setProfileImg(user.image)
     }
-  }, []);
+  }, [artistId, user, artist]);
+
+
 
   const exitHandle = () => {
     logout();
