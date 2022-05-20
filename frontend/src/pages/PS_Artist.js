@@ -31,12 +31,13 @@ export default function PS_Artist() {
 
 
   useEffect(()=>{
+    if(!user) return;
     if (artistId && artistId !== user.id) {
       //see profile for other artist
       setIsSame(false);
     }
     else  setIsSame(true);
-  },[artistId, user.id])
+  },[artistId, user])
 
 
   return (

@@ -29,8 +29,8 @@ export default function HeaderProfile({artistId}) {
 
 
   useEffect(() => {
-
-    if (artistId && artistId !== user.id) {
+    if (!user) return;
+    if (artistId && artistId !== user.id && artist) {
       setIsSame(false)
       setname(artist.username)
       setBio(artist.artist.description)
