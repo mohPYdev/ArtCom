@@ -34,16 +34,16 @@ export default function ShowPlaceHomePage() {
   //func
   const changePost = () => {
     setExhibPoster(
-      exhibitions.current[indexOfExhibitons.current].posts[0].image
+      exhibitions.current[indexOfExhibitons.current]?.cover
     );
-    setStatuse(exhibitions.current[indexOfExhibitons.current].status);
+    setStatuse(exhibitions.current[indexOfExhibitons.current]?.status);
 
     if (statuse === "open") {
-      var end = exhibitions.current[indexOfExhibitons.current].date_end;
+      var end = exhibitions.current[indexOfExhibitons.current]?.date_end;
       setTimerE(getRemainedTime(end , statuse));
       setShamsiDate(getShamsiDate(end, statuse))
     } else {
-      var start = exhibitions.current[indexOfExhibitons.current].date_begin;
+      var start = exhibitions.current[indexOfExhibitons.current]?.date_begin;
 
       setTimerE(getRemainedTime(start, statuse));
       setShamsiDate(getShamsiDate(start, statuse));
