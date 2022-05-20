@@ -7,6 +7,7 @@ import {useAxios} from '../hooks/useAxios';
 import { useAlert } from 'react-alert'
 
 import axios from 'axios';
+import Modal from "../component/Modal";
 
 
 export default function Profile_Artist() {
@@ -40,7 +41,11 @@ export default function Profile_Artist() {
   const [Address_textarea_profiless, set_Address_textarea_profiless] =useState();
   const [postalcode_input_profiless, set_postalcode_input_profiless] =useState();
   const [inviteToken, setInviteToken] = useState("");
+  const [showchangepass, setshowchangepass] = useState(false);
 
+  const handleClose = () => {
+    setshowchangepass(false)
+  }
 
   useEffect(() => {
     if (user){
@@ -255,6 +260,8 @@ export default function Profile_Artist() {
         value={inviteToken}
         
       ></textarea>
+      <button onClick={() => setshowchangepass(true)}>تغییر رمزعبور</button>
+      {showchangepass && <Modal handleClose={handleClose} />}
     </div>
   );
 }

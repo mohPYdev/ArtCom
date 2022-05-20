@@ -40,7 +40,7 @@ export default function PS_Artist() {
       <div className={style.star_rate}>
         <ReactStars
           count={5}
-          onChange={ratingChanged}
+          onChange={()=>ratingChanged(false)}
           size={40}
           isHalf={true}
           emptyIcon={<i className="far fa-star"></i>}
