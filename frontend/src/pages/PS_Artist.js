@@ -27,10 +27,9 @@ export default function PS_Artist() {
   const { user } = useAuthContext();
   const [isSame, setIsSame] = useState();
   
-  const {data:artist} = useAxios("http://localhost:8000/auth/users/"+artistId+"/profile");
   
 
-  
+
   useEffect(()=>{
     if (artistId && artistId !== user.id) {
       //see profile for other artist
