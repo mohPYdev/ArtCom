@@ -7,7 +7,7 @@ import {useAxios} from '../hooks/useAxios';
 import { useAlert } from 'react-alert'
 
 import axios from 'axios';
-import Modal from "../component/Modal";
+import Modal from "../component/ChangePass";
 
 
 export default function Profile_Artist() {
