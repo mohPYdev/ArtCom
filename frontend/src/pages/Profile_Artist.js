@@ -268,7 +268,7 @@ export default function Profile_Artist() {
         value={inviteToken}
         wrap="off"
       ></textarea>
-      <button onClick={() => setshowchangepass(true)}>تغییر رمزعبور</button>
+      <button id="change_pass" onClick={() => setshowchangepass(true)}>تغییر رمزعبور</button>
       {showchangepass && <Modal handleClose={handleClose} />}
     </div>
   );

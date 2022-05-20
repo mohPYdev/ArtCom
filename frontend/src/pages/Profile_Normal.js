@@ -9,7 +9,7 @@ import { useAlert } from 'react-alert'
 import { Outlet, Link } from "react-router-dom";
 
 import axios from 'axios';
-
+import Modal from "../component/ChangePass";
 export default function Profile_Normal() {
   document.body.className = '';
   document.body.classList.add("bodyClass_profiless");
@@ -39,6 +39,11 @@ export default function Profile_Normal() {
   const [city_input_profiless, set_city_input_profiless] = useState("");
   const [Address_textarea_profiless, set_Address_textarea_profiless] = useState();
   const [postalcode_input_profiless, set_postalcode_input_profiless] =useState();
+  const [showchangepass, setshowchangepass] = useState(false);
+
+  const handleClose = () => {
+    setshowchangepass(false)
+  }
 
   const changeBioTextarea = (event) => {
     set_Bio_textarea_profiless(event.target.value);
@@ -224,6 +229,8 @@ export default function Profile_Normal() {
             value="اعمال"
           />
         </form>
+        <button id="change_pass" onClick={() => setshowchangepass(true)}>تغییر رمزعبور</button>
+        {showchangepass && <Modal handleClose={handleClose} />}
       </div>
     </div>
   );
