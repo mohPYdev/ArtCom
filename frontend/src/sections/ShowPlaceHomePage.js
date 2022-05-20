@@ -64,7 +64,7 @@ export default function ShowPlaceHomePage() {
     changePost();
   };
   const GoToShowPlace = () => {
-    navigator(`/show/${indexOfExhibitons.current}`);
+    navigator(`/show/${exhibitions.current[indexOfExhibitons.current].id}`);
   };
   const GoToArtist = () => {
     

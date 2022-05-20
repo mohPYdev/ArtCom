@@ -25,7 +25,7 @@ export default function ShowPlace() {
   const user_id = useRef("");
   const alert = useAlert();
 
-  const { id } = useParams("");
+  const { id } = useParams("id");
   const navigator = useNavigate();
 
   const [about, setAbout] = useState("");
@@ -95,7 +95,7 @@ export default function ShowPlace() {
   useEffect(() => {
     async function getData() {
       indexOfPost.current = 0;
-      const { posts, artist } = await getOneExhibition(+id);
+      const { posts, artist } = await getOneExhibition(id);
       postsList.current = posts;
       const { image, id: temp_id } = await getArtistInfo(+artist);
       user_id.current = temp_id;
@@ -104,6 +104,8 @@ export default function ShowPlace() {
     }
     getData();
   }, []);
+
+
   const GotoArtistProfile = () => {
     navigator(`/psa/${user_id.current}`);
   };
