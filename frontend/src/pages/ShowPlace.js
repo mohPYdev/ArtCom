@@ -13,6 +13,9 @@ import { useAlert } from "react-alert";
 import my_song from "../song/bgmusic.mp3";
 
 export default function ShowPlace() {
+  window.onbeforeunload = () => {
+    music.pause();
+  }
   document.body.className = "";
   document.body.classList.add(style.bodyclass);
 
@@ -84,6 +87,7 @@ export default function ShowPlace() {
   };
 
   const exitHandler = () => {
+    music.pause();
     navigator(`/home`);
   };
 
@@ -99,6 +103,7 @@ export default function ShowPlace() {
   };
 
   const buyHandler = () => {
+    music.pause();
     navigator(
       `/post/${+postsList.current[indexOfPost.current].id}/${user_id.current}`
     );
@@ -119,6 +124,7 @@ export default function ShowPlace() {
 
   }, []);
   const GotoArtistProfile = () => {
+    music.pause();
     navigator(`/psa/${user_id.current}`);
   };
 
