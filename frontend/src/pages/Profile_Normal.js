@@ -1,10 +1,12 @@
 import { React, useEffect, useState } from "react";
 import "./profile_theme.css";
 import backPic from "../img/Picture.png";
+import pnhome from "../img/homepage.png";
 import profilePic from "../img/profile--picture.png";
 import {useAuthContext} from '../hooks/useAuthContext'
 import {useAxios} from '../hooks/useAxios'
 import { useAlert } from 'react-alert'
+import { Outlet, Link } from "react-router-dom";
 
 import axios from 'axios';
 
@@ -110,7 +112,9 @@ export default function Profile_Normal() {
         <div id="img_back_profiless">
           <img src={backPic} />
         </div>
-
+        <div id="img_home_icon">      
+          <Link to="/psn"><span><img src={pnhome} /></span></Link>
+        </div>
         <form
           id="profile-form"
           onSubmit={handleSubmit}

@@ -11,12 +11,12 @@ from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
 
 from .permissions import IsArtist, IsCurrentUserArtist
-from core.models import Post, Like, Exhibition, Auction, Order
+from core.models import Post, Like, Exhibition, Auction, Order, Comment
 from post.serializers import PostSerializer, LikeSerializer, ExhibitionSerializer,\
                              ExhibitionCreateSerializer, AuctionCreateSerializer,\
                              AuctionSerializer,\
                              AuctionArtistSerializer, PostPaymentSerializer,\
-                             OrderSerializer
+                             OrderSerializer, CommentCreateSerializer
 
 User = get_user_model()
 
@@ -36,8 +36,6 @@ class PostViewSet(viewsets.ModelViewSet):
         return Post.objects.filter(artist=self.request.user.artist)
     
     
-
-
 class PostListView(generics.ListAPIView):
     """
     API endpoint that allows posts to be viewed.
@@ -139,6 +137,20 @@ class PostPayView(generics.CreateAPIView):
         obj = get_object_or_404(Post, id=post_pk, artist=user.artist)
         return obj
 
+
+class CommentViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows comments to be viewed or edited.
+    """
+    queryset = Comment.objects.all()
+    serializer_class = CommentCreateSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user) 
+    
+
+   
 
 class OrderViewSet(viewsets.ModelViewSet):
     """

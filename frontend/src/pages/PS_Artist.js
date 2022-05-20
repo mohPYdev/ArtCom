@@ -35,6 +35,7 @@ export default function PS_Artist() {
   };
 
 
+
   return (
     <div>
       <div className={style.star_rate}>

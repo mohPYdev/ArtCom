@@ -46,6 +46,12 @@ class CustomUserSerializer(UserSerializer):
         read_only_fields = ['is_artist', 'email', 'following_count', 'is_superuser']
 
 
+class WalletSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('wallet',)
+
+
 class ArtistSerializer(serializers.ModelSerializer):
     class Meta():
         model = Artist

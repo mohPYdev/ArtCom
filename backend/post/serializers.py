@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from users.serializers import ArtistFollowSerializer
-from core.models import Post, Like, Exhibition, Artist, Auction, Order
+from core.models import Post, Like, Exhibition, Artist, Auction, Order, Comment
 
 from django.utils.timezone import now
 from django.contrib.auth import get_user_model
@@ -13,11 +13,12 @@ User = get_user_model()
 class PostSerializer(serializers.ModelSerializer):
     """serializes the posts model"""
     artist = ArtistFollowSerializer(read_only=True)
+    comments = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
     class Meta:
         model = Post
-        fields = ('id', 'image', 'name', 'description', 'price', 'for_sale', 'sold', 'artist', 'like_count', 'liked', 'date_added')
-        read_only_fields = ('id', 'artist', 'like_count', 'sold', 'date_added')
+        fields = ('id', 'image', 'name', 'description', 'price', 'for_sale', 'sold', 'artist', 'like_count', 'liked', 'date_added', 'comments')
+        read_only_fields = ('id', 'artist', 'like_count', 'sold', 'date_added', 'comments')
 
     liked = serializers.SerializerMethodField()
     like_count = serializers.SerializerMethodField()
@@ -30,6 +31,16 @@ class PostSerializer(serializers.ModelSerializer):
     
     def get_like_count(self, obj):
         return obj.like_set.count()
+
+
+class CommentCreateSerializer(serializers.ModelSerializer):
+    """serializes the comments model"""
+
+    class Meta:
+        model = Comment
+        fields = ('id','text', 'date_added', 'post', 'user')
+        read_only_fields = ('id', 'date_added', 'user')
+
 
 
 class PostPaymentSerializer(serializers.ModelSerializer):
