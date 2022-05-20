@@ -63,7 +63,7 @@ export default function AuctionsHomePage() {
     changePost();
   };
   const GoToAuction = () => {
-    navigator(`/auction/${user.id}`);
+    navigator(`/auction/${auctions.current[indexOfAuctions.current].id}`);
   };
 
   //useEffect
