@@ -12,11 +12,14 @@ import { Calendar } from "react-multi-date-picker"
 import persian from "react-date-object/calendars/persian"
 import persian_fa from "react-date-object/locales/persian_fa"
 import DateObject from "react-date-object"
+
+import { useAxios } from "../hooks/useAxios";
+
 export default function AuctionsHomePage() {
   //fetch-data
-  // const { data, isPending, error } = useAxios(
-  //   "http://localhost:8000/post/auctions/"
-  // );
+  const { data} = useAxios(
+    "http://localhost:8000/post/auctions/"
+  );
   //Ref
   const indexOfAuctions = useRef("");
   const auctions = useRef("");
@@ -31,15 +34,15 @@ export default function AuctionsHomePage() {
   //func
 
   const changePost = () => {
-    setAuctionPoster(auctions.current[indexOfAuctions.current].post[0].image);
-    setStatusa(auctions.current[indexOfAuctions.current].status);
+    setAuctionPoster(auctions.current[indexOfAuctions.current]?.post[0].image);
+    setStatusa(auctions.current[indexOfAuctions.current]?.status);
     if (statusa === "open") {
-      var end = auctions.current[indexOfAuctions.current].date_end;
+      var end = auctions.current[indexOfAuctions.current]?.date_end;
 
       setTimerA(getRemainedTime(end , statusa));
       setShamsiDate(getShamsiDate(end , statusa));
     } else {
-      var start = auctions.current[indexOfAuctions.current].date_begin;
+      var start = auctions.current[indexOfAuctions.current]?.date_begin;
 
       setTimerA(getRemainedTime(start , statusa));
       setShamsiDate(getShamsiDate(start , statusa));
@@ -71,17 +74,14 @@ export default function AuctionsHomePage() {
   }, [statusa]);
 
   useEffect(() => {
-    async function fetchData() {
-      const list = await getAuctions();
-      auctions.current = list;
+    
+    if (data) {
+      auctions.current = data;
       indexOfAuctions.current = 0;
       changePost();
-
-      
-      
     }
-    fetchData();
-  }, []);
+
+  }, [data]);
 
   return (
     <div className={style.auction}>
