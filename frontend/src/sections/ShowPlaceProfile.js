@@ -28,7 +28,7 @@ export default function ShowPlaceProfile({ artistId }) {
   useEffect(() => {
     async function fetchData() {
       let state;
-      if (artistId === undefined || artistId == user.id) state = "myProfile";
+      if (artistId === undefined || +artistId === user.id) state = "myProfile";
       else state = "otherProfile";
 
       const list = await getExhibitions(state , artistId);
@@ -60,7 +60,9 @@ export default function ShowPlaceProfile({ artistId }) {
       indexOfExhibitons.current = 0;
     changePost();
   };
-  const createExhibitions = () => {};
+  const createExhibitions = () => {
+    navigator(`/add/exhibition`);
+  };
   const GoToShowPlace = () => {
     navigator(`/show/${indexOfExhibitons.current}`);
   };
@@ -83,7 +85,7 @@ export default function ShowPlaceProfile({ artistId }) {
           {statustext}
         </button>
 
-        {artistId === undefined || artistId === user.id ? (
+        {artistId === undefined || +artistId === user.id ? (
           <div id={style.createe}>
             <button className={style.btn2} onClick={createExhibitions}>
               ساخت نمایشگاه
