@@ -115,11 +115,11 @@ export default function ShowPlaceHomePage() {
         {statusetext}
       </button>
 
-      <div id={style.enter}>
+      {statuse === "open" && <div id={style.enter}>
         <button className={style.blue} onClick={GoToShowPlace}>
           ورود به نمایشگاه
         </button>
-      </div>
+      </div>}
 
       <div id={style.profile}>
         <button className={style.blue} onClick={GoToArtist}>

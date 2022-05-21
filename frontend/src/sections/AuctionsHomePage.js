@@ -106,11 +106,11 @@ export default function AuctionsHomePage() {
       >
         {statusatext}
       </button>
-      <div id={style.entera}>
+      { statusa === "open" && <div id={style.entera}>
         <button className={style.blue} onClick={GoToAuction}>
           ورود به مزایده
         </button>
-      </div>
+      </div>}
       <div id={style.asara}>
         <button className={style.blue}>آثار هنری</button>
       </div>
