@@ -100,12 +100,16 @@
     width: 80px;
     height: 30px;
     border-radius: 20px;
-    border: 5px outset #a2bff3;
+    border: 5px outset #6baf4c;
     font-weight: bold;
     letter-spacing: 1;
     text-align: center;
-    background-color: #d1d1d1;
+    background-color: #bee4a8;
     color: #00324a;
     margin-top: 30px;
     margin-right: 47%;
+}
+#submit_addex:hover
+{
+    box-shadow: 5px 6px 10px rgb(54, 252, 77) inset;
 }
