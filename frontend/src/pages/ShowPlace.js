@@ -11,6 +11,8 @@ import getArtistInfo from "../function/getArtistInfo";
 import getPostInfo from "../function/getPostInfo";
 import { useAlert } from "react-alert";
 
+import { useAxios } from "../hooks/useAxios";
+
 export default function ShowPlace() {
 
   document.body.className = '';
@@ -40,14 +42,19 @@ export default function ShowPlace() {
 
   const [liked, setliked] = useState(false);
 
+  const {postData:postLike} = useAxios(`http://localhost:8000/post/${user_id?.current}/posts/${postsList.current[indexOfPost.current]?.id}/like/`,'POST');
+  const {postData:postDislike} = useAxios(`http://localhost:8000/post/${user_id?.current}/posts/${postsList.current[indexOfPost.current]?.id}/dislike/`,'POST');
+
   const likeHandler = () => {
     if (liked) {
 
       setliked(false);
       setCount((prevcount)=>prevcount-1)
+      postDislike();
     } else {
       setliked(true);
       setCount((prevcount)=>prevcount+1)
+      postLike();
     }
   };
   const ChangePost = async () => {
