@@ -256,10 +256,10 @@ class AuctionViewSet(viewsets.ModelViewSet):
                 
         elif self.action == 'retrieve':
             obj = get_object_or_404(Auction, pk=self.kwargs['pk'])
-            if obj.get_status() == 'open':
+            if obj.get_status() == 'open' and self.request.user.wallet > 100000:
                 return obj
             else:
-                raise ValidationError({'detail':'the auction is not open'})
+                raise ValidationError({'detail':'the auction is not open or you have not enough money'})
         return obj
     
     def get_permissions(self):

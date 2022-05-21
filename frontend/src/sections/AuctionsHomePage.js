@@ -106,11 +106,19 @@ export default function AuctionsHomePage() {
       >
         {statusatext}
       </button>
-      { statusa === "open" && <div id={style.entera}>
+      { statusa === "open" && user.wallet >= 100000 &&  <div id={style.entera}>
         <button className={style.blue} onClick={GoToAuction}>
           ورود به مزایده
         </button>
       </div>}
+
+      { statusa === "open" && user.wallet < 100000 && <div id={style.entera}>
+        <button className={style.blue} disabled>
+          موجودی شما کافی نیست
+        </button>
+      </div>}
+
+
       <div id={style.asara}>
         <button className={style.blue}>آثار هنری</button>
       </div>
