@@ -15,6 +15,9 @@ export default function HeaderProfile({artistId}) {
     const { user } = useAuthContext();
     const {data:artist} = useAxios("http://localhost:8000/auth/users/"+artistId+"/profile");
 
+    const {postData:postFollow} = useAxios(`http://localhost:8000/auth/users/${artistId}/follow/`,'POST');
+    const {postData:postUnFollow} = useAxios(`http://localhost:8000/auth/users/${artistId}/unfollow/`,'POST');
+
     const { logout, error, isPending } = useLogout();
     const navigator = useNavigate();
     
@@ -56,6 +59,17 @@ export default function HeaderProfile({artistId}) {
     navigator(`/ProfileArtist`);
   };
 
+  const handleFollow = () => {
+    if (followed) {
+      setFollowed(false);
+      postUnFollow();
+
+    } else {
+      setFollowed(true);
+      postFollow();
+    }
+  }
+
 
   return (
     <div className={style.header}>
@@ -76,7 +90,7 @@ export default function HeaderProfile({artistId}) {
           </button>
         )}
         {!isSame && !followed && (
-          <button className={style.btn} id={style.follow} onClick={exitHandle}>
+          <button className={style.btn} id={style.follow} onClick={handleFollow}>
             follow
           </button>
         )}
@@ -84,7 +98,7 @@ export default function HeaderProfile({artistId}) {
           <button
             className={style.btn}
             id={style.unfollow}
-            onClick={exitHandle}
+            onClick={handleFollow}
           >
             unfollow
           </button>
