@@ -72,11 +72,8 @@ export default function Example() {
   
     return (
       <>
-        <div className="h-screen bg-gradient-to-b from-blue-200 to-blue-900"	>
-          <div className="md:grid md:grid-cols-3 md:gap-6 righttext">
-            <div className="mt-5 md:mt-0 md:col-span-2 righttext">
-              <form method="get" onSubmit={handleApSubmit}>
-                <div className="shadow sm:rounded-md sm:overflow-hidden righttext ">
+        <div className="h-fit w-screen bg-gradient-to-b from-blue-200 to-blue-900"	>
+                <div className=" w-1/2 py-16 mx-auto shadow sm:rounded-md sm:overflow-hidden righttext ">
                   <div className="px-4 py-5 bg-white space-y-6 sm:p-6 ">
                     <div className="grid grid-cols-3 gap-6">
                       <div className="col-span-3 sm:col-span-3">
@@ -174,8 +171,8 @@ export default function Example() {
                     </div>
                     <fieldset>
                       <legend className="righttext contents text-base font-medium text-gray-900">آیا قصد فروش این اثر را دارید؟</legend>
-                      <div className="mt-4 space-y-4">
-                        <div className="flex items-center">
+                      <div className=" mt-4 space-y-4">
+                        <div className="flex items-center translate-x-2/4">
                           <input
                             id="yes"
                             name="yes"
@@ -188,7 +185,7 @@ export default function Example() {
                             بله
                           </label>
                         </div>
-                        <div className="righttext flex items-center">
+                        <div className="righttext flex items-center translate-x-2/4">
                           <input
                             id="no"
                             name="yes"
@@ -203,19 +200,19 @@ export default function Example() {
                         </div>
                       </div>
                     </fieldset>
-                  </div>      
-                </div>
-                <button
+                    <button
                       type="submit"
-                      className="m-2 text-2xl	inline-flex justify-center py-2 px-4 border border-transparent shadow-sm rounded-md text-black bg-amber-300 hover:bg-yellow-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      className="text-4xl	inline-flex  py-4 px-6 border border-transparent shadow-sm rounded-md text-black bg-amber-300 hover:bg-yellow-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
                       ثبت اثر
-                    </button>
-              </form>
-              
+                    </button>   
+                  </div>   
+                  
+                </div>
+                
             </div>
-          </div>
-        </div>
+          
+      
       </>
     )
   }

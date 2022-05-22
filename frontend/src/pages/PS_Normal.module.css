@@ -111,12 +111,13 @@
     font-family: 'Akaya Kanadaka';
     width: 100%;
     text-align: center;
-    font-size: 86px;
+    font-size: 12rem;
     text-decoration: underline;
     letter-spacing: 0.165em;
     color: #29354A;
-    top: 25rem;
-    position: absolute;
+    grid-row: 1;
+    grid-column: 2/4;
+    align-self: center;
 }
 
 #img1 {

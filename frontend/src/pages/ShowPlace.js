@@ -10,12 +10,15 @@ import { useNavigate, useParams } from "react-router-dom";
 import getArtistInfo from "../function/getArtistInfo";
 import getPostInfo from "../function/getPostInfo";
 import { useAlert } from "react-alert";
+import my_song from "../song/bgmusic.mp3";
 
 import { useAxios } from "../hooks/useAxios";
 
 export default function ShowPlace() {
-
-  document.body.className = '';
+  window.onbeforeunload = () => {
+    music.pause();
+  }
+  document.body.className = "";
   document.body.classList.add(style.bodyclass);
 
   window.onbeforeunload = function () {
@@ -39,6 +42,8 @@ export default function ShowPlace() {
   const [count, setCount] = useState("");
   const [livecount, setLivecount] = useState("--");
   const [seencount, setSeencount] = useState("--");
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [music , setMusic] = useState(new Audio(my_song));
 
   const [liked, setliked] = useState(false);
 
@@ -47,8 +52,8 @@ export default function ShowPlace() {
 
   const likeHandler = () => {
     if (liked) {
-
       setliked(false);
+
       setCount((prevcount)=>prevcount-1)
       postDislike();
     } else {
@@ -58,16 +63,17 @@ export default function ShowPlace() {
     }
   };
   const ChangePost = async () => {
-    const { image, name, description, price , like_count , liked } = await getPostInfo(
-      user_id.current,
-      +postsList.current[indexOfPost.current].id
-    );
+    const { image, name, description, price, like_count, liked } =
+      await getPostInfo(
+        user_id.current,
+        +postsList.current[indexOfPost.current].id
+      );
     setName(name);
     setArtwork(image);
     setAbout(description);
     setPrice(+price);
-    setCount(+like_count)
-    setliked(liked)
+    setCount(+like_count);
+    setliked(liked);
   };
 
   const backHandler = () => {
@@ -89,13 +95,26 @@ export default function ShowPlace() {
   };
 
   const exitHandler = () => {
+    music.pause();
     navigator(`/home`);
   };
 
-  const playHandler = () => {};
+  const playHandler = () => {
+    console.log(isPlaying);
+    if (isPlaying) {
+      setIsPlaying(false);
+      music.pause();
+    } else {
+      setIsPlaying(true);
+      music.play();
+    }
+  };
 
   const buyHandler = () => {
-    navigator(`/post/${+postsList.current[indexOfPost.current].id}/${user_id.current}`)
+    music.pause();
+    navigator(
+      `/post/${+postsList.current[indexOfPost.current].id}/${user_id.current}`
+    );
   };
 
   // fetch data
@@ -110,10 +129,12 @@ export default function ShowPlace() {
       ChangePost();
     }
     getData();
+
   }, []);
 
 
   const GotoArtistProfile = () => {
+    music.pause();
     navigator(`/psa/${user_id.current}`);
   };
 
@@ -131,32 +152,29 @@ export default function ShowPlace() {
           id={style.profile}
           onClick={GotoArtistProfile}
         />
-        <div id={style.about} cols="18" rows="20">{about}</div>
+        <div id={style.about} cols="18" rows="20">
+          {about}
+        </div>
 
         <div className={style.Name}>
           <h2 id={style.title}>نام</h2>
-          <div
-
-            id={style.title}
-            className={style.values}
-            
-          >
-            {name}</div>
+          <div id={style.title} className={style.values}>
+            {name}
+          </div>
         </div>
 
         <div className={style.Price}>
           <h2 id={style.title}>قیمت</h2>
-          <div
-
-            id={style.title}
-            className={style.values}
-            
-          >{price}</div>
+          <div id={style.title} className={style.values}>
+            {price}
+          </div>
         </div>
 
         <div className={style.Date}>
           <h2 id={style.title}>تاریخ</h2>
-          <div id={style.title} className={style.values} >{date}</div>
+          <div id={style.title} className={style.values}>
+            {date}
+          </div>
         </div>
 
         <img src={back} alt="back" id={style.back} onClick={backHandler} />
@@ -168,7 +186,7 @@ export default function ShowPlace() {
             alt=""
             onClick={likeHandler}
           />
-          <div id={style.count} >{count}</div>
+          <div id={style.count}>{count}</div>
         </div>
 
         <img src={next} alt="next" id={style.next} onClick={nextHandler} />
@@ -184,11 +202,11 @@ export default function ShowPlace() {
         </button>
         <div className={style.livebox}>
           <img src={liveeye} alt="" id={style.liveimg} />
-          <div id={style.livecount}  >{livecount}</div>
+          <div id={style.livecount}>{livecount}</div>
         </div>
         <div className={style.seenbox}>
           <img src={seeneye} alt="" id={style.seenimg} />
-          <div id={style.seencount}  >{seencount}</div>
+          <div id={style.seencount}>{seencount}</div>
         </div>
       </div>
     </div>
