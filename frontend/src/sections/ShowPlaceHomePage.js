@@ -34,16 +34,16 @@ export default function ShowPlaceHomePage() {
   //func
   const changePost = () => {
     setExhibPoster(
-      exhibitions.current[indexOfExhibitons.current].posts[0].image
+      exhibitions.current[indexOfExhibitons.current]?.cover
     );
-    setStatuse(exhibitions.current[indexOfExhibitons.current].status);
+    setStatuse(exhibitions.current[indexOfExhibitons.current]?.status);
 
     if (statuse === "open") {
-      var end = exhibitions.current[indexOfExhibitons.current].date_end;
+      var end = exhibitions.current[indexOfExhibitons.current]?.date_end;
       setTimerE(getRemainedTime(end , statuse));
       setShamsiDate(getShamsiDate(end, statuse))
     } else {
-      var start = exhibitions.current[indexOfExhibitons.current].date_begin;
+      var start = exhibitions.current[indexOfExhibitons.current]?.date_begin;
 
       setTimerE(getRemainedTime(start, statuse));
       setShamsiDate(getShamsiDate(start, statuse));
@@ -64,7 +64,7 @@ export default function ShowPlaceHomePage() {
     changePost();
   };
   const GoToShowPlace = () => {
-    navigator(`/show/${indexOfExhibitons.current}`);
+    navigator(`/show/${exhibitions.current[indexOfExhibitons.current].id}`);
   };
   const GoToArtist = () => {
     
@@ -115,11 +115,11 @@ export default function ShowPlaceHomePage() {
         {statusetext}
       </button>
 
-      <div id={style.enter}>
+      {statuse === "open" && <div id={style.enter}>
         <button className={style.blue} onClick={GoToShowPlace}>
           ورود به نمایشگاه
         </button>
-      </div>
+      </div>}
 
       <div id={style.profile}>
         <button className={style.blue} onClick={GoToArtist}>

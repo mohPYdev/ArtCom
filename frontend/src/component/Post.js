@@ -32,6 +32,8 @@ import warning from "../img/warning.png";
 import getPostInfo from "../function/getPostInfo";
 import { useParams } from "react-router-dom";
 
+import {useAxios} from "../hooks/useAxios";
+
 export default function Post() {
   const { postId, artistId } = useParams();
 
@@ -48,16 +50,24 @@ export default function Post() {
   const [image, setImage] = useState();
   const [description, setDescription] = useState();
 
+
+  const {postData:postLike} = useAxios(`http://localhost:8000/post/${artistId}/posts/${postId}/like/`,'POST');
+  const {postData:postDislike} = useAxios(`http://localhost:8000/post/${artistId}/posts/${postId}/dislike/`,'POST');
+
   //func
   const likeHandler = () => {
     if (liked) {
       setLiked(false);
       setLikeCount((prevcount) => prevcount - 1);
+      postDislike();
     } else {
       setLiked(true);
       setLikeCount((prevcount) => prevcount + 1);
+      postLike();
     }
   };
+
+
   //useEffect
   useEffect(() => {
     if (sold) {
@@ -68,6 +78,8 @@ export default function Post() {
       sold_btn.style.pointerEvents = "none";
     }
   }, [sold]);
+
+
   useEffect(() => {
     async function fetchData() {
       const { image, name, description, price, like_count, liked } =
@@ -80,7 +92,9 @@ export default function Post() {
       setLiked(liked);
     }
     fetchData();
-  }, []);
+  }, [artistId, postId]);
+
+
   return (
     <div className="post-page h-screen">
       <div className="pt-6">
