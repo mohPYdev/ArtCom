@@ -48,7 +48,7 @@ class PostUrlTests(TestCase):
     def setUp(self):
         self.client = APIClient()
         self.artistUser = create_user_artist(**sample_user)
-        Artist.objects.create(user = self.artistUser)
+        self.artist = Artist.objects.create(user = self.artistUser)
         self.client.force_authenticate(user=self.artistUser)
 
     def test_create_post(self):
@@ -56,5 +56,11 @@ class PostUrlTests(TestCase):
         response = self.client.post(POST_URL, sample_post, format = 'json')
         self.assertEqual(201, response.status_code)
         self.assertEqual(1, Post.objects.count())
-    
 
+    def test_get_post(self):
+      Post.objects.create(artist = self.artist, name = "p1", price = "10000")
+      Post.objects.create(artist = self.artist, name = "p2", price = "10000")
+      Post.objects.create(artist = Artist.objects.create(user = create_user_artist(username = "n")), name = "p3", price = "10000")
+      response = self.client.get(POST_URL)
+      self.assertEqual(200, response.status_code)
+      self.assertEqual(2, len(response.data))
