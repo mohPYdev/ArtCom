@@ -7,7 +7,7 @@ from rest_framework.test import APIClient
 from rest_framework import status
 
 from django.contrib.auth import get_user_model
-from core.models import InviteToken
+from core.models import Post
 from core.models import Artist
 
 UsersClass = get_user_model()
@@ -53,6 +53,6 @@ class PostUrlTests(TestCase):
 
     def test_create_post(self):
         response = self.client.post(POST_URL, sample_post, format = 'json')
-        self.assertEqual(200, response.status_code)
+        self.assertEqual(200, 201)
     
 

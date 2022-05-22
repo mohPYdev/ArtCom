@@ -1,3 +1,4 @@
+from cgitb import reset
 import cmd
 import email
 import copy
@@ -77,7 +78,8 @@ class PublicUserApiTests(TestCase):
         self.assertEqual(400, response.status_code)
 
     def test_promition_denied(self):
-        self.assertRaises(Exception, self.client.get, path = CREATE_USER_URL)
+        response = self.client.get(CREATE_USER_URL)
+        self.assertEqual(401, response.status_code)
         #TODO check the status code 403
 
 class AuthenticatedUserApiTests(TestCase):
@@ -115,7 +117,7 @@ class PublicArtistApiTests(TestCase):
         u  = create_user(**self.userAuth)
         token = InviteToken.objects.filter(artist = Artist.objects.create(user = u))[0]
         self.reques_body['artist']['inviters']['token'] = token.token
-        response = self.client.post(CREATE_ARTIST_URL, self.reques_body, format='json')
+        response = self.client.post(CREATE_ARTIST_URL, self.reques_body, format = 'json')
         self.assertEqual(status.HTTP_201_CREATED, response.status_code)
 
         body = response.json()
