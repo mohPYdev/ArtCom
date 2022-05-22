@@ -28,14 +28,13 @@ sample_user = {
             "address": "string",
             "postal_code": "string",
             "first_name": "string",
-            "last_name": "string",
-            "re_password": "alaki1234"
+            "last_name": "string"
         }
 
 sample_post = {
   "name": "string",
   "description": "string",
-  "price": "string",
+  "price": "10000",
   "for_sale": True,
   "artist": {
     "user": {
@@ -49,10 +48,13 @@ class PostUrlTests(TestCase):
     def setUp(self):
         self.client = APIClient()
         self.artistUser = create_user_artist(**sample_user)
+        Artist.objects.create(user = self.artistUser)
         self.client.force_authenticate(user=self.artistUser)
 
     def test_create_post(self):
+        self.assertEqual(0, Post.objects.count())
         response = self.client.post(POST_URL, sample_post, format = 'json')
-        self.assertEqual(200, 201)
+        self.assertEqual(201, response.status_code)
+        self.assertEqual(1, Post.objects.count())
     
 
