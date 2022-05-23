@@ -1,6 +1,7 @@
 import React from "react";
 import Particles from "particlesjs";
-
+import { useEffect, useRef, useCallback } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 const products = [
   {
     id: 1,
@@ -54,6 +55,7 @@ const products = [
   // More products...
 ];
 export default function AuctionResult() {
+  const { id } = useParams();
   return (
     <>
       <div className="bg-center bg-bg-auctionres w-screen max-h-fit z-0 ">

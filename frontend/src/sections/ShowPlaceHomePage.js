@@ -90,15 +90,19 @@ export default function ShowPlaceHomePage() {
 
   return (
     <div className={style.showplace}>
+      {statuse !== "finished" && 
       <div className={style.timer}><span>
       {statuse ==='open' ? ` : زمان مانده تا پایان  ` : ` : زمان مانده تا شروع ` }
-      </span><br /><br />{timere} </div>
+      </span><br /><br />{timere} </div>}
+      {statuse !== "finished" &&
       <Calendar
       calendar={persian}
       locale={persian_fa}
       className={style.calendere}
       value={shamsiDate}
     />
+  }
+  
       <button   className={style.back} onClick={backeHandle} >
         <img src={back}/>
       </button>
