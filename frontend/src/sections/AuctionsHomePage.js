@@ -122,7 +122,7 @@ export default function AuctionsHomePage() {
       <div id={style.asara}>
         <button className={style.blue}>آثار هنری</button>
       </div>
-      <img src={posts} alt="posts" id={style.bpost} />
+      
     </div>
   );
 }

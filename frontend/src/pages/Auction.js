@@ -214,7 +214,7 @@ function Auction () {
                        pause
                     </div>
                     </button>}
-                    {is_allowed && <>
+                    {!user?.is_superuser && is_allowed &&<>
                         <button className='percent' onClick={handleNewBid} value={(price * 0.05).toFixed(2)}> 
                             +{(price * 0.05).toFixed(2)}$
                         </button>

@@ -5,6 +5,11 @@
     margin: 0;
 }
 
+.home {
+    max-width: 1200px;
+    margin: 60px auto;
+  }
+
 .header {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
