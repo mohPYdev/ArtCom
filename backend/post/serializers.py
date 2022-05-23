@@ -54,7 +54,7 @@ class PostPaymentSerializer(serializers.ModelSerializer):
 class OrderSerializer(serializers.ModelSerializer):
     """serializes the order model"""
     # post = PostSerializer(queryset=Post.objects.all(), many=False)
-    # user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), many=False)
+    user = serializers.SlugRelatedField(many=False, read_only=True, slug_field='username')
 
     class Meta:
         model = Order

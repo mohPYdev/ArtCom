@@ -10,13 +10,14 @@ import viewicon from '../img/view.png';
 import moneyicon from '../img/sack-dollar-solid.png';
 
 import { useEffect, useRef, useCallback } from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams , useNavigate} from 'react-router-dom';
 import {useAxios} from '../hooks/useAxios';
 import {useAuthContext} from '../hooks/useAuthContext';
 
 function Auction () {
 
     const {id} = useParams();
+    const navigate = useNavigate();
     const {user} = useAuthContext();
     const {data} = useAxios('http://localhost:8000/post/auctions/'+id);
     const ws = useRef(null);
@@ -66,14 +67,17 @@ function Auction () {
                 setIsAllowed(false)
             }
             
-            if (message.command === 'start' && message.username === 'admin'){
+            // if (message.command === 'start' && message.username === 'admin'){
+            if (message.command === 'start'){
                 setIsAllowed(true)
             }
 
             if (message.time === 11 && !finish)
             {
                 setNext(true)
-            }         
+            }     
+            
+            
         };
     }, []);
 
@@ -116,6 +120,9 @@ function Auction () {
         if (time === 11 && !finish && user.is_superuser)
         {
             handleStart()
+        }
+        if (time === 11 && finish){
+            navigate(`/auctionres/${id}`)
         }
     }, [finish, nPost])
 
@@ -214,7 +221,7 @@ function Auction () {
                        pause
                     </div>
                     </button>}
-                    {is_allowed && <>
+                    {!user?.is_superuser && is_allowed && <>
                         <button className='percent' onClick={handleNewBid} value={(price * 0.05).toFixed(2)}> 
                             +{(price * 0.05).toFixed(2)}$
                         </button>
