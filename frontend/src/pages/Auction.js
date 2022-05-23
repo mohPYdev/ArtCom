@@ -56,7 +56,8 @@ function Auction () {
             const message = JSON.parse(e.data);
             console.log(message.time);
             setTime(message.time);
-            setNPost(message.post_id)
+            // setNPost(message.post_id)
+            setNPost(message.n_post)
             setPrice(message.price)
 
             
