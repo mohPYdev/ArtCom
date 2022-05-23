@@ -16,36 +16,6 @@
     align-content: center;
 }
 
-#search {
-    width: 640px;
-    height: 50px;
-    background: #E9DAD3;
-    border-radius: 15px;
-    position: relative;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 26px;
-    display: flex;
-    align-items: center;
-    text-align: right;
-    padding-right: 40px;
-    color: #FFFEFB;
-    margin-left: auto;
-    margin-right: auto;
-    top: -3px;
-    background-image: url('../img/search-icon.png');
-    background-repeat: no-repeat;
-    background-size: 40px;
-    background-position: right;
-    grid-column: 2/3;
-    grid-row: 1;
-    align-self: center;
-    justify-self: center;
-    color: black;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-}
-
 .contact {
     background-color: #E9DAD3;
     padding: 0.5%;
