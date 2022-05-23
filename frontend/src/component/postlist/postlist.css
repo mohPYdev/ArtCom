@@ -17,8 +17,10 @@
     display: flex;
     justify-content: center;
     height: 200px;
+    cursor: pointer;
   }
 
+  
   .post-list .post img{
     max-height: 180px;
     max-width: 260px;
