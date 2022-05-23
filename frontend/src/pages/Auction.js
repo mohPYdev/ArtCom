@@ -56,7 +56,8 @@ function Auction () {
             const message = JSON.parse(e.data);
             console.log(message.time);
             setTime(message.time);
-            setNPost(message.post_id)
+            // setNPost(message.post_id)
+            setNPost(message.n_post)
             setPrice(message.price)
 
             
@@ -92,7 +93,9 @@ function Auction () {
             {
                 setPost(data.post[nPost])
                 setPrice(data.post[nPost].price)
+                console.log(data.post[nPost])
                 setNPost(nPost => nPost + 1)
+                
             }          
             else{
                 setFinish(true)
@@ -179,8 +182,11 @@ function Auction () {
                 <div id="top-grid"> 
                     <img src={infoicon} id="info-icon" />
                     {/* <img src={number1} id ="number-icon" /> */}
+                    {post &&<div id="info-icon-name"> نام اثر : {post.name} </div>}
                     <p id='time'> {time} </p>
                     <img src={profileicon} id="profile-icon" />
+                    {post &&<div id="profile-icon-name"> نام هنرمند  : {post.artist.user.username} </div>}
+                    
                 </div>
 
                 <div id="timer-box">
@@ -208,7 +214,7 @@ function Auction () {
                        pause
                     </div>
                     </button>}
-                    {!user?.is_superuser && is_allowed && <>
+                    {!user?.is_superuser && is_allowed &&<>
                         <button className='percent' onClick={handleNewBid} value={(price * 0.05).toFixed(2)}> 
                             +{(price * 0.05).toFixed(2)}$
                         </button>
@@ -231,14 +237,9 @@ function Auction () {
                     </div>
                     <div id="price-box">
                         {price && <div className="current-price price">
-                            ${price} - {user?.username}
+                            ${price}
                         </div>}
-                        <div className="prev-price price">
-                        $1800
-                        </div>
-                        {post && <div className="prev-prev-price price">
-                            {post.name}
-                        </div>}
+                       
                 </div>
                     
                 </div>

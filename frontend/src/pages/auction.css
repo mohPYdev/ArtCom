@@ -31,15 +31,26 @@ a {
     top: 1rem;
     width: 100vw;
     justify-items: center;
+    height: 10rem;
 
 }
 
 #info-icon {
+    grid-row: 1;
+    grid-column: 1;
     width: 8.4rem;
     height: 6.7rem;
+   
 
 }
+#info-icon-name {
+    grid-row: 1;
+    grid-column: 1;
+    align-self: end;
+    font-size: 1.3rem;
+    color: #E9DAD3;
 
+}
 #number-icon {
     color: #E9DAD3;
     width: 8.4rem;
@@ -49,8 +60,16 @@ a {
 #profile-icon {
     width: 8.4rem;
     height: 6.7rem;
+    grid-row: 1;
+    grid-column: 3;
 }
-
+#profile-icon-name {
+    grid-row: 1;
+    grid-column: 3;
+    align-self: end;
+    font-size: 1.3rem;
+    color: #E9DAD3;
+}
 #timer-box {
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;

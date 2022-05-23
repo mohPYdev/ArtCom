@@ -7,7 +7,7 @@ export default async function getAuctions() {
     },
   };
   let allData;
-    const url = `http://localhost:8000/post/auctions`;
+    const url = `http://localhost:8000/post/auctions/`;
     const { data } = await axios.get(url, config);
     allData = data;
   return allData;

@@ -14,7 +14,7 @@ import Avatar from "../component/Avatar";
 import { useAxios } from "../hooks/useAxios";
 import ShowPlaceHomePage from "../sections/ShowPlaceHomePage";
 import AuctionsHomePage from "../sections/AuctionsHomePage";
-import SearchBar from "../component/SearchBar/SearchBar";
+import SearchBar from "../component/Searchbar/Searchbar";
 
 export default function HomePage() {
 

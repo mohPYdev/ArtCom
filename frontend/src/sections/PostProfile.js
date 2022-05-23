@@ -28,7 +28,8 @@ export default function AuctionsProfile({ artistId }) {
   }, [status]);
   useEffect(() => {
     async function fetchData() {
-      if (artistid.current === undefined || artistid.current == user.id) {
+      if (artistid.current === undefined || artistid.current == user?.id) {
+
         artistid.current = user.id;
       } 
 
@@ -44,8 +45,8 @@ export default function AuctionsProfile({ artistId }) {
   //func
 
   const changePost = () => {
-    setPoster(posts.current[indexOfPost.current].image);
-    setStatus(posts.current[indexOfPost.current].sold);
+    setPoster(posts.current[indexOfPost.current]?.image);
+    setStatus(posts.current[indexOfPost.current]?.sold);
   };
   const backaHandle = () => {
     indexOfPost.current = indexOfPost.current - 1;
@@ -63,7 +64,9 @@ export default function AuctionsProfile({ artistId }) {
   const GoToPost = () => {
     navigator(`/post/${posts.current[indexOfPost.current].id}/${artistid.current}`)
   };
-  const createPost = () => {};
+  const createPost = () => {
+    navigator(`/add/post`);
+  };
   return (
     <>
       <h1 className={style.exhibitionTitle}>پست</h1>
@@ -81,7 +84,8 @@ export default function AuctionsProfile({ artistId }) {
         >
           {statustext}
         </button>
-        {artistid.current === undefined || artistid.current === user.id ? (
+        {artistid.current === undefined || artistid.current === user?.id ? (
+
           <div id={style.createe}>
             <button className={style.btn2} onClick={createPost}>
               ایجاد پست{" "}

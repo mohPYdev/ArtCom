@@ -1,6 +1,6 @@
 import style from "./PS_Artist.module.css";
 
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { useAuthContext } from "../hooks/useAuthContext";
 
@@ -33,14 +33,18 @@ export default function PS_Artist() {
   const { artistId } = useParams();
   const { user } = useAuthContext();
   const [isSame, setIsSame] = useState();
+  
+  
+
 
   useEffect(()=>{
-    if (artistId && artistId != user.id) {
+    if(!user) return;
+    if (artistId && artistId !== user.id) {
       //see profile for other artist
       setIsSame(false);
     }
     else  setIsSame(true);
-  },[])
+  },[artistId, user])
 
 
   return (
@@ -51,11 +55,11 @@ export default function PS_Artist() {
       <InfoBarProfile artistId={artistId} />
       {isSame && (
       <div className={style.addpost}>
-            <a>
+            <Link to={`/add/auction`}>
                 <img src={addp1} className={style.addp1}></img>
                 <p className={style.cpost}>شرکت در مزایده</p>
                 <img src={addp2} className={style.addp2}></img>
-            </a>
+            </Link>
         </div>)}
       <ShowPlaceProfile artistId={artistId} />
       <PostProfile artistId={artistId} />

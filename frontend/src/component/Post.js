@@ -32,6 +32,8 @@ import warning from "../img/warning.png";
 import getPostInfo from "../function/getPostInfo";
 import { useParams } from "react-router-dom";
 
+import {useAxios} from "../hooks/useAxios";
+
 export default function Post() {
   const { postId, artistId } = useParams();
 
@@ -48,16 +50,24 @@ export default function Post() {
   const [image, setImage] = useState();
   const [description, setDescription] = useState();
 
+
+  const {postData:postLike} = useAxios(`http://localhost:8000/post/${artistId}/posts/${postId}/like/`,'POST');
+  const {postData:postDislike} = useAxios(`http://localhost:8000/post/${artistId}/posts/${postId}/dislike/`,'POST');
+
   //func
   const likeHandler = () => {
     if (liked) {
       setLiked(false);
       setLikeCount((prevcount) => prevcount - 1);
+      postDislike();
     } else {
       setLiked(true);
       setLikeCount((prevcount) => prevcount + 1);
+      postLike();
     }
   };
+
+
   //useEffect
   useEffect(() => {
     if (sold) {
@@ -68,6 +78,8 @@ export default function Post() {
       sold_btn.style.pointerEvents = "none";
     }
   }, [sold]);
+
+
   useEffect(() => {
     async function fetchData() {
       const { image, name, description, price, like_count, liked } =
@@ -80,16 +92,19 @@ export default function Post() {
       setLiked(liked);
     }
     fetchData();
-  }, []);
+  }, [artistId, postId]);
+
+
   return (
-    <div className="post-page">
+    <div className="post-page h-screen">
       <div className="pt-6">
         {/* Image  */}
         <div className="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-1 lg:gap-x-8">
-          <div className=" aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
+          <div className="rounded-lg overflow-hidden lg:block border-sky-900 border-solid border-2">
             <img
               src={image}
-              className="w-full h-full object-center object-cover"
+              className="w-fit h-fit mx-auto my-auto"
+              
             />
           </div>
         </div>
@@ -108,25 +123,11 @@ export default function Post() {
             <p className="mt-4 text-1xl text-gray-900 centertext ">
               1400/05/07
             </p>
-            {/* like */}
-            <div className="mt-10 ">
-              <div className="flex items-center justify-center">
-                <h3 className="mr-5 text-3xl text-gray-900 font-medium">
-                  {likeCount}
-                </h3>
-                  <img
-                    src={like}
-                    className={liked ? likedbtn : unlikedbtn}
-                    alt=""
-                    onClick={likeHandler}
-                  />
-              </div>
-            </div>
             <button
               className="mt-10 w-full bg-sky-900 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-sky-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 centertext"
               id="sold--btn"
             >
-              اضافه کردن به سبد خرید
+              پرداخت
               <img src={icon1} className="shopping-icon icon" />
             </button>
             <div className=" mt-10 flex items-center justify-center">
