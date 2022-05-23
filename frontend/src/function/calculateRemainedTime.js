@@ -26,7 +26,7 @@ export function getRemainedTime(end , status) {
 export function getShamsiDate(end){
   var time_list = end.slice(0, 10).split("-");
   var end_year = time_list[0];
-  var end_month = time_list[1] ;
+  var end_month = +time_list[1] +1;
   var end_day = time_list[2];
   
 

@@ -15,8 +15,8 @@ User = get_user_model()
 class CustomUserCreatePasswordRetypeSerializer(UserCreatePasswordRetypeSerializer):
     class Meta(UserCreatePasswordRetypeSerializer.Meta):
         model = User
-        fields = UserCreatePasswordRetypeSerializer.Meta.fields + ('city', 'address', 'postal_code', 'image', 'first_name', 'last_name')
-
+        fields = UserCreatePasswordRetypeSerializer.Meta.fields + ('city', 'address', 'postal_code', 'image', 'first_name', 'last_name',)
+        
     def validate(self, attrs):
         attrs = super().validate(attrs)
         if attrs['email'] == '':
@@ -42,8 +42,8 @@ class ArtistTokenSerializer(serializers.ModelSerializer):
 class CustomUserSerializer(UserSerializer):
     class Meta(UserSerializer.Meta):
         model = User
-        fields = UserSerializer.Meta.fields + ('city', 'address', 'postal_code', 'image', 'first_name', 'last_name', 'is_artist', 'following_count', 'is_superuser')
-        read_only_fields = ['is_artist', 'email', 'following_count', 'is_superuser']
+        fields = UserSerializer.Meta.fields + ('city', 'address', 'postal_code', 'image', 'first_name', 'last_name', 'is_artist', 'following_count', 'is_superuser', 'wallet')
+        read_only_fields = ['is_artist', 'email', 'following_count', 'is_superuser', 'wallet']
 
 
 class WalletSerializer(serializers.ModelSerializer):

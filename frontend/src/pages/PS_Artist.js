@@ -11,6 +11,9 @@ import HeaderProfile from "../sections/HeaderProfile";
 import addp1 from "../img/addpost1.png";
 import addp2 from "../img/addpost2.png";
 import { useEffect , useState} from "react";
+
+import { useAxios } from "../hooks/useAxios";
+
 export default function PS_Artist() {
   
   document.body.className = '';
@@ -20,19 +23,21 @@ export default function PS_Artist() {
     document.body.classList.remove(style.bodyclass);
   };
 
-  const navigator = useNavigate();
-
   const { artistId } = useParams();
   const { user } = useAuthContext();
   const [isSame, setIsSame] = useState();
+  
+  
+
 
   useEffect(()=>{
-    if (artistId && artistId != user.id) {
+    if(!user) return;
+    if (artistId && artistId !== user.id) {
       //see profile for other artist
       setIsSame(false);
     }
     else  setIsSame(true);
-  },[])
+  },[artistId, user])
 
 
   return (
