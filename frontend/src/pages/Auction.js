@@ -179,8 +179,11 @@ function Auction () {
                 <div id="top-grid"> 
                     <img src={infoicon} id="info-icon" />
                     {/* <img src={number1} id ="number-icon" /> */}
+                    {post &&<div id="info-icon-name"> نام اثر : {post.name} </div>}
                     <p id='time'> {time} </p>
                     <img src={profileicon} id="profile-icon" />
+                    <div id="profile-icon-name"> نام هنرمند  : {user?.username} </div>
+                    
                 </div>
 
                 <div id="timer-box">
