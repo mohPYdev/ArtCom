@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import './Searchbar.css'
+import './SearchComp.css'
 import { useState } from 'react';
 
 export default function SearchBar() {
@@ -15,7 +15,7 @@ export default function SearchBar() {
 
   return (
     <div>
-        <form id='search_bar' onSubmit={search}>
+        <form id='search_comp' onSubmit={search}>
             <input
             type="text"
             placeholder="جست و جو"

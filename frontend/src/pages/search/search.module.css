@@ -1,0 +1,39 @@
+.bodyclass {
+    background-color: #E9DAD3;
+    overflow: auto;
+    padding: 0;
+    margin: 0;
+}
+
+.search_list h2{
+    color: #1E2736;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 30px;
+}
+
+.search_list .navbar{
+    background-color: #1E2736;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    height: 80px;
+}
+
+.search_list .navbar .link{
+    margin-right: auto;
+    color: #fff;
+    text-decoration: none;
+    font-size: 2rem;
+    padding-left: 100px;
+}
+
+.search_list .navbar a:last-child {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 40px;
+    padding: 8px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+  }

@@ -8,7 +8,7 @@ export default function Profilelist({ profiles }) {
           <a href={`/psa/${p.id}`}>
             <div key={p.id} className='profile' >
                 <img src={p.image} alt='profile-img' />
-                <p>{p.username}</p>
+                <h3>{p.username}</h3>
                 <p>{p.artist.profession}</p>
             </div>
           </a>

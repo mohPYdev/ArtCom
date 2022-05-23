@@ -14,6 +14,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     align-content: center;
+    height: 120px;
 }
 
 .contact {
@@ -32,6 +33,7 @@
     justify-self: center;
     cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    height: 45px;
 }
 
 .contact:focus {
@@ -48,8 +50,8 @@
 }
 
 .profile {
-    height: 140px;
-    width: 140px;
+    height: 80px;
+    width: 80px;
     margin: 40px;
     /* top: -4px; */
     /* position: relative; */
