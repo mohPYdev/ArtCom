@@ -1,11 +1,11 @@
-.post-list {
+.profile-list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 50px;
     width: 1200px;
     margin: 40px auto;
   }
-  .post-list .post {
+  .profile-list .profile {
     background: #fff;
     color: #333;
     padding: 12px;
@@ -19,7 +19,7 @@
     height: 200px;
   }
 
-  .post-list .post img{
+  .profile-list .profile img{
     max-height: 180px;
     max-width: 260px;
     display:block;
@@ -32,24 +32,24 @@
   }
   
 
-  .post-list .post:hover {
+  .profile-list .profile:hover {
     transform: rotate(3deg);
   }
-  .post-list .post h3 {
+  .profile-list .profile h3 {
     color: #555;
     margin-bottom: 6px;
   }
-  .post-list .post p {
+  .profile-list .profile p {
     color: #999;
     font-size: 0.9em;
   }
-  .post-list .post div {
+  .profile-list .profile div {
     color: #555;
     font-size: 0.7em;
     margin: 20px 0;
     line-height: 1.5em;
   }
-  .post-list .post a {
+  .profile-list .profile a {
     color: #555;
     text-decoration: none;
     display: block;
@@ -62,7 +62,7 @@
     border-radius: 4px;
     margin: 20px auto 0;
   }
-  .post-list .post a:hover {
+  .profile-list .profile a:hover {
     background: #58249c;
     color: white;
   }

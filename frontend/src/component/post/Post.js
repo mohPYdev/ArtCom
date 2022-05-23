@@ -1,9 +1,10 @@
 import './post.css'
 import { useFetch } from '../../hooks/useFetch'
 import { useState } from 'react'
-import Comment_Input from '../comment_input/Comment_Input'
 
 export default function Post({ handleClose , id}) {
+
+  const [comment  ,setcomm] = useState('')
 
     const url = 'http://localhost:3000/posts/' + id
   const {data , loading , error} = useFetch(url)
@@ -13,6 +14,12 @@ export default function Post({ handleClose , id}) {
       handleClose()
   }
 
+  const post_comment = (e) => {
+    e.preventDefault()
+    //add comment
+    console.log(comment)
+    setcomm('')
+  }
 
   return (
     <div className="modal-backdrop" onClick={((e) => close(e, data))}>
@@ -27,7 +34,14 @@ export default function Post({ handleClose , id}) {
                 <h4>Description:</h4>
                 <p>{data.description}</p>
                 <h4>Comments:</h4>
-                <Comment_Input />
+                <form onSubmit={post_comment}>
+                  <input
+                    type='text'
+                    required
+                    onChange={e => setcomm(e.target.value)}
+                    value={comment}
+                  />
+                </form>
                 {data.comments.length !==0 && data.comments.map(c => (
                     <div key={c.id}>
                         <p><b>{c.username}</b> : {c.text}</p>

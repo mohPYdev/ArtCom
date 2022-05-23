@@ -14,6 +14,7 @@ import Avatar from "../component/Avatar";
 import { useAxios } from "../hooks/useAxios";
 import ShowPlaceHomePage from "../sections/ShowPlaceHomePage";
 import AuctionsHomePage from "../sections/AuctionsHomePage";
+import SearchBar from "../component/SearchBar/SearchBar";
 
 export default function HomePage() {
 
@@ -31,11 +32,7 @@ export default function HomePage() {
   
   const navigator = useNavigate();
 
-  const [search, setSearch] = useState("");
-
-  const searchHandle = (event) => {
-    setSearch(event.target.value);
-  };
+  
 
   const contactHandle = (event) => {};
 
@@ -44,13 +41,7 @@ export default function HomePage() {
       <div className={style.header}>
         <Avatar backColor="dark" />
 
-        <input
-          type="text"
-          id={style.search}
-          placeholder="جست و جو"
-          value={search}
-          onChange={searchHandle}
-        />
+        <SearchBar />
 
         <button className={style.contact}>ارتباط با ما</button>
       </div>
