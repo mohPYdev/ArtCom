@@ -160,7 +160,7 @@ function Auction() {
     const half_timer = document.getElementById("timerhalf");
     const full_timer = document.getElementById("timerfull");
 
-    if (time <= 10) {
+    if (time < 10) {
       half_timer.style.opacity = "1";
       full_timer.style.opacity = "0.2";
     } else {
