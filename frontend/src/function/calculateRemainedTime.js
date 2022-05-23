@@ -3,7 +3,7 @@ import persian_fa from "react-date-object/locales/persian_fa"
 import DateObject from "react-date-object"
 
 export function getRemainedTime(end , status) {
-
+if (end !== undefined){
   var time_list = end.slice(0, 10).split("-");
   var end_year = time_list[0];
   var end_month = time_list[1];
@@ -20,10 +20,15 @@ export function getRemainedTime(end , status) {
     روز : ${Math.abs(+end_day - +today.getDate())}
     ساعت : ${Math.abs(+end_hour - +today.getHours())}
     دقیقه : ${Math.abs(+end_min - (+today.getMinutes() + 1))}`
-
+}
+else{
+  time_str='';
+}
   return time_str;
 }
 export function getShamsiDate(end){
+  let date = new DateObject()
+  if(end !== undefined){
   var time_list = end.slice(0, 10).split("-");
   var end_year = time_list[0];
   var end_month = +time_list[1] +1;
@@ -33,12 +38,19 @@ export function getShamsiDate(end){
 
     //show date in calender
     
-    const date = new DateObject()
+    
 
 
     date.set({ year: +end_year, month: +end_month, day: +end_day })
     date.convert(persian, persian_fa)
-    return date ; 
-  
+  }
+  else{
+    date = new DateObject()
+  }
+  return date ; 
 
 }
+
+<div id="handle-box">
+              
+</div>  
