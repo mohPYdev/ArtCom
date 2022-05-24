@@ -1,7 +1,7 @@
 import './Comment_Input.css'
 import { useState } from 'react'
 
-export default function Comment_Input() {
+export default function CommentInput() {
 
     const [comment  ,setcomm] = useState('')
 
@@ -20,7 +20,7 @@ export default function Comment_Input() {
                 required
                 onChange={e => setcomm(e.target.value)}
                 value={comment}
-                placeholder='Write your Comment here ...'
+                placeholder='نظر خود را اینجا بنویسید ...'
             />
         </form>
     </div>

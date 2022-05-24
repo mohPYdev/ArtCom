@@ -1,16 +1,10 @@
 import style from "./HomePage.module.css";
-
-// just for showing posts
-import { useFetch } from '../hooks/useFetch'
 import Postlist from '../component/postlist/Postlist'
 
-
-// import { useAuthContext } from "../hooks/useAuthContext";
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 import Avatar from "../component/Avatar";
-// import getExhibitions from "../function/getExhibitions";
 import { useAxios } from "../hooks/useAxios";
 import ShowPlaceHomePage from "../sections/ShowPlaceHomePage";
 import AuctionsHomePage from "../sections/AuctionsHomePage";

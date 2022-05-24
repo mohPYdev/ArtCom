@@ -1,10 +1,15 @@
 .comment_input input{
-    width: 80%;
+    width: 45%;
+    transform: translateX(-50%);
     padding: 4px 4px;
     margin: 8px 0;
     box-sizing: border-box;
     border: 3px solid #000000;
     border-radius: 5px;
+    bottom: 20px;
+    position: absolute;
+    font-size: 1.5rem;
+    direction: rtl;
 }
 
 .comment_input input:focus{
