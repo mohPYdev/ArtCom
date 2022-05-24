@@ -65,7 +65,9 @@ export default function AuctionsHomePage() {
   const GoToAuction = () => {
     navigator(`/auction/${auctions.current[indexOfAuctions.current].id}`);
   };
-
+  const GoToAuctionArtwork = () => {
+    navigator(``);
+  }
   //useEffect
   useEffect(() => {
     if (statusa === "open") setStatusatext("درحال برگزاری");
@@ -85,15 +87,18 @@ export default function AuctionsHomePage() {
 
   return (
     <div className={style.auction}>
+      {statusa !== "finished" &&
       <div className={style.timer}><span>
       {statusa ==='open' ? ` : زمان مانده تا پایان  ` : ` : زمان مانده تا شروع  ` }
-      </span><br /><br />{timera}</div>
+      </span><br /><br />{timera}</div>}
+      {statusa !== "finished" &&
       <Calendar
       calendar={persian}
       locale={persian_fa}
       className={style.calendera}
       value={shamsiDate}
     />
+  }
       <img src={back} alt="" className={style.backa} onClick={backaHandle} />
       <div className={style.bannera}>
         <img src={auctionPoster} alt="" className="" />
@@ -120,7 +125,7 @@ export default function AuctionsHomePage() {
 
 
       <div id={style.asara}>
-        <button className={style.blue}>آثار هنری</button>
+        <button className={style.blue} onClick={GoToAuctionArtwork}>آثار هنری</button>
       </div>
       
     </div>
