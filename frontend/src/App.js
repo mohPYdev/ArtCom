@@ -26,7 +26,7 @@ import Addpost from './component/AddPost';
 import Add_Exhibition from './pages/Add_Exhibition';
 import Add_Auction from './pages/Add_Auction';
 
-
+import Contact_us from './pages/Contact_us';
 
 
 const options = {
@@ -75,6 +75,7 @@ function App() {
 
 
           <Route path="/post/:postId/:artistId" element={<Post />} />
+          <Route path="/contactus" element={<Contact_us />} />
 
       </Routes>
     </BrowserRouter>
