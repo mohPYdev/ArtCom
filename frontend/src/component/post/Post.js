@@ -53,6 +53,7 @@ export default function Post({ handleClose , id}) {
                   <div className='content'>
                     <b>شرح:</b>
                     <p>{data.description}</p>
+                    <hr></hr>
                     <b>نظرات:</b>
                     <div className='comments'>
                       {data.comments.length !==0 && data.comments.map(c => (
