@@ -103,7 +103,7 @@ export default function Post() {
           <div className="h-full mx-auto my-auto rounded-lg overflow-hidden lg:block border-sky-900 border-solid border-2">
             <img
               src={image}
-              className="mx-auto my-auto min-h-[50%] min-w-[50%] min-w-full max-h-full max-w-full"
+              className="mx-auto my-auto min-h-[50%] min-w-[50%] max-h-full max-w-full"
               
             />
           </div>

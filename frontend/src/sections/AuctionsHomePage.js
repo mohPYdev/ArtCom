@@ -12,9 +12,14 @@ import { Calendar } from "react-multi-date-picker"
 import persian from "react-date-object/calendars/persian"
 import persian_fa from "react-date-object/locales/persian_fa"
 import DateObject from "react-date-object"
-
+import './test.css'
 import { useAxios } from "../hooks/useAxios";
 
+const styles = {
+  bounce: {
+    animation: "startpost 1s cubic-bezier(0.06, 0.27, 1, 0.22) 1 1s",
+  }
+}
 export default function AuctionsHomePage() {
   //fetch-data
   const { data} = useAxios(
@@ -51,16 +56,22 @@ export default function AuctionsHomePage() {
   const backaHandle = () => {
     indexOfAuctions.current = indexOfAuctions.current - 1;
     if (indexOfAuctions.current < 0)
-      indexOfAuctions.current = auctions.current.length - 1;
+      indexOfAuctions.current = 0;
 
     changePost();
+    styles.bounce = {
+      animation : "prevpost cubic-bezier(0.06, 0.27, 1, 0.22) 1s"
+    }
   };
 
   const nextaHandle = () => {
     indexOfAuctions.current++;
     if (indexOfAuctions.current >= auctions.current.length)
-      indexOfAuctions.current = 0;
+      indexOfAuctions.current = auctions.current.length -1;
     changePost();
+    styles.bounce = {
+      animation : "nextpost cubic-bezier(0.06, 0.27, 1, 0.22) 1s"
+    }
   };
   const GoToAuction = () => {
     navigator(`/auction/${auctions.current[indexOfAuctions.current].id}`);
@@ -101,7 +112,7 @@ export default function AuctionsHomePage() {
   }
       <img src={back} alt="" className={style.backa} onClick={backaHandle} />
       <div className={style.bannera}>
-        <img src={auctionPoster} alt="" className="" />
+        <img src={auctionPoster} alt="" className={style.aucpost} style={styles.bounce} />
       </div>
       <img src={next} alt="" className={style.nexta} onClick={nextaHandle} />
       <button

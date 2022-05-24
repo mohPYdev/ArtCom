@@ -11,8 +11,14 @@ import { Calendar } from "react-multi-date-picker"
 import persian from "react-date-object/calendars/persian"
 import persian_fa from "react-date-object/locales/persian_fa"
 
+import './test.css'
+const styles = {
+  bounce: {
+    animation: "startpost 1s cubic-bezier(0.06, 0.27, 1, 0.22) 1 1s",
+  }
+}
 function ExhibImage({ image_url }) {
-  return <img src={image_url} alt="" className={style.ExhibPost} />;
+  return <img src={image_url} alt="" id={style.ExhibPost} style={styles.bounce} />;
 }
 export default function ShowPlaceHomePage() {
   //  const { data, isPending, error } = useAxios(
@@ -33,6 +39,7 @@ export default function ShowPlaceHomePage() {
 
   //func
   const changePost = () => {
+
     if(exhibitions.current[indexOfExhibitons.current] !== null){
     setExhibPoster(
       exhibitions.current[indexOfExhibitons.current]?.cover
@@ -59,15 +66,22 @@ export default function ShowPlaceHomePage() {
   const backeHandle = () => {
     indexOfExhibitons.current = indexOfExhibitons.current - 1;
     if (indexOfExhibitons.current < 0)
-      indexOfExhibitons.current = exhibitions.current.length - 1;
+      indexOfExhibitons.current = 0;
     changePost();
+    styles.bounce = {
+      animation : "prevpost cubic-bezier(0.06, 0.27, 1, 0.22) 1s"
+    }
   };
 
   const nexteHandle = () => {
     indexOfExhibitons.current++;
     if (indexOfExhibitons.current >= exhibitions.current.length)
-      indexOfExhibitons.current = 0;
+      indexOfExhibitons.current = exhibitions.current.length -1 ;
     changePost();
+    styles.bounce = {
+      animation : "nextpost cubic-bezier(0.06, 0.27, 1, 0.22) 1s"
+    }
+   
   };
   const GoToShowPlace = () => {
     navigator(`/show/${exhibitions.current[indexOfExhibitons.current].id}`);
