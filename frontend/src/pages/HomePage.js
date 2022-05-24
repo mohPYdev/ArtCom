@@ -29,7 +29,9 @@ export default function HomePage() {
     setSearch(event.target.value);
   };
 
-  const contactHandle = (event) => {};
+  const contactHandle = () => {
+    navigator('/contactus')
+  };
 
   return (
     <div>
@@ -44,7 +46,7 @@ export default function HomePage() {
           onChange={searchHandle}
         />
 
-        <button className={style.contact}>ارتباط با ما</button>
+        <button className={style.contact} onClick={contactHandle}>ارتباط با ما</button>
       </div>
       <ShowPlaceHomePage />
       <AuctionsHomePage />
