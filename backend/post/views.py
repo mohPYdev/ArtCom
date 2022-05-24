@@ -33,7 +33,21 @@ class PostViewSet(viewsets.ModelViewSet):
         serializer.save(artist=self.request.user.artist)
 
     def get_queryset(self):
-        return Post.objects.filter(artist=self.request.user.artist)
+        if self.action == 'me':
+            return Post.objects.filter(artist=self.request.user.artist)
+        return self.queryset
+    
+    def get_permissions(self):
+        if self.action == 'list':
+            permission_classes = [IsAuthenticated,]
+        else:
+            permission_classes = [IsArtist,]
+        return [permission() for permission in permission_classes]
+
+
+    @action(detail=False, methods=['GET'], url_name='me' )
+    def me(self, request):
+        return self.list(request)
     
     
 class PostListView(generics.ListAPIView):

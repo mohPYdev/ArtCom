@@ -28,7 +28,7 @@ export default function HomePage() {
 
 
   // just for posts
-  const { data , loading , error } = useFetch('http://localhost:3000/posts')
+  const { data , loading , error } = useAxios('http://localhost:8000/post/posts/')
   
   const navigator = useNavigate();
 

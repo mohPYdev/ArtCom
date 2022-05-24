@@ -5,6 +5,8 @@ import SearchComp from './SearchComp'
 import { useFetch } from '../../hooks/useFetch'
 import style from './search.module.css'
 
+import { useAxios } from '../../hooks/useAxios'
+
 export default function Search() {
 
   // fetching data using url query
@@ -14,10 +16,10 @@ export default function Search() {
   let query = queryparam.get('q')
 
   // const url = 'http://localhost:3000/artists?q='+query
-  const url = 'http://localhost:3000/artists'
+  const url = 'http://localhost:8000/auth/users/artist_list/'
   
 
-  const {data , loading , error}  = useFetch(url)
+  const {data , loading , error}  = useAxios(url)
 
   query = query.toUpperCase()
 

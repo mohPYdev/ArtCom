@@ -74,7 +74,7 @@ export default function Example() {
       <>
         <div className="h-fit w-screen bg-gradient-to-b from-blue-200 to-blue-900"	>
                 <div className=" w-1/2 py-16 mx-auto shadow sm:rounded-md sm:overflow-hidden righttext ">
-                  <div className="px-4 py-5 bg-white space-y-6 sm:p-6 ">
+                  <form className="px-4 py-5 bg-white space-y-6 sm:p-6 " onSubmit={handleApSubmit}>
                     <div className="grid grid-cols-3 gap-6">
                       <div className="col-span-3 sm:col-span-3">
                         <label htmlFor="company-website" className="block text-sm font-medium text-gray-700 righttext" >
@@ -206,7 +206,7 @@ export default function Example() {
                     >
                       ثبت اثر
                     </button>   
-                  </div>   
+                  </form>   
                   
                 </div>
                 

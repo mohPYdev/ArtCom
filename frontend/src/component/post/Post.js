@@ -1,13 +1,14 @@
 import './post.css'
 import { useFetch } from '../../hooks/useFetch'
 import { useState } from 'react'
+import { useAxios } from '../../hooks/useAxios'
 
 export default function Post({ handleClose , id}) {
 
   const [comment  ,setcomm] = useState('')
 
-    const url = 'http://localhost:3000/posts/' + id
-  const {data , loading , error} = useFetch(url)
+    const url = 'http://localhost:8000/post/posts/' + id
+  const {data , loading , error} = useAxios(url)
 
   const close = (e) => {
     if(e.target.className === ('modal-backdrop'))
