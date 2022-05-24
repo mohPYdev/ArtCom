@@ -26,8 +26,6 @@ export default function ShowPlaceProfile({ artistId }) {
     else if (status === "ns") setStatustext("شروع نشده");
   }, [status]);
 
-
-  
   useEffect(() => {
     async function fetchData() {
       let state;
@@ -35,7 +33,7 @@ export default function ShowPlaceProfile({ artistId }) {
       if (artistId === undefined || artistId === user?.id) state = "myProfile";
       else state = "otherProfile";
 
-      const list = await getExhibitions(state , artistId);
+      const list = await getExhibitions(state, artistId);
 
       exhibitions.current = list;
       indexOfExhibitons.current = 0;
@@ -46,10 +44,12 @@ export default function ShowPlaceProfile({ artistId }) {
 
   //func
   const changePost = () => {
-    setExhibPoster(
-      exhibitions.current[indexOfExhibitons.current]?.cover
-    );
-    setStatus(exhibitions.current[indexOfExhibitons.current]?.status);
+    if (exhibitions.current[indexOfExhibitons.current] !== null) {
+      setExhibPoster(exhibitions.current[indexOfExhibitons.current]?.cover);
+      setStatus(exhibitions.current[indexOfExhibitons.current]?.status);
+    } else {
+      nexteHandle();
+    }
   };
   const backeHandle = () => {
     indexOfExhibitons.current = indexOfExhibitons.current - 1;
@@ -89,9 +89,7 @@ export default function ShowPlaceProfile({ artistId }) {
           {statustext}
         </button>
 
-
         {artistId === undefined || artistId === user?.id ? (
-
           <div id={style.createe}>
             <button className={style.btn2} onClick={createExhibitions}>
               ساخت نمایشگاه

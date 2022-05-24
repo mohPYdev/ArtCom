@@ -33,8 +33,10 @@ export default function ShowPlaceHomePage() {
 
   //func
   const changePost = () => {
+    if(exhibitions.current[indexOfExhibitons.current] !== null){
     setExhibPoster(
       exhibitions.current[indexOfExhibitons.current]?.cover
+      
     );
     setStatuse(exhibitions.current[indexOfExhibitons.current]?.status);
 
@@ -48,6 +50,10 @@ export default function ShowPlaceHomePage() {
       setTimerE(getRemainedTime(start, statuse));
       setShamsiDate(getShamsiDate(start, statuse));
     }
+  }
+  else{
+    nexteHandle();
+  }
   };
 
   const backeHandle = () => {
@@ -82,6 +88,7 @@ export default function ShowPlaceHomePage() {
     async function fetchData() {
       const list = await getExhibitions("home");
       exhibitions.current = list;
+      //console.log(exhibitions.current)
       indexOfExhibitons.current = 0;
       changePost();
     }
@@ -107,7 +114,7 @@ export default function ShowPlaceHomePage() {
         <img src={back}/>
       </button>
       <div className={style.bannere}>
-        <ExhibImage image_url={exhibPoster} />
+        <ExhibImage image_url={exhibPoster}  />
       </div>
       <img src={next} alt="" className={style.next} onClick={nexteHandle} />
 
