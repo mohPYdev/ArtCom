@@ -68,7 +68,7 @@ export default function ShowPlaceProfile({ artistId }) {
     navigator(`/add/exhibition`);
   };
   const GoToShowPlace = () => {
-    navigator(`/show/${indexOfExhibitons.current}`);
+    navigator(`/show/${exhibitions.current[indexOfExhibitons.current].id}`);
   };
   return (
     <>
