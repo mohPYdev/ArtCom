@@ -85,9 +85,9 @@
             "id" : 3,
             "image" : "http://127.0.0.1:8887/3.png",
             "name" : "Third Post",
-            "description" : "sth about post number 3",
+            "description" : "یه چیزی درمورد پست شماره 3",
             "price" : "33",
-            "for_sale" : false,
+            "for_sale" : true,
             "sold": true,
             "artist" : {
                 "user" : {
@@ -97,21 +97,154 @@
                 },
                 "profession" : ""
             },
-            "like_count" : 100,
-            "liked" : false,
+            "like_count" : 158,
+            "liked" : true,
             "date_added" : "2010-05-20",
             "comments" : [
                 {
                     "id" : 1,
                     "username" : "alireza-msv",
-                    "text" : "hello, 3 is great",
+                    "text" : "سلاااااااام 3 عالیههههه",
                     "date_added" : "2022-05-18",
                     "post" : 3
                 },
                 {
                     "id" : 2,
                     "username" : "user12",
-                    "text" : "bah bah bah",
+                    "text" : "به به بههههه",
+                    "date_added" : "2022-05-18",
+                    "post" : 3
+                },
+                {
+                    "id" : 3,
+                    "username" : "user12",
+                    "text" : "به به بههههه",
+                    "date_added" : "2022-05-18",
+                    "post" : 3
+                },
+                {
+                    "id" : 4,
+                    "username" : "user12",
+                    "text" : "به به بههههه",
+                    "date_added" : "2022-05-18",
+                    "post" : 3
+                },
+                {
+                    "id" : 5,
+                    "username" : "user12",
+                    "text" : "به به بههههه",
+                    "date_added" : "2022-05-18",
+                    "post" : 3
+                },
+                {
+                    "id" : 6,
+                    "username" : "user12",
+                    "text" : "به به بههههه",
+                    "date_added" : "2022-05-18",
+                    "post" : 3
+                },
+                {
+                    "id" : 7,
+                    "username" : "user12",
+                    "text" : "به به بههههه",
+                    "date_added" : "2022-05-18",
+                    "post" : 3
+                },
+                {
+                    "id" : 8,
+                    "username" : "user12",
+                    "text" : "به به بههههه",
+                    "date_added" : "2022-05-18",
+                    "post" : 3
+                },
+                {
+                    "id" : 9,
+                    "username" : "user12",
+                    "text" : "به به بههههه",
+                    "date_added" : "2022-05-18",
+                    "post" : 3
+                },
+                {
+                    "id" : 10,
+                    "username" : "user12",
+                    "text" : "به به بههههه",
+                    "date_added" : "2022-05-18",
+                    "post" : 3
+                },
+                {
+                    "id" : 11,
+                    "username" : "user12",
+                    "text" : "به به بههههه",
+                    "date_added" : "2022-05-18",
+                    "post" : 3
+                },
+                {
+                    "id" : 12,
+                    "username" : "user12",
+                    "text" : "به به بههههه",
+                    "date_added" : "2022-05-18",
+                    "post" : 3
+                },
+                {
+                    "id" : 13,
+                    "username" : "user12",
+                    "text" : "به به بههههه",
+                    "date_added" : "2022-05-18",
+                    "post" : 3
+                },
+                {
+                    "id" : 14,
+                    "username" : "user12",
+                    "text" : "به به بههههه",
+                    "date_added" : "2022-05-18",
+                    "post" : 3
+                },
+                {
+                    "id" : 15,
+                    "username" : "user12",
+                    "text" : "به به بههههه",
+                    "date_added" : "2022-05-18",
+                    "post" : 3
+                },
+                {
+                    "id" : 16,
+                    "username" : "user12",
+                    "text" : "به به بههههه",
+                    "date_added" : "2022-05-18",
+                    "post" : 3
+                },
+                {
+                    "id" : 17,
+                    "username" : "user12",
+                    "text" : "به به بههههه",
+                    "date_added" : "2022-05-18",
+                    "post" : 3
+                },
+                {
+                    "id" : 18,
+                    "username" : "user12",
+                    "text" : "به به بههههه",
+                    "date_added" : "2022-05-18",
+                    "post" : 3
+                },
+                {
+                    "id" : 19,
+                    "username" : "user12",
+                    "text" : "به به بههههه",
+                    "date_added" : "2022-05-18",
+                    "post" : 3
+                },
+                {
+                    "id" : 20,
+                    "username" : "user12",
+                    "text" : "به به بههههه",
+                    "date_added" : "2022-05-18",
+                    "post" : 3
+                },
+                {
+                    "id" : 21,
+                    "username" : "user12",
+                    "text" : "به به بههههه",
                     "date_added" : "2022-05-18",
                     "post" : 3
                 }

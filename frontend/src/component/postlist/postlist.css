@@ -3,7 +3,7 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 50px;
     width: 1200px;
-    margin: 40px auto;
+    margin: 100px auto;
   }
   .post-list .post {
     background: #fff;
