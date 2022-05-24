@@ -16,7 +16,7 @@ from post.serializers import PostSerializer, LikeSerializer, ExhibitionSerialize
                              ExhibitionCreateSerializer, AuctionCreateSerializer,\
                              AuctionSerializer,\
                              AuctionArtistSerializer, PostPaymentSerializer,\
-                             OrderSerializer, CommentCreateSerializer
+                             OrderSerializer, CommentCreateSerializer, CommentSerializer
 
 User = get_user_model()
 
@@ -162,7 +162,22 @@ class CommentViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user) 
+
+    def get_queryset(self):
+        if self.action == 'comment_post':
+            post = Post.objects.get(id=self.kwargs['pk'])
+            return Comment.objects.filter(post=post)
+        return self.queryset
+
+    def get_serializer_class(self):
+        if self.action == 'comment_post':
+            return CommentSerializer
+        return self.serializer_class
     
+
+    @action(detail=True, methods=['GET'], url_name='post' )
+    def comment_post(self, request, pk):
+        return self.list(request)
 
    
 
@@ -173,6 +188,9 @@ class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
     permission_classes = (IsAuthenticated,)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
     
 
