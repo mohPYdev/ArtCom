@@ -78,7 +78,7 @@ export default function AuctionsHomePage() {
   useEffect(() => {
     
     if (data) {
-      auctions.current = data;
+      auctions.current = data.filter(auc => auc.status !== "finished");
       indexOfAuctions.current = 0;
       changePost();
     }

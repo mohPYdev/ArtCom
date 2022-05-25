@@ -10,12 +10,14 @@ import { useEffect, useState } from 'react'
 
 export default function Post({ handleClose , id}) {
 
-    const url = 'http://localhost:3000/posts/' + id
+    const url = 'http://localhost:8000/post/posts/' + id
   
     // test
     const [likked , setlikked] = useState(false)
   const {loading , error} = useAxios(url)
   const [data , setdata] = useState(null)
+
+  const {data:comments} = useAxios(`http://localhost:8000/post/comments/${id}/comment_post/`)
 
   const close = (e) => {
     if(e.target.className === ('modal-backdrop'))
@@ -68,9 +70,9 @@ export default function Post({ handleClose , id}) {
                     <hr></hr>
                     <b>نظرات:</b>
                     <div className='comments'>
-                      {data.comments.length !==0 && data.comments.map(c => (
+                      {comments  && comments.map(c => (
                         <div key={c.id}>
-                            <p><b>{c.username}</b> : {c.text}</p>
+                            <p><b>{c.user}</b> : {c.text}</p>
                             <p></p>
                         </div>
                       ))}
