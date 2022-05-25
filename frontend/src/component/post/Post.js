@@ -6,20 +6,43 @@ import notliked from '../../img/notliked.png'
 import sold from '../../img/sold.png'
 import buy from '../../img/buy.png'
 import notbuy from '../../img/notbuy.png'
-import { useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 
 export default function Post({ handleClose , id}) {
 
     const url = 'http://localhost:8000/post/posts/' + id
   
     // test
-    const [likked , setlikked] = useState(false)
-    let {data , loading , error} = useAxios(url)
+    const [likked , setlikked] = useState(null)
+    const {loading , error} = useAxios(url)
+    const [data , setdata] = useState(null)
+    const [comments, setComments] = useState(null)
+    // const {data:comments} = useAxios(`http://localhost:8000/post/comments/${id}/comment_post/`)
+    const [count , setCount] = useState(data?.like_count)
+    const [addComment, setAddComment] = useState(false)
+    
+    const {postData:postLike} = useAxios(`http://localhost:8000/post/${data?.artist.user.id}/posts/${data?.id}/like/`,'POST');
+    const {postData:postDislike} = useAxios(`http://localhost:8000/post/${data?.artist.user.id}/posts/${data?.id}/dislike/`,'POST');
     
 
-  const {data:comments} = useAxios(`http://localhost:8000/post/comments/${id}/comment_post/`)
 
-  const [addComment, setAddComment] = useState(false)
+
+
+
+  const updateaddcomment = () => {
+    setAddComment(!addComment)
+  }
+
+
+
+
+  useEffect(() => {
+    update()
+  } , [addComment , likked])
+
+
+
+
 
   const close = (e) => {
     if(e.target.className === ('modal-backdrop'))
@@ -27,10 +50,40 @@ export default function Post({ handleClose , id}) {
       
   }
 
-
   const likehandler = () => {
-    setlikked(!likked)
+    if (data?.liked) {
+      setlikked(false);
+      // setCount((prevcount)=>prevcount-1)
+      postDislike();
+    } else {
+      setlikked(true);
+      // setCount((prevcount)=>prevcount+1)
+      postLike();
+    }
+  };
+
+
+  const update =  () => {
+    const headers = {
+      "Content-Type": "application/json",
+      "Authorization": `Token ${JSON.parse(localStorage.getItem("token"))}`
+    }
+
+    fetch(url, {headers: headers} )
+    .then((response) => response.json())
+    .then(newpost => {
+        setdata(newpost)
+    })
+
+    fetch(`http://localhost:8000/post/comments/${id}/comment_post/`, {headers: headers} )
+    .then((response) => response.json())
+    .then(comm => {
+        console.log(comm)
+        setComments(comm)
+    })
   }
+
+
 
 
   return (
@@ -40,7 +93,7 @@ export default function Post({ handleClose , id}) {
           {error && <p>{error}</p>}
           {data && 
             <div className='flex-container'>
-                <img alt='post-img' src={data.image} />
+                <img alt='post-img' src={data.image}  className='post_img'/>
                 <div className='details'>
                   <div className='first-row'>
                     <b title='نام اثر'>{data.name}</b>
@@ -49,10 +102,10 @@ export default function Post({ handleClose , id}) {
                     {/* {data.liked && <img src={liked} onClick={likehandler} alt='liked' title='🗿  نپسندیدم' />}
                     {!data.liked && <img src={notliked}  onClick={likehandler} alt='not liked' title='🍠 پسندیدم'/>} */}
 
-                    {likked && <img src={liked} onClick={likehandler} alt='liked' title='🗿  نپسندیدم' />}
-                    {!likked && <img src={notliked}  onClick={likehandler} alt='not liked' title='🍠 پسندیدم'/>}
+                    {data?.liked && <img src={liked} onClick={likehandler} alt='liked' title='🗿  نپسندیدم' />}
+                    {!data.liked && <img src={notliked}  onClick={likehandler} alt='not liked' title='🍠 پسندیدم'/>}
                     
-                    <b title='تعداد  لایک ها'>{data.like_count} <hr></hr>نفر پسندیده اند</b> 
+                    <b title='تعداد  لایک ها'>{data?.like_count} <hr></hr>نفر پسندیده اند</b> 
                     {data.sold && <img src={sold} alt='sold' title='فروخته شده' />}
 
                   </div>
@@ -69,7 +122,7 @@ export default function Post({ handleClose , id}) {
                       ))}
                     </div>
                   </div>
-                  <CommentInput id={data.id} />
+                  <CommentInput id={data.id} updateaddcomment={updateaddcomment} />
                 </div>
             </div>
           }

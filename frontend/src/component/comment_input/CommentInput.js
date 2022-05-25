@@ -2,7 +2,7 @@ import './Comment_Input.css'
 import { useState } from 'react'
 import {useAxios} from '../../hooks/useAxios'
 
-export default function CommentInput({id, update}) {
+export default function CommentInput({id , updateaddcomment}) {
 
     const [comment  ,setcomm] = useState('')
 
@@ -12,7 +12,8 @@ export default function CommentInput({id, update}) {
         e.preventDefault()
         postData({'text':comment, 'post':id})
         setcomm('')
-        update()
+        console.log(comment)
+        updateaddcomment()
       }
 
   return (
