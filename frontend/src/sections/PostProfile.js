@@ -1,24 +1,19 @@
 import React from "react";
 import style from "../pages/PS_Artist.module.css";
-import next from "../img/next.png";
-import back from "../img/back.png";
-import { useState, useEffect, useRef } from "react";
+import { useRef } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
-import getPosts from "../function/getPosts";
 import addp1 from "../img/addpost1.png";
 import addp2 from "../img/addpost2.png";
 
 export default function AuctionsProfile({ artistId }) {
   const { user } = useAuthContext();
-  const indexOfPost = useRef("");
-  const posts = useRef("");
   const artistid = useRef(artistId)
-  const navigator = useNavigate();
+  //const navigator = useNavigate();
 
 
   //State
-  const [status, setStatus] = useState("");
+  
 
   //useEffect
 
