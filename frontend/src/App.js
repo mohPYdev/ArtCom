@@ -19,6 +19,7 @@ import PS_Noraml from './pages/PS_Normal';
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic'
 import PS_Artist from './pages/PS_Artist';
+import Psa2 from './pages/Psa2';
 
 import AuctionResault from './pages/AuctionResult';
 
@@ -63,7 +64,7 @@ function App() {
           <Route path="/show/:id" element={<ShowPlace />} />
           <Route path="/psn" element={<PS_Noraml />} />
           <Route path="/psa/:artistId" element={<PS_Artist />} />
-          <Route path="/psa" element={<PS_Artist />} />
+          <Route path="/psa" element={<PS_Artist/>} />
 
           <Route path="/auctionres/:id" element={<AuctionResault/> } />
         
