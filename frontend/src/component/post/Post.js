@@ -6,7 +6,7 @@ import notliked from '../../img/notliked.png'
 import sold from '../../img/sold.png'
 import buy from '../../img/buy.png'
 import notbuy from '../../img/notbuy.png'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Post({ handleClose , id}) {
 
@@ -14,8 +14,8 @@ export default function Post({ handleClose , id}) {
   
     // test
     const [likked , setlikked] = useState(false)
-  // const {data , loading , error} = useAxios(url)
-  let {data , loading , error} = useAxios(url)
+  const {loading , error} = useAxios(url)
+  const [data , setdata] = useState(null)
 
   const close = (e) => {
     if(e.target.className === ('modal-backdrop'))
@@ -26,6 +26,18 @@ export default function Post({ handleClose , id}) {
     setlikked(!likked)
   }
 
+  const update= () => {
+    fetch(url)
+    .then((response) => response.json())
+    .then(post => {
+        setdata(post)
+    })
+  }
+
+  useEffect(() => {
+    update()
+  } , [])
+
 
   return (
     <div className="modal-backdrop" onClick={((e) => close(e, data))}>
@@ -34,7 +46,7 @@ export default function Post({ handleClose , id}) {
           {error && <p>{error}</p>}
           {data && 
             <div className='flex-container'>
-                <img alt='post-img' src={data.image} />
+                <img alt='post-img' src={data.image}  className='post_img'/>
                 <div className='details'>
                   <div className='first-row'>
                     <b title='نام اثر'>{data.name}</b>
@@ -64,7 +76,7 @@ export default function Post({ handleClose , id}) {
                       ))}
                     </div>
                   </div>
-                  <CommentInput />
+                  <CommentInput id={id} />
                 </div>
             </div>
           }
