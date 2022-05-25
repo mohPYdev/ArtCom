@@ -139,16 +139,19 @@ class PostPayView(generics.CreateAPIView):
     def create(self, request, *args, **kwargs):
         user = self.request.user
         post = self.get_object()
+        order = Order.objects.get(user=user, post=post)
         post.sold = True
         post.for_sale = False
+        order.is_paid = True
+        order.save()
         post.save()
         return Response(status=status.HTTP_200_OK)
     
     def get_object(self):
-        user_pk = self.kwargs['user_pk']
+        # user_pk = self.kwargs['user_pk']
         post_pk = self.kwargs['post_pk']
-        user = User.objects.get(id=user_pk)
-        obj = get_object_or_404(Post, id=post_pk, artist=user.artist)
+        # user = User.objects.get(id=user_pk)
+        obj = get_object_or_404(Post, id=post_pk)
         return obj
 
 
