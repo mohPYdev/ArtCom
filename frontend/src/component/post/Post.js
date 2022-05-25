@@ -14,14 +14,19 @@ export default function Post({ handleClose , id}) {
   
     // test
     const [likked , setlikked] = useState(false)
-  let {data , loading , error} = useAxios(url)
+    let {data , loading , error} = useAxios(url)
+    
 
   const {data:comments} = useAxios(`http://localhost:8000/post/comments/${id}/comment_post/`)
+
+  const [addComment, setAddComment] = useState(false)
 
   const close = (e) => {
     if(e.target.className === ('modal-backdrop'))
       handleClose()
+      
   }
+
 
   const likehandler = () => {
     setlikked(!likked)
@@ -60,12 +65,11 @@ export default function Post({ handleClose , id}) {
                       {comments  && comments.map(c => (
                         <div key={c.id}>
                             <p><b>{c.user}</b> : {c.text}</p>
-                            <p></p>
                         </div>
                       ))}
                     </div>
                   </div>
-                  <CommentInput />
+                  <CommentInput id={data.id} />
                 </div>
             </div>
           }

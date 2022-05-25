@@ -2,17 +2,17 @@ import './Comment_Input.css'
 import { useState } from 'react'
 import {useAxios} from '../../hooks/useAxios'
 
-export default function CommentInput() {
+export default function CommentInput({id, update}) {
 
     const [comment  ,setcomm] = useState('')
 
-    const {data} = useAxios('http://localhost:8000/post/comments/', 'POST')
+    const { postData} = useAxios('http://localhost:8000/post/comments/', 'POST')
 
     const post_comment = (e) => {
         e.preventDefault()
-        //add comment
-        console.log(comment)
+        postData({'text':comment, 'post':id})
         setcomm('')
+        update()
       }
 
   return (
