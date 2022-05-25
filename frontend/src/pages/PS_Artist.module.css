@@ -15,6 +15,7 @@
     height: 176px;
     margin-right: 50px;
     margin-top: 5rem;
+    width: 95vw;
 }
 
 .profile{
@@ -39,7 +40,8 @@
 }
 
 .bio{
-    background-color: #C2CCC1;
+    background-color: #C4C4C4;
+
     color: #000000;
     font-size: 15px;
     resize: none;
@@ -126,12 +128,29 @@
 
 .info{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     align-content: center;
     margin-top: 10rem;
+    width: 100vw;
 }
 
 .postsNum{
+    color: #000000;
+    font-size: 20px;
+    grid-column: 1;
+    align-self: center;
+    justify-self: center;
+    font-size: 20px;
+    font-weight: bold;
+    word-spacing: 15px;
+    font-family: 'KoHo';
+    padding: 1rem 2rem;
+    background-color: #C4C4C4;
+    border-radius: 15px;
+    border: 0.17rem solid #1E2736;
+}
+
+.exhibNum{
     color: #000000;
     font-size: 20px;
     grid-column: 2;
@@ -141,11 +160,17 @@
     font-size: 20px;
     font-weight: bold;
     word-spacing: 15px;
-    cursor: pointer;
     font-family: 'KoHo';
+    padding: 1rem 2rem;
+    border-radius: 15px;
+    background-color: #C4C4C4;
+    border: 0.17rem solid #1E2736;
+
 }
 
-.exhibNum{
+
+
+.followersNum{
     color: #000000;
     font-size: 20px;
     grid-column: 3;
@@ -155,11 +180,15 @@
     font-size: 20px;
     font-weight: bold;
     word-spacing: 15px;
-    cursor: pointer;
     font-family: 'KoHo';
+    padding: 1rem 2rem;
+    border-radius: 15px;
+    background-color: #C4C4C4;
+    border: 0.17rem solid #1E2736;
+
 }
 
-.auctionNum{
+.followingNum{
     color: #000000;
     font-size: 20px;
     grid-column: 4;
@@ -169,36 +198,12 @@
     font-size: 20px;
     font-weight: bold;
     word-spacing: 15px;
-    cursor: pointer;
     font-family: 'KoHo';
-}
+    padding: 1rem 2rem;
+    border-radius: 15px;
+    background-color: #C4C4C4;
+    border: 0.17rem solid #1E2736;
 
-.followersNum{
-    color: #000000;
-    font-size: 20px;
-    grid-column: 5;
-    align-self: center;
-    justify-self: center;
-    color: #000000;
-    font-size: 20px;
-    font-weight: bold;
-    word-spacing: 15px;
-    cursor: pointer;
-    font-family: 'KoHo';
-}
-
-.followingNum{
-    color: #000000;
-    font-size: 20px;
-    grid-column: 6;
-    align-self: center;
-    justify-self: center;
-    color: #000000;
-    font-size: 20px;
-    font-weight: bold;
-    word-spacing: 15px;
-    cursor: pointer;
-    font-family: 'KoHo';
 }
 
 .addpost{

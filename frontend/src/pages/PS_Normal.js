@@ -3,7 +3,6 @@ import cherry from "../img/Premium_Vector___Photographer_man-removebg.png";
 import psnhome from "../img/icons8-home-page-50.png";
 import pablo from "../img/pablo.png";
 import picture from "../img/cherry.png";
-import profile from "../img/profile--picture.png";
 import { useState, useEffect } from "react";
 import Avatar from "../component/Avatar";
 import { useNavigate } from "react-router-dom";
@@ -50,7 +49,7 @@ export default function PS_Normal() {
       <div className={style.header}>
         <Avatar backColor="light" />
         <h1 className={style.artcom}>ArtCom</h1>
-        <p className={style.following}>{+following} Following</p>
+        <p className={style.following}>{+following} : دنبال شونده ها</p>
         <button className={style.btn} id={style.edit} onClick={editHandle}>
           ویرایش
         </button>

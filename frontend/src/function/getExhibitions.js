@@ -12,6 +12,7 @@ export default  async function getExhibitions ( state , artistId ){
     const url = `http://localhost:8000/post/exhibitions/`;
     const { data } = await axios.get(url , config);
     allData = data
+    console.log(data)
     }
     if(state === "myProfile"){
         const url = `http://localhost:8000/post/exhibitions/me/`

@@ -1,0 +1,21 @@
+
+@keyframes nextpost {
+    0.0%{
+        left: 100vw;
+        transform: translateX(70vw);
+    }
+    50%{
+        transform: translateX(50vw) scale(1.5);
+    }
+
+}
+@keyframes prevpost {
+    0.0%{
+        left: 0;
+        transform: translateX(-70vw);
+    }
+    50%{
+        transform: translateX(-50vw) scale(1.5);
+    }
+  
+}

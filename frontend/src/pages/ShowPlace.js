@@ -112,12 +112,13 @@ export default function ShowPlace() {
 
   const buyHandler = () => {
     music.pause();
+    console.log(postsList.current[indexOfPost.current]);
     navigator(
       `/post/${+postsList.current[indexOfPost.current].id}/${user_id.current}`
     );
   };
 
-  // fetch data
+  //fetch data
   useEffect(() => {
     async function getData() {
       indexOfPost.current = 0;
@@ -127,6 +128,8 @@ export default function ShowPlace() {
       user_id.current = temp_id;
       setProfileImg(image);
       ChangePost();
+      console.log(user_id.current)
+      console.log(id)
     }
     getData();
 

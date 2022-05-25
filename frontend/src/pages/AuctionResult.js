@@ -85,7 +85,7 @@ export default function AuctionResult() {
 
   return (
     <>
-      <div className="bg-center bg-bg-auctionres w-screen max-h-fit z-0 ">
+      <div className="bg-cover bg-center bg-bg-auctionres w-screen h-screen pb-96">
         <div className="max-w-6xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-3">
           <h2 className="bg-sky-900 py-3 mb-3 text-slate-200	text-center	rounded-lg text-5xl">
             {" "}
