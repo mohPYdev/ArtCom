@@ -98,7 +98,7 @@ export default function ShowPlaceHomePage() {
   useEffect(() => {
     async function fetchData() {
       const list = await getExhibitions("home");
-      exhibitions.current = list.filter((exh) => exh.status !== "finished");
+      exhibitions.current = list.filter(exh => exh.status !== "finished");
       indexOfExhibitons.current = 0;
       changePost();
     }
