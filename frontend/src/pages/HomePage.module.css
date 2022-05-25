@@ -5,40 +5,16 @@
     margin: 0;
 }
 
+.home {
+    max-width: 1200px;
+    margin: 60px auto;
+  }
+
 .header {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     align-content: center;
-}
-
-#search {
-    width: 640px;
-    height: 50px;
-    background: #E9DAD3;
-    border-radius: 15px;
-    position: relative;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 26px;
-    display: flex;
-    align-items: center;
-    text-align: right;
-    padding-right: 40px;
-    color: #FFFEFB;
-    margin-left: auto;
-    margin-right: auto;
-    top: -3px;
-    background-image: url('../img/search-icon.png');
-    background-repeat: no-repeat;
-    background-size: 40px;
-    background-position: right;
-    grid-column: 2/3;
-    grid-row: 1;
-    align-self: center;
-    justify-self: center;
-    color: black;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    height: 120px;
 }
 
 .contact {
@@ -57,6 +33,7 @@
     justify-self: center;
     cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    height: 45px;
 }
 
 .contact:focus {
@@ -73,8 +50,8 @@
 }
 
 .profile {
-    height: 140px;
-    width: 140px;
+    height: 80px;
+    width: 80px;
     margin: 40px;
     /* top: -4px; */
     /* position: relative; */

@@ -45,7 +45,7 @@ export default function ShowPlace() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [music , setMusic] = useState(new Audio(my_song));
 
-  const [liked, setliked] = useState(false);
+  const [liked, setliked] = useState();
 
   const {postData:postLike} = useAxios(`http://localhost:8000/post/${user_id?.current}/posts/${postsList.current[indexOfPost.current]?.id}/like/`,'POST');
   const {postData:postDislike} = useAxios(`http://localhost:8000/post/${user_id?.current}/posts/${postsList.current[indexOfPost.current]?.id}/dislike/`,'POST');

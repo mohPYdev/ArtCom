@@ -42,6 +42,16 @@ class CommentCreateSerializer(serializers.ModelSerializer):
         read_only_fields = ('id', 'date_added', 'user')
 
 
+class CommentSerializer(serializers.ModelSerializer):
+    """serializes the comments model"""
+    user = serializers.SlugRelatedField(slug_field='username', read_only=True)
+
+    class Meta:
+        model = Comment
+        fields = ('id','text', 'date_added', 'post', 'user')
+        read_only_fields = ('id', 'date_added', 'user', 'post', 'text')
+
+
 
 class PostPaymentSerializer(serializers.ModelSerializer):
     """serializes the posts model for the payment updating"""

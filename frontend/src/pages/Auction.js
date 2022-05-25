@@ -199,7 +199,6 @@ function Auction() {
           <img src={timerfull} id="timerfull" />
         </div>
         </div>
-
         
         <div id="center-grid">
           <div id="handle-box">

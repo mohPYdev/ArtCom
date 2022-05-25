@@ -25,6 +25,7 @@ import AuctionResault from './pages/AuctionResult';
 import Addpost from './component/AddPost';
 import Add_Exhibition from './pages/Add_Exhibition';
 import Add_Auction from './pages/Add_Auction';
+import Search from './pages/search/Search';
 
 import Contact_us from './pages/Contact_us';
 
@@ -76,6 +77,8 @@ function App() {
 
           <Route path="/post/:postId/:artistId" element={<Post />} />
           <Route path="/contactus" element={<Contact_us />} />
+
+          <Route path="/search" element={<Search />} />
 
       </Routes>
     </BrowserRouter>

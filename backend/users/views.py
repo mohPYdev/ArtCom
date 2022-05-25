@@ -83,7 +83,7 @@ class UserViewSet(UserViewSet):
     @action(detail=False, methods=["GET"], url_path="artist_list", permission_classes=[IsAuthenticated])
     def artist_list(self, request, id=None):
         
-        serializer = self.get_serializer_class()(User.objects.all(), many=True, context={'request': request})
+        serializer = self.get_serializer_class()(User.objects.filter(is_artist=True), many=True, context={'request': request})
         return Response(serializer.data, status=200)
 
     @action(detail=True, methods=["POST"], url_path="follow", permission_classes=[IsAuthenticated])
