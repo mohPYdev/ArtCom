@@ -33,12 +33,14 @@ export default function PS_Artist() {
   const ratingChanged = (newRating) => {
     console.log(newRating);
   };
+  console.log(user);
 
 
 
   return (
     <div>
       <div className={style.star_rate}>
+        <h3 className={style.fetchdata}> {user?.first_name} {user?.last_name}<br />{user?.artist.profession} </h3>
         <ReactStars
           count={5}
           onChange={()=>ratingChanged(false)}
@@ -63,7 +65,7 @@ export default function PS_Artist() {
                 <p className={style.cpost}>شرکت در مزایده</p>
                 <img src={addp2} className={style.addp2}></img>
             </a>
-        </div>
+      </div>
       <ShowPlaceProfile artistId={artistId} />
       <PostProfile artistId={artistId} />
     </div>

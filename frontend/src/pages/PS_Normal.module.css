@@ -106,7 +106,10 @@
     align-self: end;
     justify-self: center;
 }
-
+/* #wallet {
+    grid-row: 1;
+    grid-column: 4;
+} */
 .artcom {
     font-family: 'Akaya Kanadaka';
     width: 100%;

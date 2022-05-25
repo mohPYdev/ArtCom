@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthContext} from '../hooks/useAuthContext';
 import { useLogout } from '../hooks/useLogout';
 import { Outlet, Link } from "react-router-dom";
+import Modal from "../component/wallet";
 
 export default function PS_Normal() {
 
@@ -29,7 +30,11 @@ export default function PS_Normal() {
     const [name , setname] = useState('نام من')
     const [bio , setBio] = useState(' .... درباره من')
     const [following , setFollowing] = useState(user?.following_count)
+    const [showwallet, setshowwallet] = useState(false);
 
+    const handleClose = () => {
+      showwallet(false)
+    }
     const exitHandle = () => {
       logout()
       navigator(`/`)
@@ -58,6 +63,8 @@ export default function PS_Normal() {
             <div className={style.bio}>{bio}</div>
             <p className={style.following}>{following} Following</p>
             <button className={style.btn} id={style.edit} onClick={editHandle}>ویرایش</button>
+            <button className={style.btn} id={style.wallet} onClick={() => setshowwallet(true)}>کیف پول</button>
+            {showwallet && <Modal handleClose={handleClose} />}
             <button className={style.btn} id={style.exit} onClick={exitHandle}>خروج</button>
         </div>
 
