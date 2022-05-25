@@ -18,57 +18,15 @@ export default function AuctionsProfile({ artistId }) {
 
 
   //State
-  const [poster, setPoster] = useState("");
   const [status, setStatus] = useState("");
-  const [statustext, setStatustext] = useState("");
 
   //useEffect
-  useEffect(() => {
-    if (status ) setStatustext("فروخته شده");
-    else  setStatustext("فروخته نشده");
 
-  }, [status]);
-  useEffect(() => {
-    async function fetchData() {
-      if (artistid.current === undefined || artistid.current == user?.id) {
-
-        artistid.current = user.id;
-      } 
-
-      const list = await getPosts( artistid.current);
-
-      posts.current = list;
-      indexOfPost.current = 0;
-      changePost();
-    }
-    fetchData();
-  }, []);
 
   //func
 
-  const changePost = () => {
-    setPoster(posts.current[indexOfPost.current]?.image);
-    setStatus(posts.current[indexOfPost.current]?.sold);
-  };
-  const backaHandle = () => {
-    indexOfPost.current = indexOfPost.current - 1;
-    if (indexOfPost.current < 0) indexOfPost.current = posts.current.length - 1;
 
-    changePost();
-  };
 
-  const nextaHandle = () => {
-    indexOfPost.current++;
-    if (indexOfPost.current >= posts.current.length) indexOfPost.current = 0;
-    changePost();
-  };
-
-  const GoToPost = () => {
-    navigator(`/post/${posts.current[indexOfPost.current].id}/${artistid.current}`)
-  };
-  const createPost = () => {
-    navigator(`/add/post`);
-  };
   return (
     <>
       <div className={style.addpost}>

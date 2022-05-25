@@ -11,7 +11,7 @@ import { Calendar } from "react-multi-date-picker"
 import persian from "react-date-object/calendars/persian"
 import persian_fa from "react-date-object/locales/persian_fa"
 
-import './test.css'
+import './animation.css'
 const styles = {
   bounce: {
     animation: "",

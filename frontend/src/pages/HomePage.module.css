@@ -40,7 +40,6 @@
     color: black;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
-
 .contact {
     background-color: #E9DAD3;
     padding: 0.5%;
@@ -117,12 +116,21 @@
     border-radius: 15px;
     position: relative;
     top: 30px;
-
-
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    align-content: center;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;}
+    grid-template-rows: 1fr 1fr;
+
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+
+    align-items: center;
+    justify-content: center;
+    align-content: space-between;
+    padding-top: 5rem;
+
+
+}
+
 
 .auction {
     background-color: #E9DAD3;
@@ -132,11 +140,19 @@
     border-radius: 15px;
     position: relative;
     top: 50px;
+    padding-top: 5rem;
 
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    align-content: center;
+    grid-template-rows: 1fr 1fr;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    align-items: center;
+    justify-content: center;
+    align-content: space-between;
+
+
+
+
 }
 
 .blue {

@@ -19,7 +19,6 @@ import PS_Noraml from './pages/PS_Normal';
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic'
 import PS_Artist from './pages/PS_Artist';
-import Psa2 from './pages/Psa2';
 
 import AuctionResault from './pages/AuctionResult';
 
