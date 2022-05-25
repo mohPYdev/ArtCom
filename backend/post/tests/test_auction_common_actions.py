@@ -56,7 +56,7 @@ class AddPostTests(TestCase):
         self.artist = Artist.objects.create(user = self.artistUser)
         self.client.force_authenticate(user=self.artistUser)
 
-    def test_get_post(self):
+    def test_add_auction_post(self):
       post = Post.objects.create(artist = self.artist, name = "p1", price = "10000")
       auction = Auction.objects.create(date_begin = timezone.now() + timedelta(1), date_end = timezone.now() + timedelta(100))
       body = {
@@ -68,7 +68,7 @@ class AddPostTests(TestCase):
       #TODO check Auction Repo
       self.assertEqual(200, response.status_code)
 
-    def test_get_post_closed(self):
+    def test_add_auction_post_closed(self):
       post = Post.objects.create(artist = self.artist, name = "p1", price = "10000")
       auction = Auction.objects.create(date_begin = timezone.now() - timedelta(100), date_end = timezone.now() - timedelta(1))
       body = {
@@ -77,11 +77,19 @@ class AddPostTests(TestCase):
       response = self.client.post(ADD_TO_AUCTION_URL.format(str(auction.id)), body, format = 'json')
       self.assertEqual(400, response.status_code)
 
-    def test_get_post_running(self):
+    def test_add_auction_post_running(self):
       post = Post.objects.create(artist = self.artist, name = "p1", price = "10000")
       auction = Auction.objects.create(date_begin = timezone.now() - timedelta(10), date_end = timezone.now() + timedelta(10))
       body = {
           "post": [post.id]
+      }
+      response = self.client.post(ADD_TO_AUCTION_URL.format(str(auction.id)), body, format = 'json')
+      self.assertEqual(400, response.status_code)
+
+    def test_add_auction_post_unvalid_post(self):
+      auction = Auction.objects.create(date_begin = timezone.now() + timedelta(1), date_end = timezone.now() + timedelta(100))
+      body = {
+          "post": [23]
       }
       response = self.client.post(ADD_TO_AUCTION_URL.format(str(auction.id)), body, format = 'json')
       self.assertEqual(400, response.status_code)
