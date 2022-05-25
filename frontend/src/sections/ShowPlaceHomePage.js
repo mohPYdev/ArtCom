@@ -102,7 +102,7 @@ export default function ShowPlaceHomePage() {
     async function fetchData() {
       const list = await getExhibitions("home");
       exhibitions.current = list;
-      //console.log(exhibitions.current)
+      exhibitions.current = list.filter(exh => exh.status !== "finished");
       indexOfExhibitons.current = 0;
       changePost();
     }
@@ -116,6 +116,7 @@ export default function ShowPlaceHomePage() {
       {statuse ==='open' ? ` : زمان مانده تا پایان  ` : ` : زمان مانده تا شروع ` }
       </span><br /><br />{timere} </div>}
       {statuse !== "finished" &&
+
       <Calendar
       calendar={persian}
       locale={persian_fa}

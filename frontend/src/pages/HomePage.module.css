@@ -287,11 +287,15 @@
 .calendere {
     grid-column: 5/6;
     grid-row: 1;
+    align-self: center;
+    justify-self: center;
 }
 
 .calendera {
     grid-column: 5/6;
     grid-row: 1;
+    align-self: center;
+    justify-self: center;
 }
 
 .bannera {
