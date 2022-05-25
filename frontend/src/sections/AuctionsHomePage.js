@@ -17,7 +17,7 @@ import { useAxios } from "../hooks/useAxios";
 
 const styles = {
   bounce: {
-    animation: "startpost 1s cubic-bezier(0.06, 0.27, 1, 0.22) 1 1s",
+    animation: "",
   }
 }
 export default function AuctionsHomePage() {
@@ -60,7 +60,7 @@ export default function AuctionsHomePage() {
 
     changePost();
     styles.bounce = {
-      animation : "prevpost cubic-bezier(0.06, 0.27, 1, 0.22) 1s"
+      animation : "prevpost cubic-bezier(0.06, 0.27, 1, 0.22) 0.1s"
     }
   };
 
@@ -70,7 +70,7 @@ export default function AuctionsHomePage() {
       indexOfAuctions.current = auctions.current.length -1;
     changePost();
     styles.bounce = {
-      animation : "nextpost cubic-bezier(0.06, 0.27, 1, 0.22) 1s"
+      animation : "nextpost cubic-bezier(0.06, 0.27, 1, 0.22) 0.1s"
     }
   };
   const GoToAuction = () => {

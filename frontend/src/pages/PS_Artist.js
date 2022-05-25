@@ -48,9 +48,9 @@ export default function PS_Artist() {
       <InfoBarProfile artistId={artistId} />
       {isSame && (
       <div className={style.addpost}>
-            <Link to={`/add/auction`}>
+            <Link to={`/add/post`}>
                 <img src={addp1} className={style.addp1}></img>
-                <p className={style.cpost}>شرکت در مزایده</p>
+                <p className={style.cpost}>ساخت پست</p>
                 <img src={addp2} className={style.addp2}></img>
             </Link>
         </div>)}

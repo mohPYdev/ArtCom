@@ -27,15 +27,6 @@
 #carousel-3:checked ~ .control-3 ~ .carousel-indicators li:nth-child(3) .carousel-bullet {
     color: #2b6cb0;  /*Set to match the Tailwind colour you want the active one to be */
 }
-@keyframes startpost {
-    0.0%{
-        transform-origin: left;
-        transform: rotate(0) scale(1);
-    }
-    50%{
-        transform: rotate(360deg) scale(1.5);
-    }
-}
 @keyframes nextpost {
     0.0%{
         left: 100vw;

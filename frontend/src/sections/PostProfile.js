@@ -6,6 +6,8 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 import getPosts from "../function/getPosts";
+import addp1 from "../img/addpost1.png";
+import addp2 from "../img/addpost2.png";
 
 export default function AuctionsProfile({ artistId }) {
   const { user } = useAuthContext();
@@ -69,38 +71,13 @@ export default function AuctionsProfile({ artistId }) {
   };
   return (
     <>
-      <h1 className={style.exhibitionTitle}>پست</h1>
-      <div className={style.showplace}>
-        <img src={back} alt="" className={style.back} onClick={backaHandle} />
-        <div className={style.bannere}>
-          <img src={poster} alt="" className={style.postere} />
-        </div>
-        <img src={next} alt="" className={style.next} onClick={nextaHandle} />
-
-        <button
-          id={style.status}
-          className={style.btn3}
-          style={{ color: status ? "red" : "green"}}
-        >
-          {statustext}
-        </button>
-        {artistid.current === undefined || artistid.current === user?.id ? (
-
-          <div id={style.createe}>
-            <button className={style.btn2} onClick={createPost}>
-              ایجاد پست{" "}
-            </button>
-          </div>
-        ) : (
-          <></>
-        )}
-
-        <div id={style.viewe}>
-          <button className={style.btn2} onClick={GoToPost}>
-            مشاهده
-          </button>
-        </div>
-      </div>
+      <div className={style.addpost}>
+        <Link to={`/add/auction`}>
+            <img src={addp1} className={style.addp1}></img>
+            <p className={style.cpost}>شرکت در مزایده</p>
+            <img src={addp2} className={style.addp2}></img>
+        </Link>
+      </div>)
     </>
   );
 }
