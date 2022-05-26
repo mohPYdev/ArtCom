@@ -71,7 +71,32 @@ export default function Post() {
 
   const handlepayment =() => {
     postPay()
+    setSold(true)
   }
+
+
+
+  // call a function before unloading to another page
+  useEffect(() => {
+    window.addEventListener("beforeunload", () => {
+      if (!sold){
+        async function fetchData() {
+          const headers = {
+            "Content-Type": "application/json",
+            "Authorization": `Token ${JSON.parse(localStorage.getItem("token"))}`
+          }
+      
+          fetch("http://localhost:8000/post/orders/", {headers: headers, method:'DELETE',} )
+          .then((response) => response.json())
+          .then(newpost => {
+          })
+        }
+        fetchData();
+      }
+    }
+    , false);
+  }, []);
+
 
 
   //useEffect
