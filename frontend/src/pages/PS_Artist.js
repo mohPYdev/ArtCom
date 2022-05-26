@@ -73,7 +73,7 @@ export default function PS_Artist() {
        <div className='home'>
           {error && <p className='error'>{error}</p>}
           {loading && <p className='loading'>Loading...</p>}
-          {data && <Postlist posts={data} />}
+          {data && <Postlist posts={data} ishomepage={false}/>}
         </div>
     
     </div>

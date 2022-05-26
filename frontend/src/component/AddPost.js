@@ -41,6 +41,7 @@ export default function Example() {
     setForSale(false);
   };
   const handlechangeApPrice = (event) => {
+
     setApPrice(event.target.value);
   }
 
@@ -103,7 +104,7 @@ export default function Example() {
                         <input
                           value={ap_price}
                           onChange={handlechangeApPrice}
-                          type="text"
+                          type="number"
                           name="price"
                           id="name"
                           autoComplete="given-name"
@@ -159,7 +160,7 @@ export default function Example() {
                               htmlFor="file-upload"
                               className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
                             >
-                              <span>Upload a file</span>
+                              <span>بارگزاری عکس</span>
                               <img id='exhi_image_addex' src={imageUrl} />
                               <input onChange={(e) => setSelectedImage(e.target.files[0])} id="file-upload" name="file-upload" type="file" className="sr-only" />
                             </label>

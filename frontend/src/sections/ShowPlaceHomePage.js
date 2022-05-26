@@ -135,7 +135,7 @@ export default function ShowPlaceHomePage() {
         <ExhibImage image_url={exhibPoster} />
       </div>
       <img src={next} alt="" className={style.next} onClick={nexteHandle} />
-
+      {exhibPoster !== undefined && (
       <button
         id={style.status}
         className={style.blue}
@@ -143,6 +143,7 @@ export default function ShowPlaceHomePage() {
       >
         {statusetext}
       </button>
+      )}
 
       {statuse === "open" && (
         <div id={style.enter}>
@@ -151,12 +152,13 @@ export default function ShowPlaceHomePage() {
           </button>
         </div>
       )}
-
+{exhibPoster !== undefined && (
       <div id={style.profile}>
         <button className={style.blue} onClick={GoToArtist}>
           پروفایل هنرمند
         </button>
       </div>
+)}
     </div>
   );
 }

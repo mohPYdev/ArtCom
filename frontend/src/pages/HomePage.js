@@ -22,7 +22,7 @@ export default function HomePage() {
 
 
   // just for posts
-  const { data , loading , error } = useAxios('http://localhost:8000/post/posts/')
+  const { data , loading , error } = useAxios('http://localhost:8000/post/posts')
   
   const navigator = useNavigate();
 
@@ -32,8 +32,9 @@ export default function HomePage() {
     navigator('/contactus')
   };
 
+
   return (
-    <div>
+    <div className={style.homepage}>
       <div className={style.header}>
         <Avatar backColor="dark" />
 
@@ -48,7 +49,7 @@ export default function HomePage() {
       <div className='home'>
         {error && <p className='error'>{error}</p>}
         {loading && <p className='loading'>Loading...</p>}
-        {data && <Postlist posts={data} />}
+        {data && <Postlist posts={data} ishomepage={true} />}
     </div>
     </div>
   );

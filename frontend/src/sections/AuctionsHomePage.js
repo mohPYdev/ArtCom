@@ -115,13 +115,17 @@ export default function AuctionsHomePage() {
         <img src={auctionPoster} alt="" className={style.aucpost} style={styles.bounce} />
       </div>
       <img src={next} alt="" className={style.nexta} onClick={nextaHandle} />
+
+      {auctionPoster !== undefined && (
       <button
         id={style.statusa}
         className={style.blue}
         style={{ color: statusa === "open" ? "green" : "red" }}
       >
+        
         {statusatext}
       </button>
+      )}
       { statusa === "open" && user.wallet >= 100000 &&  <div id={style.entera}>
         <button className={style.blue} onClick={GoToAuction}>
           ورود به مزایده
@@ -134,10 +138,11 @@ export default function AuctionsHomePage() {
         </button>
       </div>}
 
-
+      {auctionPoster !== undefined && (
       <div id={style.asara}>
         <button className={style.blue} onClick={GoToAuctionArtwork}>آثار هنری</button>
       </div>
+      )}
       
     </div>
   );
