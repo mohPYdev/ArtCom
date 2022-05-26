@@ -33,7 +33,7 @@ export default function HeaderProfile({artistId}) {
 
   useEffect(() => {
     if (!user) return;
-    if (artistId && artistId !== user.id && artist) {
+    if (artistId && +artistId !== +user.id && artist) {
       setIsSame(false)
       setname(artist.username)
       setBio(artist.artist.description)
@@ -91,7 +91,7 @@ export default function HeaderProfile({artistId}) {
         )}
         {!isSame && !followed && (
           <button className={style.btn} id={style.follow} onClick={handleFollow}>
-            follow
+            دنبال کردن
           </button>
         )}
         {!isSame && followed && (
@@ -100,7 +100,7 @@ export default function HeaderProfile({artistId}) {
             id={style.unfollow}
             onClick={handleFollow}
           >
-            unfollow
+            دنبال نکردن
           </button>
         )}
       </div>

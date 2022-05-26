@@ -11,7 +11,7 @@ import { useAlert } from 'react-alert';
 
 export default function Add_Exhibition(){
 
-    const {data:posts} = useAxios('http://localhost:8000/post/posts/');
+    const {data:posts} = useAxios('http://localhost:8000/post/posts');
     const alert = useAlert();
 
     
