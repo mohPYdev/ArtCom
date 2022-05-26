@@ -389,6 +389,12 @@
     width: 200px;
     cursor: auto;
 }
+#wallet {
+    grid-row: 2;
+    grid-column: 6;
+    align-self:center;
+    justify-self: center;
+}
 #psahome{
     width: 58px;
     align-self: center;

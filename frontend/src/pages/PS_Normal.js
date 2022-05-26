@@ -9,8 +9,8 @@ import Avatar from '../component/Avatar';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext} from '../hooks/useAuthContext';
 import { useLogout } from '../hooks/useLogout';
-import { Outlet, Link } from "react-router-dom";
-import Modal from "../component/wallet";
+import { Link } from "react-router-dom";
+import Modal_popUp from "../component/Wallet";
 
 export default function PS_Normal() {
 
@@ -30,10 +30,10 @@ export default function PS_Normal() {
     const [name , setname] = useState('نام من')
     const [bio , setBio] = useState(' .... درباره من')
     const [following , setFollowing] = useState(user?.following_count)
-    const [showwallet, setshowwallet] = useState(false);
+    const [showwallet, setShowwallet] = useState(false);
 
     const handleClose = () => {
-      showwallet(false)
+      setShowwallet(false)
     }
     const exitHandle = () => {
       logout()
@@ -63,8 +63,8 @@ export default function PS_Normal() {
             <div className={style.bio}>{bio}</div>
             <p className={style.following}>{following} Following</p>
             <button className={style.btn} id={style.edit} onClick={editHandle}>ویرایش</button>
-            <button className={style.btn} id={style.wallet} onClick={() => setshowwallet(true)}>کیف پول</button>
-            {showwallet && <Modal handleClose={handleClose} />}
+            <button className={style.btn} id={style.wallet} onClick={() => setShowwallet(true)}>کیف پول</button>
+            {showwallet && <Modal_popUp handleClose={handleClose} />}
             <button className={style.btn} id={style.exit} onClick={exitHandle}>خروج</button>
         </div>
 

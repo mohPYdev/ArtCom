@@ -7,6 +7,8 @@ import psahome from "../img/icons8-home-page-50.png";
 import profile from "../img/profile--picture.png";
 import { useLogout } from "../hooks/useLogout";
 import { Outlet, Link  , Navigate, useNavigate} from "react-router-dom";
+import Modal_popUp from "../component/Wallet";
+
 export default function HeaderProfile({artistId}) {
 
     const { user } = useAuthContext();
@@ -20,6 +22,11 @@ export default function HeaderProfile({artistId}) {
     const [profileImg, setProfileImg] = useState(profile);
     const [name, setname] = useState("نام من");
     const [bio, setBio] = useState(" .... درباره من");
+    const [showwallet, setShowwallet] = useState(false);
+
+    const handleClose = () => {
+      setShowwallet(false)
+    }
 
   useEffect(() => {
     async function fetchData() {
@@ -75,6 +82,9 @@ export default function HeaderProfile({artistId}) {
             ویرایش
           </button>
         )}
+        {isSame && (
+          <button className={style.btn} id={style.wallet} onClick={() => setShowwallet(true)}>کیف پول</button>
+        )}
         {!isSame && !followed && (
           <button className={style.btn} id={style.follow} onClick={exitHandle}>
             follow
@@ -89,6 +99,7 @@ export default function HeaderProfile({artistId}) {
             unfollow
           </button>
         )}
+        {showwallet && <Modal_popUp handleClose={handleClose} />}
       </div>
   )
 }
