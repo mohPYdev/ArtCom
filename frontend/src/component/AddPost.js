@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useAlert } from "react-alert";
+import BackToHome from "./BackToHome";
 
 export default function Example() {
   const [ap_name, setApName] = useState("");
@@ -73,6 +74,7 @@ export default function Example() {
   
     return (
       <>
+      <BackToHome />
         <div className="h-fit w-screen bg-gradient-to-b from-blue-200 to-blue-900"	>
                 <div className=" w-1/2 py-16 mx-auto shadow sm:rounded-md sm:overflow-hidden righttext ">
                   <form className="px-4 py-5 bg-white space-y-6 sm:p-6 " onSubmit={handleApSubmit}>

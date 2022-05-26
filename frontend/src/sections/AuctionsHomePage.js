@@ -77,7 +77,7 @@ export default function AuctionsHomePage() {
     navigator(`/auction/${auctions.current[indexOfAuctions.current].id}`);
   };
   const GoToAuctionArtwork = () => {
-    navigator(``);
+    navigator(`/auctionbefore/${auctions.current[indexOfAuctions.current]?.id}`);
   }
   //useEffect
   useEffect(() => {

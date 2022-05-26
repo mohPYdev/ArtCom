@@ -4,6 +4,7 @@ import './add_auction.css';
 import {useAxios} from '../hooks/useAxios';
 import {useAlert} from 'react-alert'
 import {useAuthContext} from '../hooks/useAuthContext';
+import BackToHome from '../component/BackToHome';
 
 export default function Add_Auction(){
 
@@ -71,7 +72,9 @@ export default function Add_Auction(){
     }
 
     return(
+
         <div className='main_div_addau'>
+            <BackToHome />
             {/*adding page title*/}
             <div id='p_addau'>
                 <p>

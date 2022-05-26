@@ -21,6 +21,7 @@ import AlertTemplate from 'react-alert-template-basic'
 import PS_Artist from './pages/PS_Artist';
 
 import AuctionResault from './pages/AuctionResult';
+import AuctionBefore from './pages/AuctionBefore';
 
 import Addpost from './component/AddPost';
 import Add_Exhibition from './pages/Add_Exhibition';
@@ -68,6 +69,7 @@ function App() {
 
           <Route path="/auctionres/:id" element={<AuctionResault/> } />
         
+          <Route path="/auctionbefore/:id" element={<AuctionBefore/> } />
 
 
           <Route path="/add/post" element={<Addpost />} />
