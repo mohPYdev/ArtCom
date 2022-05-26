@@ -215,10 +215,10 @@ function Auction() {
           </div>
 
           <div id="enter-price-box">
-          {!user?.is_superuser && is_allowed && <h3 id="enter_price"> : قیمت پیشنهادی خود را انتخاب کنید</h3>}
+          {!user?.is_superuser && is_allowed && user?.username !== post.artist.user.username && <h3 id="enter_price"> : قیمت پیشنهادی خود را انتخاب کنید</h3>}
 
             <div id="percent-box">
-              {!user?.is_superuser && is_allowed && (
+              {!user?.is_superuser && is_allowed && user?.username !== post.artist.user.username && (
                 <>
                   <button
                     className="percent btn"
@@ -258,7 +258,7 @@ function Auction() {
           }
          
           <div id="final-price-box">
-            {price && <div className="current-price price">{price}</div>}
+            {price && <div className="current-price price">{price} تومان</div>}
           </div>
         </div>
         <div id="bottom-grid">

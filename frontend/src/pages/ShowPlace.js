@@ -49,7 +49,7 @@ export default function ShowPlace() {
 
   const {postData:postLike} = useAxios(`http://localhost:8000/post/${user_id?.current}/posts/${postsList.current[indexOfPost.current]?.id}/like/`,'POST');
   const {postData:postDislike} = useAxios(`http://localhost:8000/post/${user_id?.current}/posts/${postsList.current[indexOfPost.current]?.id}/dislike/`,'POST');
-
+  const {postData:postOrder} = useAxios(`http://localhost:8000/post/orders/`,'POST');
   const likeHandler = () => {
     if (liked) {
       setliked(false);
@@ -110,15 +110,30 @@ export default function ShowPlace() {
     }
   };
 
-  const buyHandler = () => {
+  const buyHandler = async() => {
     music.pause();
-    console.log(postsList.current[indexOfPost.current]);
-    navigator(
-      `/post/${+postsList.current[indexOfPost.current].id}/${user_id.current}`
-    );
+
+    
+    async function fetchData() {
+      const headers = {
+        "Content-Type": "application/json",
+        "Authorization": `Token ${JSON.parse(localStorage.getItem("token"))}`
+      }
+  
+      fetch("http://localhost:8000/post/orders/", {headers: headers, method:'POST', body:JSON.stringify({'post':+postsList.current[indexOfPost.current].id}) } )
+      .then((response) => response.json())
+      .then(newpost => {
+        navigator(
+          `/post/${+postsList.current[indexOfPost.current].id}/${user_id.current}`
+        )
+      })
+    }
+    fetchData();
   };
 
-  //fetch data
+
+
+  // fetch data
   useEffect(() => {
     async function getData() {
       indexOfPost.current = 0;
