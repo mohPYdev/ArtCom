@@ -7,6 +7,8 @@ import { useNavigate, Link } from "react-router-dom";
 import Avatar from "../component/Avatar";
 import { useAxios } from "../hooks/useAxios";
 import ShowPlaceHomePage from "../sections/ShowPlaceHomePage";
+import ShowPlaceProfile from "../sections/ShowPlaceProfile";
+
 import AuctionsHomePage from "../sections/AuctionsHomePage";
 import SearchBar from "../component/Searchbar/Searchbar";
 
@@ -43,6 +45,7 @@ export default function HomePage() {
         <button className={style.contact} onClick={contactHandle}>ارتباط با ما</button>
       </div>
       <ShowPlaceHomePage />
+      {/* <ShowPlaceProfile /> */}
       <AuctionsHomePage />
  
        {/* posts */}
