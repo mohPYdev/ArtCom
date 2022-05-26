@@ -69,7 +69,7 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = ('id', 'post', 'user', 'date_ordered', 'is_paid', 'is_shipped')
-        read_only_fields = ('id','date_ordered')
+        read_only_fields = ('id','date_ordered', 'is_paid', 'is_shipped')
     
 
 

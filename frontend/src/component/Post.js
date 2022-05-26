@@ -59,18 +59,49 @@ export default function Post() {
   const {postData:postDislike} = useAxios(`http://localhost:8000/post/${artistId}/posts/${postId}/dislike/`,'POST');
   const {data:orders } = useAxios(`http://localhost:8000/post/orders/`)
 
+  const {postData:postPay} = useAxios(`http://localhost:8000/post/posts/${postId}/payment/`, 'POST')
+
   //func
-  const likeHandler = () => {
-    if (liked) {
-      setLiked(false);
-      setLikeCount((prevcount) => prevcount - 1);
-      postDislike();
-    } else {
-      setLiked(true);
-      setLikeCount((prevcount) => prevcount + 1);
-      postLike();
+  // const likeHandler = () => {
+  //   if (liked) {
+  //     setLiked(false);
+  //     setLikeCount((prevcount) => prevcount - 1);
+  //     postDislike();
+  //   } else {
+  //     setLiked(true);
+  //     setLikeCount((prevcount) => prevcount + 1);
+  //     postLike();
+  //   }
+  // };
+
+  const handlepayment =() => {
+    postPay()
+    setSold(true)
+  }
+
+
+
+  // call a function before unloading to another page
+  useEffect(() => {
+    window.addEventListener("beforeunload", () => {
+      if (!sold){
+        async function fetchData() {
+          const headers = {
+            "Content-Type": "application/json",
+            "Authorization": `Token ${JSON.parse(localStorage.getItem("token"))}`
+          }
+      
+          fetch("http://localhost:8000/post/orders/", {headers: headers, method:'DELETE',} )
+          .then((response) => response.json())
+          .then(newpost => {
+          })
+        }
+        fetchData();
+      }
     }
-  };
+    , false);
+  }, []);
+
 
 
   //useEffect
@@ -142,6 +173,7 @@ export default function Post() {
             { forpay && <button
               className="mt-10 w-full bg-sky-900 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-sky-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 centertext"
               id="sold--btn"
+              onClick={handlepayment}
             >
               پرداخت
               <img src={icon1} className="shopping-icon icon" />

@@ -63,6 +63,8 @@ export default function AuctionResult() {
   const {user} = useAuthContext()
   const {data:orders} = useAxios("http://localhost:8000/post/orders/");
   const {data:auction} = useAxios("http://localhost:8000/post/auctions/"+id+"/");
+
+  const {putData} = useAxios(`http://localhost:8000/post/auctions/${id}/`, "PUT")
   const navigate = useNavigate();
 
   const [boughtPosts, setBoughtPosts] = useState([]);
@@ -72,7 +74,10 @@ export default function AuctionResult() {
 
 
   useEffect(() => {
-    if (orders && auction) {
+    if (orders && auction && user) {
+        if (user.is_superuser){
+          putData({'date_end': auction.date_begin}) 
+        }
         for (const order of orders) {
           for(const post of auction.post){
             if(order.post === post.id){
