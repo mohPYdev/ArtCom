@@ -3,6 +3,12 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
+    minHeight: {
+      '1/2': '50%',
+    },
+    minWidth: {
+      '1/2': '50%',
+    },
     extend: {
       backgroundImage: {
         'bg-auctionres': "url('img/bgauc.png')",

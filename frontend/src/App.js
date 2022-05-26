@@ -64,7 +64,7 @@ function App() {
           <Route path="/show/:id" element={<ShowPlace />} />
           <Route path="/psn" element={<PS_Noraml />} />
           <Route path="/psa/:artistId" element={<PS_Artist />} />
-          <Route path="/psa" element={<PS_Artist />} />
+          <Route path="/psa" element={<PS_Artist/>} />
 
           <Route path="/auctionres/:id" element={<AuctionResault/> } />
         

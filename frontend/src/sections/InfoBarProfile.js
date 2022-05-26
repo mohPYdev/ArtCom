@@ -10,10 +10,10 @@ export default function InfoBarProfile({artistId}) {
     const { user } = useAuthContext();
     const {data:artist} = useAxios("http://localhost:8000/auth/users/"+artistId+"/profile/");
 
-    const [postsNum , setPostsNum] = useState(20)
-    const [exhibNum , setExhibsNum] = useState(5)
-    const [followersNum , setFollowersNum] = useState(1200)
-    const [followingNum , setFollowingNum] = useState(50)
+    const [postsNum , setPostsNum] = useState()
+    const [exhibNum , setExhibsNum] = useState()
+    const [followersNum , setFollowersNum] = useState()
+    const [followingNum , setFollowingNum] = useState()
 
     const {data:art_posts} = useAxios("http://localhost:8000/post/"+artistId+"/posts/");
     const {data:posts} = useAxios("http://localhost:8000/post/posts/");
@@ -33,7 +33,7 @@ export default function InfoBarProfile({artistId}) {
             setPostsNum(posts.length)
             setExhibsNum(exhibs.filter(exhib => exhib.artist === user.id).length)
             setFollowersNum(user.artist.follower_count)
-            setFollowingNum(user.artist.following_count)
+            setFollowingNum(user.following_count)
         }
     } , [user, artist, artistId, art_posts, posts, exhibs])
 
@@ -41,10 +41,10 @@ export default function InfoBarProfile({artistId}) {
 
   return (
     <div className={style.info}>
-          <p className={style.postsNum}>{postsNum} Posts</p>
-          <p className={style.exhibNum}>{exhibNum} Exhibition</p>
-          <p className={style.followersNum}>{followersNum} follower</p>
-          <p className={style.followingNum}>{followingNum} following</p>
+          <p className={style.postsNum}>{postsNum}  : پست ها</p>
+          <p className={style.exhibNum}>{exhibNum} :  نمایشگاه ها</p>
+          <p className={style.followersNum}>{followersNum}  : دنبال کننده ها</p>
+          <p className={style.followingNum}>{followingNum}  : دنبال شونده ها</p>
         </div>
   )
 }

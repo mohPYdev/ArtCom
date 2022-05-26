@@ -112,6 +112,7 @@ export default function ShowPlace() {
 
   const buyHandler = async() => {
     music.pause();
+
     
     async function fetchData() {
       const headers = {
@@ -142,6 +143,8 @@ export default function ShowPlace() {
       user_id.current = temp_id;
       setProfileImg(image);
       ChangePost();
+      console.log(user_id.current)
+      console.log(id)
     }
     getData();
 

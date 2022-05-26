@@ -23,7 +23,7 @@
 */
 import vangogh from "../img/van-gogh.jpeg";
 import { useEffect, useState } from "react";
-import { StarIcon } from "@heroicons/react/solid";
+import { StarIcon, UsersIcon } from "@heroicons/react/solid";
 import { RadioGroup } from "@headlessui/react";
 import "./post.css";
 import like from "../img/like.png";
@@ -33,12 +33,15 @@ import getPostInfo from "../function/getPostInfo";
 import { useParams } from "react-router-dom";
 
 import {useAxios} from "../hooks/useAxios";
+import { useAuthContext } from '../hooks/useAuthContext'
 
 export default function Post() {
   const { postId, artistId } = useParams();
 
   const likedbtn = "likedbtn"
   const unlikedbtn = "unlikedbtn" 
+
+  const {user} = useAuthContext()
 
   //State
   const [name, setName] = useState();
@@ -49,10 +52,12 @@ export default function Post() {
   const [sold, setSold] = useState();
   const [image, setImage] = useState();
   const [description, setDescription] = useState();
+  const [forpay, setForPay] = useState(false)
 
 
   const {postData:postLike} = useAxios(`http://localhost:8000/post/${artistId}/posts/${postId}/like/`,'POST');
   const {postData:postDislike} = useAxios(`http://localhost:8000/post/${artistId}/posts/${postId}/dislike/`,'POST');
+  const {data:orders } = useAxios(`http://localhost:8000/post/orders/`)
 
   const {postData:postPay} = useAxios(`http://localhost:8000/post/posts/${postId}/payment/`, 'POST')
 
@@ -126,22 +131,33 @@ export default function Post() {
   }, [artistId, postId]);
 
 
+  useEffect(() => {
+    if (orders){
+      for (const order of orders){
+        if (order.post == postId && user.username == order.user){
+          setForPay(true)
+        }
+      }
+   }
+  }, [])
+
+
   return (
     <div className="post-page h-screen">
-      <div className="pt-6">
+      <div className="pt-6 h-screen">
         {/* Image  */}
-        <div className="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-1 lg:gap-x-8">
-          <div className="rounded-lg overflow-hidden lg:block border-sky-900 border-solid border-2">
+        <div className="h-3/5 mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8">
+          <div className="h-full mx-auto my-auto rounded-lg overflow-hidden lg:block border-sky-900 border-solid border-2">
             <img
               src={image}
-              className="w-fit h-fit mx-auto my-auto"
+              className="mx-auto my-auto min-h-[50%] min-w-[50%] max-h-full max-w-full"
               
             />
           </div>
         </div>
 
         {/* artwork info */}
-        <div className="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
+        <div className="h-2/5 max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
           <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
             <h1 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl centertext">
               {name}
@@ -154,14 +170,14 @@ export default function Post() {
             <p className="mt-4 text-1xl text-gray-900 centertext ">
               1400/05/07
             </p>
-            <button
+            { forpay && <button
               className="mt-10 w-full bg-sky-900 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-sky-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 centertext"
               id="sold--btn"
               onClick={handlepayment}
             >
               پرداخت
               <img src={icon1} className="shopping-icon icon" />
-            </button>
+            </button>}
             <div className=" mt-10 flex items-center justify-center">
               {sold ? <img src={warning} className="icon" /> : <></>}
               <p
