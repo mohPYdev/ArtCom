@@ -71,6 +71,12 @@ class OrderSerializer(serializers.ModelSerializer):
         fields = ('id', 'post', 'user', 'date_ordered', 'is_paid', 'is_shipped')
         read_only_fields = ('id','date_ordered', 'is_paid', 'is_shipped')
     
+    def create(self, validated_data):
+        post = validated_data['post']
+        user = self.context['request'].user
+        order = Order.objects.get_or_create(post=post, user=user)
+        return order
+    
 
 
 class PostExhSerializer(serializers.ModelSerializer):

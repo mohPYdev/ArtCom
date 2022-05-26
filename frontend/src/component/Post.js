@@ -53,26 +53,13 @@ export default function Post() {
   const [image, setImage] = useState();
   const [description, setDescription] = useState();
   const [forpay, setForPay] = useState(false)
+  const [orderId, setOrderId] = useState()
 
 
-  const {postData:postLike} = useAxios(`http://localhost:8000/post/${artistId}/posts/${postId}/like/`,'POST');
-  const {postData:postDislike} = useAxios(`http://localhost:8000/post/${artistId}/posts/${postId}/dislike/`,'POST');
   const {data:orders } = useAxios(`http://localhost:8000/post/orders/`)
 
   const {postData:postPay} = useAxios(`http://localhost:8000/post/posts/${postId}/payment/`, 'POST')
 
-  //func
-  // const likeHandler = () => {
-  //   if (liked) {
-  //     setLiked(false);
-  //     setLikeCount((prevcount) => prevcount - 1);
-  //     postDislike();
-  //   } else {
-  //     setLiked(true);
-  //     setLikeCount((prevcount) => prevcount + 1);
-  //     postLike();
-  //   }
-  // };
 
   const handlepayment =() => {
     postPay()
@@ -83,24 +70,36 @@ export default function Post() {
 
   // call a function before unloading to another page
   useEffect(() => {
-    window.addEventListener("beforeunload", () => {
-      if (!sold){
-        async function fetchData() {
-          const headers = {
-            "Content-Type": "application/json",
-            "Authorization": `Token ${JSON.parse(localStorage.getItem("token"))}`
-          }
-      
-          fetch("http://localhost:8000/post/orders/", {headers: headers, method:'DELETE',} )
-          .then((response) => response.json())
-          .then(newpost => {
-          })
-        }
-        fetchData();
+    if (!orderId) return ;
+    if (sold) return ;
+
+    function fetchData() {
+      const headers = {
+        "Content-Type": "application/json",
+        "Authorization": `Token ${JSON.parse(localStorage.getItem("token"))}`
       }
+  
+      fetch(`http://localhost:8000/post/orders/${orderId}/`, {headers: headers, method:'DELETE', keepalive:true} )
+      .then((response) => response.json())
+      .then(newpost => {
+        console.log("leaving page")
+      })
+    }
+
+
+     window.addEventListener("beforeunload", () => {   
+        fetchData();
     }
     , false);
-  }, []);
+
+    return () => {
+      window.removeEventListener("beforeunload", () => {
+        fetchData();
+      }
+      , false);
+    }
+
+  }, [orderId, sold]);
 
 
 
@@ -136,10 +135,11 @@ export default function Post() {
       for (const order of orders){
         if (order.post == postId && user.username == order.user){
           setForPay(true)
+          setOrderId(order.id)
         }
       }
    }
-  }, [])
+  }, [orders, postId, user])
 
 
   return (
