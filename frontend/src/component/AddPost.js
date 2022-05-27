@@ -76,11 +76,11 @@ export default function Example() {
       <div className="h-fit w-screen bg-gradient-to-b from-rose-200 to-rose-100"	>
       <img src={painter_line} className="absolute bottom-0 right-0 w-2/6"></img>
       <img src={color_img} className="absolute left-0 top-0 w-1/3"></img>
-        <div className="w-2/5 py-16 mx-auto shadow sm:rounded-md sm:overflow-hidden righttext ">
+        <div className="w-2/5 py-16 mx-auto shadow sm:rounded-md sm:overflow-hidden centertext">
           <form className="rounded-2xl px-4 py-5 bg-cyan-900 space-y-6 sm:p-6 " onSubmit={handleApSubmit}>
             <div className=" grid grid-cols-3 gap-6">
               <div className="col-span-3 sm:col-span-3">
-                <label htmlFor="company-website" className="block text-sm font-medium text-rose-200 righttext" >
+                <label htmlFor="company-website" className="block text-3xl font-medium text-rose-200 text-right" >
                   نام اثر
                 </label>
                 <div className=" mt-1 flex rounded-md shadow-sm">
@@ -91,7 +91,7 @@ export default function Example() {
                     name="name"
                     id="name"
                     autoComplete="given-name"
-                    className="p-3 righttext text-3xl shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full rounded-md"
+                    className="font-bold p-3 righttext text-3xl shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full rounded-md"
                   />
                 </div>
               </div>
@@ -99,8 +99,8 @@ export default function Example() {
 
             <div className="grid grid-cols-3 gap-6">
               <div className="col-span-3 sm:col-span-3">
-                <label htmlFor="company-website" className="block text-sm font-medium text-rose-200 righttext" >
-                  قیمت اثر
+                <label htmlFor="company-website" className="block text-3xl font-medium text-rose-200 text-right" >
+                  (تومان) قیمت اثر
                 </label>
                 <div className="mt-1 flex rounded-md shadow-sm">
                   <input
@@ -110,13 +110,13 @@ export default function Example() {
                     name="price"
                     id="name"
                     autoComplete="given-name"
-                    className="p-3 righttext text-3xl shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full border border-gray-300 rounded-md"
+                    className="font-bold p-3 text-3xl shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full border border-gray-300 rounded-md"
                   />
                 </div>
               </div>
             </div>
             <div>
-              <label htmlFor="about" className="righttext block text-sm font-medium text-rose-200">
+              <label htmlFor="about" className="block text-3xl font-medium text-rose-200 text-right">
                 توضیحات
               </label>
               <div className="mt-1">
@@ -125,8 +125,8 @@ export default function Example() {
                   onChange={handlechangeApDescribe}
                   id="about"
                   name="about"
-                  rows={4}
-                  className="p-3	righttext text-3xl shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full border border-gray-300 rounded-md"
+                  rows={5}
+                  className="font-bold p-3	righttext text-3xl shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full border border-gray-300 rounded-md"
                 />
               </div>
             </div>
@@ -134,7 +134,7 @@ export default function Example() {
             <div>
             </div>
             <div>
-              <label className="righttext block text-sm font-medium text-rose-200">فایل عکس</label>
+              <label className="block text-3xl font-medium text-rose-200 text-right">فایل عکس</label>
               <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                 <div className="space-y-1 text-center">
                   {!selectedImage && <svg
@@ -167,7 +167,7 @@ export default function Example() {
               </div>
             </div>
             <fieldset>
-              <legend className="righttext contents text-base font-medium text-rose-200">آیا قصد فروش این اثر را دارید؟</legend>
+              <legend className="contents text-3xl font-medium text-rose-200">آیا قصد فروش این اثر را دارید؟</legend>
               <div className=" mt-4 space-y-4">
                 <div className="flex items-center translate-x-2/4">
                   <input
@@ -176,11 +176,16 @@ export default function Example() {
                     type="radio"
                     onChange={handlechangeApYes}
                     {...(forSale ? { checked: true } : {})}
-                    className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
+                    className="accent-[#d63031]"
                   />
-                  <label className="righttext ml-3 block text-sm font-medium text-rose-200">
+                  {/* <label className="righttext ml-3 block text-sm font-medium text-rose-200">
+                    بله
+                  </label> */}
+
+                  <label className="ml-3  text-rose-200 text-3xl">
                     بله
                   </label>
+                  
                 </div>
                 <div className="righttext flex items-center translate-x-2/4">
                   <input
@@ -189,17 +194,22 @@ export default function Example() {
                     type="radio"
                     {...(!forSale ? { checked: true } : {})}
                     onChange={handlechangeApNo}
-                    className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
+                    className="accent-[#d63031] "
                   />
-                  <label className="righttext ml-3 block text-sm font-medium text-rose-200">
+                  {/* <label className="righttext ml-3 block text-sm font-medium text-rose-200">
                     خیر
+                  </label> */}
+
+                  <label className="ml-3  text-rose-200 text-3xl">
+                  خیر
                   </label>
+
                 </div>
               </div>
             </fieldset>
             <button
               type="submit"
-              className="py-2 px-4 duration-300 hover:-translate-y-1 hover:scale-125 text-4xl inline-flex py-4 px-6 border border-transparent shadow-sm rounded-md text-black bg-[#B4D5CE] hover:bg-cyan-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              className="justify-self-stretch font-bold py-2 px-4 duration-300 hover:-translate-y-1 hover:scale-110 text-3xl inline-flex py-4 px-6 border border-transparent shadow-sm rounded-md text-black bg-[#B4D5CE] hover:bg-cyan-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
               ثبت اثر
             </button>
           </form>
