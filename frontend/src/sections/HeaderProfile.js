@@ -99,7 +99,7 @@ export default function HeaderProfile({artistId}) {
             unfollow
           </button>
         )}
-        {showwallet && <Modal_popUp handleClose={handleClose} />}
+        {showwallet && <Modal_popUp handleClose={handleClose} balance={user.wallet} id={artistId}/>}
       </div>
   )
 }

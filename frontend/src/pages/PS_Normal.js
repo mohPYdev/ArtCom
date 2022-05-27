@@ -64,7 +64,7 @@ export default function PS_Normal() {
             <p className={style.following}>{following} Following</p>
             <button className={style.btn} id={style.edit} onClick={editHandle}>ویرایش</button>
             <button className={style.btn} id={style.wallet} onClick={() => setShowwallet(true)}>کیف پول</button>
-            {showwallet && <Modal_popUp handleClose={handleClose} />}
+            {showwallet && <Modal_popUp handleClose={handleClose} balance = {user.wallet} id={user.id}/>}
             <button className={style.btn} id={style.exit} onClick={exitHandle}>خروج</button>
         </div>
 
