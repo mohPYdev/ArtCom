@@ -16,7 +16,7 @@ export default function InfoBarProfile({artistId}) {
     const [followingNum , setFollowingNum] = useState()
 
     const {data:art_posts} = useAxios("http://localhost:8000/post/"+artistId+"/posts/");
-    const {data:posts} = useAxios("http://localhost:8000/post/posts/");
+    const {data:posts} = useAxios("http://localhost:8000/post/posts/me/");
     const {data:exhibs} = useAxios("http://localhost:8000/post/exhibitions/");
 
 

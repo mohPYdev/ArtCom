@@ -1,14 +1,16 @@
 import style from "./PS_Normal.module.css";
 import cherry from "../img/Premium_Vector___Photographer_man-removebg.png";
 import psnhome from "../img/icons8-home-page-50.png";
-import pablo from "../img/pablo.png";
-import picture from "../img/cherry.png";
-import { useState, useEffect } from "react";
-import Avatar from "../component/Avatar";
-import { useNavigate } from "react-router-dom";
-import { useAuthContext } from "../hooks/useAuthContext";
-import { useLogout } from "../hooks/useLogout";
-import { Outlet, Link } from "react-router-dom";
+import pablo from '../img/pablo.png'
+import picture from '../img/cherry.png'
+import profile from "../img/profile--picture.png";
+import { useState, useEffect } from 'react';
+import Avatar from '../component/Avatar';
+import { useNavigate } from 'react-router-dom';
+import { useAuthContext} from '../hooks/useAuthContext';
+import { useLogout } from '../hooks/useLogout';
+import { Link } from "react-router-dom";
+import Modal_popUp from "../component/wallet";
 
 export default function PS_Normal() {
   document.body.className = "";
@@ -20,17 +22,25 @@ export default function PS_Normal() {
 
   const { logout, error, isPending } = useLogout();
 
-  const navigator = useNavigate();
+    
+    const navigator = useNavigate ();
+    
+    const { user } = useAuthContext();
+    const [profileImg , setProfileImg] = useState(profile)
+    const [name , setname] = useState('نام من')
+    const [bio , setBio] = useState(' .... درباره من')
+    const [following , setFollowing] = useState(user?.following_count)
+    const [showwallet, setShowwallet] = useState(false);
 
-  const { user } = useAuthContext();
+    const handleClose = () => {
+      setShowwallet(false)
+    }
+    const exitHandle = () => {
+      logout()
+      navigator(`/`)
+      logout();
+    }
 
-  const [following, setFollowing] = useState("");
-
-  const exitHandle = () => {
-    logout();
-    navigator(`/`);
-    logout();
-  };
   useEffect(() => {
     user ? setFollowing(user.following_count) : setFollowing(0);
   }, []);
@@ -41,13 +51,18 @@ export default function PS_Normal() {
 
   return (
     <div>
-      <Link to="/home">
-        <span>
-          <img id={style.psnhome} src={psnhome} />
-        </span>
-      </Link>
-      <div className={style.header}>
-        <Avatar backColor="light" />
+      <Link to="/home"><span><img id={style.psnhome} src={psnhome} /></span></Link>
+        <div className={style.header}>
+        
+            <Avatar backColor="light"/>
+            <div className={style.bio}>{bio}</div>
+            <p className={style.following}>{following} Following</p>
+            <button className={style.btn} id={style.edit} onClick={editHandle}>ویرایش</button>
+            <button className={style.btn} id={style.wallet} onClick={() => setShowwallet(true)}>کیف پول</button>
+            {showwallet && <Modal_popUp handleClose={handleClose} balance = {user.wallet} id={user.id}/>}
+            <button className={style.btn} id={style.exit} onClick={exitHandle}>خروج</button>
+        </div>
+        <div>
         <h1 className={style.artcom}>ArtCom</h1>
         <p className={style.following}>{+following} : دنبال شونده ها</p>
         <button className={style.btn} id={style.edit} onClick={editHandle}>

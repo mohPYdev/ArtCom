@@ -178,10 +178,10 @@ function SignUpa() {
             <option value="painter" selected>
               نقاش
             </option>
-            <option value="photographer">عکاس</option>
-            <option value="Potter">سفالگر</option>
-            <option value="Sculptor">مجسمه ساز</option>
-            <option value="Other">سایر</option>
+            <option value="عکاس">عکاس</option>
+            <option value="سفالگر">سفالگر</option>
+            <option value="مجسمه ساز">مجسمه ساز</option>
+            <option value="هنرمند">سایر</option>
           </select>
           <textarea
             value={sa_address}

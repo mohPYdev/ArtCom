@@ -8,7 +8,7 @@
 
 .header{
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     align-content: center;
     margin-top: 20px;
@@ -414,6 +414,12 @@
     width: 200px;
     cursor: auto;
 }
+#wallet {
+    grid-row: 2;
+    grid-column: 6;
+    align-self:center;
+    justify-self: center;
+}
 #psahome{
     width: 58px;
     align-self: center;
@@ -436,4 +442,13 @@
     transform: scale(1.4);
     transition: all 0.5s;
 
+}
+.star_rate{
+    position: absolute;
+    top: 33%;
+    left: 5%;
+}
+.fetchdata{
+    font-size: 2rem;
+    text-align: center;
 }
