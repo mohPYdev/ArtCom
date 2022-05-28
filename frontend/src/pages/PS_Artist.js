@@ -72,7 +72,7 @@ export default function PS_Artist() {
           count={5}
           onChange={()=>ratingChanged(false)}
           size={40}
-          isHalf={true}
+          isHalf={false}
           emptyIcon={<i className="far fa-star"></i>}
           halfIcon={<i className="fa fa-star-half-alt"></i>}
           fullIcon={<i className="fa fa-star"></i>}
