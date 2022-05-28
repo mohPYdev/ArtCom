@@ -38,7 +38,7 @@ class PostViewSet(viewsets.ModelViewSet):
         return self.queryset
     
     def get_permissions(self):
-        if self.action == 'list':
+        if self.action in ['list', 'retrieve']:
             permission_classes = [IsAuthenticated,]
         else:
             permission_classes = [IsArtist,]
