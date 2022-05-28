@@ -17,6 +17,10 @@ import { useAxios } from '../hooks/useAxios'
 
 import Postlist from '../component/postlist/Postlist'
 
+
+import ReactStars from "react-rating-stars-component";
+import React from "react";
+
 export default function PS_Artist() {
   
   document.body.className = '';
@@ -52,20 +56,42 @@ export default function PS_Artist() {
   },[artistId, user])
 
 
+  const ratingChanged = (newRating) => {
+    console.log(newRating);
+  };
+  console.log(user);
+
+
+
   return (
     <div>
-    
+      <div className={style.star_rate}>
+        <h3 className={style.fetchdata}> {user?.first_name} {user?.last_name}<br />{user?.artist.profession} </h3>
+        <ReactStars
+          count={5}
+          onChange={()=>ratingChanged(false)}
+          size={40}
+          isHalf={true}
+          emptyIcon={<i className="far fa-star"></i>}
+          halfIcon={<i className="fa fa-star-half-alt"></i>}
+          fullIcon={<i className="fa fa-star"></i>}
+          activeColor="#3B3B98"
+          color="#A9A9A9"
+        />
+      </div>
+      
+ 
       <HeaderProfile artistId={artistId} />
 
       <InfoBarProfile artistId={artistId} />
-      {isSame && (
+
       <div className={style.addpost}>
             <Link to={`/add/post`}>
                 <img src={addp1} className={style.addp1}></img>
                 <p className={style.cpost}>ساخت پست</p>
                 <img src={addp2} className={style.addp2}></img>
             </Link>
-        </div>)}
+        </div>
       <ShowPlaceProfile artistId={artistId} />
       {isSame && (<AuctionProfile artistId={artistId} />)}
 

@@ -9,6 +9,7 @@ import { useLogout } from "../hooks/useLogout";
 import { Outlet, Link  , Navigate, useNavigate} from "react-router-dom";
 
 import {useAxios} from '../hooks/useAxios'
+import Modal_popUp from "../component/Wallet";
 
 export default function HeaderProfile({artistId}) {
 
@@ -28,6 +29,11 @@ export default function HeaderProfile({artistId}) {
     const [profileImg, setProfileImg] = useState(profile);
     const [name, setname] = useState("نام من");
     const [bio, setBio] = useState(" .... درباره من");
+    const [showwallet, setShowwallet] = useState(false);
+
+    const handleClose = () => {
+      setShowwallet(false)
+    }
 
 
 
@@ -89,6 +95,9 @@ export default function HeaderProfile({artistId}) {
             ویرایش
           </button>
         )}
+        {isSame && (
+          <button className={style.btn} id={style.wallet} onClick={() => setShowwallet(true)}>کیف پول</button>
+        )}
         {!isSame && !followed && (
           <button className={style.btn} id={style.follow} onClick={handleFollow}>
             دنبال کردن
@@ -103,6 +112,7 @@ export default function HeaderProfile({artistId}) {
             دنبال نکردن
           </button>
         )}
+        {showwallet && <Modal_popUp handleClose={handleClose} balance={user.wallet} id={artistId}/>}
       </div>
   )
 }
