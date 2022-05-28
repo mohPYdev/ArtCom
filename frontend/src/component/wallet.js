@@ -27,11 +27,12 @@ export default function Modal({ handleClose , id}) {
   useEffect(() => {
     if(ok && user){
       const old_user = JSON.parse(localStorage.getItem('user'))
-      setBalance(dep + user.wallet)
+      setBalance(parseInt(dep) + parseInt(user.wallet))
       old_user.wallet = parseInt(dep) + parseInt(user.wallet);
       setOk(false)
       localStorage.setItem('user', JSON.stringify(old_user))
       dispatch({type: 'LOGIN', payload: old_user})
+      console.log('old user is:' , old_user)
     }
   }, [dep, ok, user])
 

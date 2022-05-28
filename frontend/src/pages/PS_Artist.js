@@ -24,37 +24,40 @@ export default function PS_Artist() {
 
   const { artistId } = useParams();
   const [url , setUrl] = useState(`http://localhost:8000/post/${artistId}/posts`)
-  // just for posts
-  const { data , loading , error } = useAxios(url)
+  const [isSame, setIsSame] = useState();
+
+
 
   const navigator = useNavigate();
-
-
-  const { user, dispatch } = useAuthContext();
-  // const { data:new_user } = useAxios(`http://localhost:8000/auth/users/${user?.id}/profile`);
-  const [isSame, setIsSame] = useState();
   
+  
+  const { user, dispatch } = useAuthContext();
+  
+  const { data:new_user } = useAxios(`http://localhost:8000/auth/users/${user?.id}/profile`);
+  const { data , loading , error } = useAxios(url)
   const {data:artist} = useAxios("http://localhost:8000/auth/users/"+artistId+"/profile");
   const {postData:postRate} = useAxios(`http://localhost:8000/auth/users/${artistId}/rate/`,'POST');
 
 
-  // useEffect(() => {
-  //   if (!user && !new_user) return;
-  //   dispatch({ type: "LOGIN", user: new_user });
-  //   // localStorage.setItem("user", JSON.stringify(new_user));
-  // }, [user, new_user]);
+
 
   useEffect(()=>{
     if(!user) return;
+    if (!new_user) return;
+
+    // update local storage user
+    localStorage.setItem('user', JSON.stringify(new_user));
+    dispatch({ type: 'LOGIN', payload: new_user });
+
+
     if (artistId && artistId != user.id) {
-      //see profile for other artist
       setIsSame(false);
     }
     else{
       setIsSame(true);
       setUrl(`http://localhost:8000/post/posts/me`)
     }  
-  },[artistId, user])
+  },[artistId, user, new_user])
 
 
   const ratingChanged = (newRating) => {
@@ -62,10 +65,6 @@ export default function PS_Artist() {
     console.log(newRating);
   };
 
-
-  const updateProfile = () => {
-    setU
-  }
 
 
 

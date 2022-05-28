@@ -31,6 +31,8 @@ export default function HeaderProfile({artistId}) {
     const [bio, setBio] = useState(" .... درباره من");
     const [showwallet, setShowwallet] = useState(false);
 
+    
+
     const handleClose = () => {
       setShowwallet(false)
     }
@@ -69,7 +71,6 @@ export default function HeaderProfile({artistId}) {
     if (followed) {
       setFollowed(false);
       postUnFollow();
-
     } else {
       setFollowed(true);
       postFollow();

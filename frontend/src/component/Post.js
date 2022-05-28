@@ -1,26 +1,4 @@
-/*
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    theme: {
-      extend: {
-        gridTemplateRows: {
-          '[auto,auto,1fr]': 'auto auto 1fr',
-        },
-      },
-    },
-    plugins: [
-      // ...
-      require('@tailwindcss/aspect-ratio'),
-    ],
-  }
-  ```
-*/
+
 import vangogh from "../img/van-gogh.jpeg";
 import { useEffect, useState } from "react";
 import { StarIcon, UsersIcon } from "@heroicons/react/solid";
@@ -31,10 +9,11 @@ import icon1 from "../img/add-to-cart.png";
 import warning from "../img/warning.png";
 import getPostInfo from "../function/getPostInfo";
 import { useParams } from "react-router-dom";
+import { useAlert} from "react-alert";
 
 import {useAxios} from "../hooks/useAxios";
 import { useAuthContext } from '../hooks/useAuthContext'
-import BackToHome from "./BackToHome";
+import BackToHomePost from "./BackToHomePost";
 
 export default function Post() {
   const { postId, artistId } = useParams();
@@ -43,6 +22,7 @@ export default function Post() {
   const unlikedbtn = "unlikedbtn" 
 
   const {user} = useAuthContext()
+  const alert = useAlert()
 
   //State
   const [name, setName] = useState();
@@ -57,50 +37,62 @@ export default function Post() {
   const [orderId, setOrderId] = useState()
 
 
+
   const {data:orders } = useAxios(`http://localhost:8000/post/orders/`)
 
   const {postData:postPay} = useAxios(`http://localhost:8000/post/posts/${postId}/payment/`, 'POST')
-
+  const {postData:postWal} = useAxios(`http://localhost:8000/auth/users/remove/wallet/`, 'POST')
 
   const handlepayment =() => {
-    postPay()
-    setSold(true)
+    if (user.wallet >= price){
+      postPay()
+      postWal({'wallet' : price})
+      setSold(true)
+    }
+    else{
+      alert.error("موجودی کیف پول شما کافی نیست")
+    }
   }
 
 
 
   // call a function before unloading to another page
-  useEffect(() => {
-    if (!orderId) return ;
-    if (sold) return ;
+  // useEffect(() => {
+  //   if (!orderId) return ;
+  //   if (sold) return ;
 
-    function fetchData() {
-      const headers = {
-        "Content-Type": "application/json",
-        "Authorization": `Token ${JSON.parse(localStorage.getItem("token"))}`
-      }
+  //   function fetchData() {
+  //     const headers = {
+  //       "Content-Type": "application/json",
+  //       "Authorization": `Token ${JSON.parse(localStorage.getItem("token"))}`
+  //     }
   
-      fetch(`http://localhost:8000/post/orders/${orderId}/`, {headers: headers, method:'DELETE', keepalive:true} )
-      .then((response) => response.json())
-      .then(newpost => {
-        console.log("leaving page")
-      })
-    }
+  //     fetch(`http://localhost:8000/post/orders/${orderId}/`, {headers: headers, method:'DELETE', keepalive:true} )
+  //     .then((response) => response.json())
+  //     .then(newpost => {
+  //       console.log("leaving page")
+  //     })
+  //   }
 
 
-     window.addEventListener("beforeunload", () => {   
-        fetchData();
-    }
-    , false);
+  //    window.addEventListener("beforeunload", () => {   
+  //         if (!sold){
+  //         postWal({'wallet' : 30000})
+  //         fetchData();
+  //       }
 
-    return () => {
-      window.removeEventListener("beforeunload", () => {
-        fetchData();
-      }
-      , false);
-    }
+  //   }
+  //   , false);
 
-  }, [orderId, sold]);
+  //   // return () => {
+  //   //   window.removeEventListener("beforeunload", () => {
+  //   //       postWal({'wallet' : 30000})
+  //   //       fetchData();
+  //   //   }
+  //   //   , false);
+  //   // }
+
+  // }, [orderId,sold]);
 
 
 
@@ -118,7 +110,7 @@ export default function Post() {
 
   useEffect(() => {
     async function fetchData() {
-      const { image, name, description, price, like_count, liked } =
+      const { image, name, description, price, like_count, liked, } =
         await getPostInfo(artistId, postId);
       setImage(image);
       setName(name);
@@ -146,7 +138,7 @@ export default function Post() {
   return (
     <div className="post-page h-screen">
       <div className="pt-6 h-screen">
-        <BackToHome />
+        <BackToHomePost sold={sold} postWal={postWal} orderId={orderId} />
         {/* Image  */}
         <div className="h-3/5 mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8">
           <div className="h-full mx-auto my-auto rounded-lg overflow-hidden lg:block border-sky-900 border-solid border-2">

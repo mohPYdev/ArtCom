@@ -209,7 +209,7 @@ export default function ShowPlace() {
 
         <img src={next} alt="next" id={style.next} onClick={nextHandler} />
 
-        <button className={style.btn} id={style.buy} onClick={buyHandler}>
+         <button className={style.btn} id={style.buy} onClick={buyHandler}>
           خرید
         </button>
         <button className={style.btn} id={style.play} onClick={playHandler}>
