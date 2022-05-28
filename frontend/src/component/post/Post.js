@@ -21,11 +21,13 @@ export default function Post({ handleClose , id}) {
     const [count , setCount] = useState(data?.like_count)
     const [addComment, setAddComment] = useState(false)
     
-    const {postData:postLike} = useAxios(`http://localhost:8000/post/${data?.artist.user.id}/posts/${data?.id}/like/`,'POST');
-    const {postData:postDislike} = useAxios(`http://localhost:8000/post/${data?.artist.user.id}/posts/${data?.id}/dislike/`,'POST');
+    const {postData:postLike} = useAxios(`http://localhost:8000/post/${data?.artist.user?.id}/posts/${data?.id}/like/`,'POST');
+    const {postData:postDislike} = useAxios(`http://localhost:8000/post/${data?.artist.user?.id}/posts/${data?.id}/dislike/`,'POST');
     
 
-
+useEffect(()=>{
+console.log(data)
+},[])
 
 
 

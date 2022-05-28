@@ -35,13 +35,16 @@ export default function InfoBarProfile({artistId}) {
             setFollowersNum(user.artist.follower_count)
             setFollowingNum(user.following_count)
         }
+        console.log(artist)
     } , [user, artist, artistId, art_posts, posts, exhibs])
 
 
 
   return (
     <div className={style.info}>
-      <p className={style.ratesNum}>{artist?.artist?.average_rating} : میانگین امتیاز</p>
+      {artist ?<p className={style.ratesNum}>{artist?.artist?.average_rating} : میانگین امتیاز</p>:
+      <p className={style.ratesNum}>{user?.artist?.average_rating} : میانگین امتیاز</p>
+}
           <p className={style.postsNum}>{postsNum}  : پست ها</p>
           <p className={style.exhibNum}>{exhibNum} :  نمایشگاه ها</p>
           <p className={style.followersNum}>{followersNum}  : دنبال کننده ها</p>
