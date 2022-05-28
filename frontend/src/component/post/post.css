@@ -1,0 +1,68 @@
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    overflow-x: auto;
+    z-index: 100;
+  }
+  .modal {
+    padding: 10px;
+    max-width: 90vw;
+    margin: 10px auto;
+    /* background: #9980FA; */
+    border-radius: 10px;
+    border: 4px solid #1e2736 ;
+    background: #C4C4C4;
+     text-align: center;
+     position: relative;
+     max-height: 95vh;
+  }
+
+  .flex-container .post_img{
+      max-width: 50vw;
+      max-height: 95%;
+      border-radius: 50px;
+    min-height: 500px;   
+  }
+
+  .flex-container{
+    display: flex;
+    max-width: 90vw;
+    max-height: 95vh;
+  }
+
+  .details{
+    width: 100%;
+    align-items: center;
+  }
+
+  .first-row{
+    /* display: flex; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+  }
+
+  .first-row b {
+    font-size: 1.5rem;
+  }
+
+  .first-row img{
+    cursor: pointer;
+    width: 45px;
+  }
+
+  .content{
+    direction: rtl;
+    text-align: right;
+    margin: 40px;
+    font-size: 1.5rem;
+  }
+
+  .comments{
+    overflow-y: scroll;
+    max-height: 420px;
+  }

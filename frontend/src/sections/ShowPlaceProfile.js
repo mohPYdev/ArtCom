@@ -6,10 +6,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import getExhibitions from "../function/getExhibitions";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { useAlert } from "react-alert";
 
 export default function ShowPlaceProfile({ artistId }) {
   const navigator = useNavigate();
   const { user } = useAuthContext();
+  const alert = useAlert();
+
   //Ref
   const indexOfExhibitons = useRef("");
   const exhibitions = useRef("");
@@ -25,27 +28,31 @@ export default function ShowPlaceProfile({ artistId }) {
     else if (status === "finished") setStatustext("تمام شده");
     else if (status === "ns") setStatustext("شروع نشده");
   }, [status]);
+
   useEffect(() => {
     async function fetchData() {
       let state;
-      if (artistId === undefined || +artistId === user.id) state = "myProfile";
+
+      if (artistId === undefined || artistId === user?.id) state = "myProfile";
       else state = "otherProfile";
 
-      const list = await getExhibitions(state , artistId);
+      const list = await getExhibitions(state, artistId);
 
       exhibitions.current = list;
       indexOfExhibitons.current = 0;
       changePost();
     }
     fetchData();
-  }, []);
+  }, [artistId, user]);
 
   //func
   const changePost = () => {
-    setExhibPoster(
-      exhibitions.current[indexOfExhibitons.current].posts[0].image
-    );
-    setStatus(exhibitions.current[indexOfExhibitons.current].status);
+    if (exhibitions.current[indexOfExhibitons.current] !== null) {
+      setExhibPoster(exhibitions.current[indexOfExhibitons.current]?.cover);
+      setStatus(exhibitions.current[indexOfExhibitons.current]?.status);
+    } else {
+      nexteHandle();
+    }
   };
   const backeHandle = () => {
     indexOfExhibitons.current = indexOfExhibitons.current - 1;
@@ -64,7 +71,12 @@ export default function ShowPlaceProfile({ artistId }) {
     navigator(`/add/exhibition`);
   };
   const GoToShowPlace = () => {
-    navigator(`/show/${indexOfExhibitons.current}`);
+    if(exhibPoster === undefined){
+      alert.error(`! نمایشگاهی موجود نیست`)
+
+    }
+    else
+    navigator(`/show/${exhibitions.current[indexOfExhibitons.current].id}`);
   };
   return (
     <>
@@ -85,7 +97,7 @@ export default function ShowPlaceProfile({ artistId }) {
           {statustext}
         </button>
 
-        {artistId === undefined || +artistId === user.id ? (
+        {artistId === undefined || artistId === user?.id ? (
           <div id={style.createe}>
             <button className={style.btn2} onClick={createExhibitions}>
               ساخت نمایشگاه
@@ -94,12 +106,13 @@ export default function ShowPlaceProfile({ artistId }) {
         ) : (
           <></>
         )}
-
         <div id={style.viewe}>
-          <button className={style.btn2} onClick={GoToShowPlace}>
+          <button className={style.btn2} onClick={GoToShowPlace} >
             مشاهده
           </button>
+
         </div>
+  {/* )} */}
       </div>
     </>
   );

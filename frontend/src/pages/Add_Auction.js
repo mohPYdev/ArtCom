@@ -3,10 +3,12 @@ import './add_auction.css';
 
 import {useAxios} from '../hooks/useAxios';
 import {useAlert} from 'react-alert'
+import {useAuthContext} from '../hooks/useAuthContext';
+import BackToHome from '../component/BackToHome';
 
 export default function Add_Auction(){
 
-
+    const {user} = useAuthContext()
     const {data:posts} = useAxios('http://localhost:8000/post/posts/');
     const {data:auctions} = useAxios('http://localhost:8000/post/auctions/');
 
@@ -15,9 +17,12 @@ export default function Add_Auction(){
 
     const[auctionselect_addau, set_auctionselect_addau] = useState('');
     const[postselect_addau, set_postselect_addau] = useState('');
+    const[validPosts, setValidPosts] = useState([]);
 
     const [url , setUrl] = useState('');
     const {data, postData} = useAxios(url, 'POST');
+
+
 
 
     useEffect(()=> {
@@ -35,6 +40,13 @@ export default function Add_Auction(){
             alert.success('پست با موفقیت به مزایده اضافه شد')
         }
     },[alert, data]);
+
+
+    useEffect(() => {
+        if (posts){
+            setValidPosts(validPosts => [...validPosts, ...posts.filter(post => post.for_sale === true && post.artist.user.id == user.id)]);
+        }
+    }, [posts, user]);
     
 
 
@@ -60,7 +72,9 @@ export default function Add_Auction(){
     }
 
     return(
+
         <div className='main_div_addau'>
+            <BackToHome />
             {/*adding page title*/}
             <div id='p_addau'>
                 <p>
@@ -84,7 +98,7 @@ export default function Add_Auction(){
                 {posts && <select value={postselect_addau} onChange={changePost} name='postselect_addau' id='postselect_addau' >
                      <option value=" " hidden >انتخاب پست</option>
                     <option value=" " disabled selected >انتخاب پست</option>
-                    {posts.map(post => (
+                    {validPosts.map(post => (
                         <option key={post.id} value={post.id}>{post.name}</option>
                     ))}
                 </select>}

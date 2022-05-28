@@ -21,12 +21,14 @@ import AlertTemplate from 'react-alert-template-basic'
 import PS_Artist from './pages/PS_Artist';
 
 import AuctionResault from './pages/AuctionResult';
+import AuctionBefore from './pages/AuctionBefore';
 
 import Addpost from './component/AddPost';
 import Add_Exhibition from './pages/Add_Exhibition';
 import Add_Auction from './pages/Add_Auction';
+import Search from './pages/search/Search';
 
-
+import Contact_us from './pages/Contact_us';
 
 
 const options = {
@@ -63,10 +65,11 @@ function App() {
           <Route path="/show/:id" element={<ShowPlace />} />
           <Route path="/psn" element={<PS_Noraml />} />
           <Route path="/psa/:artistId" element={<PS_Artist />} />
-          <Route path="/psa" element={<PS_Artist />} />
+          <Route path="/psa" element={<PS_Artist/>} />
 
-          <Route path="/auctionres" element={<AuctionResault/> } />
+          <Route path="/auctionres/:id" element={<AuctionResault/> } />
         
+          <Route path="/auctionbefore/:id" element={<AuctionBefore/> } />
 
 
           <Route path="/add/post" element={<Addpost />} />
@@ -75,6 +78,9 @@ function App() {
 
 
           <Route path="/post/:postId/:artistId" element={<Post />} />
+          <Route path="/contactus" element={<Contact_us />} />
+
+          <Route path="/search" element={<Search />} />
 
       </Routes>
     </BrowserRouter>

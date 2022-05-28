@@ -12,6 +12,8 @@ import getPostInfo from "../function/getPostInfo";
 import { useAlert } from "react-alert";
 import my_song from "../song/bgmusic.mp3";
 
+import { useAxios } from "../hooks/useAxios";
+
 export default function ShowPlace() {
   window.onbeforeunload = () => {
     music.pause();
@@ -28,7 +30,7 @@ export default function ShowPlace() {
   const user_id = useRef("");
   const alert = useAlert();
 
-  const { id } = useParams("");
+  const { id } = useParams("id");
   const navigator = useNavigate();
 
   const [about, setAbout] = useState("");
@@ -43,15 +45,21 @@ export default function ShowPlace() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [music , setMusic] = useState(new Audio(my_song));
 
-  const [liked, setliked] = useState(false);
+  const [liked, setliked] = useState();
 
+  const {postData:postLike} = useAxios(`http://localhost:8000/post/${user_id?.current}/posts/${postsList.current[indexOfPost.current]?.id}/like/`,'POST');
+  const {postData:postDislike} = useAxios(`http://localhost:8000/post/${user_id?.current}/posts/${postsList.current[indexOfPost.current]?.id}/dislike/`,'POST');
+  const {postData:postOrder} = useAxios(`http://localhost:8000/post/orders/`,'POST');
   const likeHandler = () => {
     if (liked) {
       setliked(false);
-      setCount((prevcount) => prevcount - 1);
+
+      setCount((prevcount)=>prevcount-1)
+      postDislike();
     } else {
       setliked(true);
-      setCount((prevcount) => prevcount + 1);
+      setCount((prevcount)=>prevcount+1)
+      postLike();
     }
   };
   const ChangePost = async () => {
@@ -102,27 +110,47 @@ export default function ShowPlace() {
     }
   };
 
-  const buyHandler = () => {
+  const buyHandler = async() => {
     music.pause();
-    navigator(
-      `/post/${+postsList.current[indexOfPost.current].id}/${user_id.current}`
-    );
+
+    
+    async function fetchData() {
+      const headers = {
+        "Content-Type": "application/json",
+        "Authorization": `Token ${JSON.parse(localStorage.getItem("token"))}`
+      }
+  
+      fetch("http://localhost:8000/post/orders/", {headers: headers, method:'POST', body:JSON.stringify({'post':+postsList.current[indexOfPost.current].id}) } )
+      .then((response) => response.json())
+      .then(newpost => {
+        navigator(
+          `/post/${+postsList.current[indexOfPost.current].id}/${user_id.current}`
+        )
+      })
+    }
+    fetchData();
   };
+
+
 
   // fetch data
   useEffect(() => {
     async function getData() {
       indexOfPost.current = 0;
-      const { posts, artist } = await getOneExhibition(+id);
+      const { posts, artist } = await getOneExhibition(id);
       postsList.current = posts;
       const { image, id: temp_id } = await getArtistInfo(+artist);
       user_id.current = temp_id;
       setProfileImg(image);
       ChangePost();
+      console.log(user_id.current)
+      console.log(id)
     }
     getData();
 
   }, []);
+
+
   const GotoArtistProfile = () => {
     music.pause();
     navigator(`/psa/${user_id.current}`);

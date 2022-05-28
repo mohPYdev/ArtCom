@@ -3,6 +3,8 @@ import "./SignUp_Artist.css";
 import sahome from "../img/icons8-home-30.png"
 import { useSignupArtist } from "../hooks/useSignupArtist";
 import { Outlet, Link } from "react-router-dom";
+import BackToHome from "../component/BackToHome";
+import BackToRoot from "../component/BackToRoot";
 
 function SignUpa() {
   const { signup, error, isPending } = useSignupArtist();
@@ -81,7 +83,7 @@ function SignUpa() {
   return (
     <>
       <div id="sa_wrapper">
-      <Link to="/"><span><img id="sa_home" src={sahome} /></span></Link>
+      <BackToRoot />
         <form method="get" onSubmit={handleSaSubmit}>
           <input
             value={sa_firstname}

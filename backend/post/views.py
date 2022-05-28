@@ -16,7 +16,7 @@ from post.serializers import PostSerializer, LikeSerializer, ExhibitionSerialize
                              ExhibitionCreateSerializer, AuctionCreateSerializer,\
                              AuctionSerializer,\
                              AuctionArtistSerializer, PostPaymentSerializer,\
-                             OrderSerializer, CommentCreateSerializer
+                             OrderSerializer, CommentCreateSerializer, CommentSerializer
 
 User = get_user_model()
 
@@ -33,7 +33,21 @@ class PostViewSet(viewsets.ModelViewSet):
         serializer.save(artist=self.request.user.artist)
 
     def get_queryset(self):
-        return Post.objects.filter(artist=self.request.user.artist)
+        if self.action == 'me':
+            return Post.objects.filter(artist=self.request.user.artist)
+        return self.queryset
+    
+    def get_permissions(self):
+        if self.action == 'list':
+            permission_classes = [IsAuthenticated,]
+        else:
+            permission_classes = [IsArtist,]
+        return [permission() for permission in permission_classes]
+
+
+    @action(detail=False, methods=['GET'], url_name='me' )
+    def me(self, request):
+        return self.list(request)
     
     
 class PostListView(generics.ListAPIView):
@@ -125,16 +139,19 @@ class PostPayView(generics.CreateAPIView):
     def create(self, request, *args, **kwargs):
         user = self.request.user
         post = self.get_object()
+        order = Order.objects.get(user=user, post=post)
         post.sold = True
         post.for_sale = False
+        order.is_paid = True
+        order.save()
         post.save()
         return Response(status=status.HTTP_200_OK)
     
     def get_object(self):
-        user_pk = self.kwargs['user_pk']
+        # user_pk = self.kwargs['user_pk']
         post_pk = self.kwargs['post_pk']
-        user = User.objects.get(id=user_pk)
-        obj = get_object_or_404(Post, id=post_pk, artist=user.artist)
+        # user = User.objects.get(id=user_pk)
+        obj = get_object_or_404(Post, id=post_pk)
         return obj
 
 
@@ -148,7 +165,22 @@ class CommentViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user) 
+
+    def get_queryset(self):
+        if self.action == 'comment_post':
+            post = Post.objects.get(id=self.kwargs['pk'])
+            return Comment.objects.filter(post=post)
+        return self.queryset
+
+    def get_serializer_class(self):
+        if self.action == 'comment_post':
+            return CommentSerializer
+        return self.serializer_class
     
+
+    @action(detail=True, methods=['GET'], url_name='post' )
+    def comment_post(self, request, pk):
+        return self.list(request)
 
    
 
@@ -159,6 +191,10 @@ class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
     permission_classes = (IsAuthenticated,)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+    
 
     
 
@@ -256,10 +292,10 @@ class AuctionViewSet(viewsets.ModelViewSet):
                 
         elif self.action == 'retrieve':
             obj = get_object_or_404(Auction, pk=self.kwargs['pk'])
-            if obj.get_status() == 'open':
+            if obj.get_status() == 'open' and self.request.user.wallet > 100000:
                 return obj
             else:
-                raise ValidationError({'detail':'the auction is not open'})
+                raise ValidationError({'detail':'the auction is not open or you have not enough money'})
         return obj
     
     def get_permissions(self):

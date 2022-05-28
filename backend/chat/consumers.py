@@ -138,6 +138,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
             'post_id': message['post_id'],
             'time': t,
             'username': message['username'],
+            'n_post': message['n_post']
         }))
 
     @database_sync_to_async

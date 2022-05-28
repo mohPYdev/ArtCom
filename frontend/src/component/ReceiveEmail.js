@@ -1,7 +1,9 @@
+import BackToRoot from './BackToRoot';
 import './ReceiveEmail.css'
 function ReceiveEmail(){
     return(
         <>
+        <BackToRoot />
             <div id="RE_wrapper">
                 <h1 id="RE_Thank">با تشکر از ثبت نام شما =) </h1>
                 <p id="RE_Text1">

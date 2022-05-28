@@ -1,15 +1,16 @@
 import style from "./HomePage.module.css";
+import Postlist from '../component/postlist/Postlist'
 
-
-// import { useAuthContext } from "../hooks/useAuthContext";
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 import Avatar from "../component/Avatar";
-// import getExhibitions from "../function/getExhibitions";
 import { useAxios } from "../hooks/useAxios";
 import ShowPlaceHomePage from "../sections/ShowPlaceHomePage";
+import ShowPlaceProfile from "../sections/ShowPlaceProfile";
+
 import AuctionsHomePage from "../sections/AuctionsHomePage";
+import SearchBar from "../component/Searchbar/Searchbar";
 
 export default function HomePage() {
 
@@ -20,34 +21,37 @@ export default function HomePage() {
   window.onbeforeunload = function (event) {
     document.body.classList.remove(style.bodyclass);
   };
+
+
+  // just for posts
+  const { data , loading , error } = useAxios('http://localhost:8000/post/posts')
   
   const navigator = useNavigate();
 
-  const [search, setSearch] = useState("");
+  
 
-  const searchHandle = (event) => {
-    setSearch(event.target.value);
+  const contactHandle = () => {
+    navigator('/contactus')
   };
 
-  const contactHandle = (event) => {};
 
   return (
-    <div>
+    <div className={style.homepage}>
       <div className={style.header}>
         <Avatar backColor="dark" />
 
-        <input
-          type="text"
-          id={style.search}
-          placeholder="جست و جو"
-          value={search}
-          onChange={searchHandle}
-        />
+        <SearchBar />
 
-        <button className={style.contact}>ارتباط با ما</button>
+        <button className={style.contact} onClick={contactHandle}>ارتباط با ما</button>
       </div>
       <ShowPlaceHomePage />
+      {/* <ShowPlaceProfile /> */}
       <AuctionsHomePage />
+ 
+       {/* posts */}
+      <div >
+        {data && <Postlist posts={data} ishomepage={true} />}
+    </div>
     </div>
   );
 }

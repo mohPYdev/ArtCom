@@ -42,6 +42,16 @@ class CommentCreateSerializer(serializers.ModelSerializer):
         read_only_fields = ('id', 'date_added', 'user')
 
 
+class CommentSerializer(serializers.ModelSerializer):
+    """serializes the comments model"""
+    user = serializers.SlugRelatedField(slug_field='username', read_only=True)
+
+    class Meta:
+        model = Comment
+        fields = ('id','text', 'date_added', 'post', 'user')
+        read_only_fields = ('id', 'date_added', 'user', 'post', 'text')
+
+
 
 class PostPaymentSerializer(serializers.ModelSerializer):
     """serializes the posts model for the payment updating"""
@@ -54,12 +64,18 @@ class PostPaymentSerializer(serializers.ModelSerializer):
 class OrderSerializer(serializers.ModelSerializer):
     """serializes the order model"""
     # post = PostSerializer(queryset=Post.objects.all(), many=False)
-    # user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), many=False)
+    user = serializers.SlugRelatedField(many=False, read_only=True, slug_field='username')
 
     class Meta:
         model = Order
         fields = ('id', 'post', 'user', 'date_ordered', 'is_paid', 'is_shipped')
-        read_only_fields = ('id','date_ordered')
+        read_only_fields = ('id','date_ordered', 'is_paid', 'is_shipped')
+    
+    def create(self, validated_data):
+        post = validated_data['post']
+        user = self.context['request'].user
+        order = Order.objects.get_or_create(post=post, user=user)
+        return order
     
 
 

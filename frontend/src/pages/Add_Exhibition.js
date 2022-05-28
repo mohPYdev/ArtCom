@@ -8,14 +8,17 @@ import moment from 'jalali-moment';
 import {useAxios} from '../hooks/useAxios';
 import axios from 'axios';
 import { useAlert } from 'react-alert';
+import { useAuthContext } from '../hooks/useAuthContext';
+import BackToHome from '../component/BackToHome';
 
 export default function Add_Exhibition(){
 
-    const {data:posts} = useAxios('http://localhost:8000/post/posts/');
+    const {data:posts} = useAxios('http://localhost:8000/post/posts');
     const alert = useAlert();
 
     
-
+    const {user} = useAuthContext();
+    const [validPosts, setValidPosts] = useState([]);
 
     //file button
     const [selectedImage, setSelectedImage] = useState(null);
@@ -64,6 +67,13 @@ export default function Add_Exhibition(){
         setSelectedPost(selectedPosts => selectedPosts.filter(item => item !== parseInt(selectedItem.id)));
     }
 
+
+
+    useEffect(() => {
+        if (posts){
+            setValidPosts(validPosts => [...validPosts, ...posts.filter(post => post.for_sale === true && post.artist.user.id == user.id)]);
+        }
+    }, [posts, user])
 
 
 
@@ -116,6 +126,7 @@ export default function Add_Exhibition(){
 
     return(
         <div className='main_div_addex'>
+            <BackToHome />
 
             {/*adding page title*/}
             <div id='p_addex'>
@@ -198,8 +209,8 @@ export default function Add_Exhibition(){
                 </fieldset>
 
                 {/*adding posts*/}
-                { posts && <Multiselect id='postselect_addex'
-                options= {posts} // Options to display in the dropdown
+                { validPosts && <Multiselect id='postselect_addex'
+                options= {validPosts} // Options to display in the dropdown
                 onSelect={onSelect} // Function will trigger on select event
                 onRemove={onRemove} // Function will trigger on remove event
                 displayValue="name" // Property name to display in the dropdown options
