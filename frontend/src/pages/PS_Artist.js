@@ -7,15 +7,14 @@ import InfoBarProfile from "../sections/InfoBarProfile";
 import HeaderProfile from "../sections/HeaderProfile";
 import addp1 from "../img/addpost1.png";
 import addp2 from "../img/addpost2.png";
-import { useEffect , useState} from "react";
-import { useAxios } from '../hooks/useAxios'
-import Postlist from '../component/postlist/Postlist'
+import { useEffect, useState } from "react";
+import { useAxios } from "../hooks/useAxios";
+import Postlist from "../component/postlist/Postlist";
 import ReactStars from "react-rating-stars-component";
 import React from "react";
 
 export default function PS_Artist() {
-  
-  document.body.className = '';
+  document.body.className = "";
   document.body.classList.add(style.bodyclass);
 
   window.onbeforeunload = () => {
@@ -23,92 +22,105 @@ export default function PS_Artist() {
   };
 
   const { artistId } = useParams();
-  const [url , setUrl] = useState(`http://localhost:8000/post/${artistId}/posts`)
+  const [url, setUrl] = useState(
+    `http://localhost:8000/post/${artistId}/posts`
+  );
   const [isSame, setIsSame] = useState();
 
-
-
   const navigator = useNavigate();
-  
-  
+
   const { user, dispatch } = useAuthContext();
-  
-  const { data:new_user } = useAxios(`http://localhost:8000/auth/users/${user?.id}/profile`);
-  const { data , loading , error } = useAxios(url)
-  const {data:artist} = useAxios("http://localhost:8000/auth/users/"+artistId+"/profile");
-  const {postData:postRate} = useAxios(`http://localhost:8000/auth/users/${artistId}/rate/`,'POST');
 
+  const { data: new_user } = useAxios(
+    `http://localhost:8000/auth/users/${user?.id}/profile`
+  );
+  const { data, loading, error } = useAxios(url);
+  const { data: artist } = useAxios(
+    "http://localhost:8000/auth/users/" + artistId + "/profile"
+  );
+  const { postData: postRate } = useAxios(
+    `http://localhost:8000/auth/users/${artistId}/rate/`,
+    "POST"
+  );
 
-
-
-  useEffect(()=>{
-    if(!user) return;
+  useEffect(() => {
+    if (!user) return;
     if (!new_user) return;
 
     // update local storage user
-    localStorage.setItem('user', JSON.stringify(new_user));
-    dispatch({ type: 'LOGIN', payload: new_user });
-
+    localStorage.setItem("user", JSON.stringify(new_user));
+    dispatch({ type: "LOGIN", payload: new_user });
 
     if (artistId && artistId != user.id) {
       setIsSame(false);
-    }
-    else{
+    } else {
       setIsSame(true);
-      setUrl(`http://localhost:8000/post/posts/me`)
-    }  
-  },[artistId, user, new_user])
-
+      setUrl(`http://localhost:8000/post/posts/me`);
+    }
+    console.log(user);
+  }, [artistId, user, new_user]);
 
   const ratingChanged = (newRating) => {
-    postRate({'star':newRating})
-    console.log(newRating);
+    postRate({ star: newRating });
   };
-
-
-
 
   return (
     <div>
       <div className={style.star_rate}>
-        {isSame && <h3 className={style.fetchdata}> {user?.first_name} {user?.last_name}<br />{user?.artist.profession} </h3>}
-        {!isSame && <h3 className={style.fetchdata}> {artist?.first_name} {artist?.last_name}<br />{artist?.artist.profession} </h3>}
-        { artist && <ReactStars
-          count={5}
-          onChange={ratingChanged}
-          size={40}
-          isHalf={false}
-          emptyIcon={<i className="far fa-star"></i>}
-          halfIcon={<i className="fa fa-star-half-alt"></i>}
-          fullIcon={<i className="fa fa-star"></i>}
-          activeColor="#3B3B98"
-          color="#A9A9A9"
-          value={parseInt(artist.artist.rated)}
-        />}
+        {isSame && (
+          <h3 className={style.fetchdata}>
+            {" "}
+            {user?.first_name} {user?.last_name}
+            <br />
+            {user?.artist.profession}{" "}
+          </h3>
+        )}
+        {!isSame && (
+          <h3 className={style.fetchdata}>
+            {" "}
+            {artist?.first_name} {artist?.last_name}
+            <br />
+            {artist?.artist.profession}{" "}
+          </h3>
+        )}
+        {artist && (
+          <ReactStars
+            count={5}
+            onChange={ratingChanged}
+            size={40}
+            isHalf={false}
+            emptyIcon={<i className="far fa-star"></i>}
+            halfIcon={<i className="fa fa-star-half-alt"></i>}
+            fullIcon={<i className="fa fa-star"></i>}
+            activeColor="#3B3B98"
+            color="#A9A9A9"
+            value={parseInt(artist.artist.rated)}
+          />
+        )}
       </div>
-      
- 
+
       <HeaderProfile artistId={artistId} />
 
       <InfoBarProfile artistId={artistId} />
 
-      <div className={style.addpost}>
-            <Link to={`/add/post`}>
-                <img src={addp1} className={style.addp1}></img>
-                <p className={style.cpost}>ساخت پست</p>
-                <img src={addp2} className={style.addp2}></img>
-            </Link>
+      {isSame && (
+        <div className={style.addpost}>
+          <Link to={`/add/post`}>
+            <img src={addp1} className={style.addp1}></img>
+            <p className={style.cpost}>ساخت پست</p>
+            <img src={addp2} className={style.addp2}></img>
+          </Link>
         </div>
+      )}
       <ShowPlaceProfile artistId={artistId} />
-      {isSame && (<AuctionProfile artistId={artistId} />)}
+      {isSame && <AuctionProfile artistId={artistId} />}
 
-       {/* posts */}
-       <div className='home'>
-          {error && <p className='error'>{error}</p>}
-          {loading && <p className='loading'>Loading...</p>}
-          {data && <Postlist posts={data} ishomepage={false}/>}
-        </div>
-    
+      {/* posts */}
+      <div className="home">
+        {error && <p className="error">{error}</p>}
+        {loading && <p className="loading">Loading...</p>}
+        {data && <Postlist posts={data} ishomepage={false} />}
+      </div>
     </div>
   );
 }

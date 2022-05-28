@@ -8,7 +8,7 @@
 
 .header{
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     align-content: center;
     margin-top: 20px;
@@ -451,4 +451,5 @@
 .fetchdata{
     font-size: 2rem;
     text-align: center;
+    justify-self: end;
 }

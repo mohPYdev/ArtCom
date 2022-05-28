@@ -55,19 +55,13 @@ export default function PS_Normal() {
         <div className={style.header}>
         
             <Avatar backColor="light"/>
-            <div className={style.bio}>{bio}</div>
-            <p className={style.following}>{following} Following</p>
-            <button className={style.btn} id={style.edit} onClick={editHandle}>ویرایش</button>
-            <button className={style.btn} id={style.wallet} onClick={() => setShowwallet(true)}>کیف پول</button>
-            {showwallet && <Modal_popUp handleClose={handleClose} balance = {user.wallet} id={user.id}/>}
-            <button className={style.btn} id={style.exit} onClick={exitHandle}>خروج</button>
-        </div>
-        <div>
         <h1 className={style.artcom}>ArtCom</h1>
         <p className={style.following}>{+following} : دنبال شونده ها</p>
         <button className={style.btn} id={style.edit} onClick={editHandle}>
           ویرایش
         </button>
+        <button className={style.btn} id={style.wallet} onClick={() => setShowwallet(true)}>کیف پول</button>
+        {showwallet && <Modal_popUp handleClose={handleClose} balance = {user.wallet} id={user.id}/>}
         <button className={style.btn} id={style.exit} onClick={exitHandle}>
           خروج
         </button>

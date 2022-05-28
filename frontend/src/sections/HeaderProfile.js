@@ -43,16 +43,16 @@ export default function HeaderProfile({artistId}) {
     if (!user) return;
     if (artistId && +artistId !== +user.id && artist) {
       setIsSame(false)
-      setname(artist.username)
-      setBio(artist.artist.description)
-      setProfileImg(artist.image)
-      setFollowed(artist.artist.followed)
+      setname(artist?.username)
+      setBio(artist?.artist.description)
+      setProfileImg(artist?.image)
+      setFollowed(artist?.artist.followed)
     }
     else{
       setIsSame(true)
-      setname(user.username)
-      setBio(user.artist.description)
-      setProfileImg(user.image)
+      setname(user?.username)
+      setBio(user?.artist?.description)
+      setProfileImg(user?.image)
     }
   }, [artistId, user, artist]);
 

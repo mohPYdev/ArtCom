@@ -4,6 +4,7 @@ import { useNavigate  } from "react-router-dom";
 export default function Avatar (props){
 
     const GoToProfileSeen =() => {
+      console.log(user?.is_artist)
         if(user?.is_artist)
         navigator(`/psa`)
         else{

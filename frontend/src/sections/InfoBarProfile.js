@@ -41,7 +41,7 @@ export default function InfoBarProfile({artistId}) {
 
   return (
     <div className={style.info}>
-      <p className={style.ratesNum}>{postsNum} : میانگین امتیاز</p>
+      <p className={style.ratesNum}>{artist?.artist?.average_rating} : میانگین امتیاز</p>
           <p className={style.postsNum}>{postsNum}  : پست ها</p>
           <p className={style.exhibNum}>{exhibNum} :  نمایشگاه ها</p>
           <p className={style.followersNum}>{followersNum}  : دنبال کننده ها</p>
