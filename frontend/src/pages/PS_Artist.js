@@ -1,9 +1,6 @@
 import style from "./PS_Artist.module.css";
-
 import { Link, useNavigate, useParams } from "react-router-dom";
-
 import { useAuthContext } from "../hooks/useAuthContext";
-
 import ShowPlaceProfile from "../sections/ShowPlaceProfile";
 import AuctionProfile from "../sections/AuctionProfile";
 import InfoBarProfile from "../sections/InfoBarProfile";
@@ -11,13 +8,8 @@ import HeaderProfile from "../sections/HeaderProfile";
 import addp1 from "../img/addpost1.png";
 import addp2 from "../img/addpost2.png";
 import { useEffect , useState} from "react";
-
-// just for showing posts
 import { useAxios } from '../hooks/useAxios'
-
 import Postlist from '../component/postlist/Postlist'
-
-
 import ReactStars from "react-rating-stars-component";
 import React from "react";
 
@@ -37,11 +29,20 @@ export default function PS_Artist() {
 
   const navigator = useNavigate();
 
-  const { user } = useAuthContext();
+
+  const { user, dispatch } = useAuthContext();
+  // const { data:new_user } = useAxios(`http://localhost:8000/auth/users/${user?.id}/profile`);
   const [isSame, setIsSame] = useState();
   
   const {data:artist} = useAxios("http://localhost:8000/auth/users/"+artistId+"/profile");
+  const {postData:postRate} = useAxios(`http://localhost:8000/auth/users/${artistId}/rate/`,'POST');
 
+
+  // useEffect(() => {
+  //   if (!user && !new_user) return;
+  //   dispatch({ type: "LOGIN", user: new_user });
+  //   // localStorage.setItem("user", JSON.stringify(new_user));
+  // }, [user, new_user]);
 
   useEffect(()=>{
     if(!user) return;
@@ -57,9 +58,14 @@ export default function PS_Artist() {
 
 
   const ratingChanged = (newRating) => {
+    postRate({'star':newRating})
     console.log(newRating);
   };
-  console.log(user);
+
+
+  const updateProfile = () => {
+    setU
+  }
 
 
 
@@ -68,9 +74,9 @@ export default function PS_Artist() {
       <div className={style.star_rate}>
         {isSame && <h3 className={style.fetchdata}> {user?.first_name} {user?.last_name}<br />{user?.artist.profession} </h3>}
         {!isSame && <h3 className={style.fetchdata}> {artist?.first_name} {artist?.last_name}<br />{artist?.artist.profession} </h3>}
-        <ReactStars
+        { artist && <ReactStars
           count={5}
-          onChange={()=>ratingChanged(false)}
+          onChange={ratingChanged}
           size={40}
           isHalf={false}
           emptyIcon={<i className="far fa-star"></i>}
@@ -78,7 +84,8 @@ export default function PS_Artist() {
           fullIcon={<i className="fa fa-star"></i>}
           activeColor="#3B3B98"
           color="#A9A9A9"
-        />
+          value={parseInt(artist.artist.rated)}
+        />}
       </div>
       
  

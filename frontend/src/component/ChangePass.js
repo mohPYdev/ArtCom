@@ -1,7 +1,7 @@
 import './PopupModal.css'
 import {useState} from 'react'
 import { useAlert } from "react-alert";
-import axios from "axios";
+import { useAxios } from '../hooks/useAxios'
 
 export default function Modal({ handleClose }) {
 
@@ -14,26 +14,15 @@ export default function Modal({ handleClose }) {
   const alert = useAlert();
 
   // post url
-  const url = 'http://localhost:8000/users/set_password/'
+  const url = 'http://localhost:8000/auth/users/set_password/'
+
+  const { postData } = useAxios(url, 'POST')
 
   // changePass handler
   const changePass = async (e) => {
     e.preventDefault()
-    if(new_password === re_new_password ){
-      try{
-          const res = await axios.post(url , {new_password , re_new_password , current_password} );
-          if(res.status === 204){
-            alert.success("رمز شما با موفقیت تغییر کرد")
-            handleClose()
-          }
-      }
-      catch(err){
-        console.log(err)
-      }
-    }
-    else{
-        alert.error("تکرار رمز عبور صحیح نمی باشد ")
-    }
+    postData({'new_password': new_password, 'current_password': current_password, 're_new_password': re_new_password})
+    alert.success('تغییرات با موفقیت انجام شد')
   }
 
   // close modal by clicking outside modal  

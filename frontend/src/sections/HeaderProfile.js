@@ -112,7 +112,7 @@ export default function HeaderProfile({artistId}) {
             دنبال نکردن
           </button>
         )}
-        {showwallet && <Modal_popUp handleClose={handleClose} balance={user.wallet} id={artistId}/>}
+        {showwallet && <Modal_popUp handleClose={handleClose} balance={user?.wallet} id={artistId}/>}
       </div>
   )
 }

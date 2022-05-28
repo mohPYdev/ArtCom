@@ -1,10 +1,20 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './PopupModal.css'
+import { useAlert } from 'react-alert'
+import { useAxios } from '../hooks/useAxios'
+import { useAuthContext } from '../hooks/useAuthContext'
 
-export default function Modal({ handleClose , balance , id}) {
+export default function Modal({ handleClose , id}) {
 
   // 
   const [dep , setDep] = useState(0)
+  const [ok, setOk] = useState(false)
+
+  const {postData} = useAxios(`http://localhost:8000/auth/users/add/wallet/`,'POST')
+  const alert = useAlert()
+
+  const {user, dispatch} = useAuthContext();
+  const [balance, setBalance] = useState(user?.wallet)
 
   // close modal
   const close = (e) => {
@@ -13,10 +23,25 @@ export default function Modal({ handleClose , balance , id}) {
     }
   }
 
+
+  useEffect(() => {
+    if(ok && user){
+      const old_user = JSON.parse(localStorage.getItem('user'))
+      setBalance(dep + user.wallet)
+      old_user.wallet = parseInt(dep) + parseInt(user.wallet);
+      setOk(false)
+      localStorage.setItem('user', JSON.stringify(old_user))
+      dispatch({type: 'LOGIN', payload: old_user})
+    }
+  }, [dep, ok, user])
+
+
   /// deposit
   const deposit = (e) => {
     e.preventDefault()
-
+    postData({'wallet': dep})
+    alert.success('مقدار مورد نظر با موفقیت به حساب شما اضافه شد')
+    setOk(true)
   }
 
   return (
