@@ -36,10 +36,10 @@ export default function AuctionBefore() {
                      className="w-full h-full object-center object-cover group-hover:opacity-75"
                    />
                  </div>
-                 <h3 className="mt-4 text-2xl text-gray-700">
+                 <h3 className="text-center mt-4 text-2xl text-gray-700">
                          {post.name}  : نام اثر 
                  </h3>
-                 <p className="mt-1 text-3xl font-medium text-gray-900">
+                 <p className="text-center mt-1 text-3xl font-medium text-gray-900">
                   {post.price} :  قیمت 
                  </p>
                  </div>

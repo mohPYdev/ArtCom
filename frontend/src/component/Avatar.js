@@ -21,7 +21,7 @@ export default function Avatar (props){
     
     return (
       <>
-      <img src={user?.image} alt="" className={style.profile} onClick={GoToProfileSeen} />
+      <img src={user?.image} alt="" className={style.profile} onClick={GoToProfileSeen} style={{border : "0.2rem solid"+setColor }} />
         <h3 className={style.profile_name} style={{color : setColor }}> ✋ {user?.username} سلام </h3>
         </> 
     )
