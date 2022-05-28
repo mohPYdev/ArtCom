@@ -17,12 +17,9 @@
     "babel-plugin-macros": "^3.1.0",
     "headlessui": "^0.0.0",
     "heroicons": "^1.0.6",
-
-    "particlesjs": "^2.2.3",
-
     "jalali-moment": "^3.3.11",
     "multiselect-react-dropdown": "^2.0.22",
-
+    "particlesjs": "^2.2.3",
     "react": "^17.0.2",
     "react-alert": "^7.0.3",
     "react-alert-template-basic": "^1.0.2",
@@ -35,6 +32,7 @@
     "react-timecode": "^1.2.0",
     "react-timer-wrapper": "^0.4.1",
     "styled-components": "^5.3.5",
+    "vazirmatn": "^32.102.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

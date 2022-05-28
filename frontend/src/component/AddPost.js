@@ -78,9 +78,11 @@ export default function Example() {
 
 
   return (
+    <>
+    <BackToHome className="z-20" />
     <div className="overflow-x-hidden">
-      <BackToHome />
-      <div className="h-fit w-screen bg-gradient-to-b from-rose-200 to-rose-100"	>
+      
+      <div className="h-fit w-screen bg-gradient-to-b from-rose-200 to-rose-100 z-10"	>
       <img src={painter_line} className="absolute bottom-0 right-0 w-2/6" />
       <img src={color_img} className="absolute left-0 top-0 w-1/3" />
         <div className="w-2/5 py-16 mx-auto shadow sm:rounded-md sm:overflow-hidden">
@@ -226,5 +228,6 @@ export default function Example() {
         </div>
       </div>
     </div>
+    </>
   )
 }

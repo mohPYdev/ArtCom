@@ -184,7 +184,7 @@ export default function ShowPlace() {
         <div className={style.Price}>
           <h2 id={style.title}>قیمت</h2>
           <div id={style.title} className={style.values}>
-            {price}
+            {price} 
           </div>
         </div>
 

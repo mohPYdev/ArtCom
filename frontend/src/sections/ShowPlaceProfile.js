@@ -97,7 +97,7 @@ export default function ShowPlaceProfile({ artistId }) {
           {statustext}
         </button>
 
-        {artistId === undefined || artistId === user?.id ? (
+        {artistId === undefined || +artistId === +user?.id ? (
           <div id={style.createe}>
             <button className={style.btn2} onClick={createExhibitions}>
               ساخت نمایشگاه
