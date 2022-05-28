@@ -10,7 +10,7 @@
   }
   .modal {
     padding: 10px;
-    max-width: 1000px;
+    max-width: 90vw;
     margin: 10px auto;
     /* background: #9980FA; */
     border-radius: 10px;
@@ -18,17 +18,20 @@
     background: #C4C4C4;
      text-align: center;
      position: relative;
+     max-height: 95vh;
   }
 
   .flex-container .post_img{
-      max-width: 500px;
-      max-height: 650px;
+      max-width: 50vw;
+      max-height: 95%;
       border-radius: 50px;
     min-height: 500px;   
   }
 
   .flex-container{
     display: flex;
+    max-width: 90vw;
+    max-height: 95vh;
   }
 
   .details{

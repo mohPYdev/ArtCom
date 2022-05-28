@@ -3,6 +3,8 @@
     grid-template-rows: 15rem 1fr 1fr 1fr ;
     justify-items: center;
     grid-gap: 2rem;
+    width: 100vw;
+    height: 100vh;
 }
 
 .bodyclass {
@@ -22,7 +24,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     align-content: center;
-    height: 120px;
+    height: 12rem;
 }
 .contact {
     background-color: #E9DAD3;
@@ -111,7 +113,8 @@
     justify-content: center;
     align-content: space-between;
     padding: 5rem 0rem;
-    height: 40rem;
+    height: 55rem;
+
 
 }
 
@@ -120,7 +123,7 @@
     grid-row: 3;
     background-color: #E9DAD3;
     width: 98%;
-    height: 50rem;
+    height: 55rem;
 
     border-radius: 1.5rem;
 
@@ -290,7 +293,7 @@
     grid-row: 1;
     background-color: #C4C4C4;
     position: relative;
-    width: 38rem;
+    width: 25rem;
     text-align: center;
     padding: 20px;
     border-radius: 15px;
@@ -307,7 +310,7 @@
     grid-row: 1;
     background-color: #C4C4C4;
     position: relative;
-    width: 38rem;
+    width: 25rem;
     text-align: center;
     padding: 20px;
     border-radius: 15px;

@@ -49,9 +49,7 @@ export default function HomePage() {
       <AuctionsHomePage />
  
        {/* posts */}
-      <div className='home'>
-        {error && <p className='error'>{error}</p>}
-        {loading && <p className='loading'>Loading...</p>}
+      <div >
         {data && <Postlist posts={data} ishomepage={true} />}
     </div>
     </div>
