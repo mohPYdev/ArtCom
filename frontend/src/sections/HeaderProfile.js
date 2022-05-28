@@ -9,7 +9,7 @@ import { useLogout } from "../hooks/useLogout";
 import { Outlet, Link  , Navigate, useNavigate} from "react-router-dom";
 
 import {useAxios} from '../hooks/useAxios'
-import Modal_popUp from "../component/Wallet";
+import Modal_popUp from "../component/wallet";
 
 export default function HeaderProfile({artistId}) {
 

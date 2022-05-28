@@ -40,7 +40,7 @@ export default function PS_Artist() {
   const { user } = useAuthContext();
   const [isSame, setIsSame] = useState();
   
-  
+  const {data:artist} = useAxios("http://localhost:8000/auth/users/"+artistId+"/profile");
 
 
   useEffect(()=>{
@@ -66,7 +66,8 @@ export default function PS_Artist() {
   return (
     <div>
       <div className={style.star_rate}>
-        <h3 className={style.fetchdata}> {user?.first_name} {user?.last_name}<br />{user?.artist.profession} </h3>
+        {isSame && <h3 className={style.fetchdata}> {user?.first_name} {user?.last_name}<br />{user?.artist.profession} </h3>}
+        {!isSame && <h3 className={style.fetchdata}> {artist?.first_name} {artist?.last_name}<br />{artist?.artist.profession} </h3>}
         <ReactStars
           count={5}
           onChange={()=>ratingChanged(false)}

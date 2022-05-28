@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthContext} from '../hooks/useAuthContext';
 import { useLogout } from '../hooks/useLogout';
 import { Link } from "react-router-dom";
-import Modal_popUp from "../component/Wallet";
+import Modal_popUp from "../component/wallet";
 
 export default function PS_Normal() {
   document.body.className = "";
