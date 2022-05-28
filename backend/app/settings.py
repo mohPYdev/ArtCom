@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'djoser',
     'core',
     'chat',
-    'drf_yasg'
+    'drf_yasg',
+    # 'django_extensions'
 ]
 
 CORS_ALLOWED_ORIGINS = [
