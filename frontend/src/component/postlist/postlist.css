@@ -3,10 +3,9 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 50px;
     width: 1200px;
-    margin: 100px auto;
+    margin: 2rem auto;
   }
   .post-list .post {
-    background: #fff;
     color: #333;
     padding: 12px;
     border-radius: 4px;

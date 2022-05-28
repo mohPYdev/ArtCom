@@ -13,6 +13,7 @@ import { useEffect, useRef, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAxios } from "../hooks/useAxios";
 import { useAuthContext } from "../hooks/useAuthContext";
+import BackToHome from "../component/BackToHome";
 
 function Auction() {
   const { id } = useParams();
@@ -178,6 +179,7 @@ function Auction() {
   return (
     <>
       <div id="Auction_Page">
+        
         <div id="top-grid">
           <img src={infoicon} id="info-icon" />
           {/* <img src={number1} id ="number-icon" /> */}
@@ -262,12 +264,7 @@ function Auction() {
           </div>
         </div>
         <div id="bottom-grid">
-          <div id="view-box">
-            <div id="view-number" className="clearfix">
-              4k
-            </div>
-            <img src={viewicon} id="view-icon" />
-          </div>
+          <BackToHome />
           <div></div>
           <div id="number-box">
             <div id="number-text" className="clearfix">

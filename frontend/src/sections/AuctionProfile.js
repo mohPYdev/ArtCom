@@ -6,7 +6,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import addp1 from "../img/addpost1.png";
 import addp2 from "../img/addpost2.png";
 
-export default function AuctionsProfile({ artistId }) {
+export default function AuctionProfile({ artistId }) {
   const { user } = useAuthContext();
   const artistid = useRef(artistId)
   //const navigator = useNavigate();

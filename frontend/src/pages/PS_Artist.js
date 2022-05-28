@@ -5,7 +5,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 import ShowPlaceProfile from "../sections/ShowPlaceProfile";
-import PostProfile from "../sections/PostProfile";
+import AuctionProfile from "../sections/AuctionProfile";
 import InfoBarProfile from "../sections/InfoBarProfile";
 import HeaderProfile from "../sections/HeaderProfile";
 import addp1 from "../img/addpost1.png";
@@ -41,7 +41,7 @@ export default function PS_Artist() {
 
   useEffect(()=>{
     if(!user) return;
-    if (artistId && artistId !== user.id) {
+    if (artistId && artistId != user.id) {
       //see profile for other artist
       setIsSame(false);
     }
@@ -67,13 +67,13 @@ export default function PS_Artist() {
             </Link>
         </div>)}
       <ShowPlaceProfile artistId={artistId} />
-      <PostProfile artistId={artistId} />
+      {isSame && (<AuctionProfile artistId={artistId} />)}
 
        {/* posts */}
        <div className='home'>
           {error && <p className='error'>{error}</p>}
           {loading && <p className='loading'>Loading...</p>}
-          {data && <Postlist posts={data} />}
+          {data && <Postlist posts={data} ishomepage={false}/>}
         </div>
     
     </div>

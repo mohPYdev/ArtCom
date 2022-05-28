@@ -6,10 +6,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import getExhibitions from "../function/getExhibitions";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { useAlert } from "react-alert";
 
 export default function ShowPlaceProfile({ artistId }) {
   const navigator = useNavigate();
   const { user } = useAuthContext();
+  const alert = useAlert();
+
   //Ref
   const indexOfExhibitons = useRef("");
   const exhibitions = useRef("");
@@ -68,6 +71,11 @@ export default function ShowPlaceProfile({ artistId }) {
     navigator(`/add/exhibition`);
   };
   const GoToShowPlace = () => {
+    if(exhibPoster === undefined){
+      alert.error(`! نمایشگاهی موجود نیست`)
+
+    }
+    else
     navigator(`/show/${exhibitions.current[indexOfExhibitons.current].id}`);
   };
   return (
@@ -98,12 +106,13 @@ export default function ShowPlaceProfile({ artistId }) {
         ) : (
           <></>
         )}
-
         <div id={style.viewe}>
-          <button className={style.btn2} onClick={GoToShowPlace}>
+          <button className={style.btn2} onClick={GoToShowPlace} >
             مشاهده
           </button>
+
         </div>
+  {/* )} */}
       </div>
     </>
   );

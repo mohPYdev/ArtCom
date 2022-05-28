@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import {useLogin} from '../hooks/useLogin'
 import axios from 'axios'
+import BackToHome from './BackToHome';
+import BackToRoot from './BackToRoot';
 
 
 
@@ -37,7 +39,7 @@ function OverflowLogin(){
   return (
     <>
       <div className="login--container">
-      <Link to="/"><span><img id="lg_home" src={lghome} /></span></Link>
+      <BackToRoot />
         <img src={brush} className="brush" />
       </div>
       <form id="login--form" onSubmit={handleSubmit} >

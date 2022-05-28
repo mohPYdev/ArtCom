@@ -7,6 +7,8 @@ import { useNavigate, Link } from "react-router-dom";
 import Avatar from "../component/Avatar";
 import { useAxios } from "../hooks/useAxios";
 import ShowPlaceHomePage from "../sections/ShowPlaceHomePage";
+import ShowPlaceProfile from "../sections/ShowPlaceProfile";
+
 import AuctionsHomePage from "../sections/AuctionsHomePage";
 import SearchBar from "../component/Searchbar/Searchbar";
 
@@ -22,7 +24,7 @@ export default function HomePage() {
 
 
   // just for posts
-  const { data , loading , error } = useAxios('http://localhost:8000/post/posts/')
+  const { data , loading , error } = useAxios('http://localhost:8000/post/posts')
   
   const navigator = useNavigate();
 
@@ -32,8 +34,9 @@ export default function HomePage() {
     navigator('/contactus')
   };
 
+
   return (
-    <div>
+    <div className={style.homepage}>
       <div className={style.header}>
         <Avatar backColor="dark" />
 
@@ -42,13 +45,14 @@ export default function HomePage() {
         <button className={style.contact} onClick={contactHandle}>ارتباط با ما</button>
       </div>
       <ShowPlaceHomePage />
+      {/* <ShowPlaceProfile /> */}
       <AuctionsHomePage />
  
        {/* posts */}
       <div className='home'>
         {error && <p className='error'>{error}</p>}
         {loading && <p className='loading'>Loading...</p>}
-        {data && <Postlist posts={data} />}
+        {data && <Postlist posts={data} ishomepage={true} />}
     </div>
     </div>
   );

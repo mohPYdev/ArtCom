@@ -6,6 +6,8 @@ import snhome from "../img/icons8-home-30.png";
 import { useSignupNormal } from "../hooks/useSignupNormal";
 import { useAlert } from "react-alert";
 import { Outlet, Link } from "react-router-dom";
+import BackToHome from "../component/BackToHome";
+import BackToRoot from "../component/BackToRoot";
 
 
 
@@ -84,7 +86,7 @@ function SignUpn(){
     <>
     
       <div id="sn_wrapper">
-        <Link to="/"><span><img id="sn_home" src={snhome} /></span></Link>
+        <BackToRoot />
         <img id="sn_image" src={painter} />
         <img id="sn_puzzle" src={puzzle} />
         <form method="get" onSubmit={handleSnSubmit}>

@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useAlert } from "react-alert";
+
+import BackToHome from "./BackToHome";
+
 import painter_line from "../img/painter-line.png";
 import color_img from "../img/color_img.png"; 
+
 export default function Example() {
   const [ap_name, setApName] = useState("");
   const [ap_describe, setApDescribe] = useState("");
@@ -42,6 +46,7 @@ export default function Example() {
     setForSale(false);
   };
   const handlechangeApPrice = (event) => {
+
     setApPrice(event.target.value);
   }
 
@@ -71,11 +76,13 @@ export default function Example() {
 
 
 
+
   return (
     <div className="overflow-x-hidden">
+      <BackToHome />
       <div className="h-fit w-screen bg-gradient-to-b from-rose-200 to-rose-100"	>
-      <img src={painter_line} className="absolute bottom-0 right-0 w-2/6"></img>
-      <img src={color_img} className="absolute left-0 top-0 w-1/3"></img>
+      <img src={painter_line} className="absolute bottom-0 right-0 w-2/6" />
+      <img src={color_img} className="absolute left-0 top-0 w-1/3" />
         <div className="w-2/5 py-16 mx-auto shadow sm:rounded-md sm:overflow-hidden">
           <form className="rounded-2xl px-4 py-5 bg-cyan-900 space-y-6 sm:p-6 " onSubmit={handleApSubmit}>
             <div className=" grid grid-cols-3 gap-6">

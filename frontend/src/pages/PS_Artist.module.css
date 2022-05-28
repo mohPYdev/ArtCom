@@ -55,6 +55,8 @@
 }
 
 .btn{
+    font-family: 'vazir';
+
     background-color: #C4C4C4;
     padding: 0.5%;
     padding-left: 30px;
@@ -142,8 +144,7 @@
     justify-self: center;
     font-size: 20px;
     font-weight: bold;
-    word-spacing: 15px;
-    font-family: 'KoHo';
+    font-family: 'vazir';
     padding: 1rem 2rem;
     background-color: #C4C4C4;
     border-radius: 15px;
@@ -159,8 +160,7 @@
     color: #000000;
     font-size: 20px;
     font-weight: bold;
-    word-spacing: 15px;
-    font-family: 'KoHo';
+    font-family: 'vazir';
     padding: 1rem 2rem;
     border-radius: 15px;
     background-color: #C4C4C4;
@@ -179,8 +179,7 @@
     color: #000000;
     font-size: 20px;
     font-weight: bold;
-    word-spacing: 15px;
-    font-family: 'KoHo';
+    font-family: 'vazir';
     padding: 1rem 2rem;
     border-radius: 15px;
     background-color: #C4C4C4;
@@ -197,8 +196,7 @@
     color: #000000;
     font-size: 20px;
     font-weight: bold;
-    word-spacing: 15px;
-    font-family: 'KoHo';
+    font-family: vazir;
     padding: 1rem 2rem;
     border-radius: 15px;
     background-color: #C4C4C4;
@@ -262,8 +260,8 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     align-content: center;
-    padding: 50px;
-    height: 350px;
+    padding-top: 50px;
+    height: 35rem;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
@@ -323,7 +321,7 @@
 }
 
 .postere{
-    height: 175px;
+    height: 17.5rem;
 }
 
 #status {

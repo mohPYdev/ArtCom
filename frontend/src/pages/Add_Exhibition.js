@@ -9,10 +9,11 @@ import {useAxios} from '../hooks/useAxios';
 import axios from 'axios';
 import { useAlert } from 'react-alert';
 import { useAuthContext } from '../hooks/useAuthContext';
+import BackToHome from '../component/BackToHome';
 
 export default function Add_Exhibition(){
 
-    const {data:posts} = useAxios('http://localhost:8000/post/posts/');
+    const {data:posts} = useAxios('http://localhost:8000/post/posts');
     const alert = useAlert();
 
     
@@ -125,6 +126,7 @@ export default function Add_Exhibition(){
 
     return(
         <div className='main_div_addex'>
+            <BackToHome />
 
             {/*adding page title*/}
             <div id='p_addex'>

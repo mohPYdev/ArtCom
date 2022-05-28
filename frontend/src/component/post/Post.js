@@ -97,7 +97,7 @@ export default function Post({ handleClose , id}) {
                 <div className='details'>
                   <div className='first-row'>
                     <b title='نام اثر'>{data.name}</b>
-                    {data.for_sale && <img src={buy} alt='bought' title='برای فروش گذاشته شده' />}
+                    {data.for_sale && <img src={buy} alt='bought' title='برای فروش گذاشته شده' style={{cursor: "auto"}} />}
                     {!data.for_sale && <img src={notbuy} alt='not bought' title='برای فروش گذاشته نشده است' />}
                     {/* {data.liked && <img src={liked} onClick={likehandler} alt='liked' title='🗿  نپسندیدم' />}
                     {!data.liked && <img src={notliked}  onClick={likehandler} alt='not liked' title='🍠 پسندیدم'/>} */}

@@ -34,6 +34,7 @@ import { useParams } from "react-router-dom";
 
 import {useAxios} from "../hooks/useAxios";
 import { useAuthContext } from '../hooks/useAuthContext'
+import BackToHome from "./BackToHome";
 
 export default function Post() {
   const { postId, artistId } = useParams();
@@ -145,6 +146,7 @@ export default function Post() {
   return (
     <div className="post-page h-screen">
       <div className="pt-6 h-screen">
+        <BackToHome />
         {/* Image  */}
         <div className="h-3/5 mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8">
           <div className="h-full mx-auto my-auto rounded-lg overflow-hidden lg:block border-sky-900 border-solid border-2">
