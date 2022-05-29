@@ -25,14 +25,30 @@
     height: 40px;
     margin-right: 350px;
     margin-top: 70px;
+    font-family: 'B Yekan';
+    color: black;
+    line-height: normal;
+    text-transform: none;
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
 }
 #postselect_addau
 {
     direction: rtl;
     text-align: right;
     width: 600px;
+    height: 40px;
     margin-right: 350px;
     margin-top: 50px;
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    line-height: normal;
+    text-transform: none;
+    color: black;
 }
 #submit_addau
 {
