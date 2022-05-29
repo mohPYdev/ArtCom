@@ -86,22 +86,22 @@ export default function Add_Auction(){
             <form onSubmit={submitting} id='form_addex' method="get">
                 
                 {/*adding available auctions}*/}
-                {auctions && <select value={auctionselect_addau} onChange={changeAuction} name='auctionselect_addau' id='auctionselect_addau'>
+                <select value={auctionselect_addau} onChange={changeAuction} name='auctionselect_addau' id='auctionselect_addau'>
                     <option value=" " hidden >انتخاب مزایده</option>
                     <option value=" " disabled selected >انتخاب مزایده</option>
                     {auctions.map(auction => (
                     <option key={auction.id} value={auction.id}>{auction.date_begin}</option>
                     ))}
-                </select>}
+                </select>
 
                 {/*adding post*/}
-                {posts && <select value={postselect_addau} onChange={changePost} name='postselect_addau' id='postselect_addau' >
+                <select value={postselect_addau} onChange={changePost} name='postselect_addau' id='postselect_addau' >
                      <option value=" " hidden >انتخاب پست</option>
                     <option value=" " disabled selected >انتخاب پست</option>
                     {validPosts.map(post => (
                         <option key={post.id} value={post.id}>{post.name}</option>
                     ))}
-                </select>}
+                </select>
                 
                 <input type='submit' id='submit_addau' name='submit_addau' value='شرکت'/>
             </form>
