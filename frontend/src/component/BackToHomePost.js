@@ -14,7 +14,7 @@ export default function BackToHomePost({sold, postWal, orderId}) {
             "Authorization": `Token ${JSON.parse(localStorage.getItem("token"))}`
         }
     
-        fetch(`http://localhost:8000/post/orders/${orderId}/`, {headers: headers, method:'DELETE', keepalive:true} )
+        fetch(`https://artcom-sjavanmard.fandogh.cloud/post/orders/${orderId}/`, {headers: headers, method:'DELETE', keepalive:true} )
         .then((response) => response.json())
         .then(newpost => {
             console.log("leaving page")
