@@ -24,9 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-g1w=n$)42zmkv)*0=_1d1nw3h8_ct2fpdh7d2^t1tx0l!v4r-t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['artcom-sjavanmard.fandogh.cloud',]
+
 
 
 
@@ -51,9 +53,6 @@ INSTALLED_APPS = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "http://localhost:3001",
-    "http://localhost:3002",
 ]
 
 MIDDLEWARE = [
@@ -128,7 +127,7 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [('redis', 6379)],
+            "hosts": [('redisdb', 6379)],
         },
     },
 }
@@ -138,10 +137,14 @@ CHANNEL_LAYERS = {
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'USER': 'root',
+        'PASSWORD': '1234',
+        'HOST': 'postgresdb',
+        'PORT': '5432'
     }
 }
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
