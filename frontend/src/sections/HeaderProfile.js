@@ -14,10 +14,10 @@ import Modal_popUp from "../component/wallet";
 export default function HeaderProfile({artistId}) {
 
     const { user } = useAuthContext();
-    const {data:artist} = useAxios("http://localhost:8000/auth/users/"+artistId+"/profile");
+    const {data:artist} = useAxios("https://artcom-sjavanmard.fandogh.cloud/auth/users/"+artistId+"/profile");
 
-    const {postData:postFollow} = useAxios(`http://localhost:8000/auth/users/${artistId}/follow/`,'POST');
-    const {postData:postUnFollow} = useAxios(`http://localhost:8000/auth/users/${artistId}/unfollow/`,'POST');
+    const {postData:postFollow} = useAxios(`https://artcom-sjavanmard.fandogh.cloud/auth/users/${artistId}/follow/`,'POST');
+    const {postData:postUnFollow} = useAxios(`https://artcom-sjavanmard.fandogh.cloud/auth/users/${artistId}/unfollow/`,'POST');
 
     const { logout, error, isPending } = useLogout();
     const navigator = useNavigate();
