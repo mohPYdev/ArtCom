@@ -89,7 +89,7 @@ export default function Add_Auction(){
                 <select value={auctionselect_addau} onChange={changeAuction} name='auctionselect_addau' id='auctionselect_addau'>
                     <option value=" " hidden >انتخاب مزایده</option>
                     <option value=" " disabled selected >انتخاب مزایده</option>
-                    {auctions.map(auction => (
+                    {auctions && auctions.map(auction => (
                     <option key={auction.id} value={auction.id}>{auction.date_begin}</option>
                     ))}
                 </select>
