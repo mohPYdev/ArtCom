@@ -1,28 +1,28 @@
 {% load i18n %}
 
 {% block subject %}
-{% blocktrans %}فعال سازی اکانت در سایت {{ site_name }}{% endblocktrans %}
+{% blocktrans %}فعال سازی اکانت در سایت آرتکام{% endblocktrans %}
 {% endblock subject %}
 
 {% block text_body %}
-{% blocktrans %}شما این ایمیل را برای فعال سازی اکانت خود در سایت اریکام دریافت کرده اید.{% endblocktrans %}
+شما این ایمیل را برای فعال سازی اکانت خود در سایت اریکام دریافت کرده اید.
 
-{% trans "لطفا وارد لینک زیر شوید و اکانت خود را فعال کنید:" %}
+لطفا وارد لینک زیر شوید و اکانت خود را فعال کنید: 
 {{ protocol }}://{{ domain }}/{{ url|safe }}
 
-{% trans "ممنون که از سایت ما استفاده میکنید." %}
+ممنون که از سایت ما استفاده میکنید.
 
-{% blocktrans %}تیم آرتکام{% endblocktrans %}
+تیم آرتکام
 {% endblock text_body %}
 
 {% block html_body %}
-<p>{% blocktrans %}You're receiving this email because you need to finish activation process on {{ site_name }}.{% endblocktrans %}</p>
+<p>شما این ایمیل را برای فعال سازی اکانت خود در سایت اریکام دریافت کرده اید.</p>
 
-<p>{% trans "Please go to the following page to activate account:" %}</p>
+<p>لطفا وارد لینک زیر شوید و اکانت خود را فعال کنید:</p>
 <p><a href="{{ protocol }}://{{ domain }}/{{ url|safe }}">{{ protocol }}://{{ domain }}/{{ url|safe }}</a></p>
 <p>ارتکام</p>
-<p>{% trans "Thanks for using our site!" %}</p>
+<p>ممنون که از سایت ما استفاده میکنید.</p>
 
-<p>{% blocktrans %}The {{ site_name }} team{% endblocktrans %}</p>
+<p>تیم آرتکام</p>
 
 {% endblock html_body %}
