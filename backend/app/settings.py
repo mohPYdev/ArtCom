@@ -138,6 +138,7 @@ CHANNEL_LAYERS = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'artcom',
         'USER': 'root',
         'PASSWORD': '1234',
         'HOST': 'postgresdb',
