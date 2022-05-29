@@ -10,7 +10,7 @@ export const useSignupArtist = () => {
   const { dispatch } = useAuthContext()
   const navigate = useNavigate()
 
-  const SIGNUP_ARTIST_URL = "http://localhost:8000/auth/users/artist/"
+  const SIGNUP_ARTIST_URL = "https://artcom-sjavanmard.fandogh.cloud/auth/users/artist/"
 
  
 
