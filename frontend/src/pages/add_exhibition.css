@@ -26,8 +26,8 @@
 {
     width: 180px;
     height: 100px;
-    /*display: inline;
-    vertical-align: baseline;*/
+    display: inline;
+    vertical-align: baseline;
 }
 #img_exhi_btn_addex
 {
@@ -46,21 +46,21 @@
 
 #title_addex
 {
-    width: 620px;
-    height: 40px;
+    width: 644px;
+    height: 60px;
     margin-right: 350px !important;
     margin-top: 10px !important;
     direction: ltr;
     text-align: right;
     padding: 10px;
     font-size: 18px;
-    /*border-width: 2px;
+    border-width: 2px;
     border-style: inset;
-    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133)) !important;
+    border-color: rgb(118, 118, 118);
     line-height: normal;
-    color: -internal-light-dark(black, white) !important;
+    color: black !important;
     margin: 0;
-    font-family: 'B Yekan';*/
+    font-family: 'B Yekan';
 
 }
 .date_addex
@@ -69,6 +69,14 @@
     width: 100px;
     direction: ltr;
     text-align: right;
+    font-family: 'B Yekan';
+    color: black;
+    line-height: normal;
+    text-transform: none;
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
 }
 #date_addex
 {
@@ -76,8 +84,11 @@
     margin-top: 10px;
     direction: ltr;
     text-align: right;
-    width: 600px;
+    width: 644px;
     padding: 20px;
+    border-width: 2px;
+    border-style: groove;
+    border-color: threedface;
 }
 #postselect_addex
 {
