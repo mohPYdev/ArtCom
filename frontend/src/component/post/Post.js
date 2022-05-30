@@ -33,11 +33,33 @@ export default function Post({ handleClose , id}) {
   }
 
 
+  const update = useCallback( () => {
+    const headers = {
+      "Content-Type": "application/json",
+      "Authorization": `Token ${JSON.parse(localStorage.getItem("token"))}`
+    }
+
+    fetch(url, {headers: headers} )
+    .then((response) => response.json())
+    .then(newpost => {
+        setdata(newpost)
+        setlikked(newpost.liked)
+    })
+
+    fetch(`http://localhost:8000/post/comments/${id}/comment_post/`, {headers: headers} )
+    .then((response) => response.json())
+    .then(comm => {
+        console.log(comm)
+        setComments(comm)
+    })
+  } , [id, url])
+
+
 
 
   useEffect(() => {
     update()
-  } , [addComment , likked])
+  } , [addComment , likked, update])
 
 
 
@@ -62,26 +84,7 @@ export default function Post({ handleClose , id}) {
   };
 
 
-  const update =  () => {
-    const headers = {
-      "Content-Type": "application/json",
-      "Authorization": `Token ${JSON.parse(localStorage.getItem("token"))}`
-    }
 
-    fetch(url, {headers: headers} )
-    .then((response) => response.json())
-    .then(newpost => {
-        setdata(newpost)
-        setlikked(newpost.liked)
-    })
-
-    fetch(`http://localhost:8000/post/comments/${id}/comment_post/`, {headers: headers} )
-    .then((response) => response.json())
-    .then(comm => {
-        console.log(comm)
-        setComments(comm)
-    })
-  }
 
 
 

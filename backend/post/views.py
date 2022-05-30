@@ -222,7 +222,7 @@ class ExhibitionViewSet(viewsets.ModelViewSet):
             return self.queryset.filter(artist=self.request.user.artist)
         # elif self.action == 'list':
         #     return (x for x in self.queryset.all() if x.get_status() in ['open' , 'ns'])
-        return self.queryset
+        return self.queryset.all()
 
     def get_object(self):
         obj = super().get_object()
@@ -271,7 +271,7 @@ class AuctionViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         if self.action == 'list':
             return (x for x in self.queryset.all() if x.get_status() in ['open' , 'ns'])
-        return self.queryset
+        return self.queryset.all()
 
     def get_object(self):
         obj = super().get_object()
