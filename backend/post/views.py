@@ -170,7 +170,7 @@ class CommentViewSet(viewsets.ModelViewSet):
         if self.action == 'comment_post':
             post = Post.objects.get(id=self.kwargs['pk'])
             return Comment.objects.filter(post=post)
-        return self.queryset
+        return self.queryset.all()
 
     def get_serializer_class(self):
         if self.action == 'comment_post':
