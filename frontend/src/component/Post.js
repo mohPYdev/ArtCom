@@ -138,7 +138,7 @@ export default function Post() {
   return (
     <div className="post-page h-screen">
       <div className="pt-6 h-screen">
-        <BackToHomePost sold={sold} postWal={postWal} orderId={orderId} />
+        <BackToHomePost sold={sold}  orderId={orderId} />
         {/* Image  */}
         <div className="h-3/5 mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8">
           <div className="h-full mx-auto my-auto rounded-lg overflow-hidden lg:block border-sky-900 border-solid border-2">

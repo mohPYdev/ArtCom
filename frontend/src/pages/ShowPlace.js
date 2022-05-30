@@ -197,7 +197,7 @@ export default function ShowPlace() {
 
         <img src={back} alt="back" id={style.back} onClick={backHandler} />
 
-        <div className={style.likecontain}>
+        {/* <div className={style.likecontain}>
           <img
             src={like}
             className={liked ? style.liked : style.like}
@@ -205,7 +205,7 @@ export default function ShowPlace() {
             onClick={likeHandler}
           />
           <div id={style.count}>{count}</div>
-        </div>
+        </div> */}
 
         <img src={next} alt="next" id={style.next} onClick={nextHandler} />
 

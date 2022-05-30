@@ -292,9 +292,9 @@ class AuctionViewSet(viewsets.ModelViewSet):
                 
         elif self.action == 'retrieve':
             obj = get_object_or_404(Auction, pk=self.kwargs['pk'])
-            if obj.get_status() == 'open' and self.request.user.wallet > 100000:
+            if obj.get_status() in ['open', 'ns']:
                 return obj
-            else:
+            elif self.request.user.wallet > 100000:
                 raise ValidationError({'detail':'the auction is not open or you have not enough money'})
         return obj
     
