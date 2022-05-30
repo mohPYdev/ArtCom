@@ -35,7 +35,7 @@ class PostViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         if self.action == 'me':
             return Post.objects.filter(artist=self.request.user.artist)
-        return self.queryset
+        return Post.objects.all()
     
     def get_permissions(self):
         if self.action in ['list', 'retrieve']:
