@@ -10,24 +10,20 @@ import { useEffect, useState, useCallback } from 'react'
 
 export default function Post({ handleClose , id}) {
 
-    const url = 'http://localhost:8000/post/posts/' + id
+    const url = 'https://artcom-sjavanmard.fandogh.cloud/post/posts/' + id
   
     // test
     const [likked , setlikked] = useState(null)
     const {loading , error} = useAxios(url)
     const [data , setdata] = useState(null)
     const [comments, setComments] = useState(null)
-    // const {data:comments} = useAxios(`http://localhost:8000/post/comments/${id}/comment_post/`)
     const [count , setCount] = useState(data?.like_count)
-    const [addComment, setAddComment] = useState(false)
+    const [addComment, setAddComment] = useState(true)
     
-    const {postData:postLike} = useAxios(`http://localhost:8000/post/${data?.artist.user?.id}/posts/${data?.id}/like/`,'POST');
-    const {postData:postDislike} = useAxios(`http://localhost:8000/post/${data?.artist.user?.id}/posts/${data?.id}/dislike/`,'POST');
+    const {postData:postLike} = useAxios(`https://artcom-sjavanmard.fandogh.cloud/post/${data?.artist.user?.id}/posts/${data?.id}/like/`,'POST');
+    const {postData:postDislike} = useAxios(`https://artcom-sjavanmard.fandogh.cloud/post/${data?.artist.user?.id}/posts/${data?.id}/dislike/`,'POST');
     
 
-useEffect(()=>{
-console.log(data)
-},[])
 
 
 
@@ -36,11 +32,33 @@ console.log(data)
   }
 
 
+  const update = useCallback( () => {
+    const headers = {
+      "Content-Type": "application/json",
+      "Authorization": `Token ${JSON.parse(localStorage.getItem("token"))}`
+    }
+
+    fetch(url, {headers: headers} )
+    .then((response) => response.json())
+    .then(newpost => {
+        setdata(newpost)
+        setlikked(newpost.liked)
+    })
+
+    fetch(`http://localhost:8000/post/comments/${id}/comment_post/`, {headers: headers} )
+    .then((response) => response.json())
+    .then(comm => {
+        console.log(comm)
+        setComments(comm)
+    })
+  } , [id, url])
+
+
 
 
   useEffect(() => {
     update()
-  } , [addComment , likked])
+  } , [addComment , likked, update])
 
 
 
@@ -55,35 +73,17 @@ console.log(data)
   const likehandler = () => {
     if (data?.liked) {
       setlikked(false);
-      // setCount((prevcount)=>prevcount-1)
+      setCount((prevcount)=>prevcount-1)
       postDislike();
     } else {
       setlikked(true);
-      // setCount((prevcount)=>prevcount+1)
+      setCount((prevcount)=>prevcount+1)
       postLike();
     }
   };
 
 
-  const update =  () => {
-    const headers = {
-      "Content-Type": "application/json",
-      "Authorization": `Token ${JSON.parse(localStorage.getItem("token"))}`
-    }
 
-    fetch(url, {headers: headers} )
-    .then((response) => response.json())
-    .then(newpost => {
-        setdata(newpost)
-    })
-
-    fetch(`http://localhost:8000/post/comments/${id}/comment_post/`, {headers: headers} )
-    .then((response) => response.json())
-    .then(comm => {
-        console.log(comm)
-        setComments(comm)
-    })
-  }
 
 
 
@@ -104,8 +104,8 @@ console.log(data)
                     {/* {data.liked && <img src={liked} onClick={likehandler} alt='liked' title='🗿  نپسندیدم' />}
                     {!data.liked && <img src={notliked}  onClick={likehandler} alt='not liked' title='🍠 پسندیدم'/>} */}
 
-                    {data?.liked && <img src={liked} onClick={likehandler} alt='liked' title='🗿  نپسندیدم' />}
-                    {!data.liked && <img src={notliked}  onClick={likehandler} alt='not liked' title='🍠 پسندیدم'/>}
+                    {likked && <img src={liked} onClick={likehandler} alt='liked' title='🗿  نپسندیدم' />}
+                    {!likked && <img src={notliked}  onClick={likehandler} alt='not liked' title='🍠 پسندیدم'/>}
                     
                     <b title='تعداد  لایک ها'>{data?.like_count} <hr></hr>نفر پسندیده اند</b> 
                     {data.sold && <img src={sold} alt='sold' title='فروخته شده' />}

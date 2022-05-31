@@ -1,6 +1,8 @@
-import { useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { transitions, positions, Provider as AlertProvider } from 'react-alert'
+import { useAuthContext } from "./hooks/useAuthContext";
+
 import Login from './pages/Login';
 import OverflowLogin from "./component/OverflowLogin";
 import SignUpn from "./pages/SignUpn";
@@ -16,18 +18,14 @@ import ProfileArtist from './pages/Profile_Artist';
 import Home from './pages/HomePage';
 import ShowPlace from './pages/ShowPlace';
 import PS_Noraml from './pages/PS_Normal';
-import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic'
 import PS_Artist from './pages/PS_Artist';
-
 import AuctionResault from './pages/AuctionResult';
 import AuctionBefore from './pages/AuctionBefore';
-
 import Addpost from './component/AddPost';
 import Add_Exhibition from './pages/Add_Exhibition';
 import Add_Auction from './pages/Add_Auction';
 import Search from './pages/search/Search';
-
 import Contact_us from './pages/Contact_us';
 
 
@@ -45,42 +43,45 @@ const options = {
 
 function App() {
 
+
+
+
   return (
     <>
     <AlertProvider template={AlertTemplate} {...options}>
     <BrowserRouter>
       <Routes>
           <Route index element={<Login />}/>
-          <Route path="/login" element={<OverflowLogin  />} />
-          <Route path="/signupn" element={<SignUpn/> }/>
-          <Route path="/signupa" element={ <SignUpa/>}/>
+          <Route path="/login" element={<OverflowLogin />} />
+          <Route path="/signupn" element={<SignUpn/>}/>
+          <Route path="/signupa" element={<SignUpa/>}/>
           <Route path="/auction/:id" element={<Auction />} />
-          <Route path="/forgotpassword" element={<ForgotPass1 />} />
-          <Route path="/password/reset/confirm/:uid/:token" element={<ForgotPass2 />} />
+          <Route path="/forgotpassword" element={ <ForgotPass1 />} />
+          <Route path="/password/reset/confirm/:uid/:token" element={  <ForgotPass2 />} />
           <Route path="/ReceiveEmail" element={<ReceiveEmail />} />
           <Route path="/activate/:uid/:token" element={<EmailActivation />} />
-          <Route path="/ProfileNormal" element={<ProfileNormal />} />
-          <Route path="/ProfileArtist" element={<ProfileArtist />} />
-          <Route path="/Home" element={<Home />} />
-          <Route path="/show/:id" element={<ShowPlace />} />
-          <Route path="/psn" element={<PS_Noraml />} />
-          <Route path="/psa/:artistId" element={<PS_Artist />} />
-          <Route path="/psa" element={<PS_Artist/>} />
+          <Route path="/ProfileNormal" element={ <ProfileNormal /> } />
+          <Route path="/ProfileArtist" element={ <ProfileArtist /> } />
+          <Route path="/Home" element={ <Home /> } />
+          <Route path="/show/:id" element={<ShowPlace/> } />
+          <Route path="/psn" element={<PS_Noraml />  } />
+          <Route path="/psa/:artistId" element={<PS_Artist /> } />
+          <Route path="/psa" element={<PS_Artist/> } />
 
-          <Route path="/auctionres/:id" element={<AuctionResault/> } />
+          <Route path="/auctionres/:id" element={<AuctionResault/>} />
         
-          <Route path="/auctionbefore/:id" element={<AuctionBefore/> } />
+          <Route path="/auctionbefore/:id" element={<AuctionBefore/>   } />
 
 
           <Route path="/add/post" element={<Addpost />} />
-          <Route path="/add/exhibition" element={<Add_Exhibition />} />
-          <Route path="/add/auction" element={<Add_Auction />} />
+          <Route path="/add/exhibition" element={<Add_Exhibition /> } />
+          <Route path="/add/auction" element={<Add_Auction /> } />
 
 
           <Route path="/post/:postId/:artistId" element={<Post />} />
           <Route path="/contactus" element={<Contact_us />} />
 
-          <Route path="/search" element={<Search />} />
+          <Route path="/search" element={<Search />  } />
 
       </Routes>
     </BrowserRouter>

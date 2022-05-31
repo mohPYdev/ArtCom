@@ -10,7 +10,7 @@ export default function Modal({ handleClose , id}) {
   const [dep , setDep] = useState(0)
   const [ok, setOk] = useState(false)
 
-  const {postData} = useAxios(`http://localhost:8000/auth/users/add/wallet/`,'POST')
+  const {postData} = useAxios(`https://artcom-sjavanmard.fandogh.cloud/auth/users/add/wallet/`,'POST')
   const alert = useAlert()
 
   const {user, dispatch} = useAuthContext();

@@ -11,10 +11,10 @@ export default function AuctionResult() {
 
   const {id} = useParams();
   const {user} = useAuthContext()
-  const {data:orders} = useAxios("http://localhost:8000/post/orders/");
-  const {data:auction} = useAxios("http://localhost:8000/post/auctions/"+id+"/");
+  const {data:orders} = useAxios("https://artcom-sjavanmard.fandogh.cloud/post/orders/");
+  const {data:auction} = useAxios("https://artcom-sjavanmard.fandogh.cloud/post/auctions/"+id+"/");
 
-  const {putData} = useAxios(`http://localhost:8000/post/auctions/${id}/`, "PUT")
+  const {putData} = useAxios(`https://artcom-sjavanmard.fandogh.cloud/post/auctions/${id}/`, "PUT")
   const navigate = useNavigate();
 
   const [boughtPosts, setBoughtPosts] = useState([]);
@@ -40,7 +40,7 @@ export default function AuctionResult() {
 
   return (
     <>
-      <div className="bg-cover bg-center bg-bg-auctionres w-screen h-screen pb-96">
+      <div className="bg-cover bg-center bg-bg-auctionres w-screen min-h-screen max-h-fit pb-96">
         <div className="max-w-6xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-3">
           <BackToHome />
           <h2 className="bg-sky-900 py-3 mb-3 text-slate-200	text-center	rounded-lg text-5xl">

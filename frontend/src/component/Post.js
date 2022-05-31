@@ -38,10 +38,10 @@ export default function Post() {
 
 
 
-  const {data:orders } = useAxios(`http://localhost:8000/post/orders/`)
+  const {data:orders } = useAxios(`https://artcom-sjavanmard.fandogh.cloud/post/orders/`)
 
-  const {postData:postPay} = useAxios(`http://localhost:8000/post/posts/${postId}/payment/`, 'POST')
-  const {postData:postWal} = useAxios(`http://localhost:8000/auth/users/remove/wallet/`, 'POST')
+  const {postData:postPay} = useAxios(`https://artcom-sjavanmard.fandogh.cloud/post/posts/${postId}/payment/`, 'POST')
+  const {postData:postWal} = useAxios(`https://artcom-sjavanmard.fandogh.cloud/auth/users/remove/wallet/`, 'POST')
 
   const handlepayment =() => {
     if (user.wallet >= price){
@@ -138,7 +138,7 @@ export default function Post() {
   return (
     <div className="post-page h-screen">
       <div className="pt-6 h-screen">
-        <BackToHomePost sold={sold} postWal={postWal} orderId={orderId} />
+        <BackToHomePost sold={sold}  orderId={orderId} />
         {/* Image  */}
         <div className="h-3/5 mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8">
           <div className="h-full mx-auto my-auto rounded-lg overflow-hidden lg:block border-sky-900 border-solid border-2">

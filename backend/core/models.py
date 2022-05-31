@@ -62,7 +62,7 @@ class Post(models.Model):
     name = models.CharField(max_length=255, blank=True)
     description = models.CharField(max_length=255, blank=True)
     date_added = models.DateField(auto_now_add=True)
-    price = models.DecimalField(max_digits=7,decimal_places=2, blank=True)
+    price = models.DecimalField(max_digits=10,decimal_places=2, blank=True)
     for_sale = models.BooleanField(default=False)
     sold = models.BooleanField(default=False)
 

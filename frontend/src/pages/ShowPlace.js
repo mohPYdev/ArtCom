@@ -47,9 +47,9 @@ export default function ShowPlace() {
 
   const [liked, setliked] = useState();
 
-  const {postData:postLike} = useAxios(`http://localhost:8000/post/${user_id?.current}/posts/${postsList.current[indexOfPost.current]?.id}/like/`,'POST');
-  const {postData:postDislike} = useAxios(`http://localhost:8000/post/${user_id?.current}/posts/${postsList.current[indexOfPost.current]?.id}/dislike/`,'POST');
-  const {postData:postOrder} = useAxios(`http://localhost:8000/post/orders/`,'POST');
+  const {postData:postLike} = useAxios(`https://artcom-sjavanmard.fandogh.cloud/post/${user_id?.current}/posts/${postsList.current[indexOfPost.current]?.id}/like/`,'POST');
+  const {postData:postDislike} = useAxios(`https://artcom-sjavanmard.fandogh.cloud/post/${user_id?.current}/posts/${postsList.current[indexOfPost.current]?.id}/dislike/`,'POST');
+  const {postData:postOrder} = useAxios(`https://artcom-sjavanmard.fandogh.cloud/post/orders/`,'POST');
   const likeHandler = () => {
     if (liked) {
       setliked(false);
@@ -120,7 +120,7 @@ export default function ShowPlace() {
         "Authorization": `Token ${JSON.parse(localStorage.getItem("token"))}`
       }
   
-      fetch("http://localhost:8000/post/orders/", {headers: headers, method:'POST', body:JSON.stringify({'post':+postsList.current[indexOfPost.current].id}) } )
+      fetch("https://artcom-sjavanmard.fandogh.cloud/post/orders/", {headers: headers, method:'POST', body:JSON.stringify({'post':+postsList.current[indexOfPost.current].id}) } )
       .then((response) => response.json())
       .then(newpost => {
         navigator(
@@ -197,7 +197,7 @@ export default function ShowPlace() {
 
         <img src={back} alt="back" id={style.back} onClick={backHandler} />
 
-        <div className={style.likecontain}>
+        {/* <div className={style.likecontain}>
           <img
             src={like}
             className={liked ? style.liked : style.like}
@@ -205,7 +205,7 @@ export default function ShowPlace() {
             onClick={likeHandler}
           />
           <div id={style.count}>{count}</div>
-        </div>
+        </div> */}
 
         <img src={next} alt="next" id={style.next} onClick={nextHandler} />
 

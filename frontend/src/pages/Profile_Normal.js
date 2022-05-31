@@ -18,7 +18,7 @@ export default function Profile_Normal() {
   };
 
   const {user, dispatch} = useAuthContext()
-  const { data, isPending, error } = useAxios('http://localhost:8000/auth/users/me')
+  const { data, isPending, error } = useAxios('https://artcom-sjavanmard.fandogh.cloud/auth/users/me')
 
   const alert = useAlert()
   //file button
@@ -82,7 +82,7 @@ export default function Profile_Normal() {
     form_data.append("address", Address_textarea_profiless);
     form_data.append("postal_code", postalcode_input_profiless);
 
-    let url = 'http://localhost:8000/auth/users/me/';
+    let url = 'https://artcom-sjavanmard.fandogh.cloud/auth/users/me/';
     axios.patch(url, form_data, {
       headers: {
         'content-type': 'multipart/form-data'
@@ -142,7 +142,7 @@ export default function Profile_Normal() {
           </div>
 
           {/* <!--adding Bio textarea--> */}
-          <textarea
+          {/* <textarea
             value={Bio_textarea_profiless}
             onChange={changeBioTextarea}
             id="Bio_textarea_profiless"
@@ -150,7 +150,7 @@ export default function Profile_Normal() {
             cols="18"
             rows="20"
             placeholder="بیوگرافی"
-          ></textarea>
+          ></textarea> */}
 
           {/* <!--adding first name text--> */}
           <input
