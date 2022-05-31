@@ -11,10 +11,10 @@ export default function AuctionResult() {
 
   const {id} = useParams();
   const {user} = useAuthContext()
-  const {data:orders} = useAxios("http://localhost:8000/post/orders/");
-  const {data:auction} = useAxios("http://localhost:8000/post/auctions/"+id+"/");
+  const {data:orders} = useAxios("https://artcom-sjavanmard.fandogh.cloud/post/orders/");
+  const {data:auction} = useAxios("https://artcom-sjavanmard.fandogh.cloud/post/auctions/"+id+"/");
 
-  const {putData} = useAxios(`http://localhost:8000/post/auctions/${id}/`, "PUT")
+  const {putData} = useAxios(`https://artcom-sjavanmard.fandogh.cloud/post/auctions/${id}/`, "PUT")
   const navigate = useNavigate();
 
   const [boughtPosts, setBoughtPosts] = useState([]);

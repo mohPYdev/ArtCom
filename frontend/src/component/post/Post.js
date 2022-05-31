@@ -10,19 +10,18 @@ import { useEffect, useState, useCallback } from 'react'
 
 export default function Post({ handleClose , id}) {
 
-    const url = 'http://localhost:8000/post/posts/' + id
+    const url = 'https://artcom-sjavanmard.fandogh.cloud/post/posts/' + id
   
     // test
     const [likked , setlikked] = useState(null)
     const {loading , error} = useAxios(url)
     const [data , setdata] = useState(null)
     const [comments, setComments] = useState(null)
-    // const {data:comments} = useAxios(`http://localhost:8000/post/comments/${id}/comment_post/`)
     const [count , setCount] = useState(data?.like_count)
     const [addComment, setAddComment] = useState(false)
     
-    const {postData:postLike} = useAxios(`http://localhost:8000/post/${data?.artist.user?.id}/posts/${data?.id}/like/`,'POST');
-    const {postData:postDislike} = useAxios(`http://localhost:8000/post/${data?.artist.user?.id}/posts/${data?.id}/dislike/`,'POST');
+    const {postData:postLike} = useAxios(`https://artcom-sjavanmard.fandogh.cloud/post/${data?.artist.user?.id}/posts/${data?.id}/like/`,'POST');
+    const {postData:postDislike} = useAxios(`https://artcom-sjavanmard.fandogh.cloud/post/${data?.artist.user?.id}/posts/${data?.id}/dislike/`,'POST');
     
 
 useEffect(()=>{
@@ -77,7 +76,7 @@ console.log(data)
         setdata(newpost)
     })
 
-    fetch(`http://localhost:8000/post/comments/${id}/comment_post/`, {headers: headers} )
+    fetch(`https://artcom-sjavanmard.fandogh.cloud/post/comments/${id}/comment_post/`, {headers: headers} )
     .then((response) => response.json())
     .then(comm => {
         console.log(comm)

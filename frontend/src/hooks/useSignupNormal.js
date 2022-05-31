@@ -10,7 +10,7 @@ export const useSignupNormal = () => {
   const { dispatch } = useAuthContext();
   const navigate = useNavigate();
 
-  const SIGNUP_URL = "http://localhost:8000/auth/users/";
+  const SIGNUP_URL = "https://artcom-sjavanmard.fandogh.cloud/auth/users/";
 
   const signup = async (
     email,

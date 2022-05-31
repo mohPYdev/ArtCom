@@ -18,7 +18,7 @@ import BackToHome from "../component/BackToHome";
 function Auction() {
   const { id } = useParams();
   const { user } = useAuthContext();
-  const { data } = useAxios("http://localhost:8000/post/auctions/" + id);
+  const { data } = useAxios("https://artcom-sjavanmard.fandogh.cloud/post/auctions/" + id);
   const ws = useRef(null);
 
   const navigator = useNavigate();

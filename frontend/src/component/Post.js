@@ -38,10 +38,10 @@ export default function Post() {
 
 
 
-  const {data:orders } = useAxios(`http://localhost:8000/post/orders/`)
+  const {data:orders } = useAxios(`https://artcom-sjavanmard.fandogh.cloud/post/orders/`)
 
-  const {postData:postPay} = useAxios(`http://localhost:8000/post/posts/${postId}/payment/`, 'POST')
-  const {postData:postWal} = useAxios(`http://localhost:8000/auth/users/remove/wallet/`, 'POST')
+  const {postData:postPay} = useAxios(`https://artcom-sjavanmard.fandogh.cloud/post/posts/${postId}/payment/`, 'POST')
+  const {postData:postWal} = useAxios(`https://artcom-sjavanmard.fandogh.cloud/auth/users/remove/wallet/`, 'POST')
 
   const handlepayment =() => {
     if (user.wallet >= price){

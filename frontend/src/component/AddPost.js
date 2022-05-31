@@ -59,7 +59,7 @@ export default function Example() {
     formData.append('image', selectedImage);
     formData.append('for_sale', forSale);
 
-    let url = 'http://localhost:8000/post/posts/';
+    let url = 'https://artcom-sjavanmard.fandogh.cloud/post/posts/';
     axios.post(url, formData, {
       headers: {
         'content-type': 'multipart/form-data'

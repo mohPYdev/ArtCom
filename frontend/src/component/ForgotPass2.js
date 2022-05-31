@@ -14,7 +14,7 @@ function ForgotPass2() {
   const sendPass = async() => {
       if(newpass == newpass2 ){
 
-          const resetpass_url ="http://localhost:8000/auth/users/reset_password_confirm/"
+          const resetpass_url ="https://artcom-sjavanmard.fandogh.cloud/auth/users/reset_password_confirm/"
           try{
               const res = await axios.post(resetpass_url , {uid , token , newpass } );
               if(res.status == 204)
