@@ -22,12 +22,14 @@ export default function InfoBarProfile({artistId}) {
 
     useEffect(() => {
         if (!user) return ;
-        if (artistId && artistId !== user.id && exhibs && artist && art_posts) {
-            setPostsNum(art_posts.length)
-            console.log(artistId)
-            setExhibsNum(exhibs.filter(exhib => exhib.artist == artistId).length)
-            setFollowersNum(artist.artist.follower_count)
-            setFollowingNum(artist.following_count)
+        if (artistId && artistId !== user.id) {
+            if (artist && art_posts && exhibs) {
+              setPostsNum(art_posts.length)
+              console.log(artistId)
+              setExhibsNum(exhibs.filter(exhib => exhib.artist == artistId).length)
+              setFollowersNum(artist.artist.follower_count)
+              setFollowingNum(artist.following_count)
+            } 
         }
         else if (posts && exhibs){
             setPostsNum(posts.length)

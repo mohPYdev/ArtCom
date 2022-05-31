@@ -170,7 +170,7 @@ class CommentViewSet(viewsets.ModelViewSet):
         if self.action == 'comment_post':
             post = Post.objects.get(id=self.kwargs['pk'])
             return Comment.objects.filter(post=post)
-        return self.queryset
+        return self.queryset.all()
 
     def get_serializer_class(self):
         if self.action == 'comment_post':
@@ -222,7 +222,7 @@ class ExhibitionViewSet(viewsets.ModelViewSet):
             return self.queryset.filter(artist=self.request.user.artist)
         # elif self.action == 'list':
         #     return (x for x in self.queryset.all() if x.get_status() in ['open' , 'ns'])
-        return self.queryset
+        return self.queryset.all()
 
     def get_object(self):
         obj = super().get_object()
@@ -271,7 +271,7 @@ class AuctionViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         if self.action == 'list':
             return (x for x in self.queryset.all() if x.get_status() in ['open' , 'ns'])
-        return self.queryset
+        return self.queryset.all()
 
     def get_object(self):
         obj = super().get_object()
@@ -292,9 +292,9 @@ class AuctionViewSet(viewsets.ModelViewSet):
                 
         elif self.action == 'retrieve':
             obj = get_object_or_404(Auction, pk=self.kwargs['pk'])
-            if obj.get_status() == 'open' and self.request.user.wallet > 100000:
+            if obj.get_status() in ['open', 'ns']:
                 return obj
-            else:
+            elif self.request.user.wallet > 100000:
                 raise ValidationError({'detail':'the auction is not open or you have not enough money'})
         return obj
     
