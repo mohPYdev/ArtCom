@@ -18,7 +18,7 @@ import BackToHome from "../component/BackToHome";
 function Auction() {
   const { id } = useParams();
   const { user } = useAuthContext();
-  const { data } = useAxios("http://localhost:8000/post/auctions/" + id);
+  const { data } = useAxios("http://artcom-sjavanmard.fandogh.cloud/post/auctions/" + id);
   const ws = useRef(null);
 
   const navigator = useNavigate();
@@ -35,7 +35,7 @@ function Auction() {
   useEffect(() => {
     ws.current = new WebSocket(
       "ws://" +
-        "localhost:8000" +
+        "artcom-sjavanmard.fandogh.cloud" +
         "/ws/chat/" +
         id +
         `/?token=${JSON.parse(localStorage.getItem("token"))}`

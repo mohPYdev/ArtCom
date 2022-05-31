@@ -23,7 +23,7 @@ export default function PS_Artist() {
 
   const { artistId } = useParams();
   const [url, setUrl] = useState(
-    `http://localhost:8000/post/${artistId}/posts`
+    `http://artcom-sjavanmard.fandogh.cloud/post/${artistId}/posts`
   );
   const [isSame, setIsSame] = useState();
 
@@ -32,14 +32,14 @@ export default function PS_Artist() {
   const { user, dispatch } = useAuthContext();
 
   const { data: new_user } = useAxios(
-    `http://localhost:8000/auth/users/${user?.id}/profile`
+    `http://artcom-sjavanmard.fandogh.cloud/auth/users/${user?.id}/profile`
   );
   const { data, loading, error } = useAxios(url);
   const { data: artist } = useAxios(
-    "http://localhost:8000/auth/users/" + artistId + "/profile"
+    "http://artcom-sjavanmard.fandogh.cloud/auth/users/" + artistId + "/profile"
   );
   const { postData: postRate } = useAxios(
-    `http://localhost:8000/auth/users/${artistId}/rate/`,
+    `http://artcom-sjavanmard.fandogh.cloud/auth/users/${artistId}/rate/`,
     "POST"
   );
 
@@ -55,7 +55,7 @@ export default function PS_Artist() {
       setIsSame(false);
     } else {
       setIsSame(true);
-      setUrl(`http://localhost:8000/post/posts/me`);
+      setUrl(`http://artcom-sjavanmard.fandogh.cloud/post/posts/me`);
     }
     console.log(user);
   }, [artistId, user, new_user]);

@@ -13,7 +13,7 @@ import BackToHome from '../component/BackToHome';
 
 export default function Add_Exhibition(){
 
-    const {data:posts} = useAxios('http://localhost:8000/post/posts');
+    const {data:posts} = useAxios('http://artcom-sjavanmard.fandogh.cloud/post/posts');
     const alert = useAlert();
 
     
@@ -98,7 +98,7 @@ export default function Add_Exhibition(){
         formData.append('date_end', end_date);
         formData.append('cover', selectedImage);
 
-        let url = 'http://localhost:8000/post/exhibitions/';
+        let url = 'http://artcom-sjavanmard.fandogh.cloud/post/exhibitions/';
         axios.post(url, formData, {
         headers: {
             'content-type': 'multipart/form-data'

@@ -16,7 +16,7 @@ export default function Search() {
   let query = queryparam.get('q')
 
   // const url = 'http://localhost:3000/artists?q='+query
-  const url = 'http://localhost:8000/auth/users/artist_list/'
+  const url = 'http://artcom-sjavanmard.fandogh.cloud/auth/users/artist_list/'
   
 
   const {data , loading , error}  = useAxios(url)

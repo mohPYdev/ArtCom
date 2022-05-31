@@ -7,7 +7,7 @@ export default async function getAuctions( artistId) {
     },
   };
   let allData;
-    const url = `http://localhost:8000/post/${artistId}/posts/`;
+    const url = `http://artcom-sjavanmard.fandogh.cloud/post/${artistId}/posts/`;
     const { data } = await axios.get(url, config);
     allData = data;
     console.log(data)

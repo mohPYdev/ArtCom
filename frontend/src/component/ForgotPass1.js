@@ -10,7 +10,7 @@ function ForgotPass1() {
   const [email, setEmail] = useState("");
   const sendEmail = async () => {
     try {
-      const email_url = "http://localhost:8000/auth/users/reset_password/";
+      const email_url = "http://artcom-sjavanmard.fandogh.cloud/auth/users/reset_password/";
       
       const res = await axios.post(email_url, { email });
 

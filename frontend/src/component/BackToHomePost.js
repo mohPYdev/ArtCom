@@ -16,14 +16,14 @@ export default function BackToHomePost({sold, orderId}) {
             "Authorization": `Token ${JSON.parse(localStorage.getItem("token"))}`
         }
     
-        fetch(`http://localhost:8000/post/orders/${orderId}/`, {headers: headers, method:'DELETE', keepalive:true} )
+        fetch(`http://artcom-sjavanmard.fandogh.cloud/post/orders/${orderId}/`, {headers: headers, method:'DELETE', keepalive:true} )
         .then((response) => response.json())
         .then(newpost => {
             console.log("leaving page")
         })
 
 
-        fetch(`http://localhost:8000/auth/users/remove/wallet/`,  {body: JSON.stringify({'wallet': 30000}) ,headers: headers, method:'POST', keepalive:true})
+        fetch(`http://artcom-sjavanmard.fandogh.cloud/auth/users/remove/wallet/`,  {body: JSON.stringify({'wallet': 30000}) ,headers: headers, method:'POST', keepalive:true})
         .then((response) => response.json())
         .then(newpost => {
             console.log("leaving page")

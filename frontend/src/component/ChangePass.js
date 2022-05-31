@@ -14,7 +14,7 @@ export default function Modal({ handleClose }) {
   const alert = useAlert();
 
   // post url
-  const url = 'http://localhost:8000/auth/users/set_password/'
+  const url = 'http://artcom-sjavanmard.fandogh.cloud/auth/users/set_password/'
 
   const { postData } = useAxios(url, 'POST')
 

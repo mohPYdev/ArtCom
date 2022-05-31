@@ -6,7 +6,7 @@ export default  async function getOneExhibition (id ){
             "Authorization": `Token ${JSON.parse(localStorage.getItem("token"))}`
         }
     }
-    const url = `http://localhost:8000/post/exhibitions/${id}`;
+    const url = `http://artcom-sjavanmard.fandogh.cloud/post/exhibitions/${id}`;
     const { data } = await axios.get(url , config);
 
     const {posts , date_begin , date_end , artist } =  data ;

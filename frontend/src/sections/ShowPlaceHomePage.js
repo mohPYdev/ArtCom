@@ -27,7 +27,7 @@ function ExhibImage({ image_url }) {
 }
 export default function ShowPlaceHomePage() {
   //  const { data, isPending, error } = useAxios(
-  //       "http://localhost:8000/post/exhibitions/"
+  //       "http://artcom-sjavanmard.fandogh.cloud/post/exhibitions/"
   //     );
 
   //Ref
