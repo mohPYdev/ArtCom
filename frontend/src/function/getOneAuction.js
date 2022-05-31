@@ -9,7 +9,7 @@ export default async function getOneAuction() {
     },
   };
   let allData;
-    const url = `http://artcom-sjavanmard.fandogh.cloud/post/auctions/`;
+    const url = `https://artcom-sjavanmard.fandogh.cloud/post/auctions/`;
     const { data } = await axios.get(url, config);
     allData = data;
   return allData;

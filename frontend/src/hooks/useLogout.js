@@ -8,7 +8,7 @@ export const useLogout = () => {
   const [isPending, setIsPending] = useState(false)
   const { dispatch} = useAuthContext()
 
-  const LOGOUT_URL = "http://artcom-sjavanmard.fandogh.cloud/auth/token/logout/"
+  const LOGOUT_URL = "https://artcom-sjavanmard.fandogh.cloud/auth/token/logout/"
   
   const logout = async () => {
     setError(null)

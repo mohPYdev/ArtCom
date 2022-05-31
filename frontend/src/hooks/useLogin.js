@@ -13,8 +13,8 @@ export const useLogin = () => {
 
   const navigate = useNavigate()
 
-  const LOGIN_URL = 'http://artcom-sjavanmard.fandogh.cloud/auth/token/login/'
-  const ME_URL = 'http://artcom-sjavanmard.fandogh.cloud/auth/users/me/'
+  const LOGIN_URL = 'https://artcom-sjavanmard.fandogh.cloud/auth/token/login/'
+  const ME_URL = 'https://artcom-sjavanmard.fandogh.cloud/auth/users/me/'
   const alert = useAlert();
   const login = async (username, password) => {
     setError(null)

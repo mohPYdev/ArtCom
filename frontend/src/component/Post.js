@@ -38,10 +38,10 @@ export default function Post() {
 
 
 
-  const {data:orders } = useAxios(`http://artcom-sjavanmard.fandogh.cloud/post/orders/`)
+  const {data:orders } = useAxios(`https://artcom-sjavanmard.fandogh.cloud/post/orders/`)
 
-  const {postData:postPay} = useAxios(`http://artcom-sjavanmard.fandogh.cloud/post/posts/${postId}/payment/`, 'POST')
-  const {postData:postWal} = useAxios(`http://artcom-sjavanmard.fandogh.cloud/auth/users/remove/wallet/`, 'POST')
+  const {postData:postPay} = useAxios(`https://artcom-sjavanmard.fandogh.cloud/post/posts/${postId}/payment/`, 'POST')
+  const {postData:postWal} = useAxios(`https://artcom-sjavanmard.fandogh.cloud/auth/users/remove/wallet/`, 'POST')
 
   const handlepayment =() => {
     if (user.wallet >= price){
@@ -67,7 +67,7 @@ export default function Post() {
   //       "Authorization": `Token ${JSON.parse(localStorage.getItem("token"))}`
   //     }
   
-  //     fetch(`http://artcom-sjavanmard.fandogh.cloud/post/orders/${orderId}/`, {headers: headers, method:'DELETE', keepalive:true} )
+  //     fetch(`https://artcom-sjavanmard.fandogh.cloud/post/orders/${orderId}/`, {headers: headers, method:'DELETE', keepalive:true} )
   //     .then((response) => response.json())
   //     .then(newpost => {
   //       console.log("leaving page")

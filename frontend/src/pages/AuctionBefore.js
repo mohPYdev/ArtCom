@@ -10,7 +10,7 @@ export default function AuctionBefore() {
 
     const {id} = useParams();
     const {user} = useAuthContext()
-    const {data:auction} = useAxios("http://artcom-sjavanmard.fandogh.cloud/post/auctions/"+id+"/");
+    const {data:auction} = useAxios("https://artcom-sjavanmard.fandogh.cloud/post/auctions/"+id+"/");
   
     const navigate = useNavigate();
 

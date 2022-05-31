@@ -47,9 +47,9 @@ export default function ShowPlace() {
 
   const [liked, setliked] = useState();
 
-  const {postData:postLike} = useAxios(`http://artcom-sjavanmard.fandogh.cloud/post/${user_id?.current}/posts/${postsList.current[indexOfPost.current]?.id}/like/`,'POST');
-  const {postData:postDislike} = useAxios(`http://artcom-sjavanmard.fandogh.cloud/post/${user_id?.current}/posts/${postsList.current[indexOfPost.current]?.id}/dislike/`,'POST');
-  const {postData:postOrder} = useAxios(`http://artcom-sjavanmard.fandogh.cloud/post/orders/`,'POST');
+  const {postData:postLike} = useAxios(`https://artcom-sjavanmard.fandogh.cloud/post/${user_id?.current}/posts/${postsList.current[indexOfPost.current]?.id}/like/`,'POST');
+  const {postData:postDislike} = useAxios(`https://artcom-sjavanmard.fandogh.cloud/post/${user_id?.current}/posts/${postsList.current[indexOfPost.current]?.id}/dislike/`,'POST');
+  const {postData:postOrder} = useAxios(`https://artcom-sjavanmard.fandogh.cloud/post/orders/`,'POST');
   const likeHandler = () => {
     if (liked) {
       setliked(false);
@@ -120,7 +120,7 @@ export default function ShowPlace() {
         "Authorization": `Token ${JSON.parse(localStorage.getItem("token"))}`
       }
   
-      fetch("http://artcom-sjavanmard.fandogh.cloud/post/orders/", {headers: headers, method:'POST', body:JSON.stringify({'post':+postsList.current[indexOfPost.current].id}) } )
+      fetch("https://artcom-sjavanmard.fandogh.cloud/post/orders/", {headers: headers, method:'POST', body:JSON.stringify({'post':+postsList.current[indexOfPost.current].id}) } )
       .then((response) => response.json())
       .then(newpost => {
         navigator(

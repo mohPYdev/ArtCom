@@ -24,7 +24,7 @@ export default function HomePage() {
 
 
   // just for posts
-  const { data , loading , error } = useAxios('http://artcom-sjavanmard.fandogh.cloud/post/posts')
+  const { data , loading , error } = useAxios('https://artcom-sjavanmard.fandogh.cloud/post/posts')
   
   const navigator = useNavigate();
 

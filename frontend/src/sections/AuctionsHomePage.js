@@ -25,7 +25,7 @@ const styles = {
 };
 export default function AuctionsHomePage() {
   //fetch-data
-  const { data } = useAxios("http://artcom-sjavanmard.fandogh.cloud/post/auctions/");
+  const { data } = useAxios("https://artcom-sjavanmard.fandogh.cloud/post/auctions/");
   //Ref
   const indexOfAuctions = useRef("");
   const auctions = useRef("");

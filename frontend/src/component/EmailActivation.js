@@ -20,7 +20,7 @@ function EmailActivation() {
         }
 
         
-        const url = 'http://artcom-sjavanmard.fandogh.cloud/auth/users/activation/';
+        const url = 'https://artcom-sjavanmard.fandogh.cloud/auth/users/activation/';
         const res = await axios.post(url, payload);
         if (res.status === 204) {
             alert.success('اکانت شما با موفقیت فعال شد');

@@ -6,7 +6,7 @@ export default function CommentInput({id , updateaddcomment}) {
 
     const [comment  ,setcomm] = useState('')
 
-    const { postData} = useAxios('http://artcom-sjavanmard.fandogh.cloud/post/comments/', 'POST')
+    const { postData} = useAxios('https://artcom-sjavanmard.fandogh.cloud/post/comments/', 'POST')
 
     const post_comment = (e) => {
         e.preventDefault()

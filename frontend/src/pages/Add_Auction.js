@@ -9,8 +9,8 @@ import BackToHome from '../component/BackToHome';
 export default function Add_Auction(){
 
     const {user} = useAuthContext()
-    const {data:posts} = useAxios('http://artcom-sjavanmard.fandogh.cloud/post/posts/');
-    const {data:auctions} = useAxios('http://artcom-sjavanmard.fandogh.cloud/post/auctions/');
+    const {data:posts} = useAxios('https://artcom-sjavanmard.fandogh.cloud/post/posts/');
+    const {data:auctions} = useAxios('https://artcom-sjavanmard.fandogh.cloud/post/auctions/');
 
     const alert = useAlert()
 
@@ -27,7 +27,7 @@ export default function Add_Auction(){
 
     useEffect(()=> {
         if(auctionselect_addau !== ''){
-            setUrl('http://artcom-sjavanmard.fandogh.cloud/post/auctions/'+auctionselect_addau+'/add-post/');
+            setUrl('https://artcom-sjavanmard.fandogh.cloud/post/auctions/'+auctionselect_addau+'/add-post/');
         }
     }, [auctionselect_addau]);
 

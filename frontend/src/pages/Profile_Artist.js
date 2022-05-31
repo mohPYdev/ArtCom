@@ -20,7 +20,7 @@ export default function Profile_Artist() {
   };
 
   const {user , dispatch} = useAuthContext()
-  const { data, isPending, error } = useAxios('http://artcom-sjavanmard.fandogh.cloud/auth/me/token/');
+  const { data, isPending, error } = useAxios('https://artcom-sjavanmard.fandogh.cloud/auth/me/token/');
   const alert = useAlert()
 
   //file button
@@ -120,7 +120,7 @@ export default function Profile_Artist() {
     form_data.append("address", Address_textarea_profiless);
     form_data.append("postal_code", postalcode_input_profiless);
 
-    let url = 'http://artcom-sjavanmard.fandogh.cloud/auth/users/me/';
+    let url = 'https://artcom-sjavanmard.fandogh.cloud/auth/users/me/';
     axios.patch(url, form_data, {
       headers: {
         'content-type': 'multipart/form-data'

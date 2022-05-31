@@ -8,16 +8,16 @@ import { useAxios} from '../hooks/useAxios'
 export default function InfoBarProfile({artistId}) {
 
     const { user } = useAuthContext();
-    const {data:artist} = useAxios("http://artcom-sjavanmard.fandogh.cloud/auth/users/"+artistId+"/profile/");
+    const {data:artist} = useAxios("https://artcom-sjavanmard.fandogh.cloud/auth/users/"+artistId+"/profile/");
 
     const [postsNum , setPostsNum] = useState()
     const [exhibNum , setExhibsNum] = useState()
     const [followersNum , setFollowersNum] = useState()
     const [followingNum , setFollowingNum] = useState()
 
-    const {data:art_posts} = useAxios("http://artcom-sjavanmard.fandogh.cloud/post/"+artistId+"/posts/");
-    const {data:posts} = useAxios("http://artcom-sjavanmard.fandogh.cloud/post/posts/me/");
-    const {data:exhibs} = useAxios("http://artcom-sjavanmard.fandogh.cloud/post/exhibitions/");
+    const {data:art_posts} = useAxios("https://artcom-sjavanmard.fandogh.cloud/post/"+artistId+"/posts/");
+    const {data:posts} = useAxios("https://artcom-sjavanmard.fandogh.cloud/post/posts/me/");
+    const {data:exhibs} = useAxios("https://artcom-sjavanmard.fandogh.cloud/post/exhibitions/");
 
 
     useEffect(() => {
