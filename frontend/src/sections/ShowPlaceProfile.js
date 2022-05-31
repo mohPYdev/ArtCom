@@ -107,7 +107,7 @@ export default function ShowPlaceProfile({ artistId }) {
           <></>
         )}
         <div id={style.viewe}>
-          <button className={style.btn2} onClick={GoToShowPlace} >
+          <button className={style.btn2} onClick={GoToShowPlace} disabled={status === "open" ? false : true } >
             مشاهده
           </button>
 

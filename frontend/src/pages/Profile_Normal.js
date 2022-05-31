@@ -142,7 +142,7 @@ export default function Profile_Normal() {
           </div>
 
           {/* <!--adding Bio textarea--> */}
-          <textarea
+          {/* <textarea
             value={Bio_textarea_profiless}
             onChange={changeBioTextarea}
             id="Bio_textarea_profiless"
@@ -150,7 +150,7 @@ export default function Profile_Normal() {
             cols="18"
             rows="20"
             placeholder="بیوگرافی"
-          ></textarea>
+          ></textarea> */}
 
           {/* <!--adding first name text--> */}
           <input
