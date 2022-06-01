@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-g1w=n$)42zmkv)*0=_1d1nw3h8_ct2fpdh7d2^t1tx0l!v4r-t
 # DEBUG = True
 DEBUG = False
 
-ALLOWED_HOSTS = ['artcom-sjavanmard.fandogh.cloud',]
+ALLOWED_HOSTS = ['artcom-sjavanmard.fandogh.cloud','localhost:8000', '.herokuapp.com']
 
 
 
